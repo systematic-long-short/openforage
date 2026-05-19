@@ -726,7 +726,9 @@ Key behaviors:
   functions and valid features.
 - **Warm phase**: weight `w_i = base_weight * (1 + yield_rate_i)`,
   normalized. Higher-yield functions and features sampled more often.
-- **Depth**: uniformly random in `[2, effective_max_depth]`.
+- **Depth**: uniformly random in `[2, effective_max_depth]`,
+  **but agents MUST clamp `effective_max_depth` to ≤ 6 even when
+  the era's `max_depth` allows more** (see Hard Rules below).
 - **Node budget**: capped at `max_node_count` (default 100, hard max
   1000) and clipped to fit the historical buffer's
   `buffer_duration_minutes` (default 20160).
@@ -755,12 +757,28 @@ def my_template(ctx):
 handle = openforage.search(my_template, n_jobs=1)
 ```
 
+When forking the template, your filter MUST reject any candidate with
+`expr.depth() > 6`. The library will not enforce this for you — the
+per-era `max_depth` may be higher, and the depth-6 cap is an agent-side
+hard rule (see Hard Rules below).
+
 Before promoting a forked template, run a baseline (`random_weighted`)
 and your fork against the same era/universe and compare on
 `get_yield_analysis()`'s `lifetime_yield_rate` and
 `get_search_stats()`'s `composite_score` columns — see §L.
 
 → Depth: `src/openforage/skills/scheduled_improvement_loops/SKILL.md`
+
+### Hard Rules
+
+- **Signal compute-graph depth MUST NOT exceed 6**, regardless of the
+  era's `max_depth` setting. This applies to `random_weighted`, every
+  fork of `random_weighted`, every custom template, and every directly
+  submitted candidate. The library and protocol may permit higher
+  depths for compatibility, but agents are required to self-reject any
+  candidate with `expr.depth() > 6` before evaluation or submission.
+  The cap applies to the signal compute graph only — feature depth is
+  independent and not subject to this rule.
 
 ---
 

@@ -94,6 +94,8 @@ Custom templates are callables that receive a `SearchContext` exposing `vocabula
 
 Switch to a custom template when discovery rate is declining and you want to bias sampling toward specific function families based on analytics.
 
+Whichever template you use, agents MUST NOT generate, evaluate, or submit candidates with compute-graph depth greater than 6, regardless of the era's `max_depth`. The library will not enforce this cap; the agent must — see `README.md` §G Hard Rules.
+
 ## Forking `random_weighted`
 
 Use a small, bounded workflow when an agent needs to fork the default template.
@@ -101,7 +103,7 @@ Use a small, bounded workflow when an agent needs to fork the default template.
 1. Discover bundled skills with `openforage.list_skills()`, then read or open the relevant bundle `SKILL.md` skill guidance before changing template behavior.
 2. Run `openforage.templates.random_weighted` as the baseline in both cold and warm local starts. Record what worked, what failed, yield, passing candidates, and the generated distribution or behavior.
 3. Inspect analytics before editing: `openforage.templates.analyze_random_weighted`, `get_search_stats()`, `get_search_patterns()`, `get_search_velocity()`, `get_yield_analysis()`, `get_suggestions()`, or `get_correlation_patterns()`.
-4. Copy or wrap `openforage.templates.random_weighted` into a forked custom template. Keep the original baseline path available for comparison.
+4. Copy or wrap `openforage.templates.random_weighted` into a forked custom template. Keep the original baseline path available for comparison. Your fork MUST reject any candidate with `expr.depth() > 6`, regardless of the era's `max_depth` — see `README.md` §G Hard Rules.
 5. Run a bounded local validation loop over fixed iterations or candidate counts. Compare baseline cold/warm distribution and behavior against the fork before using the custom template in a longer background search.
 
 ## Adjacent Skills

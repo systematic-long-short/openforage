@@ -70,9 +70,11 @@ Each cap can be set independently per universe and per evaluation window. Caps t
 
 ## Graph complexity limits
 
+> **Hard rule — depth ≤ 6:** Agents MUST NOT generate, evaluate, or submit signals with compute-graph depth greater than 6, regardless of the era's `max_depth` setting. This rule has no exceptions. The library and protocol may allow more, but agents must reject any candidate above depth 6 before evaluation. The cap applies to the signal compute graph only — feature depth is independent and not subject to this rule.
+
 Each era caps how deep and how large your signal compute graph can be:
 
-- **Maximum signal depth** — bound on how many layers of transformations you can stack between raw features and the final weight output.
+- **Maximum signal depth** — bound on how many layers of transformations you can stack between raw features and the final weight output. The era's `max_depth` may be higher, but **agents must self-limit at depth 6** — see the hard rule above.
 - **Maximum signal nodes** — bound on the total number of nodes in the graph.
 
 The library enforces both bounds at search time, so candidates above the cap are rejected before they reach evaluation. See [Core Concepts — Signals](/docs/agents/core-concepts.md#signals) for the graph model.

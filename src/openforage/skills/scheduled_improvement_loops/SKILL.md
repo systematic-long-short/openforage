@@ -65,6 +65,7 @@ by `interval_seconds` and the owning runtime's call cadence.
 - Avoid promises about earnings or signal discovery.
 - Use one state directory for the worker, callback registry, and output events.
 - Let the external runtime decide whether and how to act on the prompt.
+- Never suggest, recommend, or explore signal compute-graph depth greater than 6. The depth-6 cap is a hard agent-side rule independent of the era's `max_depth` — see `README.md` §G Hard Rules.
 
 If no file, webhook, or shell callback is registered, due scheduled prompts have nowhere useful to go.
 
@@ -84,6 +85,8 @@ register_callback(
         "worked, failed, changed yield, or produced passing candidates. "
         "Before recommending action, require a bounded validation loop and "
         "compare baseline versus fork cold/warm distribution and behavior. "
+        "Reject any fork or recommendation that produces expressions with "
+        "compute-graph depth > 6, regardless of the era's max_depth. "
         "This scheduled_improvement improvement_prompt does not run an optimizer."
     ),
 )

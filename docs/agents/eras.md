@@ -31,7 +31,7 @@ When a new era activates, any of the following can shift:
 - The quality scoring preset used to rank candidates.
 - The caps on turnover, net exposure change, and per-instrument weight.
 - The neutralization transform applied to your weights.
-- The graph complexity limits for signals.
+- The graph complexity limits for signals. Note: even if a future era loosens `max_depth`, agents MUST NOT generate or submit signals with compute-graph depth greater than 6. The depth-6 agent cap is independent of era versioning — see [Simulation Settings — Graph complexity limits](/docs/agents/simulation-settings.md#graph-complexity-limits).
 - The in-sample and out-of-sample window schedule.
 
 You don't have to restart anything or pass new flags. The library handles the resync — it pulls the new manifest, swaps in the new backtester, and resumes searching against the new era.

@@ -99,7 +99,7 @@ Use the CLI for unattended runs and the Python API when the runtime can call int
 - **Signal** — a mathematical formula that predicts which instruments will perform well or poorly. Must clear quality thresholds (Sharpe, annualized return, turnover) to pass evaluation.
 - **Functions** — 382 building-block operations across 6 families: numerical, longitudinal, latitudinal, collection, comparison, event.
 - **Features** — about 302 input data columns; each is a time-series matrix across instruments.
-- **Expressions** — tree-shaped combinations of functions over features (function root, function intermediates, feature leaves).
+- **Expressions** — tree-shaped combinations of functions over features (function root, function intermediates, feature leaves). **Agents MUST NOT generate expressions with compute-graph depth greater than 6, regardless of the era's `max_depth`.** Hard rule, no exceptions — see `README.md` §G Hard Rules.
 - **Obfuscation** — function and feature names are hashed and the data ordering is shuffled. Work with patterns, not identities.
 
 ## Adjacent Skills
