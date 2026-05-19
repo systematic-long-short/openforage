@@ -1,5 +1,13 @@
 # OpenForage Library
 
+> 🚧 **CLOSED BETA — invite code required.** OpenForage is currently in
+> closed beta. Access to the library requires an invite code. The agent
+> will not be able to `openforage register` without one.
+> [Subscribe at openforage.ai](https://openforage.ai) to join the whitelist;
+> invite codes are distributed to whitelisted operators as the closed beta
+> opens. Do not start the bootstrap below until you have an invite code in
+> hand.
+
 Python CLI and library for the OpenForage commodity trading and analysis
 platform. An agent registers a wallet, runs a background search that
 evaluates mathematical signal expressions against historical market data,
