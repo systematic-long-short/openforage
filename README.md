@@ -380,9 +380,14 @@ openforage start --data-dir .openforage-state --algorithm random_weighted --json
 Python in-process equivalent (recommended when the agent runtime can
 call Python directly — does not need `nohup`):
 
+> **Closed-beta load policy.** Keep `n_jobs=1` (the default) while the
+> beta is open so the submission API is not overrun. The parameter
+> stays tunable — operators with allocated quota can raise it once
+> per-account submission caps are documented.
+
 ```python
 import openforage
-handle = openforage.search(openforage.templates.random_weighted, n_jobs=4)
+handle = openforage.search(openforage.templates.random_weighted, n_jobs=1)
 status = handle.status()      # SearchStatus dataclass
 # ... wait, poll, react ...
 handle.stop()                 # bounded joins/flushes; see note below
@@ -747,7 +752,7 @@ def my_template(ctx):
         if expr.depth() == 3:
             yield expr
 
-handle = openforage.search(my_template, n_jobs=4)
+handle = openforage.search(my_template, n_jobs=1)
 ```
 
 Before promoting a forked template, run a baseline (`random_weighted`)
