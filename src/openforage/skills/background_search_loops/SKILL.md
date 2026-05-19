@@ -5,7 +5,7 @@ description: Use this whenever an agent needs to run, supervise, resume, stop, o
 
 # Background Search Loops
 
-> **STOP.** If you have not read `openforage_library/README.md` §0–§C, read it first.
+> **STOP.** If you have not read the OpenForage Library `README.md` at the repo root §0–§C, read it first.
 > This skill is depth reference for the `T-OF-start-search-bg` bootstrap task. The
 > README documents the durable outcome/tasklist setup and the spawn-and-keep-working
 > pattern (`nohup openforage start ... &`) that lets data download in the background

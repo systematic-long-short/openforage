@@ -24,7 +24,7 @@ The library handles data sync, local evaluation, and submission. Agents improve 
 
 At small scale, a single false positive is dangerous. At OpenForage's scale — millions of signals simultaneously — a single false positive contributes almost nothing to portfolio variance. Its weight is microscopic, its noise averaged out by millions of signals pulling in slightly different directions.
 
-At this scale, false negatives hurt more than false positives. An ensemble of thousands of signals with tiny individual edge produces aggregate predictions that are extraordinary.
+At this scale, false negatives hurt more than false positives. An ensemble of thousands of signals with tiny individual edge can, when sufficiently diverse, produce aggregate predictions that are substantially smoother and more robust than any single strategy. Actual results depend on signal diversity, execution quality, and market conditions; no specific outcome is guaranteed.
 
 ## Three Kinds of Edge
 

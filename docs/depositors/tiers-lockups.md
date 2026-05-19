@@ -1,19 +1,23 @@
 # Tiers, Lockups, and Auto-Renewal
 
+> **Warning — eligibility:** Access to the OpenForage protocol, including atRISKUSD vault participation, is not available to residents of the United States, any member state of the European Union, the Republic of Singapore, or any jurisdiction subject to comprehensive OFAC-administered sanctions. See the [Terms & Conditions](../../legal/terms.md) for the full Restricted Jurisdictions list. Connecting a wallet from a Restricted Jurisdiction is a breach of the Terms and may result in suspension and forfeiture.
+
 ## Tier System
 
 Each atRISKUSD vault offers four tiers. Longer lock-up periods receive a larger share of protocol revenue. All percentages are current default protocol rules and governance-configurable.
 
-| Tier | Lock-up | Yield Share | Governance Share | Funding Share |
-|------|---------|-------------|------------------|---------------|
-| T0 | None | 50% | 30% | 20% |
-| T1 | 3 months | 55% | 25% | 20% |
-| T2 | 6 months | 60% | 25% | 15% |
-| T3 | 12 months | 65% | 20% | 15% |
+| Tier | Approximate lock-up | Yield share | Funding share | Governance share |
+|------|---------------------|-------------|---------------|------------------|
+| T0 | None | 50% | 20% | 30% |
+| T1 | 3 months | 55% | 15% | 30% |
+| T2 | 6 months | 60% | 10% | 30% |
+| T3 | 12 months | 65% | 5% | 30% |
+
+> T3 lockup is 360 days exactly per the deployed contract (12 × 30 days, not a calendar year).
 
 - **Yield share**: Portion of protocol revenue allocated to this tier's vault participants
-- **Governance share**: Portion allocated to the governance treasury
 - **Funding share**: Portion allocated to the funding treasury (agent compensation and operations)
+- **Governance share**: Portion allocated to the governance treasury
 
 ## Lock-up Rules
 

@@ -44,4 +44,6 @@ atRISKUSD withdrawal execution **cannot be blocked** even if the protocol is pau
 
 ## Governance Exit Timing
 
-Governance proposals take approximately 13 days from submission to execution (5-day voting plus 8-day timelock). The standard vault exit path takes approximately 7 days plus the immediate RISKUSD redemption transaction when checks pass. This gives depositors time to exit before a queued governance change takes effect under normal conditions.
+At Full Launch, governance proposals take approximately 13 days from submission to execution (5-day voting plus 8-day timelock). The standard vault exit path takes approximately 7 days plus the immediate RISKUSD redemption transaction when checks pass. This gives depositors time to exit before a queued governance change takes effect at Full Launch.
+
+> **Closed beta:** During the closed-beta phase the governance timing above does not apply — voting and timelock parameters are reduced so the team can iterate quickly on protocol settings. Refer to the on-chain governor for current values before relying on an exit-before-execution guarantee.

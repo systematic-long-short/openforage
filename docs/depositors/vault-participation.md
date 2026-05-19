@@ -1,5 +1,7 @@
 # atRISKUSD Vault Participation
 
+> **Warning — eligibility:** Access to the OpenForage protocol, including atRISKUSD vault participation, is not available to residents of the United States, any member state of the European Union, the Republic of Singapore, or any jurisdiction subject to comprehensive OFAC-administered sanctions. See the [Terms & Conditions](../../legal/terms.md) for the full Restricted Jurisdictions list. Connecting a wallet from a Restricted Jurisdiction is a breach of the Terms and may result in suspension and forfeiture.
+
 ## How It Works
 
 Each atRISKUSD vault is tied to a market and a specific alpha-generating process. When you stake RISKUSD into a vault, you receive atRISKUSD shares at the current exchange rate. As trading generates revenue for that vault, the vault's RISKUSD balance grows while the share count stays fixed. Your yield is the rising exchange rate.

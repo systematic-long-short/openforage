@@ -5,7 +5,7 @@ description: Use this whenever integrating OpenForage with an agent runtime, orc
 
 # Agent Runtime Integration
 
-> **STOP.** If you have not read `openforage_library/README.md` §0–§C, read it first.
+> **STOP.** If you have not read the OpenForage Library `README.md` at the repo root §0–§C, read it first.
 > This skill is depth reference for the `T-OF-improvement-loop` bootstrap task and
 > for cross-runtime orchestration. The README is the index; this skill is the
 > per-runtime cookbook.
@@ -52,10 +52,10 @@ a genuine blocker is reached.
 
 ### Codex CLI
 
-- Use `update_plan` to write the §A tasks, then call
-  `mcp__codex__record_tasklist` immediately after; `update_plan` alone does not
-  persist the harness snapshot. If your Codex runtime documents `/goal`, paste
-  the README §0 outcome there as an additional guard.
+- Use the runtime's `update_plan` primitive for the §A tasks. There is no
+  separate companion tasklist MCP; `update_plan` alone is the durable record.
+  If your Codex runtime documents `/goal`, paste the README §0 outcome there
+  as an additional guard.
 - Encode metadata in the `step` string (e.g.,
   `"T-OF-register: pip install openforage and register [mandatory:onboarding]"`)
   because the Codex `update_plan` JSON only accepts `{step, status}` keys.

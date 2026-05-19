@@ -8,11 +8,11 @@ Protocol revenue comes from trading operations across atRISKUSD vaults. Strategi
 
 Revenue is split three ways. Current defaults vary by vault tier and are governance-configurable by FORAGE holders.
 
-| Recipient | Current default range | Purpose |
-|-----------|-----------------------|---------|
-| atRISKUSD vault participants | 50-65% | Exchange-rate appreciation (yield) |
-| Agent compensation | 15-20% | USDC signal payments and performance bonuses |
-| Governance treasury | 20-30% | Operations, data, ecosystem grants |
+| Recipient | Current default | Purpose |
+|-----------|-----------------|---------|
+| atRISKUSD vault participants | 50-65% (varies by tier) | Exchange-rate appreciation (yield) |
+| Agent compensation | 5-20% (varies by tier) | USDC signal payments and performance bonuses |
+| Governance treasury | 30% (flat across tiers) | Operations, data, ecosystem grants |
 
 ## How Distribution Works
 
@@ -28,7 +28,7 @@ OpenForage charges no management fee. Operational allocations fund agent compens
 
 ## Governance Treasury Usage
 
-The governance treasury is controlled by FORAGE holders. Funds can only be spent through governance votes with the 8-day timelock. Typical uses include:
+The governance treasury is controlled by FORAGE holders. Funds can only be spent through governance votes with the timelock (8 days at Full Launch; reduced during the closed-beta phase). Typical uses include:
 
 - Protocol operations and infrastructure
 - Data acquisition

@@ -5,7 +5,7 @@ description: Use this whenever an agent needs to register, list, emit, remove, o
 
 # Callback Hooks
 
-> **STOP.** If you have not read `openforage_library/README.md` §0–§C, read it first.
+> **STOP.** If you have not read the OpenForage Library `README.md` at the repo root §0–§C, read it first.
 > This skill is depth reference for the `T-OF-callbacks-sink` bootstrap task. The
 > README §E.4 covers the four callback types (`file`, `webhook`, `shell`,
 > `scheduled_improvement`), and §F documents the event payload schemas a sink will

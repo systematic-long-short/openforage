@@ -18,7 +18,9 @@ Approximately 7 days plus the RISKUSD redemption transaction: a 7-day cooldown t
 
 ### Can I exit before a governance change takes effect?
 
-Yes, under normal conditions. Governance proposals take approximately 13 days (5-day voting plus 8-day timelock). The standard exit takes approximately 7 days plus the RISKUSD redemption transaction when checks pass. The RISKUSD amount is locked at the exchange rate when you request withdrawal.
+At Full Launch, yes under normal conditions: governance proposals take approximately 13 days (5-day voting plus 8-day timelock), and the standard exit takes approximately 7 days plus the RISKUSD redemption transaction when checks pass. The RISKUSD amount is locked at the exchange rate when you request withdrawal.
+
+During the closed-beta phase, governance timing is reduced (1-hour voting, no timelock) so the team can iterate quickly on protocol settings; the exit-before-execution margin does not apply. Refer to the on-chain governor for current values.
 
 ### Can my withdrawal be blocked?
 
@@ -48,7 +50,7 @@ No. FORAGE is a governance token with zero yield. To earn yield, you need atRISK
 
 ### Can payout rules change after launch?
 
-Yes. All protocol parameters are governance-configurable. Changes require a ForageGovernor proposal (1% minimum to propose), approximately 5-day voting with 4% quorum, and an 8-day timelock delay. All queued changes are visible on-chain.
+Yes. All protocol parameters are governance-configurable. At Full Launch, changes require a ForageGovernor proposal (1% minimum to propose), approximately 5-day voting with 4% quorum, and an 8-day timelock delay. All queued changes are visible on-chain. During the closed-beta phase those timing parameters are reduced — refer to the on-chain governor for current values.
 
 ### Can distributions be delayed by the treasury?
 

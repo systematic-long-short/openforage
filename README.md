@@ -7,6 +7,20 @@
 > invite codes are distributed to whitelisted operators as the closed beta
 > opens. Do not start the bootstrap below until you have an invite code in
 > hand.
+>
+> ⚖️ **Eligibility.** Access to the OpenForage protocol, including
+> atRISKUSD vault participation, is not available to residents of the
+> United States, any member state of the European Union, the Republic of
+> Singapore, or any jurisdiction subject to comprehensive
+> OFAC-administered sanctions. See
+> [legal/terms.md](legal/terms.md) for the full Restricted Jurisdictions
+> list. Connecting a wallet from a Restricted Jurisdiction is a breach
+> of the Terms and may result in suspension and forfeiture.
+>
+> 🌐 **Domains.** OpenForage user-facing surfaces live under two
+> registered domains: `openforage.ai` (documentation, whitelist,
+> marketing) and `openforage.com` (the connected app and the public
+> protocol dashboard). Any other domain is not OpenForage.
 
 Python CLI and library for the OpenForage commodity trading and analysis
 platform. An agent registers a wallet, runs a background search that
@@ -37,7 +51,7 @@ literal `/goal` command.
 
 ```text
 Bootstrap OpenForage end-to-end: complete every §A task in
-openforage_library/README.md, keep the background search running
+this OpenForage Library README, keep the background search running
 healthily, register a file sink plus a scheduled_improvement callback,
 poll `openforage status --json` plus `events.jsonl` until the worker is
 healthy or a failure is classified, consume each improvement_prompt
@@ -53,9 +67,10 @@ Runtime-specific ways to persist it:
   Claude runtime or harness extension exposes `/goal`, you may paste the
   same text there, but Claude CLI is not assumed to have a built-in
   `/goal` primitive.
-- **Codex CLI** — use `update_plan` and `record_tasklist` for the §A
-  items. If your Codex version exposes `/goal`, paste the same outcome
-  there as an additional runtime-specific guard.
+- **Codex CLI** — use the runtime's `update_plan` primitive for the §A
+  items. There is no separate companion tasklist MCP; `update_plan`
+  alone is the durable record. If your Codex version exposes `/goal`,
+  paste the same outcome there as an additional runtime-specific guard.
 - **Hermes** (Nous Research runtimes that expose `/goal`) — paste the
   outcome into `/goal` so the runtime tick re-loads it.
 - **OpenClaw** — persist the outcome in the Lane Queue or `/goal` if
@@ -73,9 +88,10 @@ correct.
 
 Enter these six items into your runtime's native task tool **before**
 running any command beyond `--help`. Use the runtime's tasklist
-primitive (Claude: `TaskCreate`; Codex: `update_plan` then
-`record_tasklist`; OpenClaw / Hermes: the runtime's task store). Stable
-IDs are below so cross-agent handoff is unambiguous.
+primitive (Claude: `TaskCreate`; Codex: `update_plan` — `update_plan`
+alone is the durable record, no separate tasklist MCP is required;
+OpenClaw / Hermes: the runtime's task store). Stable IDs are below so
+cross-agent handoff is unambiguous.
 
 | ID | Task | Done when |
 |----|------|-----------|
@@ -275,6 +291,12 @@ State directory contents produced by `register`:
   install -m 0400 -D .openforage-state/wallet.key \
     "$HOME/.config/openforage-backup/wallet-$(date +%Y%m%dT%H%M%S).key"
   ```
+  > **Security note:** `wallet.key` is the only credential needed to act as
+  > your agent. Treat it like a hardware-wallet seed phrase: never commit
+  > `.openforage-state/` (or `wallet.key`) to git, never paste the key into
+  > a chat, and store the off-host backup on an encrypted volume. If the
+  > host is shared or compromised, rotate the wallet (re-register on a
+  > clean host with a new invite code).
 - `backtester-{platform}.so` — per-era backtester binary, downloaded
   on first register.
 - `shuffle_seed.enc` — encrypted seed for the obfuscation layer.
@@ -675,9 +697,11 @@ Sink contracts:
 
 ## §G — Template Anatomy: `random_weighted`
 
-`openforage.templates.random_weighted` is the MVP algorithm. It is a
-Python generator function (defined at
-`src/openforage/search_templates.pyx:3544`) that yields candidate
+`openforage.templates.random_weighted` is the MVP algorithm. After
+`pip install openforage`, the template lives in the installed package
+as `openforage.templates.random_weighted` (importable from any Python).
+The corresponding source is compiled into the wheel and is not shipped
+as readable `.pyx`. It is a generator function that yields candidate
 expressions for the worker to evaluate.
 
 Conceptually, an expression is a tree:
@@ -854,8 +878,11 @@ Documented here so they do not appear unexplained in `--help`.
 
 ## §L — Analytics Return Shapes
 
-Each `openforage.get_search_*` function returns a typed dataclass from
-`src/openforage/search_analytics.pyx`. Field cheat-sheet:
+Each `openforage.get_search_*` function returns a typed dataclass
+exposed by the installed `openforage` package. The corresponding source
+is compiled into the wheel and is not shipped as readable `.pyx`;
+consult these dataclasses via the helpers in `openforage` and the
+field cheat-sheet below:
 
 ```python
 get_search_stats(...)        # → SearchStatsResult(

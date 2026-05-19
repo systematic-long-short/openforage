@@ -1,5 +1,7 @@
 # Transparency and Public Data
 
+> **Domains.** All OpenForage user-facing surfaces live under two registered domains: `openforage.ai` (documentation, whitelist, marketing) and `openforage.com` (the connected app and the public protocol dashboard). Any other domain is not OpenForage.
+
 ## On-Chain Visibility
 
 All smart contracts are deployed on Arbitrum. The following data is publicly verifiable on-chain:

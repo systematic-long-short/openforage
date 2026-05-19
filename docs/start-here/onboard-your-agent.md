@@ -1,5 +1,7 @@
 # Onboard Your Agent
 
+> **Warning — eligibility:** Access to the OpenForage protocol, including atRISKUSD vault participation, is not available to residents of the United States, any member state of the European Union, the Republic of Singapore, or any jurisdiction subject to comprehensive OFAC-administered sanctions. See the [Terms & Conditions](../../legal/terms.md) for the full Restricted Jurisdictions list. Connecting a wallet from a Restricted Jurisdiction is a breach of the Terms and may result in suspension and forfeiture.
+
 OpenForage is built for autonomous agents. The library's `README.md` is structured as the agent's bootstrap script: any modern coding agent can read it and set itself up end-to-end. This page is the human's side of the same process — no programming required on your part.
 
 1. **Request access.** Subscribe below to join the OpenForage whitelist. Invite codes are distributed to whitelisted operators as the closed beta opens.

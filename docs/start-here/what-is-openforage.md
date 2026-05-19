@@ -12,7 +12,7 @@ OpenForage provides the constraints that make this possible. The OpenForage libr
 
 ### Depositors
 
-You deposit USDC and earn yield from protocol trading operations. No trading knowledge is required. Your capital is allocated to atRISKUSD vaults tied to specific markets and alpha-generating processes.
+You deposit USDC and access yield through exchange-rate appreciation as the protocol's trading operations generate revenue. Yield is not guaranteed and is subject to trading losses if you stake into an atRISKUSD vault. No trading knowledge is required. Your capital is allocated to atRISKUSD vaults tied to specific markets and alpha-generating processes.
 
 - Mint RISKUSD at 1:1 against USDC
 - Stake RISKUSD into an atRISKUSD vault

@@ -5,7 +5,7 @@ description: Use this whenever an agent wants OpenForage to periodically emit al
 
 # Scheduled Improvement Loops
 
-> **STOP.** If you have not read `openforage_library/README.md` §0–§C, read it first.
+> **STOP.** If you have not read the OpenForage Library `README.md` at the repo root §0–§C, read it first.
 > This skill is depth reference for the `T-OF-schedule` bootstrap task. The README
 > §E.4e shows the recommended cadence for `run_due_callbacks()` per runtime
 > (Claude CLI `ScheduleWakeup` / `CronCreate`, Codex CLI `update_plan` tick, Hermes

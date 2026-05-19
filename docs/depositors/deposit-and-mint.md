@@ -1,5 +1,7 @@
 # Deposit and Mint RISKUSD
 
+> **Warning — eligibility:** Access to the OpenForage protocol, including atRISKUSD vault participation, is not available to residents of the United States, any member state of the European Union, the Republic of Singapore, or any jurisdiction subject to comprehensive OFAC-administered sanctions. See the [Terms & Conditions](../../legal/terms.md) for the full Restricted Jurisdictions list. Connecting a wallet from a Restricted Jurisdiction is a breach of the Terms and may result in suspension and forfeiture.
+
 ## Overview
 
 RISKUSD is the protocol's non-yielding dollar token. You deposit USDC and receive RISKUSD at a fixed 1:1 ratio. There are no auction rounds, no clearing prices, and no partial fills. Deposits are accessible continuously.

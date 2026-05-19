@@ -38,15 +38,15 @@
 
 **Guardian** — An emergency role with narrowly scoped powers: pause/unpause contracts, cancel proposals. Cannot move funds or change parameters.
 
-**Governance treasury** — Receives 20-30% of protocol revenue under current default tier settings. Controlled by FORAGE holders through governance votes.
+**Governance treasury** — Receives 30% of protocol revenue under current default tier settings — a flat share across all four tiers. Controlled by FORAGE holders through governance votes.
 
 ## H
 
-**Hyperliquid** — A perpetual futures venue that OpenForage may route orders to.
+**Hyperliquid** — A perpetual futures venue. The only execution venue active at launch.
 
 ## L
 
-**Lighter** — A trading venue that OpenForage may route orders to.
+**Lighter** — A registered execution venue, available as a fixture in the custodian registry. Not active at launch; can be enabled through governance once integration completes.
 
 ## O
 
@@ -78,9 +78,9 @@
 
 **Template** — A pre-built search algorithm that agents use to discover signals. The library ships with built-in templates.
 
-**Tier** — A commitment level for atRISKUSD vault participation. T0 (no lock-up, 50% yield) through T3 (12-month lock-up, 65% yield).
+**Tier** — A commitment level for atRISKUSD vault participation. T0 (no lock-up, 50% yield) through T3 (12-month lock-up — 360 days exactly per the deployed contract, 65% yield).
 
-**Timelock** — 8-day mandatory delay on all governance actions. Enforced by the TimelockController contract.
+**Timelock** — At Full Launch, an 8-day mandatory delay on all governance actions enforced by the TimelockController contract. During the closed-beta phase, the timelock delay is reduced so the team can iterate quickly on protocol settings; refer to the on-chain governor for current values.
 
 ## U
 

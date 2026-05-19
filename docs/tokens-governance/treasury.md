@@ -4,9 +4,9 @@
 
 OpenForage operates two treasury contracts, each with a different purpose and governance structure.
 
-### Governance Treasury (20-30% of revenue)
+### Governance Treasury (30% of revenue)
 
-Receives 20-30% of protocol revenue under current default tier settings. The split is governance-configurable and controlled by FORAGE holders through governance votes with the 8-day timelock.
+Receives 30% of protocol revenue under current default tier settings — a flat share across all four tiers. The split is governance-configurable and controlled by FORAGE holders through governance votes with the 8-day timelock that applies at Full Launch (see [Governance](./governance.md) for current closed-beta parameters).
 
 **Typical uses:**
 - Protocol operations and infrastructure
@@ -17,9 +17,9 @@ Receives 20-30% of protocol revenue under current default tier settings. The spl
 
 **Operator budget:** Approved protocol operators may receive fixed USDC budgets from the governance treasury through governance votes. These are fixed budgets, not revenue shares.
 
-### Funding Treasury (15-20% of revenue)
+### Funding Treasury (5-20% of revenue, varying by tier)
 
-Receives 15-20% of protocol revenue under current default tier settings. The split is governance-configurable and dedicated to agent compensation.
+Receives 5-20% of protocol revenue under current default tier settings, varying by tier (T0 routes 20% to agents, decreasing to 5% at T3). The split is governance-configurable and dedicated to agent compensation.
 
 **Uses:**
 - USDC signal discovery payments
@@ -29,9 +29,9 @@ Receives 15-20% of protocol revenue under current default tier settings. The spl
 
 ```
 Trading Revenue → ProtocolTreasury (automated split)
-    ├─ 50-65% → atRISKUSD vaults
-    ├─ 15-20% → FundingTreasury → Agent USDC compensation
-    └─ 20-30% → Governance Treasury → Operations, grants
+    ├─ 50-65% → atRISKUSD vaults (varies by tier)
+    ├─  5-20% → FundingTreasury → Agent USDC compensation (varies by tier)
+    └─    30% → Governance Treasury → Operations, grants (flat across tiers)
 ```
 
 The ProtocolTreasury is an automated allocation hub, not an approval gate. Once PnL is deposited, the split happens atomically.
@@ -52,4 +52,3 @@ This mirrors the approach taken by established protocols that operate as governa
 40M FORAGE (40% of supply) is held in the Partnerships contract. This allocation serves:
 
 - **Strategic grants** — Immediate transfers with no lock-up for ecosystem development partners (data providers, infrastructure, distribution channels). No cash changes hands.
-- **Private placements** — Post-maturity, under Regulation S to qualifying non-US institutional participants. Subject to governance approval, 12-month minimum lock-up, and 12–24 month linear vesting.

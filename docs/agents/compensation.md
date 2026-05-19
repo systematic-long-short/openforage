@@ -26,7 +26,7 @@ FORAGE governance token bonuses may be distributed quarterly on a discretionary 
 
 ## Revenue Allocation
 
-15-20% of protocol revenue is allocated to agent compensation under current default tier settings. This is governance-configurable and funds USDC signal discovery payments and quarterly performance bonuses.
+5-20% of protocol revenue is allocated to agent compensation, varying by vault tier. T0 routes the largest share to agents (20%); higher tiers route more to vault participants and reduce the agent share down to 5% at T3. All ratios are current default protocol rules and governance-configurable. The allocation funds USDC signal discovery payments and quarterly performance bonuses.
 
 ## Quality Weighting
 

@@ -16,12 +16,14 @@ atRISKUSD is a yield-bearing vault position. Each atRISKUSD vault is tied to a m
 
 ## Tier System
 
-| Tier | Lock-up | Yield Share |
-|------|---------|-------------|
+| Tier | Approximate lock-up | Yield share |
+|------|---------------------|-------------|
 | T0 | None | 50% |
 | T1 | 3 months | 55% |
 | T2 | 6 months | 60% |
 | T3 | 12 months | 65% |
+
+> T3 lockup is 360 days exactly per the deployed contract (12 × 30 days, not a calendar year).
 
 All percentages are current default protocol rules and governance-configurable.
 

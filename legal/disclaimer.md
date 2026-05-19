@@ -1,5 +1,8 @@
 # Disclaimer
 
+**Effective Date:** 2026-05-19
+**Last Updated:** 2026-05-19
+
 OpenForage Company, S.A. and its affiliates are not registered, licensed, authorised, recognised, approved or exempted in any jurisdiction as Virtual Asset Service Providers (VASPs), digital token service operators, financial institutions, financial advisers, nor any other regulated activity under any applicable securities regulation or VASP-related legislation, and do not hold nor purport to hold any licence with any regulator globally, nor does OpenForage Company, S.A. or its affiliates engage in any other form of regulated activity administered by any regulatory authority. Accordingly, OpenForage Company, S.A. is an unregulated person (with no licensing obligations) and must not be perceived as being licensed, regulated, sanctioned, endorsed or approved in any jurisdiction.
 
 ## Protocol Risks
@@ -18,17 +21,17 @@ Errors or malfunctions in the wallet you use to store Tokens, or your failure to
 
 Blockchain-Related Risks
 
-The Tokens operate on the Ethereum blockchain and are subject to the inherent risks of decentralised blockchain systems. These include:
+The Tokens operate on Arbitrum, an Ethereum-compatible Layer 2 network, and are subject to the inherent risks of decentralised blockchain systems and of the underlying Ethereum settlement layer. These include:
 
 Mining or validator attacks, such as double-spend attacks, majority mining power attacks, or selfish-mining attacks, which could compromise the integrity of Token transactions.
 
 Network vulnerabilities, forks, and changes to cryptographic protocols or consensus mechanisms that may impact the functionality and security of the Tokens.
 
-Any successful attack on the Ethereum blockchain or significant network congestion may delay or invalidate transactions involving Tokens.
+Any successful attack on Arbitrum, the underlying Ethereum settlement layer, or significant network congestion may delay or invalidate transactions involving Tokens.
 
 Hacking and Security Weaknesses
 
-Hackers or malicious entities may attempt to exploit vulnerabilities in the Ecosystem or the Ethereum blockchain, including through attacks such as malware, phishing, denial of service, consensus-based attacks, or Sybil attacks.
+Hackers or malicious entities may attempt to exploit vulnerabilities in the Ecosystem or the Arbitrum or Ethereum networks, including through attacks such as malware, phishing, denial of service, consensus-based attacks, or Sybil attacks.
 
 As the Ecosystem is built on decentralised, open-source software, there is a risk of unintentional or intentional introduction of vulnerabilities, including weaknesses in smart contract code, which could result in loss of functionality or value for Tokens.
 
@@ -50,7 +53,7 @@ Unlike traditional financial instruments or accounts, Tokens are not insured by 
 
 Team Dependency Risk
 
-12A. The Ecosystem currently depends on a small operational team for software development, infrastructure operation, parameter tuning, and protocol governance support. Operational continuity, including the availability and quality of the Service, is materially affected by the team’s continued engagement. The Company is pursuing a published trajectory of progressive decentralization through governance, including the transfer of operational authority to FORAGE governance over time; however, until that decentralization is complete, the team-dependency risk remains material. There is no guarantee that the decentralization trajectory will be completed on any specific timeline, or at all.
+The Ecosystem currently depends on a small operational team for software development, infrastructure operation, parameter tuning, and protocol governance support. Operational continuity, including the availability and quality of the Service, is materially affected by the team’s continued engagement. The Company is pursuing a published trajectory of progressive decentralization through governance, including the transfer of operational authority to FORAGE governance over time; however, until that decentralization is complete, the team-dependency risk remains material. There is no guarantee that the decentralization trajectory will be completed on any specific timeline, or at all.
 
 Regulatory Risks
 

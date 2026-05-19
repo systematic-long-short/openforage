@@ -2,6 +2,9 @@
 
 ## PRIVACY POLICY
 
+**Effective Date:** 2026-05-19
+**Last Updated:** 2026-05-19
+
 OpenForage Company, S.A., a sociedad anónima organized under Law 32 of 1927 of the Republic of Panama with its registered address at Panama City, Republic of Panama, its affiliates, and subsidiaries (hereinafter referred to as the “**Company**,” “**we**,” “**us**,” or “**our**”), is committed to safeguarding the privacy and personal data of each user (hereinafter referred to as “**user**,” “**you**,” or “**your**”) of the OpenForage Ecosystem and visitors to the OpenForage Website (collectively, the “**Ecosystem**”).
 
 We understand that the trust you place in us when sharing your information is fundamental to the success of our services. In handling your personal data, we want to assure you of our commitment to confidentiality, security, and transparency. This Privacy Policy outlines how we collect, use, disclose, and safeguard your personal data in connection with your use of the Platform.
@@ -22,9 +25,7 @@ We recommend that you carefully read this Privacy Policy along with our Terms an
 
 “OpenForage Site” means the website at https://openforage.ai, associated systems, and subdomains thereof, including the mobile-optimised versions of such website.
 
-“Token” refers to the “RISKUSD”, “atRISKUSD”, or “FORAGE” Tokens, virtual tokens built on the Ethereum blockchain as ERC-20 tokens, designed to serve as utility tokens within the OpenForage Ecosystem.
-
-“Liquidity Pool” means the pool created within the OpenForage Ecosystem on platforms like Uniswap, where users may provide liquidity by contributing the Tokens and $ETH in equal proportions to support market stability.
+“Token” refers to the “RISKUSD”, “atRISKUSD”, or “FORAGE” Tokens, virtual tokens built on Arbitrum (an Ethereum-compatible Layer 2 network) as ERC-20 tokens, designed to serve as utility tokens within the OpenForage Ecosystem.
 
 “Service” or “Services” shall have the meaning ascribed to it under the Terms and Conditions specific to the OpenForage Ecosystem. For the avoidance of doubt, non-capitalised reference to “service” or “services” shall have the ordinary meaning of service in this Privacy Policy.
 
@@ -86,11 +87,9 @@ We collect the following personal data about you:
 
 **Profile and Registration Information-** When you create an account or register with the Ecosystem, you may be required to provide personal details such as your name, email address, country of residency, and other necessary information to facilitate your use of the Ecosystem and related Services.
 
-**Third-Party Account Information-** If you choose to link third-party accounts, such as social media accounts (e.g., Telegram or X), to your OpenForage profile, we may collect and analyze information from those accounts. For clarity, while the Company has access to this information, it does not control or manage your third-party accounts.
-
 **Blockchain Data-** We may collect and analyze public blockchain data related to the Tokens, including transaction IDs, wallet addresses, timestamps, transaction amounts, interactions with smart contracts, and user activity within the Ecosystem. Blockchain data is stored on decentralised ledgers and, while accessible by the Company, is not controlled or managed by the Company.
 
-**Wallet Information-** You may link your Ethereum-based ERC-20 wallet to your OpenForage profile to facilitate interactions with the Token and other Ecosystem functionalities. We may access wallet-related data, including wallet address and transaction details, to support your activities within the Ecosystem. However, the wallet remains under your control and is not managed by the Company.
+**Wallet Information-** You may link your ERC-20 wallet (on Arbitrum or another Ethereum-compatible network supported by the Ecosystem) to your OpenForage profile to facilitate interactions with the Token and other Ecosystem functionalities. We may access wallet-related data, including wallet address and transaction details, to support your activities within the Ecosystem. However, the wallet remains under your control and is not managed by the Company.
 
 **Voluntary Information-** When you communicate with us—for example, through customer support inquiries, feedback forms, or email—we collect the personal data you provide to respond effectively to your inquiries or feedback.
 
@@ -210,7 +209,7 @@ Any information voluntarily provided by users (e.g., via support inquiries) will
 
 If you do not interact with the Services for a consecutive period of one (1) year, any voluntarily provided personal data may be deleted, except where retention is necessary to meet legal, regulatory, or operational obligations.
 
-Data stored on the Ethereum blockchain or other distributed ledger technologies supporting the protocol (“On-Chain Storage”) is not controlled or held by the Company. Such data is publicly accessible but remains outside the Company’s control or possession due to the decentralized nature of blockchain technology.
+Data stored on Arbitrum, the underlying Ethereum settlement layer, or other distributed ledger technologies supporting the protocol (“On-Chain Storage”) is not controlled or held by the Company. Such data is publicly accessible but remains outside the Company’s control or possession due to the decentralized nature of blockchain technology.
 
 As the owner of Tokens and any associated wallets, you are solely responsible for controlling your activity on the blockchain, including the retention or deletion of such data. The Company has no ability, nor obligation, to retain or delete data stored in On-Chain Storage. To the extent that analytics or system logs are collected to monitor Platform performance or security, such data will be retained for a maximum of twelve (12) months and will be anonymized or deleted thereafter.
 

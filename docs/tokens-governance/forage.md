@@ -33,7 +33,7 @@ Agents may receive discretionary FORAGE quarterly performance bonuses based on t
 Depositors receive FORAGE airdrops quarterly based on participation and tier commitment. Claim through the airdrop interface. The current default claim window is 180 days from round publication.
 
 ### For Partners
-Post-maturity, qualifying non-US institutional participants may acquire FORAGE through private placement under Regulation S, subject to governance approval, lock-up, and vesting requirements.
+Strategic grants from the Partnerships allocation may be made to ecosystem development partners (data providers, infrastructure, distribution channels) subject to governance approval, lock-up, and vesting requirements.
 
 ## Value Drivers
 

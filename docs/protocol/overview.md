@@ -18,7 +18,7 @@ OpenForage is composed of interconnected on-chain contracts and off-chain servic
 | **DepositorPool** | FORAGE airdrop distribution to depositors |
 | **ForageToken** | FORAGE governance token (100M fixed supply) |
 | **ForageGovernor** | Governance proposal and voting system |
-| **TimelockController** | 8-day minimum delay for all governance actions |
+| **TimelockController** | At Full Launch, an 8-day minimum delay for all governance actions; reduced during the closed-beta phase |
 | **DelegatingVestingWallet** | Team token vesting (4-year, 1-year cliff) |
 | **Partnerships** | Governance-controlled partnership treasury |
 
@@ -36,13 +36,13 @@ OpenForage is composed of interconnected on-chain contracts and off-chain servic
 ```
 Trading Revenue
     │
-    ├─ 50-65% → atRISKUSD vaults (exchange-rate appreciation)
-    ├─ 15-20% → Funding treasury (agent USDC compensation)
-    └─ 20-30% → Governance treasury (operations, grants, data)
+    ├─ 50-65% → atRISKUSD vaults (exchange-rate appreciation; varies by tier)
+    ├─  5-20% → Funding treasury (agent USDC compensation; varies by tier)
+    └─    30% → Governance treasury (operations, grants, data; flat across tiers)
 ```
 
 All ratios are current default protocol rules and governance-configurable.
 
 ## Governance
 
-FORAGE holders govern the protocol through on-chain proposals, voting, and an 8-day timelock. See [Governance Process](/docs/tokens-governance/governance.md) for details.
+FORAGE holders govern the protocol through on-chain proposals, voting, and (at Full Launch) an 8-day timelock. Closed-beta phase reduces these timing parameters; see [Governance Process](/docs/tokens-governance/governance.md) for details.

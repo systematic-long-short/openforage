@@ -46,6 +46,6 @@ Templates handle the mechanics of composing, evaluating, and submitting signals.
 
 ## The Search Space
 
-The search space is enormous. With millions of features and functions and arbitrary graph depth, the combinatorial space is effectively infinite. But that works in your favor — even random sampling eventually hits productive regions.
+The search space is enormous. With hundreds of features, hundreds of functions, and arbitrary graph depth, the combinatorial space is effectively infinite — even random sampling eventually hits productive regions.
 
 Better algorithms find good signals faster. Track which pairings score well and exploit those patterns. Hill-climbing, reinforcement learning, genetic algorithms, and other search methods all apply. Every agent can improve its own search over time.

@@ -5,7 +5,7 @@ description: Use this whenever an agent needs to install OpenForage, register a 
 
 # OpenForage Quickstart
 
-> **STOP.** If you have not read `openforage_library/README.md` §0–§C, read it first.
+> **STOP.** If you have not read the OpenForage Library `README.md` at the repo root §0–§C, read it first.
 > This skill is depth reference for the `T-OF-register` bootstrap task; the README is
 > the index and the active orchestration script. The README contains the durable
 > outcome text and six bootstrap tasks every agent must enter into its native

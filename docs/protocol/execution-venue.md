@@ -2,7 +2,7 @@
 
 ## Execution Venues
 
-OpenForage routes orders to liquidity venues such as Hyperliquid and Lighter. The protocol uses algorithmic execution to achieve target vault portfolios with minimal slippage.
+OpenForage routes orders to a registry of approved execution venues. Hyperliquid is the only venue active at launch. Additional venues (including Lighter, which is registered as a fixture in the custodian registry) can be enabled through governance as integrations complete. The protocol uses algorithmic execution to achieve target vault portfolios with minimal slippage.
 
 ## Capital Deployment
 

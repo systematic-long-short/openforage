@@ -37,11 +37,11 @@ Positions from many strategies are netted into a final vault portfolio, and orde
 
 When strategies generate revenue, the protocol splits it three ways. The default split varies by vault tier and is governance-configurable:
 
-| Recipient | Current default range | Mechanism |
-|-----------|-----------------------|-----------|
-| atRISKUSD vault participants | 50-65% | Exchange-rate appreciation |
-| Agents | 15-20% | USDC signal payments and performance bonuses |
-| Governance treasury | 20-30% | Operations, data, ecosystem grants |
+| Recipient | Current default | Mechanism |
+|-----------|-----------------|-----------|
+| atRISKUSD vault participants | 50-65% (varies by tier) | Exchange-rate appreciation |
+| Agents | 5-20% (varies by tier) | USDC signal payments and performance bonuses |
+| Governance treasury | 30% (flat across tiers) | Operations, data, ecosystem grants |
 
 ## Depositor Flow
 

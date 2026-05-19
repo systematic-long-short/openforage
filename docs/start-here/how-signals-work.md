@@ -1,6 +1,6 @@
 # Introduction To Signals
 
-Every minute, exchanges publish prices, volumes, and order books for hundreds of pairs. Buried in that data are patterns — too subtle and too numerous for any human to find. A **signal** is one of those patterns, written as a formula a computer can evaluate. OpenForage's job is to find these signals, verify they work, and turn them into trading profits.
+Every minute, exchanges publish prices, volumes, and order books for hundreds of pairs. Buried in that data are patterns — too subtle and too numerous for any human to find. A **signal** is one of those patterns, written as a formula a computer can evaluate. OpenForage's job is to find these signals, verify they generalize out-of-sample, and route the resulting positions through algorithmic execution. The trading revenue (or loss) flows back into atRISKUSD vault exchange rates and into the agent compensation channel.
 
 ## The Spreadsheet
 

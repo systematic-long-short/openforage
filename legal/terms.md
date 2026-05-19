@@ -2,6 +2,11 @@
 
 ## TERMS & CONDITIONS
 
+**Effective Date:** 2026-05-19
+**Last Updated:** 2026-05-19
+
+**Defined term: "blockchain network".** References in these Terms to a "blockchain" or "blockchain network" mean Arbitrum, an Ethereum-compatible Layer 2 network on which the Tokens operate, and may include other Ethereum-compatible networks supported by the Ecosystem from time to time. The Company may add or change supported networks through governance and operational decisions; current network support is disclosed in the technical documentation and on the public dashboard.
+
 ## Introduction
 
 These Terms and Conditions (“**Terms**”) describe the rules for visitors of the OpenForage Ecosystem (the “**Ecosystem**”), our website at https://openforage.ai/ (the “**Website**”), and any related websites, software, tools, features, or functionalities provided in connection with our services (collectively, the “**Service**”). These Terms apply to your access, downloading, or use of any component of the Service; your participation in activities within the Ecosystem; and your purchase, use, transfer, or receipt of the “RISKUSD”, “atRISKUSD”, or “FORAGE” token (collectively, the “**Tokens**” and each a “**Token**”). Please note that the rights, functionalities, and utilities associated with any Token may vary depending on the specific Token.
@@ -112,7 +117,7 @@ When using the Service, you may be required to deposit or otherwise provide supp
 
 Gas Fees
 
-Gas fees are the costs required to perform transactions on the blockchain network. These fees are determined by the network’s gas limit and gas price. You are solely responsible for paying all gas fees associated with any transaction you initiate on the Ethereum network or other networks supported by the Ecosystem. Gas fees are payable directly to the network and are not retained by the Company. The amount of gas fees may vary based on network demand and congestion at the time of the transaction.
+Gas fees are the costs required to perform transactions on the blockchain network. These fees are determined by the network’s gas limit and gas price. You are solely responsible for paying all gas fees associated with any transaction you initiate on the blockchain network or other networks supported by the Ecosystem. Gas fees are payable directly to the network and are not retained by the Company. The amount of gas fees may vary based on network demand and congestion at the time of the transaction.
 
 Transaction Fees
 
@@ -326,7 +331,7 @@ We make no guarantees, representations, or warranties, whether express or implie
 
 Blockchain and Token Disclaimers
 
-We do not guarantee the reliability, functionality, or security of the Ethereum blockchain or any other blockchain used in connection with the Tokens or the Ecosystem.
+We do not guarantee the reliability, functionality, or security of the blockchain network or any other blockchain used in connection with the Tokens or the Ecosystem.
 
 The Tokens are utility tokens designed exclusively for use within the Ecosystem and do not confer any ownership, equity, securities, or entitlement to profits, income, or financial distributions from the Company. Certain Tokens (such as FORAGE) provide protocol-level governance functionality (for example, voting on proposals relating to protocol parameters or treasury allocations); such governance functionality is solely a feature of the Protocol and does not constitute equity-style voting rights or any form of ownership in the Company.
 
@@ -340,7 +345,7 @@ No Facilitation of Payments or Secondary Sales
 
 The Service does not process payments, facilitate transfers of monetary value, or oversee any secondary market transactions involving Tokens.
 
-Users are solely responsible for their use, transfer, or holding of Tokens and any resulting consequences, including losses related to the Ethereum blockchain.
+Users are solely responsible for their use, transfer, or holding of Tokens and any resulting consequences, including losses related to the blockchain network.
 
 Accuracy of Information
 
@@ -382,17 +387,17 @@ Errors or malfunctions in the wallet you use to store Tokens, or your failure to
 
 Blockchain-Related Risks
 
-The Tokens operate on the Ethereum blockchain and are subject to the inherent risks of decentralised blockchain systems. These include:
+The Tokens operate on the blockchain network and are subject to the inherent risks of decentralised blockchain systems. These include:
 
 Mining or validator attacks, such as double-spend attacks, majority mining power attacks, or selfish-mining attacks, which could compromise the integrity of Token transactions.
 
 Network vulnerabilities, forks, and changes to cryptographic protocols or consensus mechanisms that may impact the functionality and security of the Tokens.
 
-Any successful attack on the Ethereum blockchain or significant network congestion may delay or invalidate transactions involving Tokens.
+Any successful attack on the blockchain network or significant network congestion may delay or invalidate transactions involving Tokens.
 
 Hacking and Security Weaknesses
 
-Hackers or malicious entities may attempt to exploit vulnerabilities in the Ecosystem or the Ethereum blockchain, including through attacks such as malware, phishing, denial of service, consensus-based attacks, or Sybil attacks.
+Hackers or malicious entities may attempt to exploit vulnerabilities in the Ecosystem or the blockchain network, including through attacks such as malware, phishing, denial of service, consensus-based attacks, or Sybil attacks.
 
 As the Ecosystem is built on decentralised, open-source software, there is a risk of unintentional or intentional introduction of vulnerabilities, including weaknesses in smart contract code, which could result in loss of functionality or value for Tokens.
 
@@ -414,7 +419,7 @@ Unlike traditional financial instruments or accounts, Tokens are not insured by 
 
 Team Dependency Risk
 
-12A. The Ecosystem currently depends on a small operational team for software development, infrastructure operation, parameter tuning, and protocol governance support. Operational continuity, including the availability and quality of the Service, is materially affected by the team’s continued engagement. The Company is pursuing a published trajectory of progressive decentralization through governance, including the transfer of operational authority to FORAGE governance over time; however, until that decentralization is complete, the team-dependency risk remains material. There is no guarantee that the decentralization trajectory will be completed on any specific timeline, or at all.
+The Ecosystem currently depends on a small operational team for software development, infrastructure operation, parameter tuning, and protocol governance support. Operational continuity, including the availability and quality of the Service, is materially affected by the team’s continued engagement. The Company is pursuing a published trajectory of progressive decentralization through governance, including the transfer of operational authority to FORAGE governance over time; however, until that decentralization is complete, the team-dependency risk remains material. There is no guarantee that the decentralization trajectory will be completed on any specific timeline, or at all.
 
 Regulatory Risks
 
@@ -490,7 +495,7 @@ TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, ANY DISPUTE YOU HAVE WITH A T
 
 ## Force Majeure
 
-Neither party shall be liable for any delay or failure in performance of its obligations under these Terms (other than your obligation to comply with applicable law and to refrain from prohibited activities) where such delay or failure arises from circumstances beyond that party’s reasonable control. Such circumstances include, without limitation: (a) acts of God, fire, flood, earthquake, severe weather, or other natural disasters; (b) war, terrorism, civil unrest, or government action; (c) failure, outage, exploit, or regulatory action affecting any blockchain network on which the Service relies, including the Ethereum blockchain; (d) failure, outage, exploit, regulatory action, liquidity crisis, or operational discontinuance of any third-party execution venue, oracle, custodian, settlement provider, or infrastructure service on which the Ecosystem’s trading or settlement activities depend (including, without limitation, Hyperliquid or any other venue); (e) chain split, hard fork, mempool congestion, gas-price extremity, or other blockchain-network event; (f) smart-contract exploit, oracle desynchronization, or governance attack; (g) sanctions-list change, regulatory direction, or court order; and (h) failure of internet, telecommunications, or cloud-infrastructure providers.
+Neither party shall be liable for any delay or failure in performance of its obligations under these Terms (other than your obligation to comply with applicable law and to refrain from prohibited activities) where such delay or failure arises from circumstances beyond that party’s reasonable control. Such circumstances include, without limitation: (a) acts of God, fire, flood, earthquake, severe weather, or other natural disasters; (b) war, terrorism, civil unrest, or government action; (c) failure, outage, exploit, or regulatory action affecting any blockchain network on which the Service relies, including the blockchain network; (d) failure, outage, exploit, regulatory action, liquidity crisis, or operational discontinuance of any third-party execution venue, oracle, custodian, settlement provider, or infrastructure service on which the Ecosystem’s trading or settlement activities depend (including, without limitation, Hyperliquid or any other venue); (e) chain split, hard fork, mempool congestion, gas-price extremity, or other blockchain-network event; (f) smart-contract exploit, oracle desynchronization, or governance attack; (g) sanctions-list change, regulatory direction, or court order; and (h) failure of internet, telecommunications, or cloud-infrastructure providers.
 
 ## Amendments
 
@@ -514,7 +519,7 @@ Notwithstanding the foregoing, the Company may apply to any court of competent j
 
 ## General
 
-The Company does not warrant that your access to and usage of the Service or the Ecosystem will always be safe, seamless, or free from disruptions. The Service may encounter delays, errors, service disruptions, network congestion, timeouts, or other performance issues (collectively, “**Disruptions**”). The Company disclaims liability for any claims, costs, or damages, whether known or unknown, that may arise from such Disruptions, including those caused by blockchain network failures or Ethereum congestion.
+The Company does not warrant that your access to and usage of the Service or the Ecosystem will always be safe, seamless, or free from disruptions. The Service may encounter delays, errors, service disruptions, network congestion, timeouts, or other performance issues (collectively, “**Disruptions**”). The Company disclaims liability for any claims, costs, or damages, whether known or unknown, that may arise from such Disruptions, including those caused by blockchain network failures or blockchain-network congestion.
 
 You undertake not to use the Service for any unlawful or criminal activities, including but not limited to fraudulent transactions, money laundering, or terrorist financing. You agree to indemnify, defend, and hold the Company and its directors, officers, employees, and agents harmless from any loss, liability, claim, or demand arising out of or in connection with your use of the Service, your breach of these Terms, or your violation of applicable laws.
 
