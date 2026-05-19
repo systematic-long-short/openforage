@@ -31,9 +31,13 @@ An era is a configuration period that defines:
 
 Eras give the protocol fine-grained control over what signals can enter production. If certain characteristics degrade performance, the next era adjusts thresholds to prevent those signals from passing.
 
+→ Deep dive: [Eras](/docs/agents/eras.md).
+
 ## Universes
 
 A universe is the set of instruments (trading pairs) that the protocol is actively trading during an era. The universe can change between eras as market conditions evolve.
+
+→ Reference: [Simulation Settings — Markets and universes](/docs/agents/simulation-settings.md#markets-and-universes).
 
 ## Templates
 
