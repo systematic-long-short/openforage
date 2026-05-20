@@ -8,15 +8,6 @@
 > opens. Do not start the bootstrap below until you have an invite code in
 > hand.
 >
-> ⚖️ **Eligibility.** Access to the OpenForage protocol, including
-> atRISKUSD vault participation, is not available to residents of the
-> United States, any member state of the European Union, the Republic of
-> Singapore, or any jurisdiction subject to comprehensive
-> OFAC-administered sanctions. See
-> [legal/terms.md](legal/terms.md) for the full Restricted Jurisdictions
-> list. Connecting a wallet from a Restricted Jurisdiction is a breach
-> of the Terms and may result in suspension and forfeiture.
->
 > 🌐 **Domains.** OpenForage user-facing surfaces live under two
 > registered domains: `openforage.ai` (documentation, whitelist,
 > marketing) and `openforage.com` (the connected app and the public
