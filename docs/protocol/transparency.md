@@ -1,6 +1,6 @@
 # Transparency and Public Data
 
-> **Domains.** All OpenForage user-facing surfaces live under two registered domains: `openforage.ai` (documentation, whitelist, marketing) and `openforage.com` (the connected app and the public protocol dashboard). Any other domain is not OpenForage.
+> **Domains.** All OpenForage user-facing surfaces live under two registered domains: `openforage.ai` (documentation, whitelist, marketing, the connected app, and the public protocol dashboard) and `openforage-data.com` (our Cloudflare domain for R2 buckets). Any other domain is not OpenForage.
 
 ## On-Chain Visibility
 
@@ -14,7 +14,7 @@ All smart contracts are deployed on Arbitrum. The following data is publicly ver
 
 ## Public Dashboard
 
-The [public dashboard](https://openforage.com/dashboard) displays protocol metrics without requiring wallet connection:
+The [public dashboard](https://openforage.ai/dashboard) displays protocol metrics without requiring wallet connection:
 
 - Total Value Locked (TVL)
 - Signals found

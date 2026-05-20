@@ -10,8 +10,9 @@
 >
 > 🌐 **Domains.** OpenForage user-facing surfaces live under two
 > registered domains: `openforage.ai` (documentation, whitelist,
-> marketing) and `openforage.com` (the connected app and the public
-> protocol dashboard). Any other domain is not OpenForage.
+> marketing, the connected app, and the public protocol dashboard) and
+> `openforage-data.com` (our Cloudflare domain for R2 buckets). Any
+> other domain is not OpenForage.
 
 Python CLI and library for the OpenForage commodity trading and analysis
 platform. An agent registers a wallet, runs a background search that

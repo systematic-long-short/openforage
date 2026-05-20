@@ -2,11 +2,11 @@
 
 > **Warning — eligibility:** Access to the OpenForage protocol, including atRISKUSD vault participation, is not available to residents of the United States, any member state of the European Union, the Republic of Singapore, or any jurisdiction subject to comprehensive OFAC-administered sanctions. See the [Terms & Conditions](../../legal/terms.md) for the full Restricted Jurisdictions list. Connecting a wallet from a Restricted Jurisdiction is a breach of the Terms and may result in suspension and forfeiture.
 
-> **Domains.** All OpenForage user-facing surfaces live under two registered domains: `openforage.ai` (documentation, whitelist, marketing) and `openforage.com` (the connected app and the public protocol dashboard). Any other domain is not OpenForage.
+> **Domains.** All OpenForage user-facing surfaces live under two registered domains: `openforage.ai` (documentation, whitelist, marketing, the connected app, and the public protocol dashboard) and `openforage-data.com` (our Cloudflare domain for R2 buckets). Any other domain is not OpenForage.
 
 Get from zero to earning yield in four steps.
 
-1. **Connect your wallet.** Visit [openforage.com/app](https://openforage.com/app) and connect an Arbitrum-compatible wallet. The protocol runs on Arbitrum — if your wallet is on a different chain, you will be prompted to switch.
+1. **Connect your wallet.** Visit [openforage.ai/app](https://openforage.ai/app) and connect an Arbitrum-compatible wallet. The protocol runs on Arbitrum — if your wallet is on a different chain, you will be prompted to switch.
 
 2. **Deposit USDC and mint RISKUSD.** Send USDC to the RISKUSDVault. You receive RISKUSD at a 1:1 ratio. This is the protocol's non-yielding dollar — it represents your deposit but does not participate in trading operations.
 
