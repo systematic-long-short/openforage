@@ -223,20 +223,45 @@ the §A list and §D example already match your needs.
 
 ```bash
 pip install openforage
-openforage --help        # lists: register, start, status, stop, callbacks, serve, local
-pip show openforage      # confirms the installed version
+openforage --help          # lists: register, start, status, stop, callbacks, serve, local
+pip show openforage        # confirms the installed version
+pip index versions openforage  # authoritative list of published versions
 python -c "import openforage; print(openforage.list_skills())"
 ```
 
 The wheel ships precompiled Cython `.so` binaries plus the five
 bundled `SKILL.md` files; `openforage.list_skills()` reads those files
 from the installed/importable wheel. A source build is only needed for
-library contributors and uses Hatch (`pyproject.toml` build-backend =
-`hatchling`).
+library contributors (build via setuptools per `pyproject.toml`
+`build-backend = "setuptools.build_meta"`).
 
-Prereqs: Python 3.10+, network access to `https://api.openforage.ai`,
-a writable state directory. If `--data-dir` / `data_dir` is omitted,
-the default state directory is `~/.openforage`.
+**Prereqs.** **Python 3.12 is required for this release.** The
+OpenForage wheels themselves install on Python 3.10–3.13, but the
+per-era backtester and vault binaries downloaded on first
+`openforage start` (see §E.3) are built for one specific CPython
+version per release. In the current 0.1.x line that is 3.12; any
+other minor version will fail at first extension load with
+`undefined symbol: _Py_Version` or similar. You also need network
+access to `https://api.openforage.ai` (HTTPS, non-rate-limited path),
+a writable state directory with **≥ 30 GB free** under `--data-dir`,
+and a stable network session for the first-register download. If
+`--data-dir` / `data_dir` is omitted, the default state directory is
+`~/.openforage`.
+
+**Distro packages.** On Debian/Ubuntu, install `python3.12` and
+`python3.12-venv`. On Ubuntu releases that do not ship 3.12 in the
+base archive (22.04 and earlier), enable the deadsnakes PPA first:
+`sudo add-apt-repository ppa:deadsnakes/ppa && sudo apt install
+python3.12 python3.12-venv`. On RHEL/Fedora, `sudo dnf install
+python3.12`. On macOS, `brew install python@3.12`. As a fallback
+for any host, install via `pyenv` (`pyenv install 3.12.7 && pyenv
+local 3.12.7`).
+
+**Version confirmation.** The PyPI web UI sometimes renders an older
+long description than what `pip install` will actually download.
+Trust `pip index versions openforage` or
+`pip install openforage==<exact-version>` rather than the rendered
+PyPI page.
 
 ### §E.2 Register
 
@@ -275,6 +300,38 @@ have the key file, re-run `openforage register --invite-code <CODE> --json`
 against the same `--data-dir`; registration is idempotent and re-prints the
 address.
 
+**macOS Python.org users:** if `register` fails with an SSL cert
+error (`SSL: CERTIFICATE_VERIFY_FAILED`), see the macOS entry in
+Troubleshooting before retrying. The fix is one-line
+(`SSL_CERT_FILE=$(python -m certifi)`) and is not your wallet or
+network's fault.
+
+**Anti-pattern: do NOT add a `src/` directory or a `.pth` file
+mapping `src.* → openforage.*`.** The wheel rewrites module names
+internally at build time and ships only compiled `.so` files. If
+you see a namespace-mismatch error referencing
+`src.functions._typed_shapes` or bare `simulator_engine.*`, that
+is a wheel bug — file it at
+https://github.com/systematic-long-short/openforage/issues with the
+full traceback. Do not paper over it locally.
+
+A user-side shim is dangerous because it can make the same
+compiled `.so` resolvable under two module names
+(`openforage.functions._typed_shapes` AND
+`src.functions._typed_shapes`). Cython's per-module type tables
+drift apart when that happens, and the worker will SIGSEGV on its
+first signal evaluation. Crash reports will reference
+`cli.cpython-*.so` and `background.cpython-*.so`, and
+`PYTHONFAULTHANDLER=1` output will list both module names. The
+remedy is to delete the shim, not to add more shims.
+
+If you have already added one: remove the `src/` directory, remove
+any matching `.pth` entries
+(`find $(python -c 'import site; print(site.getsitepackages()[0])') \
+   -name '*.pth' -exec grep -l '^src' {} +`),
+exit the venv and start a fresh shell, then re-run
+`openforage start`.
+
 State directory contents produced by `register`:
 
 - `wallet.key` — 32-byte hex private key, mode `0600`. **Back this up
@@ -289,8 +346,12 @@ State directory contents produced by `register`:
   > a chat, and store the off-host backup on an encrypted volume. If the
   > host is shared or compromised, rotate the wallet (re-register on a
   > clean host with a new invite code).
-- `backtester-{platform}.so` — per-era backtester binary, downloaded
-  on first register.
+- `backtester-{platform}.so`, `vault_module-{platform}.so` — per-era
+  binaries. **Downloaded on first `openforage start`, not on
+  `register`.** The CLI `register` authenticates the wallet and
+  saves `wallet.key`; the era-data download happens as part of the
+  worker's bootstrap path inside `openforage start` (see §E.3 and
+  the new §E.3.0 below).
 - `shuffle_seed.enc` — encrypted seed for the obfuscation layer.
 - No token cache file. Each process keeps its JWT only in
   `AuthManager` memory (`_token` / `_token_expiry`) and clears it on
@@ -321,6 +382,61 @@ venvs, OpenForage versions, platforms, or agent runtimes; use one
 → Depth: `src/openforage/skills/openforage_quickstart/SKILL.md`
 
 ### §E.3 Start a Search and Download Data (Spawn-and-Keep-Working)
+
+#### §E.3.0 What to expect during the first download
+
+The first `openforage start` (not `register`) triggers a roughly
+**20–25 GB download** of per-platform era artifacts: the backtester
+binary, the vault module, features, useful_signals,
+found_strategies, per-universe vocabularies, and the encrypted
+shuffle seed. Allow ≥ 30 GB free under `--data-dir`. The exact size
+for the current era becomes visible from
+`data_download_progress.total_bytes` in `openforage status --json`
+once the manifest has been written.
+
+Indicative wall-clock:
+
+| Network class | Typical duration |
+|---|---|
+| Bare-metal datacenter / 1 Gbit | 7–15 minutes |
+| Residential gigabit | 15–30 minutes |
+| Residential broadband (100 Mbit) | 30–90 minutes |
+| Coffee shop / hotel wifi | 1–3 hours, with retries |
+
+**No cross-process resume in this release.** If `start` exits or
+the worker crashes mid-download, partial `.tmp` files in
+`--data-dir` are deleted on the next sync attempt (the cleanup
+runs at the top of `_sync_impl`); restarting `start` re-downloads
+from the beginning. SHA-256 verification IS automatic within a
+single sync attempt (across HTTP retries inside one process). On
+slow networks, lean on a stable session rather than assuming you
+can rescue progress after a kill — and do not run the worker on a
+laptop that may sleep mid-bootstrap.
+
+Knobs (override only if you know why):
+
+| Env var | Default | When to set it |
+|---|---|---|
+| `OPENFORAGE_SYNC_HTTP_TIMEOUT_SECONDS` | 30 | Slow networks where individual chunks stall. 120 or 180 absorbs typical stalls without disguising hard failures. |
+| `OPENFORAGE_SYNC_HTTP_CHUNK_BYTES` | 8388608 (8 MB) | Rarely needed. |
+| `OPENFORAGE_SYNC_MAX_CONCURRENCY` | 8 | Lower (1–2) if the host or network cannot sustain 8 parallel TLS connections. |
+
+**Watching progress.** Tail `events.jsonl` for lifecycle events;
+poll `openforage status --json` and read
+`data_download_progress.percent`. **Heartbeat freshness is NOT a
+reliable signal during the first download** — see the
+"First-bootstrap heartbeat caveat" added to §J — because the
+worker writes one heartbeat at process start and then blocks in
+bootstrap until the download finishes, so
+`process_health.state` will report `stale` for a healthy worker
+for the entire download window.
+
+The `stalled_download` callback event type exists in the schema
+(§F) but is **not** emitted automatically by the worker today; if
+you need a stalled-download alarm, emit one yourself via
+`openforage.emit_event()` from your supervisor loop.
+
+#### §E.3.1 Primary recipe
 
 **Primary recipe — spawn the worker in the background and return
 immediately so the rest of the setup can run in parallel:**
@@ -847,15 +963,47 @@ the in-process search-rate surface. The in-process metrics
 | 5 minutes | `true` or classified failure | `running`, `stale`, or `not_running` | source-reported percent if available | no fresh heartbeat or a nonempty `recent_errors` list requires classification |
 | 1 hour+ | `true` for unattended run | heartbeat age remains bounded | source-reported percent if available | compare analytics / in-process `SearchStatus` if you need search-rate metrics |
 
+**First-bootstrap heartbeat caveat.** The worker writes a single
+heartbeat at process start and then blocks in registration +
+era-data download (see §E.3.0) for the entire download window.
+During this period — which can be 1–3 hours on slow networks —
+`process_health.state` will report `stale` and
+`process_health.heartbeat_age_seconds` will keep growing, even
+though the worker is healthy. The reliable liveness signal during
+bootstrap is `running: true` (pid still alive) combined with
+absence of `recent_errors` and absence of a `worker_error` event
+in `events.jsonl`. Treat `process_health.state: stale` plus
+`running: true` plus no errors plus growing
+`data_download_progress.percent` as a **healthy bootstrap, not a
+stall**. Do not restart the worker on stale-heartbeat alone
+during the first download — you will only re-trigger the full
+re-download (no cross-process resume).
+
 Classification:
 
 - `running: false` with `process_health.state: "not_running"` right
   after `start` → worker never stayed up; inspect `worker.log` and
   `events.jsonl`.
+- `running: false` and `process_state: "stale"` within 30 seconds
+  of `openforage start`, no `register` event in `events.jsonl`,
+  and `worker.log` ending without a Python traceback (or ending in
+  a system signal trace) → worker exited via an uncatchable signal
+  (SIGSEGV / SIGBUS). The two known causes are (a) a `src/` shim
+  duplicate-load (see §E.2 anti-pattern callout) and (b) a per-era
+  binary built for a different Python ABI (see §E.1 Prereqs).
+  Inspect `worker.log` tail: if it ends mid-import of a `.so`
+  file, ABI mismatch is the likely cause; if it ends after the
+  first `register` event, shim duplicate-load is the likely
+  cause. SIGSEGV does not emit a `failure` callback event — the
+  signal is uncatchable in Python.
 - `process_health.state: "stale"` or heartbeat age grows far beyond
   your polling cadence → pid file or worker supervision is stale;
   inspect `background.pid`, `worker.log`, and recent events before
-  restarting.
+  restarting. **First-bootstrap exception:** if no `register`
+  event has appeared yet in `events.jsonl` and
+  `data_download_progress.percent` is still climbing, this is the
+  expected stale-during-bootstrap state — keep waiting (see the
+  caveat above).
 - Nonempty `recent_errors` or a `worker_error` event → classify the
   bootstrap/search failure before restarting. Network or auth failures
   usually surface here.
@@ -888,6 +1036,51 @@ Documented here so they do not appear unexplained in `--help`.
   bootstrap. If you install a supervisor service, remember it is the
   agent's responsibility to clean it up via `openforage local
   uninstall` before deleting the worktree.
+
+### §K.1 Running in Docker / Kubernetes
+
+`openforage start`'s PID-file supervision is **not** namespace-aware:
+`_probe_process()` calls `os.kill(pid, 0)` against the PID written
+to `background.pid`. In a container whose PID namespace differs
+from the supervisor's, that probe is meaningless. Symptoms:
+`openforage status` reports stale or unknown state,
+`openforage stop` fails to terminate the worker, or
+`background.pid` is a single-digit number that maps to a kernel
+thread on the host.
+
+**The clean fix is to run the worker as the container's main
+process, not via `openforage start`.** `_worker` is the underlying
+foreground command:
+
+```Dockerfile
+FROM python:3.12-slim
+RUN apt-get update && apt-get install -y --no-install-recommends tini \
+    && rm -rf /var/lib/apt/lists/*
+RUN pip install "openforage>=0.1.4"
+WORKDIR /state
+ENTRYPOINT ["/usr/bin/tini", "--"]
+CMD ["openforage", "_worker", "--data-dir", "/state", \
+     "--algorithm", "random_weighted"]
+```
+
+Notes:
+
+- Mount `/state` from a persistent volume sized for the
+  first-register download (§E.3.0, ≥ 30 GB).
+- `tini` is optional but recommended; it ensures orphan reaping
+  if the worker spawns children.
+- `openforage status` and `openforage stop` only work meaningfully
+  from inside the same PID namespace as the worker (i.e.,
+  `docker exec` into the same container). Calling them from a
+  sidecar container will read `background.pid` correctly but the
+  `os.kill(pid, 0)` probe will return misleading results.
+- The closed-beta `n_jobs=1` policy (§E.3) still applies inside
+  containers.
+
+For Kubernetes, the same `_worker` command works as the
+container's `command` field; pair with a `livenessProbe` that
+reads `status.json` from the mounted volume rather than relying
+on PID-file checks.
 
 ---
 
@@ -948,22 +1141,103 @@ promoting any algorithm change (§G).
 - **`openforage: command not found`** — the entry point did not install
   into the active venv. Reinstall in the right venv, or invoke
   `python -m openforage.cli` instead.
-- **Register fails to download the backtester binary** — network or
-  firewall cannot reach `api.openforage.ai`. Fix connectivity and rerun
-  `openforage.register()`. If you cannot open egress, registration
-  cannot complete; there is no offline mode.
+- **macOS — `SSL: CERTIFICATE_VERIFY_FAILED` during register / first
+  download.** Python.org installers on macOS do not configure the
+  OpenSSL trust store. Point Python at certifi's CA bundle before
+  re-running:
+  ```bash
+  pip install certifi
+  export SSL_CERT_FILE="$(python -m certifi)"
+  openforage register --invite-code "$OPENFORAGE_INVITE_CODE" \
+                      --data-dir .openforage-state --json
+  ```
+  Test whether you need this:
+  ```bash
+  python -c "import ssl, urllib.request; urllib.request.urlopen('https://api.openforage.ai', timeout=10).close()"
+  ```
+  If it raises `SSL: CERTIFICATE_VERIFY_FAILED`, apply the workaround
+  above. Homebrew Python (`brew install python@3.12`) usually has a
+  populated trust store and does not need this. **Note:**
+  `REQUESTS_CA_BUNDLE` does not affect OpenForage's stdlib `urllib`
+  path; only `SSL_CERT_FILE` works for OpenForage today.
+- **`undefined symbol: _Py_Version` when loading the backtester or
+  vault module.** The downloaded per-era binary is built for one
+  specific CPython version (3.12 in the current release) and `sync`
+  does not filter by Python ABI tag. Recreate the venv on Python 3.12
+  and re-run `openforage start`:
+  ```bash
+  deactivate || true
+  rm -rf .venv .openforage-state/backtester-*.so \
+         .openforage-state/vault_module-*.so .openforage-state/*.tmp
+  python3.12 -m venv .venv
+  source .venv/bin/activate
+  pip install --upgrade pip
+  pip install openforage
+  openforage register --invite-code "$OPENFORAGE_INVITE_CODE" \
+                      --data-dir .openforage-state --json
+  openforage start --data-dir .openforage-state \
+                   --algorithm random_weighted --json
+  ```
+  Cleaning the leftover `.so` and `.tmp` files is intentional —
+  per-era binaries from the wrong Python ABI must be deleted before
+  the next `start` re-downloads them.
+- **`openforage start` fails before signal evaluation begins /
+  backtester binary missing.** The per-era backtester and vault
+  binaries download during the **worker's bootstrap** (the first
+  `openforage start`), not during `openforage register`. If
+  `worker.log` shows a network or HTTP 401 error during sync, fix
+  connectivity to `https://api.openforage.ai` and re-run
+  `openforage start`. To start the download from a clean state,
+  remove `backtester-*.so`, `vault_module-*.so`, and any `*.tmp`
+  files from `--data-dir` first. **There is no offline mode and
+  no cross-process resume** — keep the session stable through the
+  first download (see §E.3.0).
+- **Worker dies with SIGSEGV in `cli.cpython-*.so` or
+  `background.cpython-*.so` after loading per-era binaries.** Two
+  known causes:
+  - **Shim duplicate-load.** A user-side `src/` directory or
+    `.pth` mapping causes the same compiled `.so` to load under
+    two module names (`openforage.functions._typed_shapes` AND
+    `src.functions._typed_shapes`). See the anti-pattern callout
+    in §E.2.
+  - **Python ABI mismatch.** The per-era binary was built for a
+    different CPython version than the running interpreter. See
+    the `_Py_Version` entry above.
+  Distinguish them by looking at `worker.log`: a SIGSEGV mid-import
+  (before a `register` event in `events.jsonl`) points to ABI; a
+  SIGSEGV after the `register` event points to the shim
+  duplicate-load. SIGSEGV is uncatchable, so **no `failure` callback
+  event will fire** — you must read `worker.log` and `events.jsonl`
+  directly. Set `PYTHONFAULTHANDLER=1` before `openforage start` if
+  you want a Python-side native traceback printed at crash time.
 - **JWT refresh fails repeatedly** — the in-memory JWT auto-refreshes
   at ~80% of its 24h lifetime. Persistent refresh failure usually means
   `api.openforage.ai` is unreachable from this host. Validate
   connectivity (`curl -sI https://api.openforage.ai`) before assuming
   the wallet itself is broken.
-- **Search starts then exits immediately** — backtester `.so` missing
-  or wrong platform. Rerun `openforage register` to refresh, or remove
-  the stale `backtester-*.so` from `--data-dir` and re-register.
+- **Search starts then exits immediately, no SIGSEGV.** Backtester
+  `.so` missing, wrong platform, or partial download. Remove
+  `backtester-*.so` and any matching `*.tmp` from `--data-dir` and
+  re-run `openforage start` (NOT `register` — `register` does not
+  re-download the backtester). If the same exit pattern repeats,
+  see the SIGSEGV entry above to rule out a native crash.
 - **`"PostgreSQL did not become ready"`** without `postgresql-client`
   installed — the library falls back to a socket probe automatically.
   If you still see this, set `OPENFORAGE_DB_URL` explicitly or unset
   it to use SQLite.
+- **`python3 -m venv` fails with `"ensurepip is not available"`.** The
+  distro's venv module is not installed. Install it before retrying:
+  - Debian/Ubuntu: `sudo apt install python3.12-venv` (on Ubuntu
+    22.04 and earlier, enable the deadsnakes PPA first; see §E.1
+    Distro packages).
+  - RHEL/Fedora: `sudo dnf install python3.12`.
+  - Or pin a specific Python with
+    `pyenv install 3.12.7 && pyenv local 3.12.7`.
+- **PyPI page shows an older version than `pip` installs.** PyPI's
+  rendered description can lag behind the latest release. Trust
+  `pip index versions openforage` or
+  `pip install openforage==<exact-version>` rather than the
+  rendered PyPI page.
 - **Scheduled callbacks fire but nothing visible happens** — register
   at least one `file`, `webhook`, or `shell` sink.
   `scheduled_improvement` on its own has no output channel.
