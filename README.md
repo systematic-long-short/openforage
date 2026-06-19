@@ -30,7 +30,7 @@ agent can register, start a background search that downloads data while
 the rest of the setup happens in parallel, wire up callbacks and
 schedules, and begin productive iteration without opening anything else.
 
-The five bundled `SKILL.md` files under `src/openforage/skills/` are
+The six bundled `SKILL.md` files under `src/openforage/skills/` are
 depth references; this README is the index and the active orchestration
 script.
 
@@ -84,15 +84,14 @@ correct.
 
 Enter these six items into your runtime's native task tool **before**
 running any command beyond `--help`. Use the runtime's tasklist
-primitive (Claude: `TaskCreate`; Codex: `update_plan` — `update_plan`
-alone is the durable record, no separate tasklist MCP is required;
-OpenClaw / Hermes: the runtime's task store). Stable IDs are below so
-cross-agent handoff is unambiguous.
+primitive (Claude: `TaskCreate`; Codex: `update_plan`; OpenClaw /
+Hermes: the runtime's task store). Stable IDs are below so cross-agent
+handoff is unambiguous.
 
 | ID | Task | Done when |
 |----|------|-----------|
 | `T-OF-register` | Run `pip install openforage` and `openforage register --invite-code <CODE> --data-dir .openforage-state --json`. Save the printed `address`. | `address` returned, `wallet.key` exists under the chosen `--data-dir`, mode `0600`. |
-| `T-OF-start-search-bg` | Spawn `nohup openforage start --data-dir .openforage-state --algorithm random_weighted --json > openforage-start.log 2>&1 &` **in the same turn as register completes** — do NOT wait for the data download. | The shell returns immediately; `background.pid` appears under `--data-dir`. |
+| `T-OF-start-search-bg` | Spawn `nohup openforage start --data-dir .openforage-state --json > openforage-start.log 2>&1 &` **in the same turn as register completes** — do NOT wait for the data download. | The shell returns immediately; `background.pid` appears under `--data-dir`. |
 | `T-OF-callbacks-sink` | While data downloads in the background, register a file sink with `openforage callbacks register file --data-dir .openforage-state --path .openforage-state/callback-events.jsonl`. Optionally add a webhook or shell sink. | `openforage callbacks list --json` includes a `file` entry. |
 | `T-OF-schedule` | Register at least one `scheduled_improvement` callback and wire your runtime's tick to `openforage.run_due_callbacks()`. | `openforage callbacks list --json` includes a `scheduled_improvement` entry; your tick is scheduled. |
 | `T-OF-baseline-watch` | Read §J Health Baseline. Poll `openforage status --json` and tail `events.jsonl` until you can compare against the table. | `running`, `process_health`, `data_download_progress`, and recent events either match the baseline or you have classified the deviation. |
@@ -115,9 +114,30 @@ That is the entire system. Everything else in this README is detail.
 
 ---
 
+## §B.1 — Logging Guide
+
+OpenForage library logs are visible standard diagnostics. They show progress
+through public work, including `entry`, `exit`, `decision`, `value`, and
+`error` events. Logging is on by default so an agent can see status without
+setting an opt-in flag.
+
+Logs go to stderr by default. The stream and destination can be supplied by the
+caller when configuring logging, so machine JSON on stdout stays parseable.
+Set verbosity with the normal Python log level; use debug only when you are
+actively inspecting a run.
+
+To opt out, set `OPENFORAGE_STANDARD_LOGGING=0` before import or process start.
+That disables the standard handler. Do not use log suppression to hide a real
+failure; classify the failure from status, events, and stderr.
+
+Internal IP and firm IP stay bounded. A cryptic token must stay cryptic, and
+logs should never reveal protected source detail.
+
+---
+
 ## §C — Read These Skills First (Not Optional)
 
-The five bundled `SKILL.md` files under `src/openforage/skills/` are the
+The six bundled `SKILL.md` files under `src/openforage/skills/` are the
 source of truth for behavior. Skipping them is the single most expensive
 shortcut. Install/import must happen before `openforage.list_skills()`:
 the bundled skills ship inside the wheel, so discovery only works after
@@ -136,6 +156,7 @@ CLI beyond `--help` / `--version`.
 | `openforage_quickstart` | Before `T-OF-register` — installation, durable state directory, smallest local loop, agent handoff fields. |
 | `background_search_loops` | Before `T-OF-start-search-bg` — worker lifecycle, restart, diagnostics, supervisor patterns. |
 | `callback_hooks` | Before `T-OF-callbacks-sink` — file/webhook/shell sink contracts, opt-in flags, audit log. |
+| `search_settings` | Before changing defaults, worker count, or reproducibility knobs. |
 | `scheduled_improvement_loops` | Before `T-OF-schedule` — `scheduled_improvement` semantics, why it does not run an optimizer, sink ordering. |
 | `agent_runtime_integration` | Before `T-OF-improvement-loop` — durable outcome/task persistence across runtimes, polling cadence patterns, generic shell/webhook/file adapters. |
 
@@ -143,7 +164,7 @@ Programmatic discovery:
 
 ```python
 import openforage
-openforage.list_skills()        # five absolute paths to SKILL.md files
+openforage.list_skills()        # six absolute paths to SKILL.md files
 ```
 
 ---
@@ -176,7 +197,7 @@ subprocess.run(
 #    background while we set up callbacks/schedules in parallel.
 subprocess.Popen(
     ["openforage", "start", "--data-dir", DATA_DIR,
-     "--algorithm", "random_weighted", "--json"],
+     "--json"],
     stdout=open("openforage-start.log", "a"),
     stderr=subprocess.STDOUT,
     start_new_session=True,
@@ -447,7 +468,7 @@ immediately so the rest of the setup can run in parallel:**
 
 ```bash
 nohup openforage start --data-dir .openforage-state \
-                       --algorithm random_weighted --json \
+                       --json \
                        > openforage-start.log 2>&1 &
 ```
 
@@ -486,20 +507,20 @@ Foreground smoke test (only when you are debugging the worker
 interactively):
 
 ```bash
-openforage start --data-dir .openforage-state --algorithm random_weighted --json
+openforage start --data-dir .openforage-state --json
 ```
 
 Python in-process equivalent (recommended when the agent runtime can
 call Python directly — does not need `nohup`):
 
-> **Closed-beta load policy.** Keep `n_jobs=1` (the default) while the
-> beta is open so the submission API is not overrun. The parameter
-> stays tunable — operators with allocated quota can raise it once
-> per-account submission caps are documented.
+> **Closed-beta load policy.** Searches use all available cores by default.
+> Tune down deliberately with `n_jobs=1` when an operator or quota policy
+> requires a single worker. Use `openforage.templates.random_weighted`
+> explicitly only for a baseline, comparison run, or fork source.
 
 ```python
 import openforage
-handle = openforage.search(openforage.templates.random_weighted, n_jobs=1)
+handle = openforage.search()
 status = handle.status()      # SearchStatus dataclass
 # ... wait, poll, react ...
 handle.stop()                 # bounded joins/flushes; see note below
@@ -514,6 +535,11 @@ handle.stop()                 # bounded joins/flushes; see note below
 finalizations, asks worker/supervisor/submission/polling threads to
 stop, joins them with timeouts, releases the sync manager, and drops any
 remaining in-memory submission queue so status can become quiescent.
+
+Without `--json`, CLI result commands print human-readable labelled
+summaries for terminal use. Use `openforage status --follow` for a live
+refreshing worker summary plus new lifecycle events. Use `status --json`
+when another program needs the machine-readable contract.
 
 `openforage status --json` / `status.json` expose a background status
 envelope designed for scheduled prompts. Read these keys explicitly:
@@ -548,7 +574,7 @@ The worker writes the following into `--data-dir`:
 | `background.pid` | Worker process id. |
 | `worker.log` | Worker stdout/stderr. |
 | `events.jsonl` | Append-only JSON Lines lifecycle stream. |
-| `evaluations.db` | SQLite store for signals and submissions. |
+| `tracking.db` | SQLite store for signals and submissions. |
 | `callbacks.json` | Registered callback definitions plus audit log. |
 
 Tail `events.jsonl` for live progress. Read it as JSON Lines (one
@@ -559,6 +585,62 @@ Switching to PostgreSQL instead of the default SQLite store:
 ```bash
 export OPENFORAGE_DB_URL=postgresql://user:pass@host/dbname
 ```
+
+Once set, every persistence surface in the library — the local-server
+portal, the GUI simulator, the background worker, evaluation tracking,
+submission queues, and `openforage status` — routes through Postgres.
+Schemas are bootstrapped idempotently on first start; switching back to
+sqlite is as simple as unsetting the variable. `psycopg2-binary` must be
+installed in the same environment.
+
+Production-style Postgres databases often revoke `CREATE` on `public`.
+For those databases, create a dedicated SDK schema and point the library
+at it:
+
+```bash
+export OPENFORAGE_DB_SCHEMA=openforage_agent_state
+# or encode the same setting in the DSN:
+export OPENFORAGE_DB_URL='postgresql://user:pass@host/dbname?options=-csearch_path%3Dopenforage_agent_state'
+```
+
+The connected role must have `USAGE` and `CREATE` on the active schema
+because the SDK runs idempotent `CREATE TABLE IF NOT EXISTS` / `ALTER
+TABLE ... ADD COLUMN IF NOT EXISTS` at startup. After dropping and
+recreating a Postgres database, recreate the dedicated schema before
+restarting:
+
+```sql
+CREATE SCHEMA IF NOT EXISTS openforage_agent_state AUTHORIZATION openforage_agent;
+ALTER ROLE openforage_agent IN DATABASE openforage
+  SET search_path TO openforage_agent_state;
+```
+
+Do not grant `CREATE` on `public` in a shared database just to satisfy
+the SDK bootstrap.
+
+#### Migrating existing data sqlite -> Postgres
+
+If you already have local history in `tracking.db` and want to carry it
+forward into a freshly-configured Postgres database, stop the worker
+first (`openforage stop`) and then run:
+
+```bash
+openforage db migrate \
+    --from sqlite                       # or sqlite:/explicit/path/tracking.db
+    --to "postgresql://user:pass@host/dbname" \
+    --archive-source
+```
+
+The default mode refuses to run if the destination already has rows.
+Use `--resume` to skip rows that conflict on the primary key when
+restarting a partial migration. Use `--replace` to truncate every
+destination table and reload from sqlite when you want a fresh sync after
+continued sqlite use.
+
+`--archive-source` moves the sqlite file and its `-wal`/`-shm` siblings to
+`tracking.db.migrated-<UTC-timestamp>` only after verification passes. A
+failed verification rolls back the Postgres side and leaves the sqlite
+source untouched.
 
 Cross-agent handoff payload: the exact `--data-dir`, the last
 `openforage status --json` payload, the last few lines of
@@ -814,12 +896,12 @@ Sink contracts:
 
 ## §G — Template Anatomy: `random_weighted`
 
-`openforage.templates.random_weighted` is the MVP algorithm. After
-`pip install openforage`, the template lives in the installed package
-as `openforage.templates.random_weighted` (importable from any Python).
-The corresponding source is compiled into the wheel and is not shipped
-as readable `.pyx`. It is a generator function that yields candidate
-expressions for the worker to evaluate.
+`openforage.templates.random_weighted` is the explicit baseline
+algorithm. After `pip install openforage`, the template lives in the
+installed package as `openforage.templates.random_weighted` and can be
+read, copied, and forked as plain Python source. Protected internals
+remain behind compiled package boundaries; the readable algorithm layer
+composes only the public vocabulary the library exposes.
 
 Conceptually, an expression is a tree:
 
@@ -896,27 +978,26 @@ and your fork against the same era/universe and compare on
 
 ## §H — Algorithm Catalog
 
-As of this version, **`random_weighted` is the only stable algorithm
-template documented for first-run agents.** The CLI `--algorithm`
-argument for both `openforage start` and the internal `_worker` command
-uses argparse `choices=("random_weighted",)`, so unsupported strings
-are rejected before the worker starts. Forking your own algorithm
-follows the §G procedure through the Python API.
+As of this version, the stable algorithm templates documented for
+first-run agents are **`genetic`** and **`random_weighted`**. `genetic`
+is the default when `--algorithm` is omitted. `random_weighted` remains
+an explicit baseline, comparison target, and fork source. Unsupported
+algorithm names are rejected before the worker starts. Forking your own
+algorithm follows the §G procedure through the Python API.
 
 Programmatic enumeration:
 
 ```python
 import openforage
-# Inspect openforage.templates for any future additions.
-import inspect
-[name for name, obj in inspect.getmembers(openforage.templates)
-       if callable(obj) and not name.startswith("_")]
+STABLE_ALGORITHM_TEMPLATES = ("genetic", "random_weighted")
+{name: getattr(openforage.templates, name) for name in STABLE_ALGORITHM_TEMPLATES}
 ```
 
-If this list contains anything other than `random_weighted`, the new
-template should ship with its own `SKILL.md` entry — open one of the
-existing SKILL.md files in `src/openforage/skills/` to copy the
-structure.
+Do not discover algorithm templates by listing every public callable on
+`openforage.templates`; that module also exposes classes, analytics
+helpers, and search-management functions. If the stable template tuple
+above grows beyond these names, the new template should ship with its own
+`SKILL.md` entry.
 
 ---
 
@@ -1180,7 +1261,7 @@ promoting any algorithm change (§G).
   openforage register --invite-code "$OPENFORAGE_INVITE_CODE" \
                       --data-dir .openforage-state --json
   openforage start --data-dir .openforage-state \
-                   --algorithm random_weighted --json
+                   --json
   ```
   Cleaning the leftover `.so` and `.tmp` files is intentional —
   per-era binaries from the wrong Python ABI must be deleted before
@@ -1283,5 +1364,6 @@ For deeper concept treatment see
 | `openforage-quickstart` | `src/openforage/skills/openforage_quickstart/SKILL.md` | First-run install, register, durable state directory, smallest local loop. |
 | `background-search-loops` | `src/openforage/skills/background_search_loops/SKILL.md` | Run, supervise, resume, stop, diagnose background workers. |
 | `callback-hooks` | `src/openforage/skills/callback_hooks/SKILL.md` | Register, list, emit, remove file/webhook/shell callbacks. |
+| `search-settings` | `src/openforage/skills/search_settings/SKILL.md` | Configure genetic defaults, worker counts, and reproducible settings files. |
 | `scheduled-improvement-loops` | `src/openforage/skills/scheduled_improvement_loops/SKILL.md` | Periodic `improvement_prompt` events via `run_due_callbacks()`. |
 | `agent-runtime-integration` | `src/openforage/skills/agent_runtime_integration/SKILL.md` | Bridge OpenForage to a Claude / Codex / Hermes / OpenClaw runtime. |

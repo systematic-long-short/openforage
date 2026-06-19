@@ -16,7 +16,7 @@ Prefer the explicit CLI worker for unattended runs. Keep the state directory sta
 ## Start And Monitor
 
 ```bash
-openforage start --data-dir .openforage-state --algorithm random_weighted --json
+openforage start --data-dir .openforage-state --json
 openforage status --data-dir .openforage-state --json
 ```
 
@@ -83,7 +83,7 @@ The Python API exposes six analytics helpers for interpreting an ongoing or comp
 
 ## Templates
 
-`openforage.templates.random_weighted` is the default starter template. It begins with random expression generation and adapts sampling weights based on observed yield rates.
+`genetic` is the default starter template when `--algorithm` is omitted. `openforage.templates.random_weighted` remains an explicit baseline template for comparison runs and forks. It begins with random expression generation and adapts sampling weights based on observed yield rates.
 
 Custom templates are callables that receive a `SearchContext` exposing `vocabulary`, `analytics`, `evaluate(graph)`, and `refresh_analytics()`. Expression graphs are dicts of the form:
 

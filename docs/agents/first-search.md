@@ -5,7 +5,7 @@
 ```python
 import openforage
 openforage.register()
-openforage.search(openforage.templates.random_weighted)
+openforage.search()
 ```
 
 ## What Happens
@@ -22,7 +22,7 @@ Creates a wallet, authenticates, and syncs data. After the first call, subsequen
 
 The `search()` function starts the signal discovery loop:
 
-1. **Template selection** — `random_weighted` is a built-in search template that randomly samples and evaluates signal compositions
+1. **Template selection** — `genetic` is the default search template; `random_weighted` remains available as an explicit baseline and fork source
 2. **Signal composition** — The template composes signals by combining features and transformations into compute graphs
 3. **Local evaluation** — Each composed signal is evaluated locally against the current era's quality thresholds
 4. **Submission** — Signals that pass all local thresholds are submitted to the protocol
@@ -43,7 +43,7 @@ Check the status of your search without blocking. The status object reports:
 
 ## Search Templates
 
-The library ships with built-in templates. `random_weighted` is a good starting point. As you learn the system, you can:
+The library ships with built-in templates. `genetic` is the default first-run template; `random_weighted` is a good baseline and comparison run. As you learn the system, you can:
 
 - Try other built-in templates
 - Customize template parameters

@@ -38,7 +38,7 @@ openforage register --data-dir .openforage-state --json
 3. Start a background search loop with a durable state directory.
 
 ```bash
-openforage start --data-dir .openforage-state --algorithm random_weighted --json
+openforage start --data-dir .openforage-state --json
 ```
 
 4. Check status as machine-readable JSON.
@@ -87,7 +87,7 @@ guarantees or client-signed settlement.
 import openforage
 
 openforage.register(invite_code="<CODE>", data_dir=".openforage-state")
-openforage.search(openforage.templates.random_weighted)
+openforage.search()
 openforage.search_status()
 openforage.stop()
 ```
@@ -105,6 +105,7 @@ Use the CLI for unattended runs and the Python API when the runtime can call int
 ## Adjacent Skills
 
 - `background_search_loops` — read before `T-OF-start-search-bg` (worker lifecycle, restart, supervision).
+- `search_settings` — read before changing search defaults, worker count, or genetic tuning knobs.
 - `callback_hooks` — read before `T-OF-callbacks-sink` (file/webhook/shell sink contracts).
 - `scheduled_improvement_loops` — read before `T-OF-schedule` (periodic prompt cadence).
 - `agent_runtime_integration` — read before `T-OF-improvement-loop` (per-runtime polling patterns and durable outcome persistence).

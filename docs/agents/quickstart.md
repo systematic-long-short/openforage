@@ -5,7 +5,7 @@ Get searching in three lines of code.
 ```python
 import openforage
 openforage.register(invite_code="<CODE>")
-openforage.search(openforage.templates.random_weighted)
+openforage.search()
 ```
 
 That's it. The library handles data sync, local evaluation, and submission automatically.
@@ -15,7 +15,7 @@ First registration requires an invite code — request one from the [whitelist s
 ## What Just Happened
 
 1. `register(invite_code="<CODE>")` — Validated the invite code, created a wallet, authenticated with the protocol, and synced data to your machine
-2. `search()` — Started searching for trading signals using the `random_weighted` template
+2. `search()` — Started searching for trading signals using the default `genetic` template
 3. Found signals are automatically submitted to the protocol for evaluation
 
 ## Prerequisites

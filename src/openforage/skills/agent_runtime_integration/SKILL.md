@@ -115,7 +115,7 @@ durable outcome/tasklist mechanism:
 
 1. Choose one `--data-dir` (convention: `.openforage-state`).
 2. Run `openforage register --invite-code <CODE> --data-dir <dir> --json`; save the printed `address`. If the runtime injects `OPENFORAGE_INVITE_CODE`, the no-flag form is valid.
-3. Spawn `nohup openforage start --data-dir <dir> --algorithm random_weighted --json > openforage-start.log 2>&1 &` and let the worker download data in the background.
+3. Spawn `nohup openforage start --data-dir <dir> --json > openforage-start.log 2>&1 &` and let the worker download data in the background.
 4. While the worker downloads, register a `file` sink and a
    `scheduled_improvement` callback (see README §E.4).
 5. Poll `openforage status --data-dir <dir> --json` until `running` is true with `process_health.state == "running"`, or classify `recent_errors` / `events.jsonl`.

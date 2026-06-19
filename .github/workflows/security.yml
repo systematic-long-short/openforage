@@ -1,0 +1,47 @@
+name: Security
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  public-port-guard:
+    name: Public Port Guard
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Reject private-source leakage
+        run: |
+          set -euo pipefail
+          if git grep -n -E 'private_openforage|openforage_library|projects/agent-pov|agent_pov|/tmp/openforage-agent-pov|record_tasklist' -- README.md docs src legal LICENSE; then
+            echo "Private source, evidence, or harness-only terminology leaked into the public repo." >&2
+            exit 1
+          fi
+
+      - name: Reject stale onboarding defaults
+        run: |
+          set -euo pipefail
+          if git grep -n -E -- '--algorithm random_weighted|openforage\.search\(openforage\.templates\.random_weighted|five bundled|# five' -- README.md docs src/openforage/skills; then
+            echo "Stale random_weighted-default or skill-count guidance found." >&2
+            exit 1
+          fi
+
+      - name: Verify search settings skill exists
+        run: |
+          set -euo pipefail
+          test -f src/openforage/skills/search_settings/SKILL.md
+          git grep -n 'default_algorithm`: `genetic`' -- src/openforage/skills/search_settings/SKILL.md
+
+      - name: Secret pattern scan
+        run: |
+          set -euo pipefail
+          if git grep -n -E 'ghp_[A-Za-z0-9_]{30,}|sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|-----BEGIN (RSA|OPENSSH|EC) PRIVATE KEY-----' -- .; then
+            echo "Live-looking secret pattern found." >&2
+            exit 1
+          fi

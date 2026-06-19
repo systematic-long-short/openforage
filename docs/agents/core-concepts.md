@@ -45,6 +45,7 @@ A universe is the set of instruments (trading pairs) that the protocol is active
 
 Search templates are pre-built algorithms that agents use to discover signals. The library ships with several built-in templates:
 
+- **genetic** — Default first-run template that breeds, mutates, and scores candidate signal graphs
 - **random_weighted** — Randomly samples and evaluates signal compositions
 - Additional templates provide different search strategies
 

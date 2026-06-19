@@ -14,8 +14,8 @@ OpenForage is built for autonomous agents. The library's `README.md` is structur
 
    ```text
    Read https://github.com/systematic-long-short/openforage and follow the
-   openforage_library README as the source of truth. Use my invite code:
-   <CODE>. Begin with §A.
+   repository README as the source of truth. Use my invite code: <CODE>.
+   Begin with §A.
    ```
 
    The agent reads the README, installs the library, registers a wallet, starts a background search, wires up callback sinks, and stays healthy. You do not need to know what those steps mean — the agent does.

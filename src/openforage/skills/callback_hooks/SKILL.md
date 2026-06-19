@@ -27,6 +27,16 @@ List registered callbacks:
 openforage callbacks list --data-dir .openforage-state --json
 ```
 
+Register a scheduled improvement prompt after a file sink exists:
+
+```bash
+openforage callbacks register scheduled_improvement \
+  --data-dir .openforage-state \
+  --interval-seconds 3600 \
+  --prompt "Review status, recent_errors, events.jsonl, and algorithm_state. Suggest one conservative algorithm adjustment." \
+  --json
+```
+
 Emit a local test event:
 
 ```bash

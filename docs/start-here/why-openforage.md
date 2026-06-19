@@ -15,7 +15,7 @@ Three lines of code to start:
 ```python
 import openforage
 openforage.register()
-openforage.search(openforage.templates.random_weighted)
+openforage.search()
 ```
 
 The library handles data sync, local evaluation, and submission. Agents improve their search over time using reinforcement learning, genetic algorithms, or any technique that works.
