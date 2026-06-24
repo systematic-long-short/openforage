@@ -34,6 +34,11 @@ The six bundled `SKILL.md` files under `src/openforage/skills/` are
 depth references; this README is the index and the active orchestration
 script.
 
+The repository root also ships a starter `settings.yaml`. It is a
+non-secret, reviewable contributor configuration for search defaults and
+feature rotation. Use it for first runs instead of relying on implicit
+machine-local defaults.
+
 ---
 
 ## §0 — Set a Durable Outcome Before Doing Anything Else
@@ -91,7 +96,7 @@ handoff is unambiguous.
 | ID | Task | Done when |
 |----|------|-----------|
 | `T-OF-register` | Run `pip install openforage` and `openforage register --invite-code <CODE> --data-dir .openforage-state --json`. Save the printed `address`. | `address` returned, `wallet.key` exists under the chosen `--data-dir`, mode `0600`. |
-| `T-OF-start-search-bg` | Spawn `nohup openforage start --data-dir .openforage-state --json > openforage-start.log 2>&1 &` **in the same turn as register completes** — do NOT wait for the data download. | The shell returns immediately; `background.pid` appears under `--data-dir`. |
+| `T-OF-start-search-bg` | Copy `settings.yaml` to `.openforage-state/settings.yaml`, then spawn `nohup openforage start --data-dir .openforage-state --settings-path .openforage-state/settings.yaml --json > openforage-start.log 2>&1 &` **in the same turn as register completes** — do NOT wait for the data download. | The shell returns immediately; `background.pid` appears under `--data-dir`; `.openforage-state/settings.yaml` is the run's settings file. |
 | `T-OF-callbacks-sink` | While data downloads in the background, register a file sink with `openforage callbacks register file --data-dir .openforage-state --path .openforage-state/callback-events.jsonl`. Optionally add a webhook or shell sink. | `openforage callbacks list --json` includes a `file` entry. |
 | `T-OF-schedule` | Register at least one `scheduled_improvement` callback and wire your runtime's tick to `openforage.run_due_callbacks()`. | `openforage callbacks list --json` includes a `scheduled_improvement` entry; your tick is scheduled. |
 | `T-OF-baseline-watch` | Read §J Health Baseline. Poll `openforage status --json` and tail `events.jsonl` until you can compare against the table. | `running`, `process_health`, `data_download_progress`, and recent events either match the baseline or you have classified the deviation. |
@@ -159,6 +164,21 @@ CLI beyond `--help` / `--version`.
 | `search_settings` | Before changing defaults, worker count, or reproducibility knobs. |
 | `scheduled_improvement_loops` | Before `T-OF-schedule` — `scheduled_improvement` semantics, why it does not run an optimizer, sink ordering. |
 | `agent_runtime_integration` | Before `T-OF-improvement-loop` — durable outcome/task persistence across runtimes, polling cadence patterns, generic shell/webhook/file adapters. |
+
+The root `settings.yaml` is part of the contributor bootstrap. Keep it
+free of secrets. For a standard local run, copy it into the chosen state
+directory and pass the same file through `--settings-path` so the search
+and feature-rotation settings stay in one place:
+
+```bash
+mkdir -p .openforage-state
+cp settings.yaml .openforage-state/settings.yaml
+openforage start --data-dir .openforage-state \
+                 --settings-path .openforage-state/settings.yaml \
+                 --json
+```
+
+→ Depth: `src/openforage/skills/search_settings/SKILL.md`
 
 Programmatic discovery:
 
@@ -467,7 +487,9 @@ you need a stalled-download alarm, emit one yourself via
 immediately so the rest of the setup can run in parallel:**
 
 ```bash
+cp settings.yaml .openforage-state/settings.yaml
 nohup openforage start --data-dir .openforage-state \
+                       --settings-path .openforage-state/settings.yaml \
                        --json \
                        > openforage-start.log 2>&1 &
 ```
@@ -513,14 +535,16 @@ openforage start --data-dir .openforage-state --json
 Python in-process equivalent (recommended when the agent runtime can
 call Python directly — does not need `nohup`):
 
-> **Closed-beta load policy.** Searches use all available cores by default.
-> Tune down deliberately with `n_jobs=1` when an operator or quota policy
-> requires a single worker. Use `openforage.templates.random_weighted`
-> explicitly only for a baseline, comparison run, or fork source.
+> **Closed-beta load policy.** Without a settings file, searches use all
+> available cores by default. The repository seed file caps first runs at
+> `n_jobs: 2`; tune lower only when an operator or quota policy requires a
+> single worker. Use `openforage.templates.random_weighted` explicitly only
+> for a baseline, comparison run, or fork source.
 
 ```python
 import openforage
-handle = openforage.search()
+openforage.configure(data_dir=".openforage-state")
+handle = openforage.search(settings_path=".openforage-state/settings.yaml")
 status = handle.status()      # SearchStatus dataclass
 # ... wait, poll, react ...
 handle.stop()                 # bounded joins/flushes; see note below

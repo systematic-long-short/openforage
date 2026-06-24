@@ -1,0 +1,24 @@
+default_algorithm: genetic
+n_jobs: 2
+batch_size: 100
+process_timeout_seconds: 120
+process_priority: normal
+seed: 20260613
+restart_threshold: 5
+elite_fraction: 0.20
+diversity_weight: 1.50
+parsimony_weight: 0.05
+operator_rates:
+  crossover: 0.45
+  point_mutation: 0.25
+  subtree_mutation: 0.20
+  hoist_mutation: 0.10
+
+algorithm: family_weighted
+feature_budget_gb: 8
+market: crypto
+named_universes:
+  - hltop100
+rotation_frequency: PT168H
+rotation_seed: 0
+contributor_stats_upload_opt_out: false

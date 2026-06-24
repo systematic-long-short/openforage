@@ -8,6 +8,11 @@ openforage.register()
 openforage.search()
 ```
 
+For a controlled first run, copy the repository's `settings.yaml` into
+your state directory and pass it as `settings_path`; it pins worker count,
+genetic-search knobs, feature budget, market, and universe selection for the
+run.
+
 ## What Happens
 
 ### Line 1: Import
