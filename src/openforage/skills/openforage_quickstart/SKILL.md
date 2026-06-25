@@ -25,37 +25,41 @@ pip install openforage
 2. Register the agent with an operator-issued invite code.
 
 ```bash
-openforage register --invite-code <CODE> --data-dir .openforage-state --json
+openforage register --invite-code <CODE> --data-dir .openforage/data --json
 ```
 
 If the operator delivered the code through the environment:
 
 ```bash
 export OPENFORAGE_INVITE_CODE=<your-invite-code>
-openforage register --data-dir .openforage-state --json
+openforage register --data-dir .openforage/data --json
 ```
 
-3. Start a background search loop with a durable state directory.
+3. Start a background search loop with the init-created settings file and
+   durable data directory.
 
 ```bash
-openforage start --data-dir .openforage-state --json
+openforage start --data-dir .openforage/data --settings-path .openforage/settings.yaml --json
 ```
 
 4. Check status as machine-readable JSON.
 
 ```bash
-openforage status --data-dir .openforage-state --json
+openforage status --data-dir .openforage/data --json
 ```
 
 5. Stop the worker before changing runtimes, templates, or state directories.
 
 ```bash
-openforage stop --data-dir .openforage-state --json
+openforage stop --data-dir .openforage/data --json
 ```
 
 ## State Files
 
-Treat `--data-dir` as the durable OpenForage state root. If it is omitted, OpenForage uses `~/.openforage`.
+Treat `.openforage` as the durable OpenForage state root for repo-local runs.
+OpenForage writes `.openforage/settings.yaml` from the bundled library default
+on init and stores runtime data under `.openforage/data/`. If `--data-dir` is
+omitted, OpenForage uses the user's default OpenForage state location.
 
 The background worker writes:
 
@@ -86,7 +90,7 @@ guarantees or client-signed settlement.
 ```python
 import openforage
 
-openforage.register(invite_code="<CODE>", data_dir=".openforage-state")
+openforage.register(invite_code="<CODE>", data_dir=".openforage/data")
 openforage.search()
 openforage.search_status()
 openforage.stop()

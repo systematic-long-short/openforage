@@ -93,8 +93,8 @@ shell/file/webhook bridges from earlier versions still apply:
 
 - **Shell adapter**: invoke `openforage ... --json` and parse stdout. Treat
   nonzero process exit as failure.
-- **File adapter**: poll `.openforage-state/status.json`, tail
-  `.openforage-state/events.jsonl` as JSON Lines, register a `file` callback
+- **File adapter**: poll `.openforage/data/status.json`, tail
+  `.openforage/data/events.jsonl` as JSON Lines, register a `file` callback
   for runtime-consumable JSONL events.
 - **Webhook adapter**: register a `webhook` callback only when the target
   runtime documents a receiver URL. Bearer transport is validated by
@@ -113,15 +113,15 @@ shell, webhook, or file bridge, keep OpenForage at the generic-adapter layer.
 This loop is portable across all four runtimes. Wrap it in your runtime's
 durable outcome/tasklist mechanism:
 
-1. Choose one `--data-dir` (convention: `.openforage-state`).
-2. Run `openforage register --invite-code <CODE> --data-dir <dir> --json`; save the printed `address`. If the runtime injects `OPENFORAGE_INVITE_CODE`, the no-flag form is valid.
-3. Spawn `nohup openforage start --data-dir <dir> --json > openforage-start.log 2>&1 &` and let the worker download data in the background.
+1. Choose one repo-local state root (convention: `.openforage`), with settings at `.openforage/settings.yaml` and data under `.openforage/data`.
+2. Run `openforage register --invite-code <CODE> --data-dir .openforage/data --json`; save the printed `address`. If the runtime injects `OPENFORAGE_INVITE_CODE`, the no-flag form is valid.
+3. Spawn `nohup openforage start --data-dir .openforage/data --settings-path .openforage/settings.yaml --json > openforage-start.log 2>&1 &` and let the worker download data in the background.
 4. While the worker downloads, register a `file` sink and a
    `scheduled_improvement` callback (see README §E.4).
-5. Poll `openforage status --data-dir <dir> --json` until `running` is true with `process_health.state == "running"`, or classify `recent_errors` / `events.jsonl`.
-6. Tick `openforage.run_due_callbacks(data_dir=<dir>)` on the runtime's
+5. Poll `openforage status --data-dir .openforage/data --json` until `running` is true with `process_health.state == "running"`, or classify `recent_errors` / `events.jsonl`.
+6. Tick `openforage.run_due_callbacks(data_dir=".openforage/data")` on the runtime's
    natural cadence; consume each `improvement_prompt` from the sink.
-7. Stop with `openforage stop --data-dir <dir> --json` when the runtime is
+7. Stop with `openforage stop --data-dir .openforage/data --json` when the runtime is
    done or about to switch templates, then confirm quiescence from status and
    `events.jsonl` before mutating templates or state.
 

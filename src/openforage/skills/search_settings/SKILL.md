@@ -5,7 +5,7 @@ description: Use this when configuring OpenForage search defaults, choosing gene
 
 # Search Settings
 
-`openforage.search_settings` is the canonical settings module for library search defaults. The same `settings.yaml` also carries contributor feature-rotation settings when it lives under the selected `--data-dir`. Use `settings.yaml` when a run needs explicit, reviewable knobs; omit the file to use documented defaults.
+`openforage.search_settings` is the canonical settings module for library search defaults. The same `settings.yaml` also carries contributor feature-rotation settings when it lives at `.openforage/settings.yaml`. Use `settings.yaml` when a run needs explicit, reviewable knobs; omit the file to use documented defaults.
 
 ## Defaults
 
@@ -29,21 +29,22 @@ default_algorithm: random_weighted
 
 ## Settings File
 
-The repository root ships a starter `settings.yaml`. Keep it non-secret. For a local run, copy that file into the state directory and pass the same path to the search API or CLI so search settings and feature-rotation settings are read from one file:
+The library ships a starter `settings.yaml` at `src/openforage/settings.yaml`. Keep it non-secret. On init, OpenForage creates `.openforage/settings.yaml` from that library default. When the file already exists, init performs an intelligent merge: new fields from the library default are added, removed fields are removed locally, and all other existing user values are preserved. Runtime data belongs under `.openforage/data/`.
+
+For a local run, pass the generated settings path to the search API or CLI so search settings and feature-rotation settings are read from one file:
 
 ```bash
-mkdir -p .openforage-state
-cp settings.yaml .openforage-state/settings.yaml
-openforage start --data-dir .openforage-state \
-                 --settings-path .openforage-state/settings.yaml \
+mkdir -p .openforage/data
+openforage start --data-dir .openforage/data \
+                 --settings-path .openforage/settings.yaml \
                  --json
 ```
 
 ```python
 import openforage
 
-openforage.configure(data_dir=".openforage-state")
-handle = openforage.search(settings_path=".openforage-state/settings.yaml")
+openforage.configure(data_dir=".openforage/data")
+handle = openforage.search(settings_path=".openforage/settings.yaml")
 ```
 
 The starter file includes search keys (`default_algorithm`, `n_jobs`, `batch_size`, `process_timeout_seconds`, `process_priority`, `seed`, `restart_threshold`, `elite_fraction`, `diversity_weight`, `parsimony_weight`, `operator_rates`) and feature-rotation keys (`algorithm`, `feature_budget_gb`, `market`, `named_universes`, `rotation_frequency`, `rotation_seed`, `contributor_stats_upload_opt_out`). Edit the file deliberately; do not split these knobs across multiple local files.

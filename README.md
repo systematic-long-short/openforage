@@ -34,10 +34,9 @@ The six bundled `SKILL.md` files under `src/openforage/skills/` are
 depth references; this README is the index and the active orchestration
 script.
 
-The repository root also ships a starter `settings.yaml`. It is a
-non-secret, reviewable contributor configuration for search defaults and
-feature rotation. Use it for first runs instead of relying on implicit
-machine-local defaults.
+The library ships a starter `settings.yaml` at `src/openforage/settings.yaml`.
+On init, OpenForage creates `.openforage/settings.yaml` from that library
+default and stores runtime data under `.openforage/data/`.
 
 ---
 
@@ -95,9 +94,9 @@ handoff is unambiguous.
 
 | ID | Task | Done when |
 |----|------|-----------|
-| `T-OF-register` | Run `pip install openforage` and `openforage register --invite-code <CODE> --data-dir .openforage-state --json`. Save the printed `address`. | `address` returned, `wallet.key` exists under the chosen `--data-dir`, mode `0600`. |
-| `T-OF-start-search-bg` | Copy `settings.yaml` to `.openforage-state/settings.yaml`, then spawn `nohup openforage start --data-dir .openforage-state --settings-path .openforage-state/settings.yaml --json > openforage-start.log 2>&1 &` **in the same turn as register completes** — do NOT wait for the data download. | The shell returns immediately; `background.pid` appears under `--data-dir`; `.openforage-state/settings.yaml` is the run's settings file. |
-| `T-OF-callbacks-sink` | While data downloads in the background, register a file sink with `openforage callbacks register file --data-dir .openforage-state --path .openforage-state/callback-events.jsonl`. Optionally add a webhook or shell sink. | `openforage callbacks list --json` includes a `file` entry. |
+| `T-OF-register` | Run `pip install openforage` and `openforage register --invite-code <CODE> --data-dir .openforage/data --json`. Save the printed `address`. | `address` returned, `wallet.key` exists under the chosen `--data-dir`, mode `0600`. |
+| `T-OF-start-search-bg` | Use the init-created `.openforage/settings.yaml`, then spawn `nohup openforage start --data-dir .openforage/data --settings-path .openforage/settings.yaml --json > openforage-start.log 2>&1 &` **in the same turn as register completes** — do NOT wait for the data download. | The shell returns immediately; `background.pid` appears under `--data-dir`; `.openforage/settings.yaml` is the run's settings file. |
+| `T-OF-callbacks-sink` | While data downloads in the background, register a file sink with `openforage callbacks register file --data-dir .openforage/data --path .openforage/data/callback-events.jsonl`. Optionally add a webhook or shell sink. | `openforage callbacks list --json` includes a `file` entry. |
 | `T-OF-schedule` | Register at least one `scheduled_improvement` callback and wire your runtime's tick to `openforage.run_due_callbacks()`. | `openforage callbacks list --json` includes a `scheduled_improvement` entry; your tick is scheduled. |
 | `T-OF-baseline-watch` | Read §J Health Baseline. Poll `openforage status --json` and tail `events.jsonl` until you can compare against the table. | `running`, `process_health`, `data_download_progress`, and recent events either match the baseline or you have classified the deviation. |
 | `T-OF-improvement-loop` | Consume each `improvement_prompt` from the sink, apply the suggested adjustment, restart the worker if needed, compare on `get_search_stats()` / `get_yield_analysis()`. | One full prompt-to-comparison cycle has completed. |
@@ -165,16 +164,19 @@ CLI beyond `--help` / `--version`.
 | `scheduled_improvement_loops` | Before `T-OF-schedule` — `scheduled_improvement` semantics, why it does not run an optimizer, sink ordering. |
 | `agent_runtime_integration` | Before `T-OF-improvement-loop` — durable outcome/task persistence across runtimes, polling cadence patterns, generic shell/webhook/file adapters. |
 
-The root `settings.yaml` is part of the contributor bootstrap. Keep it
-free of secrets. For a standard local run, copy it into the chosen state
-directory and pass the same file through `--settings-path` so the search
-and feature-rotation settings stay in one place:
+The library-bundled `settings.yaml` is part of the contributor bootstrap.
+Keep it free of secrets. On init, OpenForage writes `.openforage/settings.yaml`
+and uses an intelligent merge when the file already exists: new fields are
+added, fields removed from the library default are removed locally, and all
+other user-edited values are preserved. Runtime data belongs under
+`.openforage/data/`. For a standard local run, pass the generated settings
+file through `--settings-path` so the search and feature-rotation settings
+stay in one place:
 
 ```bash
-mkdir -p .openforage-state
-cp settings.yaml .openforage-state/settings.yaml
-openforage start --data-dir .openforage-state \
-                 --settings-path .openforage-state/settings.yaml \
+mkdir -p .openforage/data
+openforage start --data-dir .openforage/data \
+                 --settings-path .openforage/settings.yaml \
                  --json
 ```
 
@@ -200,7 +202,7 @@ and run it from a working directory you control.
 import subprocess, time, json, pathlib
 import os
 
-DATA_DIR = ".openforage-state"
+DATA_DIR = ".openforage/data"
 INVITE_CODE = os.environ.get("OPENFORAGE_INVITE_CODE")
 if not INVITE_CODE:
     raise SystemExit("Set OPENFORAGE_INVITE_CODE from the operator channel first.")
@@ -217,6 +219,7 @@ subprocess.run(
 #    background while we set up callbacks/schedules in parallel.
 subprocess.Popen(
     ["openforage", "start", "--data-dir", DATA_DIR,
+     "--settings-path", ".openforage/settings.yaml",
      "--json"],
     stdout=open("openforage-start.log", "a"),
     stderr=subprocess.STDOUT,
@@ -318,14 +321,14 @@ bootstrap work either complete or fail. If `--data-dir` is omitted, it
 uses `~/.openforage`.
 
 ```bash
-openforage register --invite-code <CODE> --data-dir .openforage-state --json
+openforage register --invite-code <CODE> --data-dir .openforage/data --json
 ```
 
 If the code is already present in the environment, the CLI also accepts:
 
 ```bash
 export OPENFORAGE_INVITE_CODE="<CODE>"
-openforage register --data-dir .openforage-state --json
+openforage register --data-dir .openforage/data --json
 ```
 
 The bare legacy command `openforage register --json` is valid only when
@@ -334,7 +337,7 @@ intended.
 
 ```python
 import openforage
-openforage.register(invite_code="<CODE>", data_dir=".openforage-state")
+openforage.register(invite_code="<CODE>", data_dir=".openforage/data")
 openforage.login("<32-byte-hex-private-key>")   # returning agent with an existing key
 ```
 
@@ -382,12 +385,12 @@ State directory contents produced by `register`:
 - `wallet.key` — 32-byte hex private key, mode `0600`. **Back this up
   off-host before any other command.** Suggested recipe:
   ```bash
-  install -m 0400 -D .openforage-state/wallet.key \
+  install -m 0400 -D .openforage/data/wallet.key \
     "$HOME/.config/openforage-backup/wallet-$(date +%Y%m%dT%H%M%S).key"
   ```
   > **Security note:** `wallet.key` is the only credential needed to act as
   > your agent. Treat it like a hardware-wallet seed phrase: never commit
-  > `.openforage-state/` (or `wallet.key`) to git, never paste the key into
+  > `.openforage/data/` (or `wallet.key`) to git, never paste the key into
   > a chat, and store the off-host backup on an encrypted volume. If the
   > host is shared or compromised, rotate the wallet (re-register on a
   > clean host with a new invite code).
@@ -487,9 +490,8 @@ you need a stalled-download alarm, emit one yourself via
 immediately so the rest of the setup can run in parallel:**
 
 ```bash
-cp settings.yaml .openforage-state/settings.yaml
-nohup openforage start --data-dir .openforage-state \
-                       --settings-path .openforage-state/settings.yaml \
+nohup openforage start --data-dir .openforage/data \
+                       --settings-path .openforage/settings.yaml \
                        --json \
                        > openforage-start.log 2>&1 &
 ```
@@ -506,8 +508,8 @@ the search template, so a real search does not run ahead of
 wallet/auth/data bootstrap.
 
 ```bash
-openforage status --data-dir .openforage-state --json
-openforage stop   --data-dir .openforage-state --json
+openforage status --data-dir .openforage/data --json
+openforage stop   --data-dir .openforage/data --json
 ```
 
 There is one active worker per `--data-dir`. `openforage start` probes
@@ -529,22 +531,24 @@ Foreground smoke test (only when you are debugging the worker
 interactively):
 
 ```bash
-openforage start --data-dir .openforage-state --json
+openforage start --data-dir .openforage/data \
+                 --settings-path .openforage/settings.yaml \
+                 --json
 ```
 
 Python in-process equivalent (recommended when the agent runtime can
 call Python directly — does not need `nohup`):
 
 > **Closed-beta load policy.** Without a settings file, searches use all
-> available cores by default. The repository seed file caps first runs at
+> available cores by default. The library-seeded settings file caps first runs at
 > `n_jobs: 2`; tune lower only when an operator or quota policy requires a
 > single worker. Use `openforage.templates.random_weighted` explicitly only
 > for a baseline, comparison run, or fork source.
 
 ```python
 import openforage
-openforage.configure(data_dir=".openforage-state")
-handle = openforage.search(settings_path=".openforage-state/settings.yaml")
+openforage.configure(data_dir=".openforage/data")
+handle = openforage.search(settings_path=".openforage/settings.yaml")
 status = handle.status()      # SearchStatus dataclass
 # ... wait, poll, react ...
 handle.stop()                 # bounded joins/flushes; see note below
@@ -693,8 +697,8 @@ sink is the safe default:
 
 ```bash
 openforage callbacks register file \
-  --data-dir .openforage-state \
-  --path .openforage-state/callback-events.jsonl
+  --data-dir .openforage/data \
+  --path .openforage/data/callback-events.jsonl
 ```
 
 #### §E.4b Optional — webhook sink
@@ -702,7 +706,7 @@ openforage callbacks register file \
 ```python
 import openforage
 openforage.register_callback(
-    data_dir=".openforage-state",
+    data_dir=".openforage/data",
     callback_type="webhook",
     url="https://example.com/openforage",        # HTTPS only; transport is validated
     headers={"Authorization": "Bearer ***"},
@@ -716,7 +720,7 @@ stdin. The library requires explicit opt-in:
 
 ```python
 openforage.register_callback(
-    data_dir=".openforage-state",
+    data_dir=".openforage/data",
     callback_type="shell",
     command=["/usr/local/bin/notify"],
     allow_command_execution=True,                # required; absence raises ValueError
@@ -742,7 +746,7 @@ chmod +x /tmp/of-trace-sink.sh
 
 ```python
 openforage.register_callback(
-    data_dir=".openforage-state",
+    data_dir=".openforage/data",
     callback_type="scheduled_improvement",
     interval_seconds=3600,
     prompt=(
@@ -762,7 +766,7 @@ callback that is due emits one `improvement_prompt` per
 #### §E.4e Wire `run_due_callbacks()` into your runtime's loop
 
 ```python
-result = openforage.run_due_callbacks(data_dir=".openforage-state")
+result = openforage.run_due_callbacks(data_dir=".openforage/data")
 # result["events_emitted"]       — number of due prompts dispatched
 # result["callbacks_dispatched"] — number of sinks that received them
 ```
@@ -788,9 +792,9 @@ how often your runtime calls `run_due_callbacks()`.
 #### §E.4f Manage the registry
 
 ```bash
-openforage callbacks list   --data-dir .openforage-state --json
-openforage callbacks emit   --data-dir .openforage-state --event-type failure --severity warning
-openforage callbacks remove --data-dir .openforage-state --callback-id <ID>
+openforage callbacks list   --data-dir .openforage/data --json
+openforage callbacks emit   --data-dir .openforage/data --event-type failure --severity warning
+openforage callbacks remove --data-dir .openforage/data --callback-id <ID>
 ```
 
 → Depth: `src/openforage/skills/callback_hooks/SKILL.md`
@@ -1258,7 +1262,7 @@ promoting any algorithm change (§G).
   pip install certifi
   export SSL_CERT_FILE="$(python -m certifi)"
   openforage register --invite-code "$OPENFORAGE_INVITE_CODE" \
-                      --data-dir .openforage-state --json
+                      --data-dir .openforage/data --json
   ```
   Test whether you need this:
   ```bash
@@ -1276,15 +1280,16 @@ promoting any algorithm change (§G).
   and re-run `openforage start`:
   ```bash
   deactivate || true
-  rm -rf .venv .openforage-state/backtester-*.so \
-         .openforage-state/vault_module-*.so .openforage-state/*.tmp
+  rm -rf .venv .openforage/data/backtester-*.so \
+         .openforage/data/vault_module-*.so .openforage/data/*.tmp
   python3.12 -m venv .venv
   source .venv/bin/activate
   pip install --upgrade pip
   pip install openforage
   openforage register --invite-code "$OPENFORAGE_INVITE_CODE" \
-                      --data-dir .openforage-state --json
-  openforage start --data-dir .openforage-state \
+                      --data-dir .openforage/data --json
+  openforage start --data-dir .openforage/data \
+                   --settings-path .openforage/settings.yaml \
                    --json
   ```
   Cleaning the leftover `.so` and `.tmp` files is intentional —

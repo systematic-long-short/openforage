@@ -18,20 +18,20 @@ Callbacks are opt-in and stored under the same durable state directory used by t
 Register a file callback that appends callback events to JSON Lines:
 
 ```bash
-openforage callbacks register file --data-dir .openforage-state --path .openforage-state/callback-events.jsonl --json
+openforage callbacks register file --data-dir .openforage/data --path .openforage/data/callback-events.jsonl --json
 ```
 
 List registered callbacks:
 
 ```bash
-openforage callbacks list --data-dir .openforage-state --json
+openforage callbacks list --data-dir .openforage/data --json
 ```
 
 Register a scheduled improvement prompt after a file sink exists:
 
 ```bash
 openforage callbacks register scheduled_improvement \
-  --data-dir .openforage-state \
+  --data-dir .openforage/data \
   --interval-seconds 3600 \
   --prompt "Review status, recent_errors, events.jsonl, and algorithm_state. Suggest one conservative algorithm adjustment." \
   --json
@@ -40,13 +40,13 @@ openforage callbacks register scheduled_improvement \
 Emit a local test event:
 
 ```bash
-openforage callbacks emit --data-dir .openforage-state --event-type failure --severity warning --payload-json '{"reason":"local test"}' --json
+openforage callbacks emit --data-dir .openforage/data --event-type failure --severity warning --payload-json '{"reason":"local test"}' --json
 ```
 
 Remove a callback by id:
 
 ```bash
-openforage callbacks remove --data-dir .openforage-state --callback-id CALLBACK_ID --json
+openforage callbacks remove --data-dir .openforage/data --callback-id CALLBACK_ID --json
 ```
 
 ## Python API
@@ -55,18 +55,18 @@ openforage callbacks remove --data-dir .openforage-state --callback-id CALLBACK_
 from openforage.callbacks import emit_event, list_callbacks, register_callback, remove_callback
 
 record = register_callback(
-    data_dir=".openforage-state",
+    data_dir=".openforage/data",
     callback_type="file",
-    path=".openforage-state/callback-events.jsonl",
+    path=".openforage/data/callback-events.jsonl",
 )
 emit_event(
-    data_dir=".openforage-state",
+    data_dir=".openforage/data",
     event_type="failure",
     severity="warning",
     payload={"reason": "local test"},
 )
-callbacks = list_callbacks(data_dir=".openforage-state")
-remove_callback(data_dir=".openforage-state", callback_id=record["callback_id"])
+callbacks = list_callbacks(data_dir=".openforage/data")
+remove_callback(data_dir=".openforage/data", callback_id=record["callback_id"])
 ```
 
 ## Event Types

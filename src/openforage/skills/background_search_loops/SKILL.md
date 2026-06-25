@@ -16,8 +16,8 @@ Prefer the explicit CLI worker for unattended runs. Keep the state directory sta
 ## Start And Monitor
 
 ```bash
-openforage start --data-dir .openforage-state --json
-openforage status --data-dir .openforage-state --json
+openforage start --data-dir .openforage/data --settings-path .openforage/settings.yaml --json
+openforage status --data-dir .openforage/data --json
 ```
 
 Use the JSON status payload to decide what to do next. Key fields include:
@@ -38,7 +38,7 @@ Use the JSON status payload to decide what to do next. Key fields include:
 Read the append-only event log when status is unclear.
 
 ```bash
-tail -n 20 .openforage-state/events.jsonl
+tail -n 20 .openforage/data/events.jsonl
 ```
 
 Each line is a JSON object. Look for `start`, `heartbeat`, `register`, `search_start`, `worker_error`, `stop`, and `worker_exit` events.
@@ -48,7 +48,7 @@ Each line is a JSON object. Look for `start`, `heartbeat`, `register`, `search_s
 Stop before changing algorithms or deleting state.
 
 ```bash
-openforage stop --data-dir .openforage-state --json
+openforage stop --data-dir .openforage/data --json
 ```
 
 `openforage stop --json` sends `SIGTERM` and updates `background.pid` /

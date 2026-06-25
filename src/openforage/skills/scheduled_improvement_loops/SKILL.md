@@ -22,9 +22,9 @@ Use a file callback as the default output sink.
 from openforage.callbacks import register_callback
 
 register_callback(
-    data_dir=".openforage-state",
+    data_dir=".openforage/data",
     callback_type="file",
-    path=".openforage-state/improvement-events.jsonl",
+    path=".openforage/data/improvement-events.jsonl",
 )
 ```
 
@@ -34,7 +34,7 @@ register_callback(
 from openforage.callbacks import register_callback
 
 register_callback(
-    data_dir=".openforage-state",
+    data_dir=".openforage/data",
     callback_type="scheduled_improvement",
     interval_seconds=3600,
     prompt="Review current OpenForage status, recent_errors, algorithm_state, and events.jsonl. Suggest one conservative next algorithm adjustment.",
@@ -48,7 +48,7 @@ Call this from the owning agent runtime's scheduler.
 ```python
 from openforage.callbacks import run_due_callbacks
 
-result = run_due_callbacks(data_dir=".openforage-state")
+result = run_due_callbacks(data_dir=".openforage/data")
 ```
 
 `result["events_emitted"]` is the number of due improvement prompts.
@@ -75,7 +75,7 @@ For a scheduled review of a forked template, make the prompt diagnose and compar
 
 ```python
 register_callback(
-    data_dir=".openforage-state",
+    data_dir=".openforage/data",
     callback_type="scheduled_improvement",
     interval_seconds=3600,
     prompt=(
