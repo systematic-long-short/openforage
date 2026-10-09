@@ -1,0 +1,15 @@
+{
+  "previous_owner_session_identity": "parent-fixture-01",
+  "new_owner_session_identity": "child-fixture-01",
+  "one_owner_rule": true,
+  "fencing_token_advanced": true,
+  "pause_target": "paused",
+  "resume_target_preserved": "baseline",
+  "claim_mechanism": "atomic-create",
+  "evidence_paths": [
+    ".openforage-research/agents.json",
+    ".openforage-research/status.json",
+    ".openforage-research/ownership.json",
+    ".openforage-research/conflict-note.md"
+  ]
+}

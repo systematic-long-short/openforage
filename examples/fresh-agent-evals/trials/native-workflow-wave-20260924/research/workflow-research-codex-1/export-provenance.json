@@ -1,0 +1,11 @@
+{
+  "run_id": "workflow-research-codex-1",
+  "series_manifest_sha256": "19b6297970155929ee928a4197c24105578138bfeb23044e0f1d16c4a1090ab3",
+  "exact_authored_artifact_sha256": {
+    "trial-output/challenger.py": "92ff962cfad843ec5ce85911788ffe17f42707f0d269d6a8c3c8418bd6cb5af9",
+    "trial-output/comparison-report.json": "889fcd805e52b60227d362a4f544266bdf8b4b0f4f1bebc624ba7dfa74e4a91f",
+    "trial-output/research-result.json": "d7717cb1f0b051ac22cff350643a95f38f6d706a9915c7091e2a4ff1363238e4"
+  },
+  "original_verdict_unchanged": true,
+  "raw_native_streams_in_export": false
+}

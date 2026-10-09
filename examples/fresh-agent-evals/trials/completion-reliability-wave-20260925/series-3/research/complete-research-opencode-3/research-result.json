@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "task_id": "paper-backed-coverage-challenger-v1",
+  "source": {
+    "source_excerpt_path": "examples/fresh-agent-evals/fixtures/challenger-research/trial-inputs/primary-source-excerpt.md",
+    "source_excerpt_sha256": "08ecc9767bf0f37055bbda96999dc97c80a86918038ef3ca833b5b3367bd7373",
+    "title": "Illuminating search spaces by mapping elites",
+    "authors": [
+      "Jean-Baptiste Mouret",
+      "Jeff Clune"
+    ],
+    "year": 2015,
+    "identifier": "arXiv:1504.04909",
+    "url": "https://arxiv.org/abs/1504.04909",
+    "paraphrase": "MAP-Elites organizes search around user-chosen variation descriptors, retaining strong candidates across descriptor cells so distributions can be inspected rather than only a single overall best. This suggests testing coverage allocation, not a performance prediction."
+  },
+  "research": {
+    "mechanism_explanation": "MAP-Elites partitions search by user-chosen descriptors and preserves candidates across cells. I treat each eligible rotation|feature identifier as a fixture cell, cycle one opaque payload from each stream before revisiting any stream, and suppress exact canonical repeats. The callback does not infer candidate quality, identity, or depth from payload metadata; the trusted fixture evaluator owns those checks. This is a proposal-allocation strategy for construction coverage, not a fitness claim.",
+    "hypothesis": "At equal completed evaluator-call budgets on the paired development inputs and seeds, round-robin allocation over eligible rotation×feature streams will reach more distinct valid cells than the synthetic uniform pair selector. Synthetic quality-pass bits are tracked separately and are not expected to improve a priori.",
+    "falsifier": "With complete equal-call pairs, the coverage hypothesis is falsified if the sum of unique_valid_cell_difference across the development pairs is zero or negative. An incomplete comparison leaves it unresolved."
+  },
+  "machine_claims": {
+    "evaluation_scope": "synthetic_fixture_only",
+    "comparison_report_path": "trial-output/comparison-report.json",
+    "comparison_report_sha256": "4906726e184dc5eaf4e02da8851baa00dc9caeab6b02371d49790b2303eec3e4",
+    "implementation_path": "trial-output/challenger.py",
+    "implementation_sha256": "8d00196c35c7f92dfe0ea5a59bfd7332b116bf64410d15b8777d281b7751aec2",
+    "series_id": "completion-reliability-research-3",
+    "series_manifest_path": "examples/fresh-agent-evals/research/series/completion-reliability-research-3.json",
+    "series_manifest_sha256": "159475fb3622f3291b8770eec188b920cc6b572f8f0db306e85a13f2f5e7216e",
+    "reference_identity": "synthetic_uniform_pair_selector_v1",
+    "synthetic_uniform_is_genetic": false,
+    "synthetic_quality_scope": "fixture_only",
+    "synthetic_comparison_interpretation": "descriptive_only",
+    "live_performance": {
+      "status": "unknown",
+      "value": null
+    },
+    "out_of_sample_return_correlation": {
+      "status": "unknown",
+      "value": null
+    },
+    "server_acceptance": {
+      "status": "unknown",
+      "value": null
+    },
+    "genetic_reference_target": {
+      "algorithm": "genetic",
+      "target_completed_simulations": 100000,
+      "observed_completed_simulations": null,
+      "status": "unmeasured_target"
+    }
+  },
+  "human_review": {
+    "summary": "The development-only comparison completed four paired runs at four evaluator calls per arm. The challenger reached 1, 1, 2, and 2 more distinct valid cells than the synthetic uniform reference across those runs; fixture-only quality-pass differences were +1, 0, +1, and -1. This is descriptive synthetic evidence only.",
+    "rationale": "The selector cycles across eligible feature×rotation streams instead of exhausting one stream first, following MAP-Elites' descriptor-map motivation without claiming the paper predicts this callback's superiority. In these development samples, coverage differences were positive while quality differences were mixed, so the result supports only a synthetic construction-coverage observation. The reference is a synthetic uniform selector, not OpenForage genetic. No live performance, out-of-sample return correlation, or server acceptance was measured."
+  }
+}

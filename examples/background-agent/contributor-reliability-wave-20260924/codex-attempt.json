@@ -1,0 +1,11 @@
+{
+  "artifact": "background-codex-1.json",
+  "sha256": "a09c09cd4f5f0e7ec48118e1cdaa782202698612cb2b5184fbe050c086daa1e8",
+  "passed": true,
+  "failures": [],
+  "source_bundle": "background-runtime-2",
+  "external_controller_overall": "passed",
+  "conformance_overall": "partial",
+  "cleanup_proved": true,
+  "original_outcome_unchanged": true
+}

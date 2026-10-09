@@ -5,14 +5,21 @@ description: Use this whenever an agent needs to install OpenForage, register a 
 
 # OpenForage Quickstart
 
-> **STOP.** If you have not read the OpenForage Library `README.md` at the repo root §0–§C, read it first.
+> **Campaign path.** If your task is a campaign bootstrap and you have not
+> read the OpenForage Library `README.md` §0, §A, and §A.1, read them first;
+> documentation, template, and validation contributions do not need those
+> sections.
 > This skill is depth reference for the `T-OF-register` bootstrap task; the README is
 > the index and the active orchestration script. The README contains the durable
-> outcome text and six bootstrap tasks every agent must enter into its native
-> tasklist before running any command beyond `--help`.
+> outcome text and six bootstrap tasks every campaign-path agent must enter into
+> its native tasklist before running any campaign command beyond `--help`.
 
 Use the smallest local loop first. Keep invite codes, credentials, and local
 identity material out of prompts, logs, and examples.
+
+Contributing documentation, examples, templates, or checks instead of
+running a search? You do not need to register or install a wallet — start at
+[`docs/agents/first-contribution.md`](/docs/agents/first-contribution.md).
 
 ## First Run
 
@@ -98,7 +105,7 @@ Use the CLI for unattended runs and the Python API when the runtime can call int
 
 - **Signal** — a mathematical formula that predicts which instruments will perform well or poorly. Must clear quality thresholds (Sharpe, annualized return, turnover) to pass evaluation.
 - **Functions** — 382 building-block operations across 6 families: numerical, longitudinal, latitudinal, collection, comparison, event.
-- **Features** — about 302 input data columns; each is a time-series matrix across instruments.
+- **Features** — input data columns; each is a time-series matrix across instruments. The feature set is measured per era, universe, and config, not carried as a fixed count.
 - **Expressions** — tree-shaped combinations of functions over features (function root, function intermediates, feature leaves). **Agents MUST NOT generate expressions with compute-graph depth greater than 6, regardless of the era's `max_depth`.** Hard rule, no exceptions — see `README.md` §G Hard Rules.
 - **Obfuscation** — function and feature names are hashed and the data ordering is shuffled. Work with patterns, not identities.
 

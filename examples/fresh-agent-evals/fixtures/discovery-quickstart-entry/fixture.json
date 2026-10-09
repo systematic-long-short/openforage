@@ -1,0 +1,10 @@
+{
+  "conditions": [
+    "AGENTS.md and CLAUDE.md are absent from the prepared workspace; this describes visible files, not native harness autoload behavior.",
+    "The parent supplies a runtime JSON agent through OPENCODE_CONFIG_CONTENT; the effective wildcard default is deny, and permission keys read, list, glob, grep, and edit are allowed. OpenCode's edit permission covers edit/write/patch operations; the normalized event label remains edit, write, or apply_patch.",
+    "The prepared workspace has no .opencode project directory or node_modules tree; a non-model debug-agent probe checks the effective matrix without retaining unrelated output.",
+    "This profile limits tools exposed to the child agent; it does not claim the host has no Python executable."
+  ],
+  "remove_paths": ["AGENTS.md", "CLAUDE.md"],
+  "profile_config": "examples/fresh-agent-evals/trial-inputs/opencode-file-tools-only.json"
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "paper-backed-coverage-series-v1",
+  "title": "Immutable research-evaluation series manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["series_id", "series_version", "manifest_schema_version", "frozen_files", "freeze_note"],
+  "properties": {
+    "series_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,63}$"},
+    "series_version": {"const": 1},
+    "manifest_schema_version": {"const": 1},
+    "frozen_files": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+    },
+    "freeze_note": {"type": "string", "minLength": 1}
+  }
+}

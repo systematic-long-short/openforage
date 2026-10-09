@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "task_id": "paper-backed-coverage-challenger-v1",
+  "source": {
+    "source_excerpt_path": "examples/fresh-agent-evals/fixtures/challenger-research/trial-inputs/primary-source-excerpt.md",
+    "source_excerpt_sha256": "08ecc9767bf0f37055bbda96999dc97c80a86918038ef3ca833b5b3367bd7373",
+    "title": "Illuminating search spaces by mapping elites",
+    "authors": ["Jean-Baptiste Mouret", "Jeff Clune"],
+    "year": 2015,
+    "identifier": "arXiv:1504.04909",
+    "url": "https://arxiv.org/abs/1504.04909",
+    "paraphrase": "MAP-Elites organizes solutions by chosen descriptors and retains strong examples within each region, exposing diversity and how attributes relate to performance."
+  },
+  "research": {
+    "mechanism_explanation": "The paper's descriptor map motivates treating each supplied eligible rotation-feature pair as a separate exploration cell. The callback shuffles cells with the paired seed, cycles once through each active stream per round, removes exhausted streams, and suppresses exact duplicate JSON objects. It preserves supplied payloads. This borrows descriptor-balanced exploration only: the interface has no evaluation feedback for elite replacement or candidate depth metadata. The trusted evaluator determines known identity, depth eligibility, and quality before counting completed evaluations.",
+    "hypothesis": "At equal completed evaluator-call targets on paired synthetic inputs and seeds, round-robin descriptor exploration will have a positive mean unique-valid-cell difference relative to synthetic_uniform_pair_selector_v1. Quality-pass differences are descriptive secondary outcomes, not an assumed benefit. This is a construction-coverage hypothesis, not a return-correlation hypothesis.",
+    "falsifier": "A mean unique-valid-cell difference of zero or less across complete paired comparisons would fail this directional coverage hypothesis for the tested sample. If either arm misses its completed-call target, retain actual counts and classify that pair as incomplete rather than treating it as support. Even a positive development result does not establish generalization, statistical significance, or live usefulness."
+  },
+  "machine_claims": {
+    "evaluation_scope": "synthetic_fixture_only",
+    "comparison_report_path": "trial-output/comparison-report.json",
+    "comparison_report_sha256": "e4c4ce207cd252ae16f26023df30dbe64e3659f2ee11c8457e88b43589eee5fa",
+    "implementation_path": "trial-output/challenger.py",
+    "implementation_sha256": "05f878e32a4204b84caa8132c67b8efea95d3f75d38ab3153d93aeba46b6d0ed",
+    "series_id": "completion-reliability-research-1",
+    "series_manifest_path": "examples/fresh-agent-evals/research/series/completion-reliability-research-1.json",
+    "series_manifest_sha256": "41e6a00b980de986405bef3be8989bc9a28062629283e0ba0e5840eb9c59e6c0",
+    "reference_identity": "synthetic_uniform_pair_selector_v1",
+    "synthetic_uniform_is_genetic": false,
+    "synthetic_quality_scope": "fixture_only",
+    "synthetic_comparison_interpretation": "descriptive_only",
+    "live_performance": {"status": "unknown", "value": null},
+    "out_of_sample_return_correlation": {"status": "unknown", "value": null},
+    "server_acceptance": {"status": "unknown", "value": null},
+    "genetic_reference_target": {
+      "algorithm": "genetic",
+      "target_completed_simulations": 100000,
+      "observed_completed_simulations": null,
+      "status": "unmeasured_target"
+    }
+  },
+  "human_review": {
+    "summary": "The independent development report records four complete paired comparisons, each with 4 completed evaluator calls per arm (16 per arm overall). For alpha seeds 11 and 29, unique-cell differences were 0 and 0; for beta they were +1 and +2. Synthetic quality-pass differences were +1, -1, 0, and -1 respectively. These are descriptive synthetic observations, with no reserved-heldout results included.",
+    "rationale": "Equal proposal opportunities across descriptor cells offer a small, reviewable test of the coverage idea in the archived source. Seeded ordering avoids fixing a single descriptor as the first choice, while exhaustion handling keeps the finite callback honest. Duplicate suppression conserves yielded proposal slots but is not itself an evaluated success. The observed mean cell difference is +0.75 across four development pairs, while synthetic quality is mixed. No significance or general superiority follows from this small sample. Unknown and over-depth payloads remain subject to the evaluator's authoritative gate; stream draws are not completed calls. The callback does not implement MAP-Elites elite retention and the paper does not predict this callback's superiority. Live performance, out-of-sample correlation, server acceptance, and the separate genetic campaign target remain unmeasured."
+  }
+}

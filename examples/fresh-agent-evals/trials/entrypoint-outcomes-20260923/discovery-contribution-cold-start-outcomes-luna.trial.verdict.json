@@ -1,0 +1,220 @@
+{
+  "case_id": "discovery-contribution-cold-start",
+  "grader_version": 7,
+  "graded_at": "2026-09-23T12:42:47Z",
+  "success": true,
+  "checks": [
+    {
+      "artifact": "trial-output/contribution-discovery.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field case_id == 'discovery-contribution-cold-start' (found 'discovery-contribution-cold-start')"
+    },
+    {
+      "artifact": "trial-output/contribution-discovery.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field selected_task == 'contribute' (found 'contribute')"
+    },
+    {
+      "artifact": "trial-output/contribution-discovery.json",
+      "check": "json_field_references_file",
+      "status": "pass",
+      "detail": "field target_file references an existing workspace file (found 'docs/agents/research-opportunities.md')"
+    },
+    {
+      "artifact": "trial-output/contribution-discovery.json",
+      "check": "json_field_contains",
+      "status": "pass",
+      "detail": "field baseline_command contains 'validate_agent_docs.py' (found 'PYTHONDONTWRITEBYTECODE=1 python .github/scripts/validate_agent_docs.py opportunities links')"
+    },
+    {
+      "artifact": "trial-output/contribution-discovery.json",
+      "check": "json_field_present",
+      "status": "pass",
+      "detail": "field baseline_shell_exit_code"
+    },
+    {
+      "artifact": "trial-output/contribution-discovery.json",
+      "check": "json_field_present",
+      "status": "pass",
+      "detail": "field baseline_result"
+    },
+    {
+      "artifact": "trial-output/contribution-discovery.json",
+      "check": "json_list_min_length",
+      "status": "pass",
+      "detail": "field evidence_paths has >= 3 items (found ['README.md', 'CONTRIBUTING.md', 'scripts/start_here.py', 'docs/agents/references/onboarding.json', 'docs/agents/start-here.md', 'docs/agents/first-contribution.md', 'docs/agents/research-opportunities.md', 'docs/agents/research-opportunities.json'])"
+    },
+    {
+      "artifact": "trial-output/contribution-discovery.json",
+      "check": "json_list_contains",
+      "status": "pass",
+      "detail": "field evidence_paths contains 'README.md' (found ['README.md', 'CONTRIBUTING.md', 'scripts/start_here.py', 'docs/agents/references/onboarding.json', 'docs/agents/start-here.md', 'docs/agents/first-contribution.md', 'docs/agents/research-opportunities.md', 'docs/agents/research-opportunities.json'])"
+    },
+    {
+      "artifact": "trial-output/contribution-discovery.json",
+      "check": "json_list_contains",
+      "status": "pass",
+      "detail": "field evidence_paths contains 'docs/agents/first-contribution.md' (found ['README.md', 'CONTRIBUTING.md', 'scripts/start_here.py', 'docs/agents/references/onboarding.json', 'docs/agents/start-here.md', 'docs/agents/first-contribution.md', 'docs/agents/research-opportunities.md', 'docs/agents/research-opportunities.json'])"
+    },
+    {
+      "artifact": "trial-output/contribution-discovery.json",
+      "check": "json_field_contains",
+      "status": "pass",
+      "detail": "field offline_access contains 'invite' (found 'Offline documentation planning and local validation are available without an invite, wallet, installed OpenForage package, daemon, or worker. The startup helper reported that the package is not installed; that does not block this contribution route.')"
+    },
+    {
+      "artifact": "trial-output/contribution-discovery.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field live_actions == [] (found [])"
+    },
+    {
+      "artifact": "trial-output/contribution-discovery.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field no_edit_made == True (found True)"
+    },
+    {
+      "artifact": "trial-output/contribution-discovery.json",
+      "check": "json_list_min_length",
+      "status": "pass",
+      "detail": "field completion_criteria has >= 2 items (found ['Add a concise, copy-ready offline note scaffold covering the selected proposal and primary-source claim, falsifiable mechanism and hypothesis, required public capabilities, evidence gaps, and one next offline step.', 'Keep proposals and hypotheses clearly distinct from results; preserve unknown or unavailable capabilities and metrics, and do not imply that live access is needed to write the note.', 'Run the opportunities and links validators plus git diff --check after editing; introduce no new failures, and keep the five baseline missing-link targets out of scope unless separately authorized.', 'Keep the diff focused on the selected documentation and preserve unrelated workspace changes.'])"
+    },
+    {
+      "artifact": "trial-output/contribution-discovery.json",
+      "check": "text_not_matches",
+      "status": "pass",
+      "detail": "text_not_matches 'openforage\\\\s+(?:register|start|stop)'"
+    }
+  ],
+  "rubric_checks": [
+    {
+      "artifact": "trial-output/contribution-discovery.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field case_id == 'discovery-contribution-cold-start' (found 'discovery-contribution-cold-start')"
+    },
+    {
+      "artifact": "trial-output/contribution-discovery.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field selected_task == 'contribute' (found 'contribute')"
+    },
+    {
+      "artifact": "trial-output/contribution-discovery.json",
+      "check": "json_field_references_file",
+      "status": "pass",
+      "detail": "field target_file references an existing workspace file (found 'docs/agents/research-opportunities.md')"
+    },
+    {
+      "artifact": "trial-output/contribution-discovery.json",
+      "check": "json_field_contains",
+      "status": "pass",
+      "detail": "field baseline_command contains 'validate_agent_docs.py' (found 'PYTHONDONTWRITEBYTECODE=1 python .github/scripts/validate_agent_docs.py opportunities links')"
+    },
+    {
+      "artifact": "trial-output/contribution-discovery.json",
+      "check": "json_field_present",
+      "status": "pass",
+      "detail": "field baseline_shell_exit_code"
+    },
+    {
+      "artifact": "trial-output/contribution-discovery.json",
+      "check": "json_field_present",
+      "status": "pass",
+      "detail": "field baseline_result"
+    },
+    {
+      "artifact": "trial-output/contribution-discovery.json",
+      "check": "json_list_min_length",
+      "status": "pass",
+      "detail": "field evidence_paths has >= 3 items (found ['README.md', 'CONTRIBUTING.md', 'scripts/start_here.py', 'docs/agents/references/onboarding.json', 'docs/agents/start-here.md', 'docs/agents/first-contribution.md', 'docs/agents/research-opportunities.md', 'docs/agents/research-opportunities.json'])"
+    },
+    {
+      "artifact": "trial-output/contribution-discovery.json",
+      "check": "json_list_contains",
+      "status": "pass",
+      "detail": "field evidence_paths contains 'README.md' (found ['README.md', 'CONTRIBUTING.md', 'scripts/start_here.py', 'docs/agents/references/onboarding.json', 'docs/agents/start-here.md', 'docs/agents/first-contribution.md', 'docs/agents/research-opportunities.md', 'docs/agents/research-opportunities.json'])"
+    },
+    {
+      "artifact": "trial-output/contribution-discovery.json",
+      "check": "json_list_contains",
+      "status": "pass",
+      "detail": "field evidence_paths contains 'docs/agents/first-contribution.md' (found ['README.md', 'CONTRIBUTING.md', 'scripts/start_here.py', 'docs/agents/references/onboarding.json', 'docs/agents/start-here.md', 'docs/agents/first-contribution.md', 'docs/agents/research-opportunities.md', 'docs/agents/research-opportunities.json'])"
+    },
+    {
+      "artifact": "trial-output/contribution-discovery.json",
+      "check": "json_field_contains",
+      "status": "pass",
+      "detail": "field offline_access contains 'invite' (found 'Offline documentation planning and local validation are available without an invite, wallet, installed OpenForage package, daemon, or worker. The startup helper reported that the package is not installed; that does not block this contribution route.')"
+    },
+    {
+      "artifact": "trial-output/contribution-discovery.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field live_actions == [] (found [])"
+    },
+    {
+      "artifact": "trial-output/contribution-discovery.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field no_edit_made == True (found True)"
+    },
+    {
+      "artifact": "trial-output/contribution-discovery.json",
+      "check": "json_list_min_length",
+      "status": "pass",
+      "detail": "field completion_criteria has >= 2 items (found ['Add a concise, copy-ready offline note scaffold covering the selected proposal and primary-source claim, falsifiable mechanism and hypothesis, required public capabilities, evidence gaps, and one next offline step.', 'Keep proposals and hypotheses clearly distinct from results; preserve unknown or unavailable capabilities and metrics, and do not imply that live access is needed to write the note.', 'Run the opportunities and links validators plus git diff --check after editing; introduce no new failures, and keep the five baseline missing-link targets out of scope unless separately authorized.', 'Keep the diff focused on the selected documentation and preserve unrelated workspace changes.'])"
+    },
+    {
+      "artifact": "trial-output/contribution-discovery.json",
+      "check": "text_not_matches",
+      "status": "pass",
+      "detail": "text_not_matches 'openforage\\\\s+(?:register|start|stop)'"
+    }
+  ],
+  "assessment_scope": "Discovery verdicts check observable structured rubric fields and recorded actions; free-form prose consistency and human reasoning quality are not assessed. Evidence scope distinguishes synthetic regressions and replay data from fresh native execution; raw-trace consistency checks are not cryptographic authentication.",
+  "evidence_scope": "fresh OpenCode execution is the recorded mode; entry and baseline evidence require retained raw-event digest consistency where applicable; consistency is not cryptographic authentication",
+  "fixture_conditions": [
+    "AGENTS.md and CLAUDE.md are removed from the prepared workspace snapshot.",
+    "This fixture condition describes visible workspace contents only and makes no blanket claim about native harness loading."
+  ],
+  "isolation_violations": [],
+  "forbidden_action_violations": [],
+  "entry_check_violations": [],
+  "outcome_check_violations": [],
+  "metrics": {
+    "success": true,
+    "elapsed_to_first_useful_action_seconds": 9.261,
+    "clarification_count": "unknown",
+    "correct_route": "observed",
+    "claims_supported": true,
+    "execution_mode": "fresh-opencode-run",
+    "fresh_separate_invocation": true,
+    "source_snapshot_sha256": "832c88480d756173fb7b417186f0f4d1c1cbb2db1668ef2397bb4ed25dec1a8d"
+  },
+  "unknowns": [
+    "clarification_count"
+  ],
+  "trial": {
+    "task_mode": "discovery",
+    "harness": "opencode",
+    "harness_version": "1.18.31",
+    "model": "openrouter/openai/gpt-6-luna",
+    "session_id": "ses_f31b94ab3ffePMBlNnossmef0k",
+    "started_at": "2026-09-23T12:38:53Z",
+    "ended_at": "2026-09-23T12:42:47Z",
+    "variant": "max",
+    "execution_mode": "fresh-opencode-run",
+    "fresh_separate_invocation": true,
+    "source_snapshot_sha256": "832c88480d756173fb7b417186f0f4d1c1cbb2db1668ef2397bb4ed25dec1a8d",
+    "fixture_conditions": [
+      "AGENTS.md and CLAUDE.md are removed from the prepared workspace snapshot.",
+      "This fixture condition describes visible workspace contents only and makes no blanket claim about native harness loading."
+    ],
+    "grader_regression_only": "unknown"
+  },
+  "note": "Grader verdict from observable artifacts and recorded actions. Not a claim about the model beyond this trial."
+}

@@ -1,0 +1,72 @@
+{
+  "trial_id": "trial-<case-id>-<UTC-date>-<seq>",
+  "case_id": "<one of the case ids in tasks.json>",
+  "task_mode": "<coached | discovery>",
+  "execution_mode": "<fresh-opencode-run | fresh-separate-harness-cli | events-file-replay | launch-failed | profile-probe-blocked | inert-grader-regression>",
+  "fresh_separate_invocation": "<true for a fresh separate CLI run; false for an events-file replay>",
+  "variant": "<caller-selected model variant or unknown>",
+  "variant_in_argv": "<true only when the variant was passed in the actual run argv>",
+  "harness": "<separate CLI harness product, for example opencode>",
+  "harness_version": "<observed version or unknown>",
+  "model": "<observed argv-selected model id or unknown>",
+  "invocation_argv": ["<argv prefix actually used, prompt excluded, private paths sanitized>"],
+  "session_id": "<fresh session identity from the harness or unknown>",
+  "observed_action_schema_version": 2,
+  "outcome_schema_version": 1,
+  "child_tool_profile": "<sanitized profile descriptor or null; records tool permission fixture without claiming host Python absence>",
+  "child_prompt": {
+    "protocol_version": "<protocol version prepended by the runner to the case prompt>",
+    "rendered_sha256": "<sha256 of the full rendered prompt actually delivered, or unknown for replay>",
+    "pasted_canonical_entry": "<entry kind pasted into the task, or null>",
+    "pasted_entry_source": "<workspace source path from which pasted text was rendered, or null>",
+    "pasted_entry_sha256": "<sha256 of canonical pasted text, or null>",
+    "delivered": "<true when the rendered prompt was sent to a fresh child; false for events-file replay>",
+    "note": "The case prompt in tasks.json stays exact case content; the runner prepends the common protocol and any declared canonical pasted entry, then hashes rendered text instead of retaining it."
+  },
+  "workspace": "<absolute path of the throwaway workspace that was graded>",
+  "workspace_identity": "<sha256 of the absolute workspace path>",
+  "fixture_conditions": ["<fixture conditions recorded from the prepared workspace; describe contents, not native harness loading>"],
+  "source_snapshot_sha256": "<sha256 over the prepared snapshot contents; the git HEAD alone ignores uncommitted candidates>",
+  "source_snapshot_files": "<file count in the snapshot>",
+  "source_git_head": "<HEAD commit or unknown; context only, not a substitute for the snapshot hash>",
+  "started_at": "<ISO-8601 UTC>",
+  "ended_at": "<ISO-8601 UTC>",
+  "exit_code": "<OpenCode CLI process exit code or unknown; not a per-tool shell exit code>",
+  "first_useful_action_seconds": "<number or unknown>",
+  "first_useful_action_unknown_reason": "<reason when the value is unknown>",
+  "clarification_count": "<integer or unknown>",
+  "observed_actions": [
+    {
+      "tool": "<native tool name or unknown>",
+      "command": "<allowlisted command/path preview, sanitized, or null>",
+      "command_sha256": "<hash of the full sanitized command/path, when present>",
+      "command_bytes": "<full sanitized command/path byte length, when present>",
+      "command_truncated": "<true if the displayed command/path is bounded>",
+      "native_tool_call_id_sha256": "<hash used to correlate native call/result updates or null>",
+      "event_sequence": "<first native event order>",
+      "outcome_schema_version": "<optional versioned result block version>",
+      "outcome": {
+        "native_tool_status": "<completed | error | denied | cancelled | timeout | running | pending | skipped | missing | unknown>",
+        "shell_exit_code_status": "<observed | missing | not_applicable | unknown>",
+        "shell_exit_code": "<integer only when explicitly present in native result metadata>",
+        "output_hash_status": "<observed | missing | too_large>",
+        "output_sha256": "<bounded hash of sanitized native tool output or null>",
+        "output_bytes": "<sanitized output byte count or null>"
+      }
+    }
+  ],
+  "action_extraction": {
+    "method": "<how actions were derived from the native event stream>",
+    "events_observed": "<integer>",
+    "actions_observed": "<integer>",
+    "raw_events_scratch": "<path under git-ignored scratch; raw events live only there>",
+    "raw_events_sha256": "<sha256 of the raw scratch file>",
+    "note": "Raw event streams stay in git-ignored private scratch; public records keep normalized observations only."
+  },
+  "plain_text_tail": "<non-JSON stdout only, sanitized>",
+  "artifact_refs": {
+    "<deliverable path>": "<sha256>"
+  },
+  "notes": "Sanitized trial record template. Record only observed facts; write unknown instead of guessing. For entry rubrics, fresh native evidence is checked against retained raw-event digests, events-file-replay is replay-only, and inert-grader-regression is synthetic rubric-only; the verdict evidence_scope states this and consistency is not cryptographic authentication. Never include credentials, invite codes, wallet material, provider usage/cost/token metadata, or private host paths.",
+  "grader_version": 7
+}

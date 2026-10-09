@@ -1,0 +1,146 @@
+{
+  "case_id": "discovery-contribution-cold-start",
+  "task_mode": "discovery",
+  "fixture_conditions": [
+    "AGENTS.md and CLAUDE.md are removed from the prepared workspace snapshot.",
+    "This fixture condition describes visible workspace contents only and makes no blanket claim about native harness loading."
+  ],
+  "variant": "max",
+  "variant_in_argv": true,
+  "execution_mode": "fresh-opencode-run",
+  "fresh_separate_invocation": true,
+  "replay": false,
+  "model": "openrouter/openai/gpt-6-luna",
+  "invocation_argv": [
+    "opencode",
+    "run",
+    "--format",
+    "json",
+    "--dir",
+    "<WORKSPACE>",
+    "--model",
+    "openrouter/openai/gpt-6-luna",
+    "--variant",
+    "max"
+  ],
+  "workspace": "<WORKSPACE>",
+  "workspace_identity": "67661a61da152318587b74b771e0d842bf4f7ccae88cb18ce66318359af5e635",
+  "source_snapshot_sha256": "b0aa8109c2c59b91081480612d4e736c4be1d092c599722f732a8d28ebe29da1",
+  "source_snapshot_files": 122,
+  "source_git_head": "c48cb235fde2d5590601528ef9c83cb9d8f402dd",
+  "harness": "opencode",
+  "harness_version": "1.18.31",
+  "session_id": "ses_f33302f7cffeQllBfaNBfPWbq6",
+  "started_at": "2026-09-23T05:49:18Z",
+  "ended_at": "2026-09-23T05:52:32Z",
+  "exit_code": 0,
+  "launch_error": null,
+  "owned_process_remaining": false,
+  "observed_actions": [
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/README.md"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/docs/agents/first-contribution.md"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/CONTRIBUTING.md"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/AGENTS.md"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/scripts/start_here.py"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/docs/agents/references/onboarding.json"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/docs/agents/start-here.md"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/docs/agents/research-opportunities.md"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/docs/agents/research-campaign.md"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/docs/agents/research-opportunities.json"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/.github/scripts/validate_agent_docs.py"
+    },
+    {
+      "tool": "bash",
+      "command": "PYTHONDONTWRITEBYTECODE=1 python .github/scripts/validate_agent_docs.py opportunities links"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/trial-output"
+    },
+    {
+      "tool": "bash",
+      "command": "git status --short --untracked-files=all"
+    },
+    {
+      "tool": "apply_patch",
+      "command": "<WORKSPACE>/trial-output/contribution-discovery.json"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/trial-output/contribution-discovery.json"
+    },
+    {
+      "tool": "bash",
+      "command": "PYTHONDONTWRITEBYTECODE=1 python -m json.tool trial-output/contribution-discovery.json"
+    },
+    {
+      "tool": "apply_patch",
+      "command": "<WORKSPACE>/trial-output/contribution-discovery.json"
+    },
+    {
+      "tool": "bash",
+      "command": "PYTHONDONTWRITEBYTECODE=1 python -m json.tool trial-output/contribution-discovery.json"
+    }
+  ],
+  "action_extraction": {
+    "method": "normalized allowlisted tool observations from the native JSON event stream",
+    "events_observed": 47,
+    "actions_observed": 19,
+    "raw_events_scratch": ".tmp/fresh-agent-trials/discovery-contribution-cold-start-luna-rerun.raw-events.jsonl",
+    "raw_events_sha256": "ea7591f88ba5b9faec4966ef3d6c062872c1069548a97b0f32b5052d286901e1",
+    "raw_events_bytes": 989039,
+    "note": "Raw events stay in git-ignored scratch; this record keeps only normalized actions."
+  },
+  "child_environment": {
+    "applied": true,
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "python_on_path": "/usr/bin",
+    "note": "Set for the child session so validator runs create no bytecode under frozen dirs; `python` on the child PATH is this interpreter."
+  },
+  "child_prompt": {
+    "protocol_version": "workspace-protocol-v1",
+    "rendered_sha256": "c721e273c4c117181ae2b3c81379fea3169569f040462606b720230bd10b3173",
+    "delivered": true,
+    "note": "The runner prepends the common protocol block to the case prompt from tasks.json; the case prompt itself stays exact case content. The rendered text is hashed, not retained, because it embeds the workspace path."
+  },
+  "first_useful_action_seconds": 17.388,
+  "first_useful_action_unknown_reason": null,
+  "clarification_count": null,
+  "plain_text_tail": "",
+  "artifact_refs": {
+    "trial-output/contribution-discovery.json": "948ab82bfb3095b1af10a71a5b837654f665419b5ef1a2c53069e881374c060d"
+  },
+  "claim": "single-trial observation; not a measured result"
+}

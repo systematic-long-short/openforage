@@ -1,0 +1,55 @@
+{
+  "_template": true,
+  "record_type": "frozen_reference_record",
+  "availability": "<available|unavailable|pending|unknown>",
+  "unavailable_reason": "<required when the reference is not available>",
+  "baseline_id": "<baseline-id-or-sha256-or-null>",
+  "hash": "<sha256-or-null>",
+  "target_completed_simulations": 100000,
+  "observed_completed_simulations": null,
+  "frozen": false,
+  "counts_basis": "completed evaluator simulations only; started, queued, checkpointed, and cache-hit simulations do not count; a final failing-quality evaluation is completed; runtime errors are failed",
+  "algorithm_identity": {
+    "recorded_algorithm": "<algorithm identity, or a stated unavailable marker>",
+    "verified_installed_comparator": "random_weighted",
+    "ga_reference_implementation_present": "installed-callable-observed-only",
+    "evidence_ref": null,
+    "note": "The installed 0.2.36 surface exposes a callable openforage.templates.genetic template and the CLI accepts --algorithm genetic; the internal optimizer implementation was not inspected and no full genetic-algorithm (GA) benchmark has run in this packet. Record the genetic choice as installed-but-unbenchmarked; if a measured GA result is claimed it must name the identified implementation and point at existing evidence. Never label random_weighted as GA and never invent any other genetic CLI flag or template."
+  },
+  "compatible_baseline_creation": {
+    "required_when_no_compatible_baseline_exists": true,
+    "status": "<found|created|incomplete|missing>",
+    "status_reason": "<required when the status is missing or incomplete>",
+    "config_frozen_before_run": null,
+    "evidence_frozen_after_run": null,
+    "distinct_id_and_lineage": true,
+    "silent_overwrite": false,
+    "note": "If no compatible baseline exists for the selected era/config, create a real baseline with its own id and lineage. Config is frozen before the run and evidence after it. Incomplete stays incomplete."
+  },
+  "checkpoint_reconciliation": {
+    "attempted": null,
+    "completed": null,
+    "in_flight": null,
+    "failed": null,
+    "resumable_state_not_progress": true,
+    "cache_hits_are_not_completed": true
+  },
+  "provenance": {
+    "repo_commit": null,
+    "dirty_diff_hash": null,
+    "package_version": null,
+    "distribution": null,
+    "build": null,
+    "python_version": null,
+    "platform": null,
+    "dependencies_manifest_hash": null,
+    "artifacts": [{"path": null, "sha256": null, "recorded_at": null, "unavailable_reason": "<required when no artifact is recorded>"}],
+    "integrity_note": "hashes attest integrity, not correctness or authenticity; sanitize exports and never hash or embed secrets"
+  },
+  "recorded_by": "<child-session-identity>",
+  "recorded_at": "<ISO-8601>",
+  "source": "<how this frozen record was obtained>",
+  "independently_reverified": false,
+  "completion_claim": "frozen_reference_only",
+  "notes": "Record TEMPLATE. The 100000 is a target, not an observed count, and this file does not claim that this template or directory ran 100000 evaluator simulations, that a full benchmark completed, or that the frozen reference was regenerated. If the recorded identifier is unavailable, say so with a reason; do not invent numbers."
+}

@@ -1,0 +1,122 @@
+{
+  "case_id": "docs-fix",
+  "variant": "max",
+  "variant_in_argv": true,
+  "execution_mode": "fresh-opencode-run",
+  "fresh_separate_invocation": true,
+  "replay": false,
+  "model": "openrouter/deepseek/deepseek-v4.1-flash",
+  "invocation_argv": [
+    "opencode",
+    "run",
+    "--format",
+    "json",
+    "--dir",
+    "<WORKSPACE>",
+    "--model",
+    "openrouter/deepseek/deepseek-v4.1-flash",
+    "--variant",
+    "max"
+  ],
+  "workspace": "<WORKSPACE>",
+  "workspace_identity": "65c67cde8ef19cfdea7a74fb0b27f0ac1e1c343d56e210849c4defffb361ee2a",
+  "source_snapshot_sha256": "29a43090103aaf7eb38bc8eb7a11f7f0547e490e75f9773d1fb42e42568c088c",
+  "source_snapshot_files": 116,
+  "source_git_head": "c48cb235fde2d5590601528ef9c83cb9d8f402dd",
+  "harness": "opencode",
+  "harness_version": "1.18.31",
+  "session_id": "ses_f35cbc52fffejERhlvEF47gADs",
+  "started_at": "2026-09-22T17:40:14Z",
+  "ended_at": "2026-09-22T17:40:55Z",
+  "exit_code": 0,
+  "launch_error": null,
+  "owned_process_remaining": false,
+  "observed_actions": [
+    {
+      "tool": "bash",
+      "command": "git status --short && git log --oneline -3"
+    },
+    {
+      "tool": "read",
+      "command": "<REPO>/docs/agents/quickstart.md"
+    },
+    {
+      "tool": "bash",
+      "command": "python .github/scripts/validate_agent_docs.py truthfulness"
+    },
+    {
+      "tool": "bash",
+      "command": "ls -la .tmp/fresh-agent-trials/docs-fix/ 2>/dev/null; ls .tmp/fresh-agent-trials/ 2>/dev/null"
+    },
+    {
+      "tool": "read",
+      "command": "<REPO>/.github/scripts/validate_agent_docs.py"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/docs/agents/quickstart.md"
+    },
+    {
+      "tool": "bash",
+      "command": "python .github/scripts/validate_agent_docs.py truthfulness; echo \"exit=$?\""
+    },
+    {
+      "tool": "bash",
+      "command": "git -C <WORKSPACE> rev-parse --is-inside-work-tree 2>&1; ls trial-output/"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>.trial.json"
+    },
+    {
+      "tool": "bash",
+      "command": "git status --short && git ls-files docs/agents/quickstart.md trial-output/ 2>/dev/null"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/trial-output/prepare-record.json"
+    },
+    {
+      "tool": "bash",
+      "command": "ls examples/fresh-agent-evals/ 2>/dev/null && python examples/fresh-agent-evals/grader.py 2>&1 | head -5"
+    },
+    {
+      "tool": "edit",
+      "command": "<WORKSPACE>/docs/agents/quickstart.md"
+    },
+    {
+      "tool": "bash",
+      "command": "python .github/scripts/validate_agent_docs.py truthfulness; echo \"exit=$?\""
+    },
+    {
+      "tool": "bash",
+      "command": "git diff -- docs/agents/quickstart.md"
+    },
+    {
+      "tool": "write",
+      "command": "<WORKSPACE>/trial-output/evidence.json"
+    },
+    {
+      "tool": "bash",
+      "command": "python -c \"import json;d=json.load(open('trial-output/evidence.json'));print(list(d));print(d['observed_result'])\" && python .github/scripts/validate_agent_docs.py truthfulness"
+    }
+  ],
+  "action_extraction": {
+    "method": "normalized allowlisted tool observations from the native JSON event stream",
+    "events_observed": 46,
+    "actions_observed": 17,
+    "raw_events_scratch": ".tmp/fresh-agent-trials/docs-fix.raw-events.jsonl",
+    "raw_events_sha256": "fcd8f842c85f8c033ace18b63a0b0271a94fae720187e676dca8c511e6212390",
+    "raw_events_bytes": 104835,
+    "note": "Raw events stay in git-ignored scratch; this record keeps only normalized actions."
+  },
+  "first_useful_action_seconds": 3.372,
+  "first_useful_action_unknown_reason": null,
+  "clarification_count": null,
+  "plain_text_tail": "",
+  "artifact_refs": {
+    "docs/agents/quickstart.md": "fda29a1329f14215608763ae6c0d2ab82771dba50170c353daf21d77aa959281",
+    "trial-output/evidence.json": "db7d6e5b275729304002c155966b1cfb44438a42f11369f47ec2c914b85aa425"
+  },
+  "claim": "single-trial observation; not a measured result"
+}

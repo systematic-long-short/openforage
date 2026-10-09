@@ -1,0 +1,33 @@
+{
+  "harness": "codex",
+  "harness_version": "0.156.1",
+  "native_ended_at": "2026-09-24T17:01:14.427951Z",
+  "native_started_at": "2026-09-24T16:59:21.734711Z",
+  "portable_patch_path": ".tmp/fresh-agent-research/runs/native-workflow-research-1/workflow-research-codex-1/contribution.patch",
+  "portable_patch_sha256": "b145c1b4ebff7a81fe360d7af587cb9b270c585904eb33f87517a380be44d6e5",
+  "public_suite_is_instruction_isolated": true,
+  "record_schema_version": 1,
+  "requested_model_selector": {
+    "backend_served_value": "not_observed",
+    "source": "explicit_cli_argv",
+    "status": "requested_only",
+    "value": "gpt-6-astra"
+  },
+  "requested_reasoning_effort": {
+    "backend_served_value": "not_observed",
+    "source": "explicit_cli_argv",
+    "status": "requested_only",
+    "value": "medium"
+  },
+  "requested_variant": {
+    "source": "explicit_cli_argv",
+    "status": "not_applicable"
+  },
+  "run_id": "workflow-research-codex-1",
+  "selector_note": "Caller argv requests only; backend-served model is not observed.",
+  "series_id": "native-workflow-research-1",
+  "series_manifest_sha256": "19b6297970155929ee928a4197c24105578138bfeb23044e0f1d16c4a1090ab3",
+  "snapshot_sha256": "e662d6274067d652b10685b0153348d71c177e4e33f269d414035f959b0dbfcf",
+  "source_tree_sha256": "2a37337d07bb9d149056d898ac600c6bcef610553922305d9ce3d596f176372f",
+  "workspace_identity_sha256": "0fd0715b2ac6a6fae35616757ac817764944773d50e089f2a42d7640b1df6c1b"
+}

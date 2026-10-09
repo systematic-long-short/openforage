@@ -1,0 +1,26 @@
+{
+  "_template": true,
+  "schema_version": 1,
+  "note": "Ignored synthetic template. Replace values from actual non-secret observations and remove _template before using as context. This file grants no live authorization.",
+  "authorization": {
+    "explicit_live_authorization": false,
+    "evidence_ref": null
+  },
+  "observations": {
+    "live_access_available": false,
+    "package_installed": false,
+    "genetic_callable_observed": false,
+    "separate_same_harness_cli_observed": false,
+    "distinct_session_identity_observed": false,
+    "source_ref": null,
+    "observed_at": null
+  },
+  "scope_observation": null,
+  "research_progress": {
+    "investigated_opportunity_ids": [],
+    "negative_approach_ids": [],
+    "analyzed_experiment_ids": [],
+    "active_opportunity_id": null,
+    "pending_ablation": null
+  }
+}

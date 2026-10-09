@@ -1,0 +1,36 @@
+{
+  "schema_version": 2,
+  "case_id": "first-finished-contribution-primary",
+  "route": {
+    "selected_task": "contribute",
+    "offline_contribution_access": "not_required",
+    "live_campaign_authorization": "explicit_user_authorization_required",
+    "authoritative_sources": [
+      "AGENTS.md",
+      "docs/agents/first-contribution.md",
+      "README.md"
+    ]
+  },
+  "contribution": {
+    "kind": "documentation_correction",
+    "changed_paths": ["docs/agents/quickstart.md"]
+  },
+  "validation": {
+    "baseline": {
+      "command": "python .github/scripts/validate_agent_docs.py truthfulness links",
+      "modes": ["truthfulness", "links"],
+      "exit_code": 1,
+      "result": "failed"
+    },
+    "final": {
+      "command": "python .github/scripts/validate_agent_docs.py truthfulness links",
+      "modes": ["truthfulness", "links"],
+      "exit_code": 0,
+      "result": "passed"
+    }
+  },
+  "human_review": {
+    "summary": "Corrected the quickstart registration example to pass the invite_code placeholder explicitly and removed the stale fixture comment.",
+    "rationale": "The baseline validator identified the bare registration call as stale. README section E.2 and the quickstart explanation document an invite code for first registration in an explicitly authorized live campaign. The corrected example matches that requirement. The relevant truthfulness and links checks passed afterward, and git diff --check exited successfully. The snapshot files were already untracked, so git diff does not display the documentation change; no files were staged."
+  }
+}

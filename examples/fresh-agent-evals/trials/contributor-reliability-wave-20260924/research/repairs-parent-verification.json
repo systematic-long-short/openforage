@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "scope": "Focused current-helper regression using retained native events; not a new native trial or replacement verdict",
+  "results": [
+    {
+      "harness": "opencode",
+      "action_level_command_evidence": "passed",
+      "report_write_sequences": [
+        52
+      ],
+      "access_audit_findings": [
+        "native file-tool read is outside the documented public-input/output allowlist",
+        "native subject access audit is unknown: native file-tool path is incomplete"
+      ],
+      "original_verdict_unchanged": true
+    },
+    {
+      "harness": "codex",
+      "action_level_command_evidence": "passed",
+      "report_write_sequences": [
+        11
+      ],
+      "access_audit_findings": [],
+      "original_verdict_unchanged": true
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "case_id": "recovery",
+  "classification": "stale_worker",
+  "pid_alive": false,
+  "process_identity_checked": true,
+  "signals_sent": 0,
+  "evidence_paths": [
+    ".openforage-state/status.json",
+    ".openforage-state/background.pid",
+    ".openforage-state/events.jsonl",
+    ".openforage-state/worker.log"
+  ],
+  "planned_action": "Run `openforage stop --data-dir .openforage-state --json`, then `openforage start --data-dir .openforage-state --algorithm random_weighted --json` to clear the stale worker record and restart the worker against the same data directory .openforage-state.",
+  "scope": {
+    "data_dir": ".openforage-state"
+  },
+  "data_dir_mutated": false
+}

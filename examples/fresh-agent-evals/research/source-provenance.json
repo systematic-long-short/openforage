@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "source_excerpt_path": "examples/fresh-agent-evals/fixtures/challenger-research/trial-inputs/primary-source-excerpt.md",
+  "title": "Illuminating search spaces by mapping elites",
+  "authors": [
+    "Jean-Baptiste Mouret",
+    "Jeff Clune"
+  ],
+  "year": 2015,
+  "identifier": "arXiv:1504.04909",
+  "url": "https://arxiv.org/abs/1504.04909",
+  "maintainer_paraphrase": "MAP-Elites uses user-selected variation dimensions to retain strong candidates across a descriptor map, making the distribution of solutions visible instead of exposing only a global best. This motivates a coverage hypothesis, not a yield or live-performance claim."
+}

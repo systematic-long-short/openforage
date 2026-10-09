@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "task_id": "paper-backed-coverage-challenger-v1",
+  "source": {
+    "source_excerpt_path": "examples/fresh-agent-evals/fixtures/challenger-research/trial-inputs/primary-source-excerpt.md",
+    "source_excerpt_sha256": "08ecc9767bf0f37055bbda96999dc97c80a86918038ef3ca833b5b3367bd7373",
+    "title": "Illuminating search spaces by mapping elites",
+    "authors": ["Jean-Baptiste Mouret", "Jeff Clune"],
+    "year": 2015,
+    "identifier": "arXiv:1504.04909",
+    "url": "https://arxiv.org/abs/1504.04909",
+    "paraphrase": "MAP-Elites organizes solutions by chosen descriptive dimensions and retains strong examples across that map, revealing varied solutions and how their attributes relate to performance."
+  },
+  "research": {
+    "mechanism_explanation": "The paper's descriptor map motivates treating each supplied eligible feature-by-rotation pair as a cell. The callback shuffles cell order with the paired seed and consumes one proposal per active cell per sweep, removing exhausted streams and suppressing exact JSON duplicates globally. This balances construction opportunities without quality feedback. It implements neither elite replacement nor evolutionary mutation. The evaluator alone establishes valid cells, depth at most six, and completed calls; stream origin and proposal count do not establish acceptance.",
+    "hypothesis": "At matched completed evaluator calls, cycling across eligible cells will yield a positive mean paired difference in unique valid cells reached against synthetic_uniform_pair_selector_v1 across the designated development input/seed pairs. This tests construction coverage only; no positive quality-pass difference is predicted.",
+    "falsifier": "A nonpositive mean paired unique-valid-cell difference across complete development comparisons would fail the directional coverage hypothesis. Any incomplete comparison prevents the planned matched-target conclusion and must retain actual completion counts. Even a positive descriptive difference cannot establish general superiority, out-of-sample return correlation, or live usefulness."
+  },
+  "machine_claims": {
+    "evaluation_scope": "synthetic_fixture_only",
+    "comparison_report_path": "trial-output/comparison-report.json",
+    "comparison_report_sha256": "889fcd805e52b60227d362a4f544266bdf8b4b0f4f1bebc624ba7dfa74e4a91f",
+    "implementation_path": "trial-output/challenger.py",
+    "implementation_sha256": "92ff962cfad843ec5ce85911788ffe17f42707f0d269d6a8c3c8418bd6cb5af9",
+    "series_id": "native-workflow-research-1",
+    "series_manifest_path": "examples/fresh-agent-evals/research/series/native-workflow-research-1.json",
+    "series_manifest_sha256": "19b6297970155929ee928a4197c24105578138bfeb23044e0f1d16c4a1090ab3",
+    "reference_identity": "synthetic_uniform_pair_selector_v1",
+    "synthetic_uniform_is_genetic": false,
+    "synthetic_quality_scope": "fixture_only",
+    "synthetic_comparison_interpretation": "descriptive_only",
+    "live_performance": {"status": "unknown", "value": null},
+    "out_of_sample_return_correlation": {"status": "unknown", "value": null},
+    "server_acceptance": {"status": "unknown", "value": null},
+    "genetic_reference_target": {
+      "algorithm": "genetic",
+      "target_completed_simulations": 100000,
+      "observed_completed_simulations": null,
+      "status": "unmeasured_target"
+    }
+  },
+  "human_review": {
+    "summary": "The single required development evaluation reported complete_equal_calls: four paired runs, each with four completed calls per arm (16 per arm overall). In alpha/11, alpha/29, beta/11, beta/29 order, challenger/reference valid-cell counts were 3/3, 3/3, 3/2, 4/2; synthetic quality-pass counts were 2/1, 1/2, 2/2, 1/2. Mean paired cell difference was +0.75; quality passes totaled 6 versus 7. These are descriptive synthetic observations only, with no superiority inference.",
+    "rationale": "Round-robin cell opportunities offer a small, reviewable translation of the archived paper's coverage motivation. Rejected or duplicate candidates can still disrupt balanced completed coverage, and the callback cannot observe evaluator feedback. The report records one unknown-identity rejection and two over-depth rejections for the challenger across processed attempts; those are not completed evaluations. Depth metadata is not exposed by the documented context, so unchanged stream proposals rely on the evaluator's depth gate. Finite streams terminate naturally, and no counts are padded. The hypothesis is documented here after the required development run, not claimed as a preregistration. Two ties and two positive coverage differences with mixed quality are limited development evidence. The paper supplies motivation, not a prediction of superiority for this callback. The reserved held-out input was not accessed during development; its independent evaluation belongs to the trusted grader. Live performance, server acceptance and out-of-sample correlation remain unknown, and the separate genetic campaign target remains unmeasured."
+  }
+}

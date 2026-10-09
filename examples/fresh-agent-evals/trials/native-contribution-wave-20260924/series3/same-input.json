@@ -1,0 +1,20 @@
+{
+  "series_id": "contribution-wave-final-3",
+  "series_manifest_sha256": "3b7d2b3b820da9229647beede852e7457e627d9096857ea5a0d40358a597e5f8",
+  "run_ids": [
+    "opencode-primary-2",
+    "codex-primary-1"
+  ],
+  "snapshot_sha256": "97ca7aff9fb68e32994d8d2bb39ee3c28036e628c65aa7e12173a71fb542dcaa",
+  "source_tree_sha256": "574f1b86cd7e7b88dd069f326b55004cf97175ccca83af780ab03705476c38a8",
+  "snapshot_file_count": 274,
+  "initial_file_maps_equal": true,
+  "codex_launch_snapshot_pin_matched": true,
+  "case_and_manifest_equal": true,
+  "strict_verdicts": {
+    "opencode-primary-2": "fail",
+    "codex-primary-1": "fail"
+  },
+  "successful_only_paired_comparison_admitted": false,
+  "basis": "Both strict original verdicts failed; this record identifies shared inputs only and is not a successful-only comparison."
+}

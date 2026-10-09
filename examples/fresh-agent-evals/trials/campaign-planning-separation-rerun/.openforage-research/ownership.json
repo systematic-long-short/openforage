@@ -1,0 +1,14 @@
+{
+  "claim_version": 1,
+  "campaign_id": "campaign-fixture-20260101",
+  "data_dir": ".openforage-state",
+  "owner_session_identity": "child-fixture-01",
+  "previous_owner_session_identity": "parent-fixture-01",
+  "claim_mechanism": "atomic-create",
+  "fencing_token": 7,
+  "claimed_at": "2026-09-21T00:00:00Z",
+  "transferred_at": "2026-09-22T18:07:26Z",
+  "last_acknowledged_transition": "T-baseline-start",
+  "resume_target": "baseline",
+  "state": "baseline"
+}

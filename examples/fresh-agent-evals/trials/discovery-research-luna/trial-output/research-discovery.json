@@ -1,0 +1,49 @@
+{
+  "case_id": "discovery-research",
+  "selected_task": "research",
+  "opportunity_id": "coverage-stratified-sampling",
+  "primary_source": "https://arxiv.org/abs/1504.04909",
+  "immediate_action": "Draft the falsifiable coverage-stratification hypothesis and equal-completed-evaluation evidence plan from the local research map. The existing `python examples/agent-campaign/coverage_challenger.py --smoke` path can exercise policy/accounting on synthetic data only; do not treat it as a library measurement or superiority result.",
+  "reference_target": "genetic (GA), 100,000 completed simulations — target only; no measured result is implied.",
+  "evidence_paths": [
+    "README.md",
+    "docs/agents/start-here.md",
+    "docs/agents/references/onboarding.json",
+    "docs/agents/research-opportunities.json",
+    "docs/agents/research-campaign.md",
+    "src/openforage/skills/search_research/SKILL.md",
+    "examples/agent-campaign/campaign.json",
+    "docs/agents/references/compatibility.json",
+    "examples/agent-campaign/coverage_challenger.py",
+    "examples/agent-campaign/stratified_policy.py",
+    "src/openforage/skills/agent_runtime_integration/references/harnesses.json",
+    "src/openforage/skills/agent_runtime_integration/references/opencode.md",
+    "trial-output/prepare-record.json"
+  ],
+  "capability_availability": {
+    "openforage_package": "unavailable",
+    "campaign_access": "unavailable",
+    "scheduler": "unverified",
+    "separate_session": "not_established"
+  },
+  "package_installed": false,
+  "campaign_access_available": false,
+  "scheduler_verified": false,
+  "separate_session_established": false,
+  "offline_work_available": true,
+  "live_campaign_required": false,
+  "registration_attempted": false,
+  "continuous_search_posture": "blocked_until_separate_session",
+  "main_session_fallback": false,
+  "out_of_sample_boundary": "No out-of-sample usefulness or correlation is established by this offline design or a synthetic smoke. Local evaluator results are in-sample; only the protocol's server-side evaluation is out-of-sample. Missing or delayed evidence remains unknown.",
+  "supported_claims": [
+    "The default research route is offline research; it requires no OpenForage installation or campaign access. The preparation record confirms campaign access is unavailable, the package must be treated as not installed, and no verified scheduler evidence is supplied for this exercise.",
+    "The selected opportunity asks whether targeting under-evaluated rotation-subfamily × feature cells finds qualifying signals missed by uniform random_weighted sampling at equal completed-evaluation counts. It is proposed, not a performance finding or superiority claim.",
+    "The map cites MAP-Elites (arXiv:1504.04909) as a starting point for a quality-diversity archive, not as proof that this challenger will outperform a baseline; the paper itself was not consulted in this file-only step.",
+    "The local coverage-challenger smoke path is explicitly synthetic and labels its output not-a-measured-result. Its policy/accounting exercise cannot establish OpenForage signal quality or out-of-sample usefulness.",
+    "The opportunity's live comparison requires public OpenForage surfaces including random_weighted, catalog/feature vocabulary, graph-complexity measurement, and search statistics; those are not verified in this uninstalled-package exercise.",
+    "Coverage should be counted only for valid, observed feature × rotation pairs; the eligible denominator may be unknown, and unavailable per-candidate feature attribution must not be replaced with invented cells.",
+    "The reference is genetic (GA) at a target of 100,000 completed simulations, not an observed completion or benchmark result.",
+    "Continuous search requires a separately started same-harness CLI process and distinct identity. No separate child is established for this task, so the main session is not a fallback; the scheduler remains unverified here."
+  ]
+}

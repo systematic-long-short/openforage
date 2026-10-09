@@ -1,0 +1,19 @@
+{
+  "run_id": "reliability-research-opencode-1",
+  "original_status": "fail",
+  "original_outcome_unchanged": true,
+  "report_write_false_positive": {
+    "evaluator_sequence": 52,
+    "read_only_sha256sum_sequences": [
+      55,
+      66
+    ],
+    "root_cause": "Shared write detector treated path mentions in hash commands as writes; fixed by completed research-write-repair. Original verdict remains unchanged."
+  },
+  "other_failures_remain_separate": [
+    "file-tool read outside documented allowlist",
+    "incomplete normalized file-tool discovery path"
+  ],
+  "independent_comparison_scope": "synthetic fixture only; no GA/live/OOS superiority inference",
+  "repair_evidence": "packet-research-write-repair-closeout.json"
+}

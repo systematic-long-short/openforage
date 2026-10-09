@@ -1,0 +1,118 @@
+{
+  "artifact_diff": [
+    {
+      "after_sha256": "1350e9e5438cc2a47dbac85acfb68528c77a5b89a6451c4120053a0284c3d379",
+      "before_sha256": "8aa6d00c03210614aa655f3bce19d7afc89ded1ddd1344e3f9dba45550b39d5a",
+      "change": "modified",
+      "path": "docs/agents/quickstart.md"
+    },
+    {
+      "after_sha256": "3718bcab9d27c5013dc09f207dfb00c78ee36f624f6103fbde1ae68acebbe99d",
+      "before_sha256": null,
+      "change": "created",
+      "path": "trial-output/completion.json"
+    }
+  ],
+  "artifact_refs": {
+    "docs/agents/quickstart.md": "1350e9e5438cc2a47dbac85acfb68528c77a5b89a6451c4120053a0284c3d379",
+    "trial-output/completion.json": "3718bcab9d27c5013dc09f207dfb00c78ee36f624f6103fbde1ae68acebbe99d"
+  },
+  "case_id": "first-finished-contribution-primary",
+  "evidence_scope": "fresh-native-trial",
+  "failure_reasons": [],
+  "harness": "codex",
+  "human_review": {
+    "automated_quality_assessment": "not_performed",
+    "rationale": "The baseline validator identified the bare registration call as stale. README section E.2 and the quickstart explanation document an invite code for first registration in an explicitly authorized live campaign. The corrected example matches that requirement. The relevant truthfulness and links checks passed afterward, and git diff --check exited successfully. The snapshot files were already untracked, so git diff does not display the documentation change; no files were staged.",
+    "summary": "Corrected the quickstart registration example to pass the invite_code placeholder explicitly and removed the stale fixture comment."
+  },
+  "metrics": {
+    "artifact_diff": {
+      "changed_file_count": 2,
+      "changed_paths": [
+        "docs/agents/quickstart.md",
+        "trial-output/completion.json"
+      ],
+      "sha256_evidence": [
+        {
+          "after_sha256": "1350e9e5438cc2a47dbac85acfb68528c77a5b89a6451c4120053a0284c3d379",
+          "before_sha256": "8aa6d00c03210614aa655f3bce19d7afc89ded1ddd1344e3f9dba45550b39d5a",
+          "change": "modified",
+          "path": "docs/agents/quickstart.md"
+        },
+        {
+          "after_sha256": "3718bcab9d27c5013dc09f207dfb00c78ee36f624f6103fbde1ae68acebbe99d",
+          "before_sha256": null,
+          "change": "created",
+          "path": "trial-output/completion.json"
+        }
+      ]
+    },
+    "clarification_observations": {
+      "count": 0,
+      "status": "observed"
+    },
+    "time_to_first_meaningful_action": {
+      "elapsed_seconds": null,
+      "event_sequence": 5,
+      "reason": "native trace did not expose a usable event timestamp",
+      "status": "unknown"
+    },
+    "time_to_first_verified_completed_contribution": {
+      "elapsed_seconds": 59.588,
+      "exact_completion_time": false,
+      "measurement": "elapsed_at_verification_upper_bound",
+      "status": "verified",
+      "verification_at_epoch": 1790197530.4093285
+    },
+    "unnecessary_setup_attempts": {
+      "attempts": [],
+      "count": null,
+      "observed_lower_bound": 0,
+      "status": "unknown"
+    },
+    "unsupported_structured_claims": {
+      "count": 0,
+      "status": "observed"
+    },
+    "validation_outcome": {
+      "agent_baseline": "observed_failure",
+      "agent_final": "observed_pass",
+      "independent_final": "pass"
+    }
+  },
+  "native_trace": {
+    "actions_observed": 17,
+    "direct_suite_access_audit": "complete_no_direct_access",
+    "direct_suite_access_indices": [],
+    "events_observed": 36,
+    "raw_events_sha256": "13f9374f769c6c3bff92f9a44e785f1a53646daf48417165b171b39b1eb3e048",
+    "trace_complete": true
+  },
+  "run_id": "codex-primary-2",
+  "series_id": "contribution-wave-final-4",
+  "series_manifest_sha256": "2a55a997dd58961bc7b8d2d766fb396fac4aedbf1e34fe77012e4e35445a97fa",
+  "status": "pass",
+  "success": true,
+  "synthetic_regression": false,
+  "validation": {
+    "baseline_native_item_id_sha256": "919299b8b8860441036a08b8ce4a6486ee1712366afaec2286c8579387359f27",
+    "final_native_item_id_sha256": "fcf995ce3ce15e435101e7a49adbafdc79fcf9203eefbab40b5d124cae39b03f",
+    "independent_final": {
+      "executed": true,
+      "exit_code": 0,
+      "method": "independent unchanged repository validator on final workspace",
+      "modes": [
+        "truthfulness",
+        "links"
+      ],
+      "owned_process_group_remaining": false,
+      "status": "pass",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 34,
+      "stdout_sha256": "47e72519f3d78aa66237ad94c9d5ff537b8a03e0584c4fbfdcbfc61cf9f97303",
+      "timed_out": false
+    }
+  }
+}

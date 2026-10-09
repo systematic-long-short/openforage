@@ -1,0 +1,16 @@
+{
+  "status_version": 1,
+  "campaign_id": "campaign-fixture-20260101",
+  "data_dir": ".openforage-state",
+  "owner_session_identity": "child-fixture-01",
+  "worker": {
+    "running": true,
+    "process_health": {"state": "running", "heartbeat_age_seconds": 12},
+    "algorithm": "random_weighted"
+  },
+  "events_file": ".openforage-research/events.jsonl",
+  "event_tail": [
+    "2026-09-22T11:59:00Z improvement_prompt consumed by child-fixture-01",
+    "2026-09-22T12:00:00Z ownership acknowledged by child-fixture-01"
+  ]
+}

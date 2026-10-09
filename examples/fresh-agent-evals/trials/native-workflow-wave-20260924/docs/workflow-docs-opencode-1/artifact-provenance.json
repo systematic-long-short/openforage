@@ -1,0 +1,14 @@
+{
+  "run_id": "workflow-docs-opencode-1",
+  "series_manifest_sha256": "d6655322dbfb9eb13c3a96671aa83d9de7d9a2a04091cfb07e4c712b698ccb3d",
+  "original_fixture_path": "docs/agents/quickstart.md",
+  "seeded_document_sha256": "8aa6d00c03210614aa655f3bce19d7afc89ded1ddd1344e3f9dba45550b39d5a",
+  "final_artifact_sha256": {
+    "docs/agents/quickstart.md": "f3f5f2e24df892ddee511a63fbe074865c810c56309367d31a1898783aee65cf",
+    "trial-output/completion.json": "696f5c236bb23c421bdfab5748205e6180fc0226195a2017f5cfcd878e3d3016"
+  },
+  "exact_final_document_sha256": "f3f5f2e24df892ddee511a63fbe074865c810c56309367d31a1898783aee65cf",
+  "original_verdict_unchanged": true,
+  "export_kind": "Exact original records and contributed bytes; unified diff is derived",
+  "raw_native_streams_in_export": false
+}

@@ -1,0 +1,214 @@
+{
+  "case_id": "discovery-pasted-entry",
+  "grader_version": 7,
+  "graded_at": "2026-09-23T12:38:53Z",
+  "success": false,
+  "checks": [
+    {
+      "artifact": "trial-output/pasted-entry-contribution.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field case_id == 'discovery-pasted-entry' (found 'discovery-pasted-entry')"
+    },
+    {
+      "artifact": "trial-output/pasted-entry-contribution.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field selected_task == 'contribute' (found 'contribute')"
+    },
+    {
+      "artifact": "trial-output/pasted-entry-contribution.json",
+      "check": "json_field_references_file",
+      "status": "pass",
+      "detail": "field target_file references an existing workspace file (found 'docs/agents/references/onboarding.json')"
+    },
+    {
+      "artifact": "trial-output/pasted-entry-contribution.json",
+      "check": "json_field_contains",
+      "status": "pass",
+      "detail": "field baseline_check contains 'validate_agent_docs.py' (found \"Before editing, run `python scripts/start_here.py --selfcheck`, `python scripts/start_here.py --check`, and `python .github/scripts/validate_agent_docs.py first-read guidance links`, matching the First Contribution guide's Improve root routing or onboarding row. These are planned baseline checks, not results that ran.\")"
+    },
+    {
+      "artifact": "trial-output/pasted-entry-contribution.json",
+      "check": "json_list_min_length",
+      "status": "pass",
+      "detail": "field evidence_paths has >= 2 items (found ['docs/agents/references/onboarding.json', 'docs/agents/first-contribution.md', 'docs/agents/start-here.md', 'scripts/start_here.py', 'docs/start-here/onboard-your-agent.md', 'CONTRIBUTING.md', '.github/scripts/validate_agent_docs.py', 'docs/agents/harness-verification.md', 'src/openforage/skills/agent_runtime_integration/references/harnesses.json', 'src/openforage/skills/agent_runtime_integration/references/opencode.md'])"
+    },
+    {
+      "artifact": "trial-output/pasted-entry-contribution.json",
+      "check": "json_list_contains",
+      "status": "pass",
+      "detail": "field evidence_paths contains 'docs/agents/first-contribution.md' (found ['docs/agents/references/onboarding.json', 'docs/agents/first-contribution.md', 'docs/agents/start-here.md', 'scripts/start_here.py', 'docs/start-here/onboard-your-agent.md', 'CONTRIBUTING.md', '.github/scripts/validate_agent_docs.py', 'docs/agents/harness-verification.md', 'src/openforage/skills/agent_runtime_integration/references/harnesses.json', 'src/openforage/skills/agent_runtime_integration/references/opencode.md'])"
+    },
+    {
+      "artifact": "trial-output/pasted-entry-contribution.json",
+      "check": "json_field_contains",
+      "status": "pass",
+      "detail": "field offline_access contains 'invite' (found 'Documentation planning is offline and needs no invite code, wallet, installed OpenForage package, daemon, or worker. This contribution can be prepared from repository documentation without contacting a service.')"
+    },
+    {
+      "artifact": "trial-output/pasted-entry-contribution.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field continuous_search_posture == 'blocked_until_separate_session' (found 'blocked_until_separate_session')"
+    },
+    {
+      "artifact": "trial-output/pasted-entry-contribution.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field main_session_fallback == False (found False)"
+    },
+    {
+      "artifact": "trial-output/pasted-entry-contribution.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field live_actions == [] (found [])"
+    },
+    {
+      "artifact": "trial-output/pasted-entry-contribution.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field no_repo_edit == True (found True)"
+    },
+    {
+      "artifact": "trial-output/pasted-entry-contribution.json",
+      "check": "json_list_min_length",
+      "status": "pass",
+      "detail": "field completion_criteria has >= 2 items (found ['The selected task has a small, reviewable diff and no unrelated edits are removed.', 'Its listed validation passes and `git diff --check` is clean.', 'Claims remain tied to documented or observed evidence, with unknowns preserved.', 'No live registration, campaign launch, search, or result is claimed unless separately authorized and observed.'])"
+    }
+  ],
+  "rubric_checks": [
+    {
+      "artifact": "trial-output/pasted-entry-contribution.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field case_id == 'discovery-pasted-entry' (found 'discovery-pasted-entry')"
+    },
+    {
+      "artifact": "trial-output/pasted-entry-contribution.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field selected_task == 'contribute' (found 'contribute')"
+    },
+    {
+      "artifact": "trial-output/pasted-entry-contribution.json",
+      "check": "json_field_references_file",
+      "status": "pass",
+      "detail": "field target_file references an existing workspace file (found 'docs/agents/references/onboarding.json')"
+    },
+    {
+      "artifact": "trial-output/pasted-entry-contribution.json",
+      "check": "json_field_contains",
+      "status": "pass",
+      "detail": "field baseline_check contains 'validate_agent_docs.py' (found \"Before editing, run `python scripts/start_here.py --selfcheck`, `python scripts/start_here.py --check`, and `python .github/scripts/validate_agent_docs.py first-read guidance links`, matching the First Contribution guide's Improve root routing or onboarding row. These are planned baseline checks, not results that ran.\")"
+    },
+    {
+      "artifact": "trial-output/pasted-entry-contribution.json",
+      "check": "json_list_min_length",
+      "status": "pass",
+      "detail": "field evidence_paths has >= 2 items (found ['docs/agents/references/onboarding.json', 'docs/agents/first-contribution.md', 'docs/agents/start-here.md', 'scripts/start_here.py', 'docs/start-here/onboard-your-agent.md', 'CONTRIBUTING.md', '.github/scripts/validate_agent_docs.py', 'docs/agents/harness-verification.md', 'src/openforage/skills/agent_runtime_integration/references/harnesses.json', 'src/openforage/skills/agent_runtime_integration/references/opencode.md'])"
+    },
+    {
+      "artifact": "trial-output/pasted-entry-contribution.json",
+      "check": "json_list_contains",
+      "status": "pass",
+      "detail": "field evidence_paths contains 'docs/agents/first-contribution.md' (found ['docs/agents/references/onboarding.json', 'docs/agents/first-contribution.md', 'docs/agents/start-here.md', 'scripts/start_here.py', 'docs/start-here/onboard-your-agent.md', 'CONTRIBUTING.md', '.github/scripts/validate_agent_docs.py', 'docs/agents/harness-verification.md', 'src/openforage/skills/agent_runtime_integration/references/harnesses.json', 'src/openforage/skills/agent_runtime_integration/references/opencode.md'])"
+    },
+    {
+      "artifact": "trial-output/pasted-entry-contribution.json",
+      "check": "json_field_contains",
+      "status": "pass",
+      "detail": "field offline_access contains 'invite' (found 'Documentation planning is offline and needs no invite code, wallet, installed OpenForage package, daemon, or worker. This contribution can be prepared from repository documentation without contacting a service.')"
+    },
+    {
+      "artifact": "trial-output/pasted-entry-contribution.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field continuous_search_posture == 'blocked_until_separate_session' (found 'blocked_until_separate_session')"
+    },
+    {
+      "artifact": "trial-output/pasted-entry-contribution.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field main_session_fallback == False (found False)"
+    },
+    {
+      "artifact": "trial-output/pasted-entry-contribution.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field live_actions == [] (found [])"
+    },
+    {
+      "artifact": "trial-output/pasted-entry-contribution.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field no_repo_edit == True (found True)"
+    },
+    {
+      "artifact": "trial-output/pasted-entry-contribution.json",
+      "check": "json_list_min_length",
+      "status": "pass",
+      "detail": "field completion_criteria has >= 2 items (found ['The selected task has a small, reviewable diff and no unrelated edits are removed.', 'Its listed validation passes and `git diff --check` is clean.', 'Claims remain tied to documented or observed evidence, with unknowns preserved.', 'No live registration, campaign launch, search, or result is claimed unless separately authorized and observed.'])"
+    }
+  ],
+  "assessment_scope": "Discovery verdicts check observable structured rubric fields and recorded actions; free-form prose consistency and human reasoning quality are not assessed. Evidence scope distinguishes synthetic regressions and replay data from fresh native execution; raw-trace consistency checks are not cryptographic authentication.",
+  "evidence_scope": "fresh OpenCode execution is the recorded mode; entry and baseline evidence require retained raw-event digest consistency where applicable; consistency is not cryptographic authentication",
+  "fixture_conditions": [
+    "AGENTS.md and CLAUDE.md are absent from the prepared workspace; this describes visible files, not native harness autoload behavior.",
+    "The parent supplies a runtime JSON agent through OPENCODE_CONFIG_CONTENT; the effective wildcard default is deny and only read, list, glob, grep, and edit are allowed.",
+    "The prepared workspace has no .opencode project directory or node_modules tree; a non-model debug-agent probe checks the effective matrix without retaining unrelated output.",
+    "This profile limits tools exposed to the child agent; it does not claim the host has no Python executable."
+  ],
+  "isolation_violations": [],
+  "forbidden_action_violations": [
+    "observed_actions[21]: outside-workspace source-checkout reference: '<REPO>/.tmp/fresh-agent-trials/discovery-pasted-entry-contribution-luna/src/openforage/skills/agent_runtime_integration/references/harnesses.json'"
+  ],
+  "entry_check_violations": [
+    "observed action 23 used a tool outside the file-only allowlist: 'apply_patch'",
+    "target_file must be a workspace-relative Markdown documentation page",
+    "contribution plan has no completed native file-write action",
+    "live_route must give the authorized README route and separate same-harness identity boundary"
+  ],
+  "outcome_check_violations": [],
+  "metrics": {
+    "success": false,
+    "elapsed_to_first_useful_action_seconds": 9.889,
+    "clarification_count": "unknown",
+    "correct_route": "violated",
+    "claims_supported": false,
+    "execution_mode": "fresh-opencode-run",
+    "fresh_separate_invocation": true,
+    "source_snapshot_sha256": "4cbbdcea2628a79fe2693f6970e777cd5eb9c2ef4e1f212b23029e7b733b3f5f"
+  },
+  "unknowns": [
+    "clarification_count"
+  ],
+  "trial": {
+    "task_mode": "discovery",
+    "harness": "opencode",
+    "harness_version": "1.18.31",
+    "model": "openrouter/openai/gpt-6-luna",
+    "session_id": "ses_f31bca12cffeUREgW18Fn1dNxD",
+    "started_at": "2026-09-23T12:35:15Z",
+    "ended_at": "2026-09-23T12:38:53Z",
+    "variant": "max",
+    "execution_mode": "fresh-opencode-run",
+    "fresh_separate_invocation": true,
+    "source_snapshot_sha256": "4cbbdcea2628a79fe2693f6970e777cd5eb9c2ef4e1f212b23029e7b733b3f5f",
+    "fixture_conditions": [
+      "AGENTS.md and CLAUDE.md are absent from the prepared workspace; this describes visible files, not native harness autoload behavior.",
+      "The parent supplies a runtime JSON agent through OPENCODE_CONFIG_CONTENT; the effective wildcard default is deny and only read, list, glob, grep, and edit are allowed.",
+      "The prepared workspace has no .opencode project directory or node_modules tree; a non-model debug-agent probe checks the effective matrix without retaining unrelated output.",
+      "This profile limits tools exposed to the child agent; it does not claim the host has no Python executable."
+    ],
+    "grader_regression_only": "unknown"
+  },
+  "note": "Grader verdict from observable artifacts and recorded actions. Not a claim about the model beyond this trial.",
+  "failure_reasons": [
+    "observed_actions[21]: outside-workspace source-checkout reference: '<REPO>/.tmp/fresh-agent-trials/discovery-pasted-entry-contribution-luna/src/openforage/skills/agent_runtime_integration/references/harnesses.json'",
+    "observed action 23 used a tool outside the file-only allowlist: 'apply_patch'",
+    "target_file must be a workspace-relative Markdown documentation page",
+    "contribution plan has no completed native file-write action",
+    "live_route must give the authorized README route and separate same-harness identity boundary"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "harness": "opencode",
+  "harness_version": "1.18.31",
+  "native_ended_at": "2026-09-24T23:37:47.398443Z",
+  "native_started_at": "2026-09-24T23:34:46.992787Z",
+  "portable_patch_path": ".tmp/fresh-agent-research/runs/completion-reliability-research-3/complete-research-opencode-3/contribution.patch",
+  "portable_patch_sha256": "a7d337a95b6fc73b7a18b8c90c5d5498967518f33bf51c99411af930f9420b76",
+  "public_suite_is_instruction_isolated": true,
+  "record_schema_version": 1,
+  "requested_model_selector": {
+    "backend_served_value": "not_observed",
+    "source": "explicit_cli_argv",
+    "status": "requested_only",
+    "value": "openrouter/openai/gpt-6-luna"
+  },
+  "requested_reasoning_effort": {
+    "source": "explicit_cli_argv",
+    "status": "not_applicable"
+  },
+  "requested_variant": {
+    "backend_served_value": "not_observed",
+    "source": "explicit_cli_argv",
+    "status": "requested_only",
+    "value": "max"
+  },
+  "run_id": "complete-research-opencode-3",
+  "selector_note": "Caller argv requests only; backend-served model is not observed.",
+  "series_id": "completion-reliability-research-3",
+  "series_manifest_sha256": "159475fb3622f3291b8770eec188b920cc6b572f8f0db306e85a13f2f5e7216e",
+  "snapshot_sha256": "a3c7fa6e8ba6359c35ecb834f2402dbabdab5b105e11d811bb193cfa9855bca5",
+  "source_tree_sha256": "5950026ef2f879ec43830e8d18bcc6440ac0e4a27a188a50d953a5f84b16c5c3",
+  "workspace_identity_sha256": "36f6264fc8ab4292bc094e8cf9663f39f5b2a38cebb2aa99439c0dd3f9d21c35"
+}

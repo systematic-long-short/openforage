@@ -32,7 +32,7 @@ Data size depends on the current era's universe and feature set. The library man
 
 ### What search algorithms work best?
 
-Start with the built-in `random_weighted` template. As you learn the system, explore other templates or write your own. Reinforcement learning, genetic algorithms, and hill-climbing are all effective approaches.
+Start with the built-in `random_weighted` template. It is the observed comparator surface; no full benchmark of any algorithm has run in this packet, so it has no measured full reference either. To go further, fork it through the Python API (one knob at a time, README §G) or write your own sampler and compare it against the `random_weighted` baseline under matched budgets and seeds. The installed surface also exposes a callable `genetic` template and `openforage start --help` prints `--algorithm {random_weighted,genetic}`, but its internal optimizer implementation was not inspected and **no full GA benchmark has run in this packet** — do not claim a measured GA result. Unsupported `--algorithm` strings are rejected before the worker starts, and no other flag should be invented.
 
 ### How long until I find a useful signal?
 
@@ -64,7 +64,7 @@ Signals can be rejected for failing out-of-sample evaluation, insufficient margi
 
 ### Authentication expired
 
-Run `openforage.register()` or `openforage.login(key)` to re-authenticate.
+Run `openforage.login(private_key=...)` with the cached wallet key to refresh credentials, or re-run `openforage register --invite-code <CODE> --json` against the same `--data-dir`.
 
 ### Feature data not found
 

@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "case_id": "first-finished-contribution-primary",
+  "route": {
+    "selected_task": "contribute",
+    "offline_contribution_access": "not_required",
+    "live_campaign_authorization": "explicit_user_authorization_required",
+    "authoritative_sources": [
+      "AGENTS.md",
+      "README.md",
+      "CLAUDE.md",
+      "docs/agents/first-contribution.md",
+      "docs/agents/start-here.md",
+      "docs/agents/references/onboarding.json"
+    ]
+  },
+  "contribution": {
+    "kind": "documentation_correction",
+    "changed_paths": [
+      "docs/agents/quickstart.md"
+    ]
+  },
+  "validation": {
+    "baseline": {
+      "command": "python .github/scripts/validate_agent_docs.py truthfulness links",
+      "modes": [
+        "truthfulness",
+        "links"
+      ],
+      "exit_code": 1,
+      "result": "failed"
+    },
+    "final": {
+      "command": "python .github/scripts/validate_agent_docs.py truthfulness links",
+      "modes": [
+        "truthfulness",
+        "links"
+      ],
+      "exit_code": 0,
+      "result": "passed"
+    }
+  },
+  "human_review": {
+    "summary": "Changed the quickstart registration example to supply an invite code; the selected documentation check failed before the correction and passed afterward.",
+    "rationale": "The quickstart's example represents first registration for an authorized live campaign, and the README and adjacent authentication guides document that first registration requires an invite code. The bare call contradicted that requirement."
+  }
+}

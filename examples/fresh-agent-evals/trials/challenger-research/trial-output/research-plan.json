@@ -1,0 +1,23 @@
+{
+  "case_id": "challenger-research",
+  "opportunity_id": "coverage-stratified-sampling",
+  "primary_source": "https://arxiv.org/abs/1504.04909",
+  "mechanism": "Starting point, not superiority proof: MAP-Elites keeps an archive keyed by user-chosen dimensions of variation and searches for good solutions per cell instead of returning one global best. Translated to the public surface, this trial proposes a construction-time coverage ledger over enumerable cells (rotation subfamily x feature family x measured depth), targeting the least-covered cell with bounded duplicate attempts, counting duplicates and depth rejections separately from completed evaluations, and checkpointing the policy RNG and history. Per-candidate leaf attribution is not a public API, so feature_attribution is recorded as unavailable with a reason rather than inferred from private attributes. The mechanism is a starting point for a preregistered campaign; it is not evidence that this policy beats random_weighted, and no measured comparison is claimed here.",
+  "required_capabilities": [
+    "openforage.templates.random_weighted",
+    "openforage.catalog.function_loader.load_function_catalog",
+    "openforage.catalog.features.feature_names_from_runtime_vocabulary",
+    "openforage.search_templates.measure_graph_complexity",
+    "openforage.get_search_stats"
+  ],
+  "baseline_comparison": "Planned comparison only, no measured comparison is claimed. Matched baseline (installed genetic by default; random_weighted as the documented alternative, with no full GA benchmark claimed) versus the stratified template on the same era/config, seed set, and equal completed evaluator counts, isolated per signal_pool_name; compare get_search_stats rows grouped by function subfamily x feature subfamily and get_yield_analysis lifetime_yield_rate. Per-era segments only; no pooling across era boundaries.",
+  "acceptance_evidence": "Preregistered hypothesis and direction; paired independent runs with matched budgets and seeds; equal-completed-evaluation comparison; coverage ledger checkpoints showing the targeted cells; complete trial inventory including abandoned runs; explicit missing-API gaps recorded.",
+  "known_unknowns": [
+    "Per-candidate leaf introspection for yielded graphs is not a public API, so feature cells may be unobservable and feature_attribution must be recorded as unavailable rather than fabricated.",
+    "random_weighted exposes no public seed knob, so seed matching depends on surfaces that are not documented.",
+    "The public loader output of generation_core.generate_random_signal_expression lacks the internal data_params key it reads.",
+    "No full benchmark of any algorithm has run in this packet, so the installed genetic default is unbenchmarked and baseline behavior is unverified.",
+    "Live permissions, data availability, and behavior of the simulate_signal/SimulationHandle path are untested; no successful simulation is assumed."
+  ],
+  "status": "proposed"
+}

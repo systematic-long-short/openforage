@@ -5,14 +5,40 @@ description: Use this whenever an agent wants OpenForage to periodically emit al
 
 # Scheduled Improvement Loops
 
-> **STOP.** If you have not read the OpenForage Library `README.md` at the repo root §0–§C, read it first.
+> **Campaign path.** If your task is a campaign bootstrap and you have not
+> read the OpenForage Library `README.md` §0, §A, and §A.1, read them first;
+> documentation, template, and validation contributions do not need those
+> sections.
 > This skill is depth reference for the `T-OF-schedule` bootstrap task. The README
 > §E.4e shows the recommended cadence for `run_due_callbacks()` per runtime
-> (Claude CLI `ScheduleWakeup` / `CronCreate`, Codex CLI `update_plan` tick, Hermes
-> runtime tick or `/goal` loop if configured, OpenClaw Lane Queue), and §F documents the `improvement_prompt`
+> (native schedulers first; a plan record is never a scheduler), and §F documents the `improvement_prompt`
 > event schema sinks will receive.
 
 Scheduled improvement callbacks create periodic `improvement_prompt` events. They do not run an optimizer by themselves; they emit prompts to the registered non-scheduled callbacks for an agent runtime to consume.
+
+## Native Schedules First
+
+Register the `run_due_callbacks()` tick with the owning runtime's native
+scheduler, or with an external scheduler the runtime verifies. Native
+goals, task stores, schedules, memory, delegation, and background controls
+come first; this skill covers the schedule part. Plan
+records are **not** schedulers: Codex `update_plan` — and every
+equivalent plan, checklist, or todo primitive — records intent only and
+never fires a tick. Do not encode the schedule as a plan step.
+
+The background research agent owns the schedule per the README §A.1
+delegation contract; the parent must not tick a worker owned by a live
+child. The tick schedule is part of the child's capability report
+(`.openforage-research/capabilities.json`), and harness scheduling
+commands come only from an evidence-gated per-capability entry in the
+verified adapter registry — see `docs/agents/harness-verification.md`.
+Discovery via local `--help` or official docs is allowed for research but
+must be labeled unverified.
+
+Recurring triggers follow the campaign lifecycle: on pause, explicit stop,
+completion, or exhaustion, scheduled callbacks are disabled or drained and
+the runtime stops ticking them. A terminal campaign never silently
+relaunches its triggers or its worker.
 
 ## Register Outputs First
 
@@ -43,7 +69,8 @@ register_callback(
 
 ## Run Due Callbacks
 
-Call this from the owning agent runtime's scheduler.
+Call this from the owning agent runtime's native scheduler or verified
+external scheduler — never from a plan record.
 
 ```python
 from openforage.callbacks import run_due_callbacks
@@ -64,6 +91,7 @@ by `interval_seconds` and the owning runtime's call cadence.
 - Include status, `recent_errors`, `algorithm_state`, and event-log review in the prompt.
 - Avoid promises about earnings or signal discovery.
 - Use one state directory for the worker, callback registry, and output events.
+- Keep campaign metadata — including improvement notes, checkpoint ledgers, and negative findings — out of `.openforage/settings.yaml`; campaign records live with the campaign (see `search_settings` and `search_research`).
 - Let the external runtime decide whether and how to act on the prompt.
 - Never suggest, recommend, or explore signal compute-graph depth greater than 6. The depth-6 cap is a hard agent-side rule independent of the era's `max_depth` — see `README.md` §G Hard Rules.
 
@@ -103,5 +131,7 @@ Checklist for the receiving agent:
 ## Adjacent Skills
 
 - `callback_hooks` — read before `T-OF-callbacks-sink` (register at least one non-scheduled sink first).
-- `agent_runtime_integration` — read before `T-OF-improvement-loop` (per-runtime durable outcome + tick patterns for `run_due_callbacks()`).
+- `agent_runtime_integration` — read before `T-OF-improvement-loop` (per-runtime durable outcome, native schedules, and the background research agent contract).
 - `background_search_loops` — read before `T-OF-start-search-bg` (the worker must be running for analytics-driven prompts to be meaningful).
+- `search_settings` — read before changing search or worker settings (campaign metadata never goes in `.openforage/settings.yaml`).
+- `search_research` — read before a research campaign (frozen reference, checkpoint accounting, matched budgets and seeds).

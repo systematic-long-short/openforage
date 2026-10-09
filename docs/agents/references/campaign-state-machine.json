@@ -1,0 +1,253 @@
+{
+  "schema_version": 1,
+  "machine_id": "openforage-campaign-state-machine",
+  "definition_revision": "2026-09-22",
+  "authority": "Authoritative machine-readable campaign state definition for this packet. The human-readable contract is docs/agents/research-campaign.md; campaign records reference this file and must use these state ids and edges. This file defines required behavior for campaign tooling and records; it does not claim that the OpenForage library implements this machine.",
+  "initial_state": "bootstrapping",
+  "terminal_states": ["exhausted", "stopped", "completed"],
+  "states": [
+    {
+      "id": "bootstrapping",
+      "label": "Bootstrapping",
+      "terminal": false,
+      "requires_resume_target": false,
+      "description": "Ownership is being claimed and campaign scope is being fixed. No compatible baseline has been frozen yet."
+    },
+    {
+      "id": "baseline",
+      "label": "Baseline",
+      "terminal": false,
+      "requires_resume_target": false,
+      "description": "Establishing or referencing the campaign's compatible baseline for the selected era and config. Configuration is frozen before the run; evidence is frozen after it."
+    },
+    {
+      "id": "research",
+      "label": "Research",
+      "terminal": false,
+      "requires_resume_target": false,
+      "description": "Mechanism, hypothesis, pilots, and custom-algorithm development. Pilot and development work is counted separately from preregistered experiment allocations."
+    },
+    {
+      "id": "experiment",
+      "label": "Experiment",
+      "terminal": false,
+      "requires_resume_target": false,
+      "description": "Running the preregistered protocol under its declared horizon, repetitions, and evaluation allocations."
+    },
+    {
+      "id": "comparison",
+      "label": "Comparison",
+      "terminal": false,
+      "requires_resume_target": false,
+      "description": "Analyzing the preregistered result, the complete trial inventory, and delayed server outcomes; deciding complete, pivot, pause, or exhaust."
+    },
+    {
+      "id": "paused",
+      "label": "Paused",
+      "terminal": false,
+      "requires_resume_target": true,
+      "description": "The campaign is intentionally halted. Workers are stopped and recurring triggers are disabled or drained. The resume target is preserved."
+    },
+    {
+      "id": "needs-input",
+      "label": "Needs input",
+      "terminal": false,
+      "requires_resume_target": true,
+      "description": "The campaign is blocked on missing external input or unavailable infrastructure after bounded retries. It does not relaunch unattended."
+    },
+    {
+      "id": "exhausted",
+      "label": "Exhausted",
+      "terminal": true,
+      "requires_resume_target": false,
+      "description": "A hard resource breach or the preregistered patience/exhaustion criteria were reached. A hard breach stops immediately from any active phase; a statistical plateau with resources remaining requires plateau handling (research or pivot) first. A distinct terminal outcome from completed and stopped."
+    },
+    {
+      "id": "stopped",
+      "label": "Stopped",
+      "terminal": true,
+      "requires_resume_target": false,
+      "description": "An explicit user stop. The terminal report preserves pending outcomes. The same record does not silently reactivate."
+    },
+    {
+      "id": "completed",
+      "label": "Completed",
+      "terminal": true,
+      "requires_resume_target": false,
+      "description": "The protocol closed with a terminal report. Pending server outcomes remain declared. The same record does not silently reactivate."
+    }
+  ],
+  "transition_record": {
+    "required_fields": [
+      "transition_id",
+      "from",
+      "to",
+      "timestamp",
+      "reason",
+      "owner_session_identity",
+      "owner_revision",
+      "guard_passed"
+    ],
+    "append_only": true,
+    "failed_guard_effect": "state_unchanged",
+    "guard_rule": "A transition is recorded only when its guard passed. A failed guard leaves the previous state unchanged and may be logged as an observation outside the transition history.",
+    "revision_rule": "owner_revision is a non-decreasing integer; every accepted transition advances it by at least one.",
+    "time_rule": "timestamps are non-decreasing down the append-only history.",
+    "history_rule": "The transition history is append-only. Corrections are appended as amendments; recorded transitions are never edited or deleted in place."
+  },
+  "transitions": [
+    {
+      "id": "T-baseline-start",
+      "from": "bootstrapping",
+      "to": "baseline",
+      "guard": "No compatible frozen baseline exists for the selected era/config, or the recorded compatible baseline is incomplete. Ownership is claimed. The baseline configuration is frozen before the run.",
+      "effect": "Start a real baseline for this campaign/era/config with its own distinct baseline id and lineage. Incomplete baselines stay incomplete; never silently overwrite a recorded baseline."
+    },
+    {
+      "id": "T-research-start",
+      "from": "bootstrapping",
+      "to": "research",
+      "guard": "A compatible frozen baseline for the selected era/config is identified and referenced, or the work is explicitly pilot/development work that is counted separately from preregistered allocations.",
+      "effect": "Begin mechanism and hypothesis work with the baseline reference and its lineage recorded."
+    },
+    {
+      "id": "T-baseline-freeze",
+      "from": "baseline",
+      "to": "research",
+      "guard": "The baseline reached its declared budget or is recorded as incomplete, its configuration was frozen before the run, its evidence was frozen after the run, and its artifact hashes are recorded.",
+      "effect": "Baseline evidence becomes immutable; research may begin against it. Additional paired baseline runs get distinct ids and lineage."
+    },
+    {
+      "id": "T-protocol-open",
+      "from": "research",
+      "to": "experiment",
+      "guard": "A preregistration protocol is recorded with timestamp and hash before any result exists, including hypothesis, primary and secondary metrics, direction and minimum meaningful effect, comparator, seeds and repetitions, evaluation allocations, data/era/config/history scope, exclusions, look schedule, decision and stopping criteria, and holdout handling. Pilots and development runs are counted separately.",
+      "effect": "Open the registered experiment under a fixed-horizon default. Sequential or optional-stopping inference is legal only with a justified method and stated assumptions."
+    },
+    {
+      "id": "T-exploratory-compare",
+      "from": "research",
+      "to": "comparison",
+      "guard": "The comparison is explicitly classified exploratory because the protocol is incomplete, budgets or seeds are unmatched, or the hypothesis changed after results were seen.",
+      "effect": "Record the exploratory result. A measured exploratory result still contains real measurements; classification and measurement presence are different things."
+    },
+    {
+      "id": "T-horizon-reached",
+      "from": "experiment",
+      "to": "comparison",
+      "guard": "The preregistered horizon and repetitions are complete, or a recorded sequential method with stated assumptions justified stopping. The complete trial inventory, including failures and negative results, is present.",
+      "effect": "Analyze the registered comparison and reconcile delayed server outcomes."
+    },
+    {
+      "id": "T-pivot",
+      "from": "comparison",
+      "to": "research",
+      "guard": "A new or amended hypothesis is recorded. Post-result changes create a new protocol version; the previous protocol version is preserved unchanged.",
+      "effect": "Begin research under the new protocol version. The prior result remains classified by its own protocol."
+    },
+    {
+      "id": "T-complete",
+      "from": "comparison",
+      "to": "completed",
+      "guard": "A terminal report is written, pending server outcomes are preserved and stated, and terminal_report.relaunch_prevented is true.",
+      "effect": "The campaign is completed. The record is terminal and does not silently reactivate."
+    },
+    {
+      "id": "T-hold",
+      "from": ["bootstrapping", "baseline", "research", "experiment", "comparison"],
+      "to": "paused",
+      "guard": "The owner is active, a checkpoint is written, and workers are stopped while recurring triggers are disabled or drained per the pause drain rule.",
+      "effect": "Pause with resume_target set to the state being left. The target survives restarts."
+    },
+    {
+      "id": "T-resume",
+      "from": ["paused", "needs-input"],
+      "to": "resume_target",
+      "resolves_to": ["bootstrapping", "baseline", "research", "experiment", "comparison"],
+      "guard": "Ownership was transferred safely: the resuming child is a distinct session identity (fresh or original) that is not the parent, the ownership claim and fencing token were advanced under a verified lock, and the registry, status, events, and checkpoints were reconciled before restarting the worker.",
+      "effect": "Restore the recorded resume_target only. Resuming to any other state is illegal. A dead child process alone is not a resume."
+    },
+    {
+      "id": "T-input-needed",
+      "from": ["bootstrapping", "baseline", "research", "experiment", "comparison"],
+      "to": "needs-input",
+      "guard": "A required external input or infrastructure dependency is unavailable after the declared bounded retries, and resume_target is recorded.",
+      "effect": "Enter needs-input. The campaign does not relaunch unattended while blocked."
+    },
+    {
+      "id": "T-exhausted",
+      "from": ["bootstrapping", "baseline", "research", "experiment", "comparison"],
+      "to": "exhausted",
+      "guard": "A hard resource breach or the preregistered patience/exhaustion criterion was reached. A hard breach or exhaustion criterion stops immediately from any active phase, including bootstrapping; plateau handling (research or pivot) is required first only for a statistical plateau while resources remain. Missing resource enforcement was visible rather than assumed.",
+      "effect": "Enter the exhausted terminal outcome. Preserve evidence and pending outcomes; stop workers and recurring triggers; the same record does not silently reactivate."
+    },
+    {
+      "id": "T-stop",
+      "from": ["bootstrapping", "baseline", "research", "experiment", "comparison", "paused", "needs-input"],
+      "to": "stopped",
+      "guard": "An explicit user stop instruction was given.",
+      "effect": "Stop workers, disable or drain recurring triggers, write the terminal report with pending outcomes preserved, and enter the stopped terminal outcome."
+    }
+  ],
+  "resume_semantics": {
+    "paused": {
+      "resume_to": "recorded_resume_target_only",
+      "target_required": true,
+      "fresh_child_allowed": true,
+      "conditions": [
+        "The resuming child is a separate CLI invocation of the same harness with its own session identity and is not the parent.",
+        "Ownership is transferred under a verified lock or equivalent atomic claim with an advanced fencing token; the previous owner is fenced out.",
+        "The registry, openforage status, events, and checkpoints are reconciled before any worker restarts."
+      ]
+    },
+    "needs-input": {
+      "resume_to": "recorded_resume_target_only",
+      "target_required": true,
+      "conditions": [
+        "The missing input or infrastructure dependency is available.",
+        "Ownership and checkpoint state are reconciled exactly as for a paused resume."
+      ]
+    },
+    "terminal": {
+      "resume_allowed": false,
+      "reactivation": "A new campaign id with a new protocol version and a freshly recorded baseline; never a silent reactivation of the same record."
+    }
+  },
+  "ownership": {
+    "one_owner_rule": "Exactly one live owner may own a campaign id or a --data-dir.",
+    "claim": {
+      "required": true,
+      "mechanism": "An atomic ownership claim (for example O_EXCL creation of an ownership record) or an equivalent verified lock. The library does not provide this mechanism; campaign tooling or the harness must.",
+      "fields": [
+        "owner_session_identity",
+        "owner_revision",
+        "fencing_token",
+        "claimed_at",
+        "claim_mechanism",
+        "claim_verified"
+      ],
+      "fencing": "Every ownership transfer advances the fencing token. A worker or writer holding a stale token must refuse to write."
+    },
+    "duplicate_launch_reconciliation": [
+      "Before launching, read the child registry and openforage status for the data directory; do not launch when either shows a live owner.",
+      "openforage start refuses a second worker per data directory; the registry extends that rule to the agent layer.",
+      "On resume, reconcile the registry and status from events before restarting so a dead process entry does not block a safe transfer."
+    ],
+    "submission_reconciliation": {
+      "ambiguous_ack": "When a submission acknowledgment is ambiguous, record it as ambiguous, do not blindly resubmit it, and resolve it through the submission/status surface before any retry.",
+      "no_exactly_once": "The library supplies no exactly-once guarantee for submissions, transitions, or workers. Do not claim one."
+    }
+  },
+  "invariants": [
+    "A failed guard leaves the previous state unchanged.",
+    "A paused or needs-input campaign resumes only to its recorded resume_target; the target survives restarts.",
+    "Terminal states have no outgoing transitions.",
+    "An incomplete evaluation budget stays incomplete and is never rounded up to the 100000-completed default target.",
+    "A hard resource breach or a preregistered exhaustion criterion stops immediately from any active phase, including bootstrapping; plateau handling (research or pivot) is required first only for a statistical plateau while resources remain.",
+    "Checkpoints and cache hits are not completed evaluator work. A final failing-quality evaluation is still a completed evaluation; runtime errors are counted separately as failed.",
+    "Records and evidence are append-only. Corrections are amendments, never in-place edits of recorded history.",
+    "Manifest updates are atomic and the transition history is append-only; a crashed write never leaves a partial record and never implies a transition.",
+    "A crash is not a state transition. Recovery reconciles status, events, and checkpoints, and marks the affected segment incomplete when the pre-crash state cannot be proven.",
+    "The transition history, not conversational memory, is the authority for a campaign's current state."
+  ]
+}

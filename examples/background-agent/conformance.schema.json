@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "conformance.schema.json",
+  "title": "Background-agent lifecycle conformance report",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "evidence_class",
+    "synthetic",
+    "product",
+    "adapter_id",
+    "product_version",
+    "os",
+    "profile",
+    "overall",
+    "external_controller_overall",
+    "scope",
+    "request_ack_bindings",
+    "edges",
+    "native_primitive_observations",
+    "capability_projection"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "evidence_class": {"const": "background-agent-conformance-report"},
+    "synthetic": {"type": "boolean"},
+    "product": {"type": ["string", "null"]},
+    "adapter_id": {"type": ["string", "null"]},
+    "product_version": {"type": ["string", "null"]},
+    "os": {"type": ["string", "null"]},
+    "profile": {"type": ["string", "null"]},
+    "overall": {"enum": ["passed", "failed", "partial", "not_run"]},
+    "external_controller_overall": {"enum": ["passed", "failed", "partial", "not_run"]},
+    "scope": {
+      "type": "object",
+      "required": ["external_controller", "native_product", "native_scheduler_delivery_outcome", "external_due_delivery_is_native_scheduler"],
+      "properties": {
+        "external_controller": {"type": "string"},
+        "native_product": {"type": "string"},
+        "native_scheduler_delivery_outcome": {"enum": ["observed_success", "observed_failure", "observed_in_progress", "observed_mixed", "unavailable", "unknown"]},
+        "external_due_delivery_is_native_scheduler": {"const": false}
+      },
+      "additionalProperties": true
+    },
+    "request_ack_bindings": {"type": "array", "items": {"type": "object"}},
+    "edges": {
+      "type": "object",
+      "required": [
+        "fresh_cli_and_distinct_session",
+        "exact_child_continuation",
+        "real_ownership_acknowledgement",
+        "parent_independence",
+        "pause_drain_reconcile",
+        "controller_crash_recovery",
+        "terminal_stop_no_relaunch",
+        "duplicate_owner_exclusion",
+        "owned_process_cleanup",
+        "external_due_delivery",
+        "native_scheduler_delivery"
+      ],
+      "properties": {
+        "fresh_cli_and_distinct_session": {"$ref": "#/$defs/edge"},
+        "exact_child_continuation": {"$ref": "#/$defs/edge"},
+        "real_ownership_acknowledgement": {"$ref": "#/$defs/edge"},
+        "parent_independence": {"$ref": "#/$defs/edge"},
+        "pause_drain_reconcile": {"$ref": "#/$defs/edge"},
+        "controller_crash_recovery": {"$ref": "#/$defs/edge"},
+        "terminal_stop_no_relaunch": {"$ref": "#/$defs/edge"},
+        "duplicate_owner_exclusion": {"$ref": "#/$defs/edge"},
+        "owned_process_cleanup": {"$ref": "#/$defs/edge"},
+        "external_due_delivery": {"$ref": "#/$defs/edge"},
+        "native_scheduler_delivery": {"$ref": "#/$defs/edge"}
+      },
+      "additionalProperties": false
+    },
+    "native_primitive_observations": {"type": "object"},
+    "capability_projection": {
+      "type": "object",
+      "required": ["authority", "registry", "current_records", "projection_error", "review_draft", "automatic_registry_promotion"],
+      "properties": {
+        "authority": {"const": "scripts/onboarding/capabilities.py:project_capability_records"},
+        "registry": {"const": "src/openforage/skills/agent_runtime_integration/references/harnesses.json"},
+        "current_records": {"type": "array", "items": {"type": "object"}},
+        "projection_error": {"type": ["string", "null"]},
+        "review_draft": {"type": "array", "items": {"$ref": "#/$defs/reviewDraft"}},
+        "automatic_registry_promotion": {"const": false}
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "assertion": {
+      "type": "object",
+      "required": ["label", "path", "expected", "observed", "status"],
+      "properties": {
+        "label": {"type": "string"},
+        "path": {"type": "string"},
+        "expected": {},
+        "observed": {},
+        "status": {"enum": ["passed", "failed", "unknown", "not_run"]}
+      },
+      "additionalProperties": false
+    },
+    "edge": {
+      "type": "object",
+      "required": ["status", "mechanism", "scope_owner", "external_controller_status", "native_product_status", "assertions", "external_controller_assertions", "native_product_assertions"],
+      "properties": {
+        "status": {"enum": ["passed", "failed", "unknown", "not_run"]},
+        "mechanism": {"type": "string"},
+        "scope_owner": {"enum": ["harness-cli", "external-controller", "native-product", "harness-cli + external-controller", "native-tool-event"]},
+        "external_controller_status": {"enum": ["passed", "failed", "unknown", "not_run", "not_applicable"]},
+        "native_product_status": {"enum": ["passed", "failed", "unknown", "not_run", "not_applicable"]},
+        "assertions": {"type": "array", "items": {"$ref": "#/$defs/assertion"}},
+        "external_controller_assertions": {"type": "array", "items": {"$ref": "#/$defs/assertion"}},
+        "native_product_assertions": {"type": "array", "items": {"$ref": "#/$defs/assertion"}}
+      },
+      "additionalProperties": false
+    },
+    "reviewDraft": {
+      "type": "object",
+      "required": ["capability", "evidence_path", "evidence_outcome", "review_state", "automatic_registry_promotion"],
+      "properties": {
+        "capability": {"type": "string"},
+        "evidence_path": {"type": "string"},
+        "evidence_outcome": {"enum": ["passed", "failed", "unknown", "not_run"]},
+        "review_state": {"const": "not_submitted"},
+        "automatic_registry_promotion": {"const": false}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,11 @@
+{
+  "kind": "exact_frozen_grading_source_bundle",
+  "series_id": "public-portability-reliability-docs-1",
+  "manifest_path": "examples/fresh-agent-evals/v2/series/public-portability-reliability-docs-1.json",
+  "manifest_sha256": "56d3f63a232f8e36185c1bf0038d10e9b68c57ed8c3217e0fa9f09add182d5c6",
+  "frozen_source_files": 80,
+  "bundle_sha256": "99f597836dc9753631f416e6453d02818dbb85a4d24fda16f452b12d9e5adfaf",
+  "bundle_bytes": 404487,
+  "entry_paths": "repository-relative with fixed metadata",
+  "scope": "Frozen public grading closure and selected manifest; no native streams"
+}

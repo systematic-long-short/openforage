@@ -1,0 +1,135 @@
+{
+  "case_id": "campaign-planning-separation",
+  "variant": "max",
+  "variant_in_argv": true,
+  "execution_mode": "fresh-opencode-run",
+  "fresh_separate_invocation": true,
+  "replay": false,
+  "model": "openrouter/deepseek/deepseek-v4.1-flash",
+  "invocation_argv": [
+    "opencode",
+    "run",
+    "--format",
+    "json",
+    "--dir",
+    "<WORKSPACE>",
+    "--model",
+    "openrouter/deepseek/deepseek-v4.1-flash",
+    "--variant",
+    "max"
+  ],
+  "workspace": "<WORKSPACE>",
+  "workspace_identity": "c9ea499cfbfa1adf424c42eec3b37070491c966db2ceabc14fe723fb3675d6f5",
+  "source_snapshot_sha256": "f33f1f0c08e55d41579de461654f674fe056e4bf7e4e43b4535da95dbb736345",
+  "source_snapshot_files": 124,
+  "source_git_head": "c48cb235fde2d5590601528ef9c83cb9d8f402dd",
+  "harness": "opencode",
+  "harness_version": "1.18.31",
+  "session_id": "ses_f35b38d60ffebwNvafdwF1FP0M",
+  "started_at": "2026-09-22T18:06:41Z",
+  "ended_at": "2026-09-22T18:07:39Z",
+  "exit_code": 0,
+  "launch_error": null,
+  "owned_process_remaining": false,
+  "observed_actions": [
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/.openforage-research/ownership.json"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/.openforage-research/agents.json"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/.openforage-research/status.json"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/docs/agents/background-agent.md"
+    },
+    {
+      "tool": "bash",
+      "command": "ls -la && ls -la .openforage-research .openforage trial-output 2>&1"
+    },
+    {
+      "tool": "bash",
+      "command": "sha256sum .openforage/settings.yaml && stat -c '%s %Y %n' .openforage/settings.yaml"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/.openforage/settings.yaml"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/.openforage-research/conflict-note.md"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/trial-output/.prepare-owner.json"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/trial-output/prepare-record.json"
+    },
+    {
+      "tool": "bash",
+      "command": "date -u +%Y-%m-%dT%H:%M:%SZ"
+    },
+    {
+      "tool": "write",
+      "command": "<WORKSPACE>/.openforage-research/separation-plan.json"
+    },
+    {
+      "tool": "write",
+      "command": "<WORKSPACE>/.openforage-research/ownership.json"
+    },
+    {
+      "tool": "write",
+      "command": "<WORKSPACE>/trial-output/evidence.json"
+    },
+    {
+      "tool": "bash",
+      "command": "sha256sum .openforage/settings.yaml && python3 -m json.tool .openforage-research/separation-plan.json > /dev/null && python3 -m json.tool .openforage-research/ownership.json > /dev/null && python3 -m json.tool trial-output/evidence.json > /dev/null && echo verification-ok"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/.openforage-research/ownership.json"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/.openforage-research/separation-plan.json"
+    }
+  ],
+  "action_extraction": {
+    "method": "normalized allowlisted tool observations from the native JSON event stream",
+    "events_observed": 37,
+    "actions_observed": 17,
+    "raw_events_scratch": ".tmp/fresh-agent-trials/campaign-planning-separation-rerun.raw-events.jsonl",
+    "raw_events_sha256": "d65d2ea0a11f92b7f241619f753907e4bbcc28f6647332223101f19d5fb0ce83",
+    "raw_events_bytes": 96640,
+    "note": "Raw events stay in git-ignored scratch; this record keeps only normalized actions."
+  },
+  "child_environment": {
+    "applied": true,
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "python_on_path": "/usr/bin",
+    "note": "Set for the child session so validator runs create no bytecode under frozen dirs; `python` on the child PATH is this interpreter."
+  },
+  "child_prompt": {
+    "protocol_version": "workspace-protocol-v1",
+    "rendered_sha256": "be4bf23300793438a627f6291ab0fe84d2f6513397c6be0a478b96f04262ea17",
+    "delivered": true,
+    "note": "The runner prepends the common protocol block to the case prompt from tasks.json; the case prompt itself stays exact case content. The rendered text is hashed, not retained, because it embeds the workspace path."
+  },
+  "first_useful_action_seconds": 3.615,
+  "first_useful_action_unknown_reason": null,
+  "clarification_count": null,
+  "plain_text_tail": "",
+  "artifact_refs": {
+    ".openforage-research/separation-plan.json": "3832a37220baf84a19b4ccb98e485e9890e687e640df57a3ca41f2087907dd01",
+    ".openforage-research/ownership.json": "b0d07170724ba505ad5b6c20c9c0a36d44d1cb183e170730fec989200b385ad2",
+    "trial-output/evidence.json": "dc798ae14416168ef7288ac12da48940413a459f385cfafcf0bf53ae5f41ea0a"
+  },
+  "claim": "single-trial observation; not a measured result"
+}

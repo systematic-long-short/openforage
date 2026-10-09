@@ -1,0 +1,64 @@
+{
+  "case_id": "discovery-quickstart-entry",
+  "selected_task": "research",
+  "entry_page": "docs/agents/quickstart.md",
+  "opportunity_id": "coverage-stratified-sampling",
+  "primary_source": "https://arxiv.org/abs/1504.04909",
+  "source_claim": "The public opportunity map cites MAP-Elites as a starting point for quality-diversity archives, not as evidence of superiority over random_weighted.",
+  "hypothesis": "Within one fixed era/config and matched paired-run seed set, allocating proposals to the least-evaluated observable valid rotation-subfamily × loaded-feature cells will find more qualifying signals in under-covered cells at the same completed-evaluation count than uniform random_weighted, while keeping overall qualifying yield within a preregistered non-inferiority margin. Failure to increase observed valid-cell coverage, or a yield loss beyond that margin, rejects the direction; if cell eligibility or attribution cannot be observed, no feature × rotation claim is made.",
+  "evidence_gaps": [
+    "The map says MAP-Elites is a starting point and recommends reopening the source before relying on its mechanism; the original paper was not reopened in this offline exercise, so its mechanism remains unverified here.",
+    "No OpenForage package is installed by assumption. The compatibility record's 0.2.36 observations therefore do not verify local template, catalog, runtime-vocabulary, graph-complexity, or analytics behavior.",
+    "The runtime vocabulary, era/config, and per-era loaded rotation allow-list are unavailable offline. The eligible valid-pair denominator must remain unknown, and only loaded features could count.",
+    "There is no public per-candidate leaf introspection. The runnable example stratifies over documented generator sources and measured depth; that does not establish live feature × rotation coverage. Exact feature attribution must remain unavailable unless exposed analytics support it.",
+    "random_weighted has no public seed CLI knob. Matched seed control would require process or harness control and saved generated expressions/configs, none of which is established here.",
+    "The genetic callable and CLI choice are observed on tested-supported 0.2.36, but its internal optimizer was not inspected and no full GA benchmark has run. The 100,000-simulation figure is a target, not a result.",
+    "No local evaluator results, valid-cell coverage, server acceptance, or out-of-sample correlation/usefulness have been observed; absent or delayed metrics remain unknown.",
+    "Campaign authorization is absent, campaign access is unchecked, the scheduler is unverified, and no separate CLI session is established; no live capability route has been verified."
+  ],
+  "offline_next_action": "Prepare an offline preregistration that defines cell identity and eligibility from actual loaded runtime data, leaves the denominator and attribution unknown where unavailable, and compares a bounded least-covered-cell policy with random_weighted at matched completed-evaluation budgets within one era/config. Predeclare paired-run and seed control, the qualifying-yield endpoint and minimum effect, secondary valid-pair coverage, rejection accounting, a depth cap of 6, and the complete trial inventory. Reopen MAP-Elites before relying on its mechanism; keep evaluation and live execution parked pending authorization and capability verification.",
+  "algorithm_facts": {
+    "public_templates": [
+      "genetic",
+      "random_weighted"
+    ],
+    "cli_choices": [
+      "random_weighted",
+      "genetic"
+    ],
+    "documented_default": "genetic",
+    "cli_help_default": "The start --help output lists both choices and prints no explicit default.",
+    "reference_algorithm": "genetic",
+    "target_completed_simulations": 100000,
+    "ga_benchmark_status": "No full GA benchmark has run in this packet; genetic is callable and CLI-selectable on 0.2.36, but its internal optimizer was not inspected. The 100,000 figure is a target, not an observed completion."
+  },
+  "coverage_scope": "Within each era/config, aim for broad, observed coverage of valid loaded feature × rotation pairs, not a dense Cartesian claim. Count only observed evaluated/dependency pairs and retain unevaluated gaps. The eligible denominator, exact feature attribution, and per-era rotations remain unknown where unexposed; do not fill cells, include unloaded features, weaken quality thresholds, or exceed depth 6.",
+  "out_of_sample_boundary": "Local evaluator pass/fail/score is in-sample; only protocol server-side evaluation is out-of-sample. No such outcomes or out-of-sample usefulness/correlation evidence are present here, and server results may be delayed. Keep absent or delayed values unknown, do not treat structural co-occurrence as return correlation, and do not treat same-data reruns as out-of-sample evidence.",
+  "live_route": "Remain offline: live authorization is absent and the package is not installed; campaign access itself is unchecked. If later explicitly authorized, follow the README campaign bootstrap and protocol, and verify access, package compatibility, and the exact runtime's scheduler before relying on them. Continuous search requires a separately started CLI process of the same harness with its own identity; never fall back to the main session or guess scheduler commands.",
+  "capability_availability": {
+    "openforage_package": "unavailable",
+    "campaign_access": "unknown",
+    "scheduler": "unverified",
+    "separate_session": "not_established"
+  },
+  "offline_work_available": true,
+  "live_campaign_authorized": false,
+  "continuous_search_posture": "blocked_until_separate_session",
+  "main_session_fallback": false,
+  "evidence_paths": [
+    "docs/agents/quickstart.md",
+    "docs/agents/start-here.md",
+    "docs/agents/references/onboarding.json",
+    "docs/agents/research-opportunities.json",
+    "docs/agents/research-opportunities.md",
+    "docs/agents/references/compatibility.json",
+    "docs/agents/research-campaign.md",
+    "examples/agent-campaign/campaign.json",
+    "examples/agent-campaign/benchmark_record.json",
+    "examples/agent-campaign/challenger_design.md",
+    "examples/agent-campaign/stratified_policy.py",
+    "src/openforage/skills/search_research/SKILL.md",
+    "README.md",
+    "trial-output/prepare-record.json"
+  ]
+}

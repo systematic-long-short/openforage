@@ -1,0 +1,48 @@
+{
+  "label": "Explicit same-trial regrade; not a new agent run",
+  "case_id": "discovery-research",
+  "original_observation": {
+    "trial_record_path": ".tmp/fresh-agent-trials/discovery-research-luna.trial.json",
+    "trial_record_sha256": "7deb05b984d7dc9ff4d87e06bfb1477d587301511747cdbf38f333d47950fd9e",
+    "original_verdict_path": ".tmp/fresh-agent-trials/discovery-research-luna.trial.verdict.json",
+    "original_verdict_sha256": "1748fda95143a6f5bf299afae162fd73b8676cd71d6d2f42db40593a5297d9f5",
+    "original_verdict_success": false,
+    "original_failure_checks": [
+      {
+        "artifact": "trial-output/research-discovery.json",
+        "check": "json_field_equals",
+        "detail": "field capability_availability.scheduler == 'unknown' (found 'unverified')"
+      }
+    ],
+    "artifact_workspace_path": "trial-output/research-discovery.json",
+    "artifact_sha256": "b3333c98b57684537f5b83c7cbcec0f3442203c295f0dcd5623f31e691d9e6da",
+    "artifact_hash_matches_original_trial_record": true
+  },
+  "regrade": {
+    "verdict_path": ".tmp/fresh-agent-trials/discovery-research-luna.trial.verdict.regrade.json",
+    "verdict_sha256": "bb1be589afd3cda92329f1c2b7d032692264397ae8f77d05d918f65957e004fa",
+    "success": true,
+    "failure_checks": [],
+    "corrected_label": "capability_availability.scheduler accepts the disclosed no-verified-evidence labels unverified or unknown; no other rubric check was relaxed",
+    "new_agent_run": false
+  },
+  "source_snapshot_verification": {
+    "frozen_source_manifest_path": ".tmp/portable-onboarding-trial-source/source-manifest.json",
+    "frozen_source_manifest_sha256": "72c1bef36a5eff1da4e1d68e6f1f4a4f9d145047f0ad10621edb6a054382b30d",
+    "frozen_source_manifest_file_count": 177,
+    "original_snapshot_sha256": "bfdd3bbd16fb2b87befbe53af5b6006c321b06402e181338d3b1148e03a54e29",
+    "reconstructed_snapshot_sha256": "bfdd3bbd16fb2b87befbe53af5b6006c321b06402e181338d3b1148e03a54e29",
+    "original_snapshot_file_count": 124,
+    "reconstructed_snapshot_file_count": 124,
+    "verified_equal": true,
+    "reconstruction_method": "Prepared from the frozen source with the corrected case, restored the preserved original trial-output prepare-owner and prepare-record metadata bytes, then called run_trial._snapshot_digest; .git is excluded by that function."
+  },
+  "current_grading_source_sha256": {
+    "examples/fresh-agent-evals/tasks.json": "368898da29ceb228dc66fee0daf717eb034f3af4f558c15391a7c704a3f82ae8",
+    "examples/fresh-agent-evals/grader.py": "874b3dec3a4228501095e20f02985b2af460b63e7f5f532a247f5f762ac1d509",
+    "examples/fresh-agent-evals/discovery_checks.py": "cfb51177e9e579f6de3c14f18f24ae34c2e468d38fc87d07be5fc20dff2a0e9c",
+    "examples/fresh-agent-evals/run_trial.py": "6c623795ee013b2061eebb8fc215a3766aa2c238ab0b2ab1fed31c9e654e3a4c",
+    ".github/scripts/validation/evals.py": "47601d8b58d66c93bcb7bd549016a3185b987ef9dcd690fa5876e6b00b0a32b5",
+    ".github/scripts/validation/selftest.py": "4e065c0034ee34adeca40c8833b6d3b0bbc7923351d95531ca098e73aff278f6"
+  }
+}

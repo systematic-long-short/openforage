@@ -1,0 +1,241 @@
+{
+  "artifact_diff": [
+    {
+      "after_sha256": "1350e9e5438cc2a47dbac85acfb68528c77a5b89a6451c4120053a0284c3d379",
+      "before_sha256": "8aa6d00c03210614aa655f3bce19d7afc89ded1ddd1344e3f9dba45550b39d5a",
+      "change": "modified",
+      "path": "docs/agents/quickstart.md"
+    },
+    {
+      "after_sha256": "1ca9dddb966e460cbf0e0836358811a8075c81656659cbe26d989ad097d7b21c",
+      "before_sha256": null,
+      "change": "created",
+      "path": "trial-output/completion.json"
+    }
+  ],
+  "artifact_refs": {
+    "docs/agents/quickstart.md": "1350e9e5438cc2a47dbac85acfb68528c77a5b89a6451c4120053a0284c3d379",
+    "trial-output/completion.json": "1ca9dddb966e460cbf0e0836358811a8075c81656659cbe26d989ad097d7b21c"
+  },
+  "case_id": "first-finished-contribution-primary",
+  "evidence_scope": "fresh-native-trial",
+  "failure_reasons": [
+    "validation.final is not a relevant repository-validator segment in a bounded command"
+  ],
+  "harness": "opencode",
+  "human_review": {
+    "automated_quality_assessment": "not_performed",
+    "rationale": "The baseline all-mode check flagged the bare register call as stale and the docs-fix regression could not prepare. README.md documents registration with invite_code, so the quickstart now matches the supported example. The post-edit truthfulness, links, and evals modes and git diff --check passed. A broader post-edit all-mode rerun timed out; the final validation records the targeted passing modes.",
+    "summary": "Updated the live-search quickstart example to pass an invite code during first registration."
+  },
+  "metrics": {
+    "artifact_diff": {
+      "changed_file_count": 2,
+      "changed_paths": [
+        "docs/agents/quickstart.md",
+        "trial-output/completion.json"
+      ],
+      "sha256_evidence": [
+        {
+          "after_sha256": "1350e9e5438cc2a47dbac85acfb68528c77a5b89a6451c4120053a0284c3d379",
+          "before_sha256": "8aa6d00c03210614aa655f3bce19d7afc89ded1ddd1344e3f9dba45550b39d5a",
+          "change": "modified",
+          "path": "docs/agents/quickstart.md"
+        },
+        {
+          "after_sha256": "1ca9dddb966e460cbf0e0836358811a8075c81656659cbe26d989ad097d7b21c",
+          "before_sha256": null,
+          "change": "created",
+          "path": "trial-output/completion.json"
+        }
+      ]
+    },
+    "clarification_observations": {
+      "count": 0,
+      "status": "observed"
+    },
+    "time_to_first_meaningful_action": {
+      "elapsed_seconds": 11.974,
+      "event_sequence": 4,
+      "status": "observed",
+      "timestamp_basis": "native_event_timestamp"
+    },
+    "time_to_first_verified_completed_contribution": {
+      "elapsed_seconds": null,
+      "exact_completion_time": false,
+      "measurement": "elapsed_at_verification_upper_bound",
+      "status": "unknown"
+    },
+    "unnecessary_setup_attempts": {
+      "attempts": [],
+      "count": 0,
+      "observed_lower_bound": 0,
+      "status": "observed_complete"
+    },
+    "unsupported_structured_claims": {
+      "count": 1,
+      "status": "observed"
+    },
+    "validation_outcome": {
+      "agent_baseline": "observed_failure",
+      "agent_final": "unknown",
+      "independent_final": "pass"
+    }
+  },
+  "native_trace": {
+    "actions_observed": 24,
+    "direct_suite_access_audit": "complete_no_direct_access",
+    "direct_suite_access_indices": [],
+    "events_observed": 66,
+    "raw_events_sha256": "8a3d11de88f273c3ff01b4389f3c5923209545d5707336cfd38a47782caac1d3",
+    "trace_complete": true
+  },
+  "run_id": "reliability-docs-opencode-1",
+  "series_id": "contributor-reliability-docs-1",
+  "series_manifest_sha256": "505e31e9b0d56b3e65c477d1ec8270802f017afc6da4eed53fbdf171715bca1d",
+  "status": "fail",
+  "success": false,
+  "synthetic_regression": false,
+  "validation": {
+    "baseline_native_item_id_sha256": "2fa3b5bf39d1dde6132f64ba2a7db0c65bb50e57f300d00f4b2b72200583ea59",
+    "baseline_outcome_provenance": {
+      "compound_shell_exit_code": null,
+      "inference_basis": "standalone_native_shell_exit",
+      "modes": [
+        "all"
+      ],
+      "native_action_identity_sha256": "2fa3b5bf39d1dde6132f64ba2a7db0c65bb50e57f300d00f4b2b72200583ea59",
+      "native_command_bytes": 49,
+      "native_command_sha256": "89537b2322c74d5ecf6a22125328450c46f066d020bc2f0c3e7e9181c3894ecc",
+      "native_completion_sequence": 10,
+      "native_event_sequence": 10,
+      "native_harness": "opencode",
+      "native_identity_kind": "native_tool_call_id_sha256",
+      "native_shell_exit_code": 1,
+      "validator_segment_exit_code": 1,
+      "validator_segment_index": 0
+    },
+    "final_native_item_id_sha256": null,
+    "final_outcome_provenance": null,
+    "independent_final": {
+      "executed": true,
+      "exit_code": 0,
+      "method": "independent unchanged repository validator on final workspace",
+      "modes": [
+        "truthfulness",
+        "links"
+      ],
+      "owned_process_group_remaining": false,
+      "status": "pass",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 34,
+      "stdout_sha256": "47e72519f3d78aa66237ad94c9d5ff537b8a03e0584c4fbfdcbfc61cf9f97303",
+      "timed_out": false
+    },
+    "observed_validator_outcomes": [
+      {
+        "compound_shell_exit_code": null,
+        "inference_basis": "standalone_native_shell_exit",
+        "modes": [
+          "all"
+        ],
+        "native_action_identity_sha256": "ef92c96fc1364e1061a407870651b51a47fefb4093b3b49f6642b0556275a86b",
+        "native_command_bytes": 90,
+        "native_command_sha256": "ce2af05a2a05537f5e787dc5ac9d7787a11dc4d6e877081a2849aa468458ccd9",
+        "native_completion_sequence": 7,
+        "native_event_sequence": 7,
+        "native_harness": "opencode",
+        "native_identity_kind": "native_tool_call_id_sha256",
+        "native_shell_exit_code": 127,
+        "validator_segment_exit_code": 127,
+        "validator_segment_index": 0
+      },
+      {
+        "compound_shell_exit_code": null,
+        "inference_basis": "standalone_native_shell_exit",
+        "modes": [
+          "all"
+        ],
+        "native_action_identity_sha256": "2fa3b5bf39d1dde6132f64ba2a7db0c65bb50e57f300d00f4b2b72200583ea59",
+        "native_command_bytes": 49,
+        "native_command_sha256": "89537b2322c74d5ecf6a22125328450c46f066d020bc2f0c3e7e9181c3894ecc",
+        "native_completion_sequence": 10,
+        "native_event_sequence": 10,
+        "native_harness": "opencode",
+        "native_identity_kind": "native_tool_call_id_sha256",
+        "native_shell_exit_code": 1,
+        "validator_segment_exit_code": 1,
+        "validator_segment_index": 0
+      },
+      {
+        "compound_shell_exit_code": null,
+        "inference_basis": "standalone_native_exit_missing_denied_or_conflicting",
+        "modes": [
+          "all"
+        ],
+        "native_action_identity_sha256": "7537c90fd599430839db85492f9804cff733d0965997f9bf59c74be12a38dc94",
+        "native_command_bytes": 75,
+        "native_command_sha256": "59be02030e9a8e71b60ff404dd179bd0bbd9d9d1854f6fa4c6f13db22bc77acc",
+        "native_completion_sequence": 30,
+        "native_event_sequence": 30,
+        "native_harness": "opencode",
+        "native_identity_kind": "native_tool_call_id_sha256",
+        "native_shell_exit_code": null,
+        "validator_segment_exit_code": null,
+        "validator_segment_index": 0
+      },
+      {
+        "compound_shell_exit_code": null,
+        "inference_basis": "standalone_native_shell_exit",
+        "modes": [
+          "truthfulness"
+        ],
+        "native_action_identity_sha256": "dd09fa62f426019499872de2d82e08b294f28ef0c6134f1e8deaa5c9c0540f6e",
+        "native_command_bytes": 84,
+        "native_command_sha256": "ab30f36542085cb8bc3067c855ba2e5793b335d74a1fa81320dd4c19ac01849e",
+        "native_completion_sequence": 33,
+        "native_event_sequence": 33,
+        "native_harness": "opencode",
+        "native_identity_kind": "native_tool_call_id_sha256",
+        "native_shell_exit_code": 0,
+        "validator_segment_exit_code": 0,
+        "validator_segment_index": 0
+      },
+      {
+        "compound_shell_exit_code": null,
+        "inference_basis": "standalone_native_shell_exit",
+        "modes": [
+          "links"
+        ],
+        "native_action_identity_sha256": "974166628aca56cc93ba7ede294ba614dbab014c5420c7d56a14fd07ae78cb18",
+        "native_command_bytes": 77,
+        "native_command_sha256": "04ad2f737b4e5fbbb1080bac91bec9bbcc294a6816553cbca52f31b2441ffd92",
+        "native_completion_sequence": 36,
+        "native_event_sequence": 36,
+        "native_harness": "opencode",
+        "native_identity_kind": "native_tool_call_id_sha256",
+        "native_shell_exit_code": 0,
+        "validator_segment_exit_code": 0,
+        "validator_segment_index": 0
+      },
+      {
+        "compound_shell_exit_code": null,
+        "inference_basis": "standalone_native_shell_exit",
+        "modes": [
+          "evals"
+        ],
+        "native_action_identity_sha256": "cbccdde840cad37f2e11eb731b335f144ad61109e17d18183a597eb32ef2752b",
+        "native_command_bytes": 77,
+        "native_command_sha256": "8bf214abff28dedbe4b7551dd315b0b506bcde7dd34e62f592ee2c3d97518cf8",
+        "native_completion_sequence": 39,
+        "native_event_sequence": 39,
+        "native_harness": "opencode",
+        "native_identity_kind": "native_tool_call_id_sha256",
+        "native_shell_exit_code": 0,
+        "validator_segment_exit_code": 0,
+        "validator_segment_index": 0
+      }
+    ]
+  }
+}

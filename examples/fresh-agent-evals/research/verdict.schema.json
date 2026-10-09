@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "paper-backed-coverage-grade-verdict-v1",
+  "title": "Independent research contribution grade",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "verdict_schema_version", "series_id", "series_manifest_sha256", "case_id",
+    "evidence_scope", "success", "status", "failure_reasons", "artifact_hashes",
+    "native_command_evidence", "independent_report", "limitations"
+  ],
+  "properties": {
+    "verdict_schema_version": {"const": 1},
+    "series_id": {"type": "string", "minLength": 1},
+    "series_manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "case_id": {"const": "paper-backed-coverage-challenger"},
+    "evidence_scope": {"enum": ["fresh-native-trial", "synthetic-selfcheck"]},
+    "success": {"type": "boolean"},
+    "status": {"enum": ["pass", "fail"]},
+    "failure_reasons": {"type": "array", "items": {"type": "string"}},
+    "diagnostics": {
+      "description": "Optional structured diagnostics for current verdicts; omitted in historical artifacts.",
+      "type": "array",
+      "items": {"$ref": "#/$defs/diagnostic"}
+    },
+    "entry_route": {
+      "description": "Native first-read route evidence for current trials; absent from historical verdicts.",
+      "type": ["object", "null"]
+    },
+    "artifact_hashes": {"type": "object", "additionalProperties": {"$ref": "#/$defs/sha256"}},
+    "native_command_evidence": {"type": ["object", "null"]},
+    "independent_report": {"type": ["object", "null"]},
+    "limitations": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "diagnostic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code", "category", "severity", "actionable", "summary", "native_action",
+        "artifact_path", "observed_evidence", "missing_evidence", "next_step"
+      ],
+      "properties": {
+        "code": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]{2,79}$"},
+        "category": {"enum": [
+          "native_permission_denial", "unsupported_evidence_format", "artifact_schema_error",
+          "protocol_violation", "research_comparison_outcome", "runtime_unavailability"
+        ]},
+        "severity": {"enum": ["error", "warning", "info"]},
+        "actionable": {"type": "boolean"},
+        "summary": {"type": "string", "minLength": 1, "maxLength": 800},
+        "native_action": {
+          "anyOf": [
+            {"type": "null"},
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["action_index", "event_sequence", "completion_sequence", "identity_kind", "identity_sha256", "tool", "command"],
+              "properties": {
+                "action_index": {"type": ["integer", "null"], "minimum": 0},
+                "event_sequence": {"type": ["integer", "null"], "minimum": 0},
+                "completion_sequence": {"type": ["integer", "null"], "minimum": 0},
+                "identity_kind": {"type": "string", "minLength": 1},
+                "identity_sha256": {"anyOf": [{"type": "null"}, {"$ref": "#/$defs/sha256"}]},
+                "tool": {"type": ["string", "null"]},
+                "command": {"type": ["string", "null"], "maxLength": 800}
+              }
+            }
+          ]
+        },
+        "artifact_path": {"type": ["string", "null"], "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))"},
+        "observed_evidence": {"type": "array", "maxItems": 8, "items": {"type": "string", "maxLength": 800}},
+        "missing_evidence": {"type": "array", "maxItems": 8, "items": {"type": "string", "maxLength": 800}},
+        "next_step": {"type": "string", "minLength": 1, "maxLength": 800}
+      }
+    }
+  }
+}

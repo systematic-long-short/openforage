@@ -1,0 +1,61 @@
+{
+  "label": "explicit same-trial regrade; not a new agent run",
+  "case_id": "discovery-contribution-cold-start",
+  "native_observation": {
+    "trial_record_path": ".tmp/fresh-agent-trials/discovery-contribution-cold-start-luna-rerun.trial.json",
+    "trial_record_sha256": "228b8bdd6113f314bfc8874859607aadfe59ea8e57c05ecff2d782d5128b92de",
+    "original_verdict_path": ".tmp/fresh-agent-trials/discovery-contribution-cold-start-luna-rerun.trial.verdict.json",
+    "original_verdict_sha256": "b655652dcfed3171374a1a50ec19d1052d8566d52e294965c4b896ea4eece10b",
+    "original_verdict_success": false,
+    "original_failure_reasons": [
+      "expected action not observed: run the contribution task selector"
+    ],
+    "session_id": "ses_f33302f7cffeQllBfaNBfPWbq6",
+    "harness": "opencode",
+    "harness_version": "1.18.31",
+    "model": "openrouter/openai/gpt-6-luna",
+    "variant": "max",
+    "execution_mode": "fresh-opencode-run",
+    "fresh_separate_invocation": true
+  },
+  "produced_artifact": {
+    "workspace_relative_path": "trial-output/contribution-discovery.json",
+    "sha256": "948ab82bfb3095b1af10a71a5b837654f665419b5ef1a2c53069e881374c060d",
+    "matches_original_trial_record_artifact_ref": true
+  },
+  "regrade": {
+    "verdict_path": ".tmp/fresh-agent-trials/discovery-contribution-cold-start-luna-rerun.trial.verdict.regrade.json",
+    "verdict_sha256": "a475aea72be86bf4f035f4ce51907bdae007ff3b5923210504d002dc1420f868",
+    "success": true,
+    "grader_version": 5,
+    "failure_reasons": [],
+    "corrected_rubric": "The contribution route action is satisfied by either an observed canonical selector invocation or an actual recorded read of canonical task definitions/readable onboarding content. The existing selected_task, target, validator-command, artifact, and isolation checks remain in force.",
+    "new_agent_run": false
+  },
+  "source_snapshot_verification": {
+    "original_source_snapshot_sha256": "b0aa8109c2c59b91081480612d4e736c4be1d092c599722f732a8d28ebe29da1",
+    "original_source_snapshot_file_count": 122,
+    "reconstructed_source_snapshot_sha256": "b0aa8109c2c59b91081480612d4e736c4be1d092c599722f732a8d28ebe29da1",
+    "reconstructed_source_snapshot_file_count": 122,
+    "verified_equal": true,
+    "reconstruction_path": ".tmp/portable-onboarding-cold-rerun-reconstruction",
+    "frozen_source_path": ".tmp/portable-onboarding-cold-rerun-source",
+    "method": "Prepared the cold-start case from the frozen source. To eliminate timestamp/source-identity drift in newly generated prepare metadata, copied the exact preserved bytes of trial-output/.prepare-owner.json and trial-output/prepare-record.json from the original native workspace into the separate reconstruction, then computed the digest with run_trial._snapshot_digest; that function excludes .git. The reconstructed digest and 122-file count equal the original trial record. The original workspace, record, verdict, and produced artifact were not modified.",
+    "restored_prepare_metadata": {
+      "trial-output/.prepare-owner.json": "aa9bcc1b72e4d7a17872ba696dde39ad62655ba0beab2a793138555ab6501296",
+      "trial-output/prepare-record.json": "6f2c0379591c5559bb5a0eef4da2bc9453b683bfb05dcfabecdf81ad067088a0"
+    }
+  },
+  "grading_source_hashes": {
+    "current/examples/fresh-agent-evals/grader.py": "81c421884595dc84575fec1c7c574a276844ae6604d8f970012bc26a5f07d8f7",
+    "current/examples/fresh-agent-evals/discovery_checks.py": "a8933f009bcd99e1f9572f719a6a1dcd7c74c3f90ebd9abae8bf48f9534a0faa",
+    "current/examples/fresh-agent-evals/tasks.json": "c7a47ced43f7664d85413fb1d4273851b19980fd29433e22950bb35cab7bdb5d",
+    "current/examples/fresh-agent-evals/run_trial.py": "6c623795ee013b2061eebb8fc215a3766aa2c238ab0b2ab1fed31c9e654e3a4c",
+    "frozen/examples/fresh-agent-evals/tasks.json": "368898da29ceb228dc66fee0daf717eb034f3af4f558c15391a7c704a3f82ae8",
+    "frozen/examples/fresh-agent-evals/discovery_checks.py": "cfb51177e9e579f6de3c14f18f24ae34c2e468d38fc87d07be5fc20dff2a0e9c",
+    "frozen/examples/fresh-agent-evals/fixtures/discovery-contribution-cold-start/fixture.json": "98a74eee4a729ad7644a8464452e26a4c54635de2b16cbcc72ab2780f30285f1",
+    "frozen/.github/scripts/validate_agent_docs.py": "ef4d21e163c7f80de03e48bb84821ba465114d4abf60d3f08751fad7dc56fa16",
+    "frozen/source-manifest.json": "6391b9c83e7e1195ebe0a20bf414df7e33e8c7b8a5b8a221c4dbb564717d3e71"
+  },
+  "claim": "grading-version correction of the retained rerun observation; not a new run, fresh trial, or library measurement"
+}

@@ -1,0 +1,13 @@
+{
+  "series_id": "native-workflow-research-1",
+  "run_ids": [
+    "workflow-research-opencode-1",
+    "workflow-research-codex-1"
+  ],
+  "snapshot_sha256": "e662d6274067d652b10685b0153348d71c177e4e33f269d414035f959b0dbfcf",
+  "source_tree_sha256": "2a37337d07bb9d149056d898ac600c6bcef610553922305d9ce3d596f176372f",
+  "initial_file_maps_equal": true,
+  "codex_launch_snapshot_pin_matched": true,
+  "requested_models_differ": true,
+  "harness_only_causal_comparison": false
+}

@@ -1,0 +1,91 @@
+{
+  "case_id": "recovery",
+  "variant": "max",
+  "variant_in_argv": true,
+  "execution_mode": "fresh-opencode-run",
+  "fresh_separate_invocation": true,
+  "replay": false,
+  "model": "openrouter/deepseek/deepseek-v4.1-flash",
+  "invocation_argv": [
+    "opencode",
+    "run",
+    "--format",
+    "json",
+    "--dir",
+    "<WORKSPACE>",
+    "--model",
+    "openrouter/deepseek/deepseek-v4.1-flash",
+    "--variant",
+    "max"
+  ],
+  "workspace": "<WORKSPACE>",
+  "workspace_identity": "a2024536f62042ef95293d0dd6ad60bf4cdf3dc045ca8fa9e85eb6581a653d28",
+  "source_snapshot_sha256": "fa2684c4d2e0604d05aa09412ad943dd5a301624c747ab3fb29cf731fab97e38",
+  "source_snapshot_files": 123,
+  "source_git_head": "c48cb235fde2d5590601528ef9c83cb9d8f402dd",
+  "harness": "opencode",
+  "harness_version": "1.18.31",
+  "session_id": "ses_f35b2ac43ffeSKA2z9I2TIVo0P",
+  "started_at": "2026-09-22T18:07:39Z",
+  "ended_at": "2026-09-22T18:07:49Z",
+  "exit_code": 0,
+  "launch_error": null,
+  "owned_process_remaining": false,
+  "observed_actions": [
+    {
+      "tool": "bash",
+      "command": "ls -la . && ls -la .openforage-state/ 2>/dev/null"
+    },
+    {
+      "tool": "glob",
+      "command": null
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/.openforage-state/status.json"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/.openforage-state/background.pid"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/.openforage-state/events.jsonl"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/.openforage-state/worker.log"
+    },
+    {
+      "tool": "bash",
+      "command": "kill -0 999999 2>&1; echo \"kill0_exit=$?\"; if [ -d /proc/999999 ]; then echo \"proc_exists=yes\"; cat /proc/999999/comm 2>/dev/null; else echo \"proc_exists=no\"; fi; ps -p 999999 -o pid=,comm= 2>&1; echo \"ps_exit=$?\""
+    }
+  ],
+  "action_extraction": {
+    "method": "normalized allowlisted tool observations from the native JSON event stream",
+    "events_observed": 13,
+    "actions_observed": 7,
+    "raw_events_scratch": ".tmp/fresh-agent-trials/recovery-rerun.raw-events.jsonl",
+    "raw_events_sha256": "cd7b506ac74bf02d5c565d0782d7e5356f05362d17d7e95845280d586cd0159d",
+    "raw_events_bytes": 26375,
+    "note": "Raw events stay in git-ignored scratch; this record keeps only normalized actions."
+  },
+  "child_environment": {
+    "applied": true,
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "python_on_path": "/usr/bin",
+    "note": "Set for the child session so validator runs create no bytecode under frozen dirs; `python` on the child PATH is this interpreter."
+  },
+  "child_prompt": {
+    "protocol_version": "workspace-protocol-v1",
+    "rendered_sha256": "2142466db785fa8f91318954b4450dcf99f58dbc66f2a4ba69f9cd34977192c1",
+    "delivered": true,
+    "note": "The runner prepends the common protocol block to the case prompt from tasks.json; the case prompt itself stays exact case content. The rendered text is hashed, not retained, because it embeds the workspace path."
+  },
+  "first_useful_action_seconds": 6.252,
+  "first_useful_action_unknown_reason": null,
+  "clarification_count": null,
+  "plain_text_tail": "\u001b[93m\u001b[1m! \u001b[0mpermission requested: external_directory (/proc/999999/*); auto-rejecting",
+  "artifact_refs": {},
+  "claim": "single-trial observation; not a measured result"
+}

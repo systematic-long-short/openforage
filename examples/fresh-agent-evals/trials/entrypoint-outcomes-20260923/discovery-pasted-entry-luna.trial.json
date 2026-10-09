@@ -1,0 +1,560 @@
+{
+  "case_id": "discovery-pasted-entry",
+  "task_mode": "discovery",
+  "fixture_conditions": [
+    "AGENTS.md and CLAUDE.md are absent from the prepared workspace; this describes visible files, not native harness autoload behavior.",
+    "The parent supplies a runtime JSON agent through OPENCODE_CONFIG_CONTENT; the effective wildcard default is deny and only read, list, glob, grep, and edit are allowed.",
+    "The prepared workspace has no .opencode project directory or node_modules tree; a non-model debug-agent probe checks the effective matrix without retaining unrelated output.",
+    "This profile limits tools exposed to the child agent; it does not claim the host has no Python executable."
+  ],
+  "variant": "max",
+  "variant_in_argv": true,
+  "execution_mode": "fresh-opencode-run",
+  "fresh_separate_invocation": true,
+  "replay": false,
+  "model": "openrouter/openai/gpt-6-luna",
+  "invocation_argv": [
+    "opencode",
+    "run",
+    "--pure",
+    "--format",
+    "json",
+    "--dir",
+    "<WORKSPACE>",
+    "--model",
+    "openrouter/openai/gpt-6-luna",
+    "--agent",
+    "entry-files-only",
+    "--variant",
+    "max"
+  ],
+  "workspace": "<WORKSPACE>",
+  "workspace_identity": "235718951089718114c8a0600c87202f6bb3fa31481467825227e0e454fd1495",
+  "source_snapshot_sha256": "4cbbdcea2628a79fe2693f6970e777cd5eb9c2ef4e1f212b23029e7b733b3f5f",
+  "source_snapshot_files": 135,
+  "source_git_head": "c48cb235fde2d5590601528ef9c83cb9d8f402dd",
+  "harness": "opencode",
+  "harness_version": "1.18.31",
+  "session_id": "ses_f31bca12cffeUREgW18Fn1dNxD",
+  "started_at": "2026-09-23T12:35:15Z",
+  "ended_at": "2026-09-23T12:38:53Z",
+  "exit_code": 0,
+  "launch_error": null,
+  "model_process_started": true,
+  "owned_process_remaining": false,
+  "observed_actions": [
+    {
+      "tool": "read",
+      "event_sequence": 1,
+      "native_tool_call_id_sha256": "c9eb5597d7f9847060cbc5f8e13193727fe6e06294e68184ed6b7ae396832da1",
+      "command": "<WORKSPACE>/docs/agents/start-here.md",
+      "command_sha256": "3cdbeddb6bd9cab8fb91caa784210a5ba8f7afccadb87a0cdc565172001624ad",
+      "command_bytes": 37,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 9516,
+        "output_sha256": "a0d989090039c5c0ebfdf9925fd57cd9bf1366009974d1897da3aa4a787fe06b"
+      }
+    },
+    {
+      "tool": "glob",
+      "event_sequence": 2,
+      "native_tool_call_id_sha256": "ad8d4214c86ecf636d75027464c1b453fd209a48c6a984f41d0c16acc3ec3cf3",
+      "command": "<WORKSPACE>",
+      "command_sha256": "cb474a78c0c3ecceac06e1601434613c988e23a21b0d96fc0d14451e00ff4e13",
+      "command_bytes": 11,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 150,
+        "output_sha256": "e917b0f20385d6b630cebe45de186fc18aa7cf807d36514dd41fb8a1fd988e55"
+      }
+    },
+    {
+      "tool": "glob",
+      "event_sequence": 3,
+      "native_tool_call_id_sha256": "b1372fb19e805b83a269a79303f54d2413ad23a580eee400e528e591a86dcf18",
+      "command": "<WORKSPACE>",
+      "command_sha256": "cb474a78c0c3ecceac06e1601434613c988e23a21b0d96fc0d14451e00ff4e13",
+      "command_bytes": 11,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 33,
+        "output_sha256": "58827e30471dd71c38c06c4ffa96373538452726570358da961ea1f1d6658409"
+      }
+    },
+    {
+      "tool": "glob",
+      "event_sequence": 4,
+      "native_tool_call_id_sha256": "02ffbc3018faa9ca1d40607d6a70f5139a4436206eba23210a06a6b99fecb406",
+      "command": "<WORKSPACE>",
+      "command_sha256": "cb474a78c0c3ecceac06e1601434613c988e23a21b0d96fc0d14451e00ff4e13",
+      "command_bytes": 11,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 985,
+        "output_sha256": "6cb44e0adac6176a59a35b06880b1d67fb92fcf5d9bc9ffa2dd6c8cb94d928fc"
+      }
+    },
+    {
+      "tool": "glob",
+      "event_sequence": 5,
+      "native_tool_call_id_sha256": "e01c640e4b86c8d1e3fbf470bae660486fe398ae26f6029485f177f5b0c6f451",
+      "command": "<WORKSPACE>",
+      "command_sha256": "cb474a78c0c3ecceac06e1601434613c988e23a21b0d96fc0d14451e00ff4e13",
+      "command_bytes": 11,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 54,
+        "output_sha256": "992efa063f4258fc0fd9962d3bec2128ca00faa098b793aadd1019b40e9bb8a6"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 8,
+      "native_tool_call_id_sha256": "9db5fd053d4a6fa30948daac56353edcbec3455263b69616dc1695987fac1dfb",
+      "command": "<WORKSPACE>/docs/agents/first-contribution.md",
+      "command_sha256": "d8d5e8dbcd090127819612184c23d08682992cc68e2e8c0b4f453e2f49c11cbe",
+      "command_bytes": 45,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 11449,
+        "output_sha256": "56d7cc097448ca390a9f1904f1daf76f36312757f0f6d6225dc111843f0cfc19"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 9,
+      "native_tool_call_id_sha256": "4e403e25afb6e8021371417a2789eced33258b9a4ada5c7017cec66e73ec0bee",
+      "command": "<WORKSPACE>/docs/agents/contributing-research.md",
+      "command_sha256": "ad12d549364aa598f5cba284b620c8403029809c917d48260710ac7d64821955",
+      "command_bytes": 48,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 15727,
+        "output_sha256": "7aa2e9405efd8e5e4f0010b31ce6791b6dcf244f890a5488050750654ad3e090"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 10,
+      "native_tool_call_id_sha256": "6d9bcb54f0d1cd56e29b8dd42b739f0fe843d0fa831583f76df74bcda7b99571",
+      "command": "<WORKSPACE>/trial-output/pasted-entry-contribution.json",
+      "command_sha256": "4ea37f4b6b735d8da9908817af6f21bb74a0bb50a33d7a2414b31baa0b810add",
+      "command_bytes": 55,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 144,
+        "output_sha256": "7967007d6e3ad092aa6d6f72852187c6ef8fbedb27255433991d003677faf65c"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 11,
+      "native_tool_call_id_sha256": "43eba491d9ae87626dc88e9777886f2d84bfc4e86cd19316c6b4dcc27cbe1043",
+      "command": "<WORKSPACE>/scripts/start_here.py",
+      "command_sha256": "58827e30471dd71c38c06c4ffa96373538452726570358da961ea1f1d6658409",
+      "command_bytes": 33,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 45980,
+        "output_sha256": "2198d357384b431f5b1bfec3285c8d2172502f3777a67f392c02aa6200fef53e"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 12,
+      "native_tool_call_id_sha256": "ae7c57e6f8a4ac9e7b97515676f4f7ff51d90692cce63f442d7451add00169ab",
+      "command": "<WORKSPACE>/docs/agents/references/onboarding.json",
+      "command_sha256": "c7ae2d11ad2aa10c79467c715c9dd67fcb78e4b9e42c39d4b77fd7bfd4ba426e",
+      "command_bytes": 50,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 19373,
+        "output_sha256": "fc1a392780b9351dded17694d453a8f05994d6e15dc4a5d1b341fd9b44656ad2"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 15,
+      "native_tool_call_id_sha256": "95cf9528bc4bfd37b1ffd2ee9b4d2a2b1709c3ee19a9514e5cef1d1f3c9ad779",
+      "command": "<WORKSPACE>/docs/agents/quickstart.md",
+      "command_sha256": "88bbb4cd8c34051e5871237571692df05bb57d4ed82c0a54548de3fdab310499",
+      "command_bytes": 37,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 3892,
+        "output_sha256": "354832c1c320dfb156c7f17a66bc94ddc40cacf2120af512761f14127d6e353a"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 16,
+      "native_tool_call_id_sha256": "5ced6c5060087173547abb6d4d90d944f2a74d3ea8ba9c438613f996c1baacac",
+      "command": "<WORKSPACE>/docs/agents/first-search.md",
+      "command_sha256": "30dd431174e4b58a67e2745e8636db222f435d36ec0ad3792872eeb7367af97a",
+      "command_bytes": 39,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 4866,
+        "output_sha256": "b45cbea5b5abedd0d3e9b4f4b3b19b906b4e6efba66b8cd0b3b40fc22cabb1d1"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 17,
+      "native_tool_call_id_sha256": "0efda510588792af70285516c743c679644b4ffbc85a51792523deb2809434f0",
+      "command": "<WORKSPACE>/docs/start-here/onboard-your-agent.md",
+      "command_sha256": "a97f83e82c56de2a73b608ec7c1ca92a07839a2069ae12eacfca348d2f5c8f86",
+      "command_bytes": 49,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 5895,
+        "output_sha256": "cdfe150d2e3dded5b01f89bcf11364f3f2e5ffc5e0e6c9586103aca7bd02a113"
+      }
+    },
+    {
+      "tool": "grep",
+      "event_sequence": 18,
+      "native_tool_call_id_sha256": "5dfb3c64dc0bf0741df7d0096e5a75542ee4701503eff2a74f8ea067464fc449",
+      "command": "<WORKSPACE>/README.md",
+      "command_sha256": "e839f8ef3b5392bec89b21a8be0ec8962b39b186a60a236fcaf9b7d55f0f12c4",
+      "command_bytes": 21,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 973,
+        "output_sha256": "b0c038d4eebdbeeefc829b8c1ca76e638da236c76ce356ac65bff4aca4742d07"
+      }
+    },
+    {
+      "tool": "grep",
+      "event_sequence": 19,
+      "native_tool_call_id_sha256": "d4fa4a61888245188ec22a5b6bf98b5e2ac099e1890893e1395141af0fcbef66",
+      "command": "<WORKSPACE>/.github/scripts",
+      "command_sha256": "cd0dfa3968daeb87be916362abbdcb6e52f1ad2f35375a91bd8657165c0b1c3a",
+      "command_bytes": 27,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 6553,
+        "output_sha256": "0cfc64eee458ce551278e6019a6aced27fffe99075bfc021d5b30f7f942a6da1"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 22,
+      "native_tool_call_id_sha256": "d3580345b6ed787549539cb1fbae51f4bb492dcf50492a7f6efdf4a085832b82",
+      "command": "<WORKSPACE>/CONTRIBUTING.md",
+      "command_sha256": "cf6661c4070756d3981db9634baabc4e677385eb0b64117f36c517792255ba24",
+      "command_bytes": 27,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 12057,
+        "output_sha256": "d4f9c4d501ff7c0707a4641b1234f85cffacb18ead31bf43279f3ce92e5ae356"
+      }
+    },
+    {
+      "tool": "grep",
+      "event_sequence": 25,
+      "native_tool_call_id_sha256": "2977c4a874e2cd85d1eaeaf7764fa10fed90b372d98a034014f533036815b801",
+      "command": "<WORKSPACE>/src/openforage/skills/agent_runtime_integration/references/harnesses.json",
+      "command_sha256": "bcc9e78fc3bcffe0f08d68dba708168eb4c1b1af5a206a96d8e7cb9e85d3c2f1",
+      "command_bytes": 85,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 8013,
+        "output_sha256": "6ab5e13ad78e50d92a07721a50e8cd8f12c2d4fb572b6424ae0d6bd577fbbe95"
+      }
+    },
+    {
+      "tool": "glob",
+      "event_sequence": 26,
+      "native_tool_call_id_sha256": "47130d862306ae68a17c7c24cb92cf4f051445a74e1a1d3efe6eb7c61ae386c3",
+      "command": "<WORKSPACE>",
+      "command_sha256": "cb474a78c0c3ecceac06e1601434613c988e23a21b0d96fc0d14451e00ff4e13",
+      "command_bytes": 11,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 82,
+        "output_sha256": "5904af79579c0ee5d1d2c757a1062d825fb3c3bf140a83f35a87a8ba6da04cdf"
+      }
+    },
+    {
+      "tool": "grep",
+      "event_sequence": 27,
+      "native_tool_call_id_sha256": "397e2e77d31e88b1b4b3a6536f1ca9053257f99048f12b752319bf73049e79c7",
+      "command": "<WORKSPACE>/docs/agents",
+      "command_sha256": "1c7d1f1202d32497140c6363533c9afb7851f7d9f9376ec9987f1c02039334d7",
+      "command_bytes": 23,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 6671,
+        "output_sha256": "0b9d4629a53053a38a62aecbc73d1631ca397805581f50c1d2661b75dfbe42c2"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 28,
+      "native_tool_call_id_sha256": "e528a323cf338de296c57114803334eaf29ede187e75a11fd0d88a5652c3dc3d",
+      "command": "<WORKSPACE>/docs/agents/harness-verification.md",
+      "command_sha256": "f9ac4a630263a4334a7c389898422254fcfe693b0cf9f27f3dbc618191b9887f",
+      "command_bytes": 47,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 14123,
+        "output_sha256": "770e91be75054b48c637e0914818a4de2fd8a2b230989e0c217cfde4fa7fad61"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 31,
+      "native_tool_call_id_sha256": "394d712a163ff56167aeb42f4b0aeb304967bb7bdeb0b60408f7b108f7692c23",
+      "command": "<WORKSPACE>/src/openforage/skills/agent_runtime_integration/references/opencode.md",
+      "command_sha256": "5904af79579c0ee5d1d2c757a1062d825fb3c3bf140a83f35a87a8ba6da04cdf",
+      "command_bytes": 82,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 6370,
+        "output_sha256": "12af04c57c800fa85463c01f9fc27942ab0666735fdb5d91fae5c6dad7f57c23"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 34,
+      "native_tool_call_id_sha256": "64a3ddeb9a815aae0d2fb4f492c80051d547b0339cceab5f4449236baf60d214",
+      "command": "<REPO>/.tmp/fresh-agent-trials/discovery-pasted-entry-contribution-luna/src/openforage/skills/agent_runtime_integration/references/harnesses.json",
+      "command_sha256": "0c526f2c5575e416c2dd780a85cd76661fc37dcefe6188337324a799689fe248",
+      "command_bytes": 145,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "error",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "missing",
+        "output_bytes": null,
+        "output_sha256": null
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 37,
+      "native_tool_call_id_sha256": "ef586271f678643ed4bac71ed829e1b08c4469bf8d193d28eb0734024cb5344c",
+      "command": "<WORKSPACE>/src/openforage/skills/agent_runtime_integration/references/harnesses.json",
+      "command_sha256": "bcc9e78fc3bcffe0f08d68dba708168eb4c1b1af5a206a96d8e7cb9e85d3c2f1",
+      "command_bytes": 85,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 13080,
+        "output_sha256": "b12097bf86f8a6dce425dbb84d380b00cedea4574880937f5245ae6e35a0f082"
+      }
+    },
+    {
+      "tool": "apply_patch",
+      "event_sequence": 40,
+      "native_tool_call_id_sha256": "9f5fc2d2a184809c0eeec612cd35e8c23ade5b0b19fa0c5f54a7040d6b928432",
+      "command": "trial-output/pasted-entry-contribution.json",
+      "command_sha256": "b0533d181094f13cc92525f3dd217ce4418d35fe39d3924bfc968643c4082e92",
+      "command_bytes": 43,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 83,
+        "output_sha256": "b04556647afb51ed60c958eaea6cde8efb76f5c1e08ea4d22f66a818e5d9ee07"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 44,
+      "native_tool_call_id_sha256": "54ea5ddfc03f82c2a666d367825bd5a04e1171e69e3b539e1bfdbd00fb0b9731",
+      "command": "<WORKSPACE>/trial-output/pasted-entry-contribution.json",
+      "command_sha256": "4ea37f4b6b735d8da9908817af6f21bb74a0bb50a33d7a2414b31baa0b810add",
+      "command_bytes": 55,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 3180,
+        "output_sha256": "f203672fc7a40e8bec228dd420e674922f27fe4db498e0f36669192fcfe0440d"
+      }
+    }
+  ],
+  "observed_action_schema_version": 2,
+  "outcome_schema_version": 1,
+  "child_tool_profile": {
+    "profile_id": "opencode-file-tools-only-v2",
+    "agent_name": "entry-files-only",
+    "mechanism": "OPENCODE_CONFIG_CONTENT runtime JSON agent selected with --agent",
+    "configured": true,
+    "applied_to_child_invocation": true,
+    "replay_not_enforced": false,
+    "default_tool_permission": "deny",
+    "wildcard_default_deny": true,
+    "allowed_tools": [
+      "read",
+      "list",
+      "glob",
+      "grep",
+      "edit"
+    ],
+    "denied_tools": [
+      "*",
+      "external_directory"
+    ],
+    "effective_permission_probe": {
+      "status": "verified",
+      "method": "non-model `opencode debug agent entry-files-only` with OPENCODE_CONFIG_CONTENT",
+      "exit_code": 0,
+      "error_kind": null,
+      "agent_name": "entry-files-only",
+      "effective_matrix_matches": true,
+      "effective_permission_matrix": {
+        "*": "deny",
+        "external_directory": "deny",
+        "bash": "deny",
+        "read": "allow",
+        "list": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "edit": "allow",
+        "matches_admitted_matrix": true
+      },
+      "project_opencode_absent_before": true,
+      "project_opencode_absent_after": true,
+      "node_modules_absent_before": true,
+      "node_modules_absent_after": true,
+      "model_invocation": false,
+      "raw_debug_output_retained": false,
+      "argv": [
+        "opencode",
+        "debug",
+        "agent",
+        "entry-files-only"
+      ]
+    },
+    "host_python_binary_absence_claimed": false,
+    "note": "Tool permissions are checked through OpenCode's effective debug-agent matrix; the prompt alone is not enforcement and no host-Python absence is claimed."
+  },
+  "action_extraction": {
+    "method": "versioned allowlisted actions correlated by native tool-call ID; shell exit code only from native result metadata",
+    "events_observed": 49,
+    "actions_observed": 25,
+    "raw_events_scratch": ".tmp/fresh-agent-trials/discovery-pasted-entry-luna.raw-events.jsonl",
+    "raw_events_sha256": "27ae8ad914dae7882cebbecfaff23447f02af3cd605b92953a486016f9b97ddd",
+    "raw_events_bytes": 792375,
+    "note": "Raw events stay in git-ignored scratch; provider metadata and tool output text are omitted."
+  },
+  "child_environment": {
+    "applied": true,
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "python_on_path": "/usr/bin",
+    "note": "Set for the child session so validator runs create no bytecode under frozen dirs; `python` on the child PATH is this interpreter."
+  },
+  "child_prompt": {
+    "protocol_version": "workspace-protocol-v2",
+    "rendered_sha256": "9130d1b3f25330d4478ce145601e954f1d68907f1443379edd4057c98056d1f7",
+    "delivered": true,
+    "pasted_canonical_entry": "root_route",
+    "pasted_entry_source": "README.md",
+    "pasted_entry_sha256": "d4409e37d0f8efd414b196fb8c4a23d0527629ee411fce6d40c41ea7aaf5a0a5",
+    "note": "The runner prepends the common protocol block and, for the pasted-entry case, the canonical route block from README.md; the exact task prompt remains in tasks.json. Rendered text is hashed, not retained, because it embeds the workspace path."
+  },
+  "first_useful_action_seconds": 9.889,
+  "first_useful_action_unknown_reason": null,
+  "clarification_count": null,
+  "plain_text_tail": "",
+  "artifact_refs": {
+    "trial-output/pasted-entry-contribution.json": "0ffefe80d8a2da95bdc7aa0b57f7c60be4494bc51a239dd8ded94200b4c07e9e"
+  },
+  "claim": "single-trial observation; not a measured result"
+}

@@ -1,0 +1,120 @@
+{
+  "artifact_diff": [
+    {
+      "after_sha256": "e0be41472049b365e7ebacdf2df9c32e78ae9040782011eb2d3d987078f0bc93",
+      "before_sha256": "8aa6d00c03210614aa655f3bce19d7afc89ded1ddd1344e3f9dba45550b39d5a",
+      "change": "modified",
+      "path": "docs/agents/quickstart.md"
+    },
+    {
+      "after_sha256": "49f185af5faa5cc432f8445e97a7d8c7931623d8e4e407de4383af547702d6b2",
+      "before_sha256": null,
+      "change": "created",
+      "path": "trial-output/completion.json"
+    }
+  ],
+  "artifact_refs": {
+    "docs/agents/quickstart.md": "e0be41472049b365e7ebacdf2df9c32e78ae9040782011eb2d3d987078f0bc93",
+    "trial-output/completion.json": "49f185af5faa5cc432f8445e97a7d8c7931623d8e4e407de4383af547702d6b2"
+  },
+  "case_id": "first-finished-contribution-primary",
+  "evidence_scope": "fresh-native-trial",
+  "failure_reasons": [
+    "direct evaluation-suite access audit is unknown; absence is not established",
+    "authoritative_sources are not supported by completed native reads"
+  ],
+  "harness": "opencode",
+  "human_review": {
+    "automated_quality_assessment": "not_performed",
+    "rationale": "The quickstart's example represents first registration for an authorized live campaign, and the README and adjacent authentication guides document that first registration requires an invite code. The bare call contradicted that requirement.",
+    "summary": "Changed the quickstart registration example to supply an invite code; the selected documentation check failed before the correction and passed afterward."
+  },
+  "metrics": {
+    "artifact_diff": {
+      "changed_file_count": 2,
+      "changed_paths": [
+        "docs/agents/quickstart.md",
+        "trial-output/completion.json"
+      ],
+      "sha256_evidence": [
+        {
+          "after_sha256": "e0be41472049b365e7ebacdf2df9c32e78ae9040782011eb2d3d987078f0bc93",
+          "before_sha256": "8aa6d00c03210614aa655f3bce19d7afc89ded1ddd1344e3f9dba45550b39d5a",
+          "change": "modified",
+          "path": "docs/agents/quickstart.md"
+        },
+        {
+          "after_sha256": "49f185af5faa5cc432f8445e97a7d8c7931623d8e4e407de4383af547702d6b2",
+          "before_sha256": null,
+          "change": "created",
+          "path": "trial-output/completion.json"
+        }
+      ]
+    },
+    "clarification_observations": {
+      "count": 0,
+      "status": "observed"
+    },
+    "time_to_first_meaningful_action": {
+      "elapsed_seconds": 12.619,
+      "event_sequence": 5,
+      "status": "observed",
+      "timestamp_basis": "native_event_timestamp"
+    },
+    "time_to_first_verified_completed_contribution": {
+      "elapsed_seconds": null,
+      "exact_completion_time": false,
+      "measurement": "elapsed_at_verification_upper_bound",
+      "status": "unknown"
+    },
+    "unnecessary_setup_attempts": {
+      "attempts": [],
+      "count": null,
+      "observed_lower_bound": 0,
+      "status": "unknown"
+    },
+    "unsupported_structured_claims": {
+      "count": 1,
+      "status": "observed"
+    },
+    "validation_outcome": {
+      "agent_baseline": "observed_failure",
+      "agent_final": "observed_pass",
+      "independent_final": "pass"
+    }
+  },
+  "native_trace": {
+    "actions_observed": 31,
+    "direct_suite_access_audit": "unknown",
+    "direct_suite_access_indices": [],
+    "events_observed": 68,
+    "raw_events_sha256": "d89e7691dd085937b5de55d7b6c27ba07c35bc54c8abd12121db419a3b59719b",
+    "trace_complete": true
+  },
+  "run_id": "opencode-primary-2",
+  "series_id": "contribution-wave-final-3",
+  "series_manifest_sha256": "3b7d2b3b820da9229647beede852e7457e627d9096857ea5a0d40358a597e5f8",
+  "status": "fail",
+  "success": false,
+  "synthetic_regression": false,
+  "validation": {
+    "baseline_native_item_id_sha256": "3df8230212c07a70f2d78f356c50344d9810cd9578570770ad1ebbbf4208b003",
+    "final_native_item_id_sha256": "fde594b860de1dd7a274eecd170984ab16052af44c83c833a796fa86fce88cb9",
+    "independent_final": {
+      "executed": true,
+      "exit_code": 0,
+      "method": "independent unchanged repository validator on final workspace",
+      "modes": [
+        "truthfulness",
+        "links"
+      ],
+      "owned_process_group_remaining": false,
+      "status": "pass",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 34,
+      "stdout_sha256": "47e72519f3d78aa66237ad94c9d5ff537b8a03e0584c4fbfdcbfc61cf9f97303",
+      "timed_out": false
+    }
+  }
+}

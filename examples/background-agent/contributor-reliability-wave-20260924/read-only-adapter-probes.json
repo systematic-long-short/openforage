@@ -1,0 +1,250 @@
+{
+  "opencode": {
+    "exit_code": 0,
+    "record": {
+      "adapter_id": "opencode",
+      "configuration_mutated": false,
+      "credentials_inspected": false,
+      "declared_primitives": [
+        {
+          "availability": "unknown",
+          "basis": "No goal-operation outcome is established by the retained proof.",
+          "operation": "goal_declaration",
+          "tool_names": []
+        },
+        {
+          "availability": "unknown",
+          "basis": "The retained proof records a todowrite event, but not a distinct durable task creation and reread.",
+          "operation": "task_creation",
+          "tool_names": []
+        },
+        {
+          "availability": "unknown",
+          "basis": "The retained proof scoped todowrite only as a task/todo tool operation, not durable task storage.",
+          "operation": "task_list_write",
+          "tool_names": [
+            "todowrite"
+          ]
+        },
+        {
+          "availability": "unknown",
+          "basis": "No correlated durable task reread is established by the retained proof.",
+          "operation": "task_durable_reread",
+          "tool_names": []
+        },
+        {
+          "availability": "unknown",
+          "basis": "No operation event has been observed for this adapter.",
+          "operation": "memory_write",
+          "tool_names": []
+        },
+        {
+          "availability": "unknown",
+          "basis": "No operation event has been observed for this adapter.",
+          "operation": "memory_durable_reread",
+          "tool_names": []
+        },
+        {
+          "availability": "unknown",
+          "basis": "No operation event has been observed for this adapter.",
+          "operation": "native_scheduler_creation",
+          "tool_names": []
+        },
+        {
+          "availability": "unknown",
+          "basis": "No operation event has been observed for this adapter.",
+          "operation": "native_scheduler_delivery",
+          "tool_names": []
+        }
+      ],
+      "evidence_class": "read-only-adapter-probe",
+      "help_probe": {
+        "argv_shape": [
+          "<selected-binary>",
+          "--help"
+        ],
+        "capability_use_inferred": false,
+        "outcome": "observed_success",
+        "output_bytes": 4285,
+        "output_sha256": "b594ad32674bf8008017157833ab87316170523ed23dbd10c37ae9931d2ba178",
+        "returncode": 0
+      },
+      "limitations": [
+        "A version/help probe is not a native-operation observation.",
+        "No session was launched, no auth state was read, and no config was changed."
+      ],
+      "ok": true,
+      "product": "OpenCode",
+      "schema_version": 1,
+      "session_launched": false,
+      "version": "1.18.31"
+    },
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "codex": {
+    "exit_code": 0,
+    "record": {
+      "adapter_id": "codex",
+      "configuration_mutated": false,
+      "credentials_inspected": false,
+      "declared_primitives": [
+        {
+          "availability": "documented",
+          "basis": "Codex goal surfaces are documented, but no goal-operation event was observed in the retained controller proof.",
+          "operation": "goal_declaration",
+          "tool_names": []
+        },
+        {
+          "availability": "unknown",
+          "basis": "No product-specific task-creation event was observed in the retained controller proof.",
+          "operation": "task_creation",
+          "tool_names": []
+        },
+        {
+          "availability": "unknown",
+          "basis": "No operation event has been observed for this adapter.",
+          "operation": "task_durable_reread",
+          "tool_names": []
+        },
+        {
+          "availability": "unknown",
+          "basis": "No operation event has been observed for this adapter.",
+          "operation": "memory_write",
+          "tool_names": []
+        },
+        {
+          "availability": "unknown",
+          "basis": "No operation event has been observed for this adapter.",
+          "operation": "memory_durable_reread",
+          "tool_names": []
+        },
+        {
+          "availability": "unknown",
+          "basis": "No operation event has been observed for this adapter.",
+          "operation": "native_scheduler_creation",
+          "tool_names": []
+        },
+        {
+          "availability": "unknown",
+          "basis": "No operation event has been observed for this adapter.",
+          "operation": "native_scheduler_delivery",
+          "tool_names": []
+        }
+      ],
+      "evidence_class": "read-only-adapter-probe",
+      "help_probe": {
+        "argv_shape": [
+          "<selected-binary>",
+          "--help"
+        ],
+        "capability_use_inferred": false,
+        "outcome": "observed_success",
+        "output_bytes": 5769,
+        "output_sha256": "75c90681ba095160666d9884d1eccce391be95c80da27641a3c8e1481bb02fac",
+        "returncode": 0
+      },
+      "limitations": [
+        "A version/help probe is not a native-operation observation.",
+        "No session was launched, no auth state was read, and no config was changed."
+      ],
+      "ok": true,
+      "product": "Codex",
+      "schema_version": 1,
+      "session_launched": false,
+      "version": "codex-cli 0.156.1"
+    },
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "claude-code": {
+    "exit_code": 0,
+    "record": {
+      "adapter_id": "claude-code",
+      "configuration_mutated": false,
+      "credentials_inspected": false,
+      "declared_primitives": [
+        {
+          "availability": "documented",
+          "basis": "Official Claude Code goal documentation describes session-scoped /goal controls; no goal use is inferred here.",
+          "operation": "goal_declaration",
+          "tool_names": []
+        },
+        {
+          "availability": "documented",
+          "basis": "Official tools reference names TaskCreate; models differ in default availability.",
+          "operation": "task_creation",
+          "tool_names": [
+            "TaskCreate"
+          ]
+        },
+        {
+          "availability": "documented",
+          "basis": "Official tools reference names TaskGet and TaskList; durable reread still requires correlated observed results.",
+          "operation": "task_durable_reread",
+          "tool_names": [
+            "TaskGet",
+            "TaskList"
+          ]
+        },
+        {
+          "availability": "documented",
+          "basis": "Official tools reference names TaskUpdate; availability and effect require an observed result event.",
+          "operation": "task_state_update",
+          "tool_names": [
+            "TaskUpdate"
+          ]
+        },
+        {
+          "availability": "documented",
+          "basis": "Claude Code documents auto memory, but no matching write outcome is inferred from session history.",
+          "operation": "memory_write",
+          "tool_names": []
+        },
+        {
+          "availability": "documented",
+          "basis": "Claude Code documents auto memory; this adapter has no observed durable reread event.",
+          "operation": "memory_durable_reread",
+          "tool_names": []
+        },
+        {
+          "availability": "documented",
+          "basis": "Official tools reference documents CronCreate; declaration is not scheduler use.",
+          "operation": "native_scheduler_creation",
+          "tool_names": [
+            "CronCreate"
+          ]
+        },
+        {
+          "availability": "documented",
+          "basis": "Native delivery requires a real exact scheduler wakeup and consumed task event; no CLI availability flag or external due event qualifies.",
+          "operation": "native_scheduler_delivery",
+          "tool_names": []
+        }
+      ],
+      "evidence_class": "read-only-adapter-probe",
+      "help_probe": {
+        "argv_shape": [
+          "<selected-binary>",
+          "--help"
+        ],
+        "capability_use_inferred": false,
+        "outcome": "observed_success",
+        "output_bytes": 21735,
+        "output_sha256": "06f5c4560d04939252e707e0bdee9c047e50aeb81ad8926a7ba74ec27f2432cd",
+        "returncode": 0
+      },
+      "limitations": [
+        "A version/help probe is not a native-operation observation.",
+        "No session was launched, no auth state was read, and no config was changed."
+      ],
+      "ok": true,
+      "product": "Claude Code",
+      "schema_version": 1,
+      "session_launched": false,
+      "version": "2.1.281 (Claude Code)"
+    },
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

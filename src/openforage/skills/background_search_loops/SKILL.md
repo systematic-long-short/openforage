@@ -5,13 +5,53 @@ description: Use this whenever an agent needs to run, supervise, resume, stop, o
 
 # Background Search Loops
 
-> **STOP.** If you have not read the OpenForage Library `README.md` at the repo root §0–§C, read it first.
+> **Campaign path.** If your task is a campaign bootstrap and you have not
+> read the OpenForage Library `README.md` §0, §A, and §A.1, read them first;
+> documentation, template, and validation contributions do not need those
+> sections.
 > This skill is depth reference for the `T-OF-start-search-bg` bootstrap task. The
-> README documents the durable outcome/tasklist setup and the spawn-and-keep-working
+> README documents the durable outcome/tasklist setup, the §A.1 background research
+> agent delegation contract, and the spawn-and-keep-working
 > pattern (`nohup openforage start ... &`) that lets data download in the background
 > while the agent wires up callbacks and schedules in parallel.
 
 Prefer the explicit CLI worker for unattended runs. Keep the state directory stable across start, status, callbacks, and stop commands.
+
+## Native Controls And Ownership
+
+The worker is owned by a **background research agent** created per the
+README §A.1 delegation contract: a separate CLI invocation of the same
+harness with a distinct session/conversation identity. A Python worker,
+a same-session subagent, a main-session heartbeat, and a detached resume
+of the main session do not qualify.
+
+Use the owning runtime's native goals, task stores, schedules, memory,
+delegation, and background controls first: spawn, observe, pause, resume,
+and stop. Exactly one live child may own a `--data-dir` or campaign ID; the
+campaign takes an atomic ownership claim or equivalent verified lock with a
+fencing token advanced on every transfer. Before starting anything, check
+the child registry (`.openforage-research/agents.json` by convention) and
+`openforage status --json`; if either shows a live owner, do not start a
+second child. The parent must not restart or mutate the worker while the
+child is live.
+
+The child writes a capability report
+(`.openforage-research/capabilities.json`) covering scheduling ticks,
+shell execution, workspace access, parent reporting, and pause/resume/
+stop. The parent must not assume a capability the report does not claim.
+Harness spawn/pause/resume/stop commands come only from an evidence-gated
+per-capability entry in the verified adapter registry — see
+`docs/agents/harness-verification.md`. Discovery via local `--help` or
+official docs is allowed for research but must be labeled unverified and
+verified before unattended use.
+
+Campaign metadata (campaign ID, checkpoint ledger, coverage ledger,
+negative findings) lives with the campaign, not in the OpenForage data
+directory, and never in `.openforage/settings.yaml`.
+
+Plan records such as Codex `update_plan` are never schedulers: register
+the status poll and `run_due_callbacks()` tick with a native scheduler or
+an external scheduler, not with a plan step.
 
 ## Start And Monitor
 
@@ -57,6 +97,36 @@ openforage stop --data-dir .openforage-state --json
 `background.pid`, `status.json`, `worker.log`, and recent `events.jsonl`
 entries. Start again only after confirming no live worker still owns the same
 state directory.
+
+Pause is a stop plus disabled or drained triggers plus a checkpoint and
+transition record in the campaign manifest plus a `paused` report from the
+owning child, with the previous state preserved as `resume_target`. Resume
+re-invokes a child — the original session identity or a fresh one — that is
+a separate CLI invocation of the same harness with its own session identity
+and is not the parent; ownership must be transferred under the verified
+claim/lock with an advanced fencing token, and the registry, status, events,
+and checkpoints must be reconciled before the worker restarts. Resume
+restores only the recorded `resume_target`. A dead child process alone is
+not a resume. Only the owning child performs pause, resume, or stop; the
+parent must not do so while another child owns the data directory.
+
+Campaign states and legal edges are authoritative in
+[`docs/agents/references/campaign-state-machine.json`](/docs/agents/references/campaign-state-machine.json).
+`stopped`, `completed`, and `exhausted` are distinct terminal outcomes and
+never silently reactivate. When a submission acknowledgment is ambiguous,
+record it as ambiguous and do not blindly resubmit; reconcile through the
+submission/status surface first. The library provides no exactly-once
+guarantee for submissions, transitions, or worker launches — never claim
+one.
+
+Execution limits are campaign records, not settings: record CPU, RAM,
+storage, wall time, worker/concurrency count, and completed-simulation
+limits with requested vs enforced values, the enforcement mechanism,
+periodic observation, and stop/kill behavior. Run a preflight calibration;
+a limit with no enforcement mechanism is unenforced, not unlimited. A
+plateau triggers research or pivot before any terminal stop, and unavailable
+infrastructure enters `needs-input` with bounded retries. See
+[Research Campaign — Execution resources](/docs/agents/research-campaign.md#execution-resources).
 
 ## Runtime Loop Pattern
 
@@ -110,5 +180,7 @@ Use a small, bounded workflow when an agent needs to fork the default template.
 
 - `openforage_quickstart` — read before `T-OF-register` (install, wallet, durable state directory).
 - `callback_hooks` — read before `T-OF-callbacks-sink` (sink contracts so the worker has somewhere to deliver events).
-- `scheduled_improvement_loops` — read before `T-OF-schedule` (periodic prompt cadence on top of a running worker).
-- `agent_runtime_integration` — read before `T-OF-improvement-loop` (how the runtime polls and consumes prompts).
+- `scheduled_improvement_loops` — read before `T-OF-schedule` (periodic prompt cadence on top of a running worker; native schedules, never plan records).
+- `agent_runtime_integration` — read before `T-OF-improvement-loop` (how the runtime polls and consumes prompts; background research agent delegation contract).
+- `search_settings` — read before changing worker or search settings (campaign metadata never goes in `.openforage/settings.yaml`).
+- `search_research` — read before a research campaign (frozen reference, checkpoint accounting, matched budgets and seeds).

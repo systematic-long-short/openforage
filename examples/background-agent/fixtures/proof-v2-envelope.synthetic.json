@@ -1,0 +1,63 @@
+{
+  "synthetic": true,
+  "claim": "not-an-observation",
+  "schema_version": 2,
+  "evidence_class": "bounded-native-background-agent-proof",
+  "adapter_interface_version": 1,
+  "adapter_id": "opencode",
+  "proof_id": "proof-synthetic-envelope",
+  "harness": "opencode",
+  "product": "OpenCode",
+  "harness_version": "synthetic-version",
+  "os": "linux",
+  "scope": "synthetic fixture only",
+  "adapter_profile": {
+    "selected": "isolated",
+    "scope": "synthetic temporary workspace",
+    "limitation": "not a product observation"
+  },
+  "proof_applicability": "synthetic only",
+  "source_file_digests": {
+    "synthetic-source.py": {
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "bytes": 1
+    }
+  },
+  "request_acknowledgements": {},
+  "native_primitive_observations": {
+    "schema_version": 1,
+    "evidence_class": "typed-native-operation-observations",
+    "operations": {
+      "goal_declaration": {"availability": "unknown", "outcome": "unknown", "tool_names_declared": [], "evidence": [], "scope": {}, "reason": "synthetic", "declaration_basis": "synthetic"},
+      "task_creation": {"availability": "unknown", "outcome": "unknown", "tool_names_declared": [], "evidence": [], "scope": {}, "reason": "synthetic", "declaration_basis": "synthetic"},
+      "task_list_write": {"availability": "unknown", "outcome": "unknown", "tool_names_declared": [], "evidence": [], "scope": {}, "reason": "synthetic", "declaration_basis": "synthetic"},
+      "task_durable_reread": {"availability": "unknown", "outcome": "unknown", "tool_names_declared": [], "evidence": [], "scope": {}, "reason": "synthetic", "declaration_basis": "synthetic"},
+      "task_state_update": {"availability": "unknown", "outcome": "unknown", "tool_names_declared": [], "evidence": [], "scope": {}, "reason": "synthetic", "declaration_basis": "synthetic"},
+      "memory_write": {"availability": "unknown", "outcome": "unknown", "tool_names_declared": [], "evidence": [], "scope": {}, "reason": "synthetic", "declaration_basis": "synthetic"},
+      "memory_durable_reread": {"availability": "unknown", "outcome": "unknown", "tool_names_declared": [], "evidence": [], "scope": {}, "reason": "synthetic", "declaration_basis": "synthetic"},
+      "native_scheduler_creation": {"availability": "unknown", "outcome": "unknown", "tool_names_declared": [], "evidence": [], "scope": {}, "reason": "synthetic", "declaration_basis": "synthetic"},
+      "native_scheduler_delivery": {"availability": "unknown", "outcome": "unknown", "tool_names_declared": [], "evidence": [], "scope": {}, "reason": "synthetic", "declaration_basis": "synthetic"}
+    },
+    "external_delivery_is_native_scheduler_evidence": false
+  },
+  "native_scheduler": "unknown; the controller supports manual delivery or one explicit external interval owner",
+  "conformance": {
+    "schema_version": 1,
+    "evidence_class": "background-agent-conformance-report",
+    "edges": {
+      "fresh_cli_and_distinct_session": {},
+      "exact_child_continuation": {},
+      "real_ownership_acknowledgement": {},
+      "parent_independence": {},
+      "pause_drain_reconcile": {},
+      "controller_crash_recovery": {},
+      "terminal_stop_no_relaunch": {},
+      "duplicate_owner_exclusion": {},
+      "owned_process_cleanup": {},
+      "external_due_delivery": {},
+      "native_scheduler_delivery": {}
+    }
+  },
+  "failures": [],
+  "passed": true
+}

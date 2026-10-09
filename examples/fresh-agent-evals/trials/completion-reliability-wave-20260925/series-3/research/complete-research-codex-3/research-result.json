@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "task_id": "paper-backed-coverage-challenger-v1",
+  "source": {
+    "source_excerpt_path": "examples/fresh-agent-evals/fixtures/challenger-research/trial-inputs/primary-source-excerpt.md",
+    "source_excerpt_sha256": "08ecc9767bf0f37055bbda96999dc97c80a86918038ef3ca833b5b3367bd7373",
+    "title": "Illuminating search spaces by mapping elites",
+    "authors": ["Jean-Baptiste Mouret", "Jeff Clune"],
+    "year": 2015,
+    "identifier": "arXiv:1504.04909",
+    "url": "https://arxiv.org/abs/1504.04909",
+    "paraphrase": "MAP-Elites organizes solutions by chosen descriptors and retains strong solutions within the resulting cells, exposing diversity and performance across the map."
+  },
+  "research": {
+    "mechanism_explanation": "The paper's descriptor map motivates treating eligible rotation-feature pairs as separate scheduling cells. The callback shuffles cells reproducibly, interleaves their finite streams, removes exact JSON duplicates and drops exhausted streams. This borrows descriptor coverage, not elite replacement: the test-only context exposes no quality feedback. The independent evaluator validates opaque canonical payloads and enforces the depth-six evaluation cap.",
+    "hypothesis": "At equal completed evaluator-call targets, interleaving eligible pair streams will produce a positive mean paired difference in unique valid cells versus synthetic_uniform_pair_selector_v1 across the selected development input/seed pairs. Synthetic quality passes are a separate descriptive outcome, with no predicted improvement.",
+    "falsifier": "A mean paired unique-valid-cell difference of zero or less across complete development pairs would fail the coverage hypothesis. Any incomplete arm makes the target-budget comparison inconclusive and requires actual completed counts. Neither outcome establishes live performance or out-of-sample return correlation."
+  },
+  "machine_claims": {
+    "evaluation_scope": "synthetic_fixture_only",
+    "comparison_report_path": "trial-output/comparison-report.json",
+    "comparison_report_sha256": "90348a98835457f4d6458348f890661dcd506f5420cb19049204e9e59b278f1f",
+    "implementation_path": "trial-output/challenger.py",
+    "implementation_sha256": "482753af43f411a25e82cf664cbd0e8656c02d45d869ff0806ed9b474938e86e",
+    "series_id": "completion-reliability-research-3",
+    "series_manifest_path": "examples/fresh-agent-evals/research/series/completion-reliability-research-3.json",
+    "series_manifest_sha256": "159475fb3622f3291b8770eec188b920cc6b572f8f0db306e85a13f2f5e7216e",
+    "reference_identity": "synthetic_uniform_pair_selector_v1",
+    "synthetic_uniform_is_genetic": false,
+    "synthetic_quality_scope": "fixture_only",
+    "synthetic_comparison_interpretation": "descriptive_only",
+    "live_performance": {"status": "unknown", "value": null},
+    "out_of_sample_return_correlation": {"status": "unknown", "value": null},
+    "server_acceptance": {"status": "unknown", "value": null},
+    "genetic_reference_target": {
+      "algorithm": "genetic",
+      "target_completed_simulations": 100000,
+      "observed_completed_simulations": null,
+      "status": "unmeasured_target"
+    }
+  },
+  "human_review": {
+    "summary": "The independent development report records complete_equal_calls in all four paired runs: each arm completed 4 of 4 evaluations. In alpha seeds 11/29 and beta seeds 11/29 order, challenger/reference cell counts were 3/3, 3/3, 3/2, and 4/2. Synthetic quality-pass counts were 2/1, 1/2, 2/2, and 1/2. These are descriptive fixture observations, not superiority evidence.",
+    "rationale": "A finite round-robin queue is a small, reviewable way to spread construction attempts across descriptor cells. The mean observed paired coverage difference is +0.75 cells, while quality-pass differences are mixed (+1, -1, 0, -1). The paper motivates testing diversity but does not predict success for this callback. Proposals are not completions: the evaluator rejected one unknown payload in alpha seed 11 and one over-depth payload each in alpha seed 29 and beta seed 11. Explicit top-level depth filtering does not certify opaque payload depth; independent fixture validation prevented those rejected proposals from becoming evaluations. The callback is therefore limited to this fixture and is not a validated live graph generator. The report contains development inputs only. The held-out input remains for independent grading, and the genetic 100,000-simulation campaign remains unmeasured."
+  }
+}

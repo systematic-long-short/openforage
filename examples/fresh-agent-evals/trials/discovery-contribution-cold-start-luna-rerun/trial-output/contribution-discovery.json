@@ -1,0 +1,27 @@
+{
+  "case_id": "discovery-contribution-cold-start",
+  "selected_task": "contribute",
+  "target_file": "docs/agents/research-opportunities.md",
+  "rationale": "CONTRIBUTING.md points new contributors to the read-only startup packet for canonical task contribute and to docs/agents/first-contribution.md. Its 'Pick or scope a research direction' row names the opportunity map and validates with opportunities and links. Add a short offline-first starting point under 'How to pick an opportunity': choose one proposal, write its source claim and falsifiable mechanism or hypothesis, and note needed capabilities and evidence gaps before installed-surface checks or any authorized campaign. The README and canonical onboarding route already allow offline work, but the opportunity guide currently begins with installed-surface verification and campaign protocol steps. Pre-edit baseline: the opportunities mode produced no findings; links reported 11 existing missing-target errors for AGENTS.md, CLAUDE.md, and legal/terms.md.",
+  "baseline_command": "PYTHONDONTWRITEBYTECODE=1 python .github/scripts/validate_agent_docs.py opportunities links",
+  "evidence_paths": [
+    "README.md",
+    "CONTRIBUTING.md",
+    "docs/agents/first-contribution.md",
+    "docs/agents/references/onboarding.json",
+    "scripts/start_here.py",
+    "docs/agents/research-opportunities.md",
+    "docs/agents/research-opportunities.json",
+    "docs/agents/research-campaign.md",
+    ".github/scripts/validate_agent_docs.py"
+  ],
+  "offline_access": "The canonical contribute route is offline-allowed and needs only repository reading and local validators. Documentation and offline research do not require an invite code, wallet, installed OpenForage package, daemon, worker, or campaign; no service or live process is involved.",
+  "live_actions": [],
+  "no_edit_made": true,
+  "completion_criteria": [
+    "Add one concise offline-first note to docs/agents/research-opportunities.md that helps scope a proposal before a live campaign, while keeping proposals distinct from results.",
+    "The opportunities validator passes; links introduces no findings beyond the 11 pre-edit missing-target errors for AGENTS.md, CLAUDE.md, and legal/terms.md.",
+    "git diff --check is clean for the eventual scoped change, and unrelated files are preserved.",
+    "All claims remain tied to the visible sources, evidence gaps stay explicit, and no live access or measured result is implied."
+  ]
+}

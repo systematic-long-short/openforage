@@ -1,0 +1,6 @@
+{
+  "case_id": "campaign-planning-separation",
+  "description": "Two-owner fixture: the ownership claim names the exited parent while the registry and status name the live child.",
+  "overlay_patches": [],
+  "dead_pid_files": []
+}

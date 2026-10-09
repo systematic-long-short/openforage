@@ -1,0 +1,45 @@
+{
+  "label": "same-native-run rubric-only regrade; not a new native pass",
+  "case_id": "discovery-quickstart-entry",
+  "regrade_classification": {
+    "same_native_run": true,
+    "no_new_model_invocation": true,
+    "rubric_only_change": true,
+    "native_execution_mode": "fresh-opencode-run (unchanged from the original trial record)",
+    "new_agent_run": false
+  },
+  "regraded_at_utc": "2026-09-23T13:21:51Z",
+  "reason": "The original verdict's three rubric failures were corrected narrowly: accept the explicit target-versus-unobserved-completion wording while retaining rejection of measured GA benchmark/completed-count claims; recognize 'separately started CLI process' while still requiring a same-harness process and own/distinct identity with no main-session fallback; and treat campaign access as unknown when unchecked while still rejecting an unsupported available claim.",
+  "original_native_observation": {
+    "trial_record_path": ".tmp/fresh-agent-trials/discovery-quickstart-entry-luna-canonical-rerun.trial.json",
+    "trial_record_sha256": "699995ad35fded175f8b1307a30f3e68036151f32e31ed78af53933047e2a84f",
+    "execution_mode": "fresh-opencode-run",
+    "cli_exit_code": 0,
+    "owned_process_remaining": false,
+    "original_verdict_path": ".tmp/fresh-agent-trials/discovery-quickstart-entry-luna-canonical-rerun.trial.verdict.json",
+    "original_verdict_sha256": "b1719f2615f9e0f6ba955d6df7ea74b06b2ca34a14895b9aa4eb0dfaa5c2cb41",
+    "original_verdict_success": false,
+    "original_failure_count": 3,
+    "actual_artifact_path": ".tmp/fresh-agent-trials/discovery-quickstart-entry-luna-canonical-rerun/trial-output/quickstart-research.json",
+    "actual_artifact_sha256": "8126defce2f346c85d6c39bb45dd613e0bc14cca71884061d0141e97d1f8ffcc"
+  },
+  "derived_regrade": {
+    "verdict_path": ".tmp/fresh-agent-trials/discovery-quickstart-entry-luna-canonical-rerun.trial.verdict.regrade.json",
+    "archive_path": "examples/fresh-agent-evals/trials/entrypoint-outcomes-20260923/discovery-quickstart-entry-luna-canonical-rerun.trial.verdict.regrade.json",
+    "sha256": "c1d7c525e2a1a163bf081637415a3f062237dccc9d8b64ee1d8535657b08f876",
+    "success": true,
+    "failure_count": 0,
+    "new_agent_run": false,
+    "raw_trace_corroboration": "The grader used the original retained raw-event evidence against the unchanged trial actions; no trace was bypassed or modified."
+  },
+  "grading_source_closure_sha256": {
+    "examples/fresh-agent-evals/grader.py": "7e2987e9fa9c943bbf986178736a545787bc0cbeb82f7721cde2c788ea952dba",
+    "examples/fresh-agent-evals/discovery_entry_checks.py": "f4de123b0885e10b462d487a397a8cc2472e5044db5c13c24bf670c5057b4e69",
+    "examples/fresh-agent-evals/discovery_checks.py": "8db0271a7fc8261ea39aa45e2f5117559455ed41a08ce72aade6be295ce29b01",
+    "examples/fresh-agent-evals/outcome_checks.py": "92688aeb324ee4a7d302368e81d3c699b02d6be551f8576dbb3475fc8515c9dd",
+    "examples/fresh-agent-evals/tool_outcomes.py": "84fc07a1f22c7af0379b4ee2be48f429231d453678401b67c68a78c22da4ea30",
+    "examples/fresh-agent-evals/tool_profile.py": "05b220a033e6c64e72bc6425ae07eced6f0adf777e1db7ee4a7fa815fd49a794",
+    "examples/fresh-agent-evals/trace_evidence.py": "a0f33143436587b2c4830693d5c7b26f1740d690280447c5cdb892821588459e",
+    "examples/fresh-agent-evals/tasks.json": "7c26516e7428b33b0e5e1a73e77604fafb36e61a1c912b98c4e2110d189bb4d9"
+  }
+}

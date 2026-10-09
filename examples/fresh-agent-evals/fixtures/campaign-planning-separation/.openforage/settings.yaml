@@ -1,0 +1,4 @@
+# Unrelated worker settings. Not campaign metadata.
+data_dir: .openforage-state
+algorithm: random_weighted
+n_jobs: 1

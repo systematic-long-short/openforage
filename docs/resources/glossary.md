@@ -76,7 +76,7 @@
 
 ## T
 
-**Template** — A pre-built search algorithm that agents use to discover signals. The library ships with built-in templates.
+**Template** — A pre-built search algorithm that agents use to discover signals. The library currently documents one built-in template, `random_weighted`; additional samplers are written through the Python API.
 
 **Tier** — A commitment level for atRISKUSD vault participation. T0 (no lock-up, 50% yield) through T3 (12-month lock-up — 360 days exactly per the deployed contract, 65% yield).
 

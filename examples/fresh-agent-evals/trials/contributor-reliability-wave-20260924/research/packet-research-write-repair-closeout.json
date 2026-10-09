@@ -1,0 +1,82 @@
+{
+  "packet": "pkt-public-reliability-RESEARCH-WRITE-REPAIR",
+  "project": "public-agent-research",
+  "class": "implementor",
+  "status": "completed",
+  "changed_paths": [
+    "examples/fresh-agent-evals/research/research_grader.py",
+    "examples/fresh-agent-evals/research/research_selfcheck.py",
+    ".tmp/contributor-reliability-wave/packet-research-write-repair-closeout.json"
+  ],
+  "root_cause": "The research grader reused the v2 path-write heuristic for the comparison report. That heuristic treats a shell command mentioning the target as a potential write unless its generic classifier recognizes a read-only kind; sha256sum was not in that classifier, so read-only hash actions at sequences 55 and 66 were attributed as report writes.",
+  "fix": "Research report writes now come from the uniquely matched exact evaluator's completed output sequence or completed native file mutation operations. All shell actions remain under the existing independent research access audit; unknown, truncated, and mutating shell actions are not silently dropped. Exact evaluator uniqueness, lifecycle identity, digest, explicit exit, phase ordering, frozen-series, and recomputation checks remain enforced.",
+  "original_observation": {
+    "trial_path": ".tmp/fresh-agent-research/runs/contributor-reliability-research-1/reliability-research-opencode-1/trial.json",
+    "verdict_path": ".tmp/fresh-agent-research/runs/contributor-reliability-research-1/reliability-research-opencode-1/verdict.json",
+    "reproduced_pre_fix_report_write_sequences": [52, 55, 66],
+    "sequence_interpretation": {
+      "52": "Exact declared development evaluator, completed with explicit exit 0.",
+      "55": "Read-only sha256sum command over the source excerpt, selected series, callback, and report.",
+      "66": "The same read-only sha256sum command after result output."
+    },
+    "original_verdict_status": "fail",
+    "original_failure_reasons": [
+      "native file-tool read is outside the documented public-input/output allowlist",
+      "native subject access audit is unknown: native file-tool path is incomplete",
+      "comparison report was written again after the correlated evaluator command"
+    ],
+    "original_trial_or_verdict_regraded_or_overwritten": false
+  },
+  "regressions": [
+    "Sequences 52/55/56/57/62/66/67/68: sha256sum and shasum reads before and after result output do not create report writes; the report write list is [52].",
+    "A completed post-evaluation native report edit at sequence 64 is attributed as a write and rejected by both report phase validation and the access audit.",
+    "Absent or truncated evaluator evidence, duplicate exact evaluators, incomplete lifecycle, missing explicit exit, and evaluator/result phase inversions fail closed.",
+    "An unclassified mutating shell command targeting the report remains an unknown access-audit failure.",
+    "Existing access-audit regressions continue to distinguish out-of-allowlist reads, incomplete native file paths, and unsupported shell operations."
+  ],
+  "checks": [
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python examples/fresh-agent-evals/research/research_selfcheck.py",
+      "outcome": "passed",
+      "native_calls": 0,
+      "model_calls": 0,
+      "named_checks": [
+        "native-report-write-attribution-around-read-hashes",
+        "native-post-evaluation-report-file-mutation-rejected",
+        "native-evaluator-unique-completed-and-phased",
+        "native-absent-truncated-and-mutating-evidence-fails-closed",
+        "research-subject-access-audit"
+      ]
+    },
+    {
+      "command": "ruff check --select F821 examples/fresh-agent-evals/research/research_grader.py examples/fresh-agent-evals/research/research_selfcheck.py",
+      "outcome": "passed"
+    },
+    {
+      "check": "AST parse and scoped trailing-whitespace scan of the two changed Python files",
+      "outcome": "passed"
+    },
+    {
+      "command": "git diff --check",
+      "outcome": "passed"
+    }
+  ],
+  "preservation": {
+    "original_trial_sha256_before_and_after": "79c08672312a08d4125a55bfad214f97f8b4e3bd6383084f0b73873e9c32289f",
+    "original_verdict_sha256_before_and_after": "f1923c8f3c2eb968910f7807c535447459925816701a27cee3085edc010dc8ab",
+    "raw_events_sha256_matches_trial_record": "9ecc3d4a01734cc07fde1f214ee070c42af93dffe6be59fefdf6c25a7f9a7a81",
+    "raw_stderr_sha256_matches_trial_record": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "research1_manifest_sha256_preserved": "d9a9458b921020f6601a5225790689057e78639e568f0ea838de9c3b027058b4",
+    "frozen_source_bundle_sha256_before_and_after": "22c2cbac172aeddf31d1460981b5efe624ba526f83aaefe181956c96c1add4e1",
+    "source_bundle_provenance_sha256_before_and_after": "c24411c99926d35d2349bda219a019d59303f1be18775d7828ce4b62db97c1ce",
+    "preexisting_working_tree_changes_preserved": true,
+    "original_verdict_failure_retained": true,
+    "old_series_manifest_or_pins_modified": false
+  },
+  "limitations": [
+    "The original out-of-allowlist read and incomplete native file-path audit failures remain distinct and visible; the audit was not loosened to pass the original subject.",
+    "Documentation-pair failures are outside this packet's scope.",
+    "The research-1 source manifest intentionally no longer matches the updated grader; it and its retained source bundle were left unchanged. The parent owns creation of a fresh immutable research-2 manifest and bundle.",
+    "No original-trial regrade, new native/model run, live library operation, installation, or performance claim was made."
+  ]
+}

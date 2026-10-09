@@ -1,0 +1,116 @@
+{
+  "case_id": "docs-fix",
+  "variant": "max",
+  "variant_in_argv": true,
+  "execution_mode": "fresh-opencode-run",
+  "fresh_separate_invocation": true,
+  "replay": false,
+  "model": "openrouter/deepseek/deepseek-v4.1-flash",
+  "invocation_argv": [
+    "opencode",
+    "run",
+    "--format",
+    "json",
+    "--dir",
+    "<WORKSPACE>",
+    "--model",
+    "openrouter/deepseek/deepseek-v4.1-flash",
+    "--variant",
+    "max"
+  ],
+  "workspace": "<WORKSPACE>",
+  "workspace_identity": "f5f997eb7ed9cedc5069ace7b4ebaa7ce73e8f7c1adc95023d16537d023876c6",
+  "source_snapshot_sha256": "9f9a4aec921a820e17c09d7b4daa5dfbd3bc3a766bf44c7e5ae348125db65dcd",
+  "source_snapshot_files": 117,
+  "source_git_head": "c48cb235fde2d5590601528ef9c83cb9d8f402dd",
+  "harness": "opencode",
+  "harness_version": "1.18.31",
+  "session_id": "ses_f35c4d44fffe2EyS64ZobFsMNM",
+  "started_at": "2026-09-22T17:47:49Z",
+  "ended_at": "2026-09-22T17:48:19Z",
+  "exit_code": 0,
+  "launch_error": null,
+  "owned_process_remaining": false,
+  "observed_actions": [
+    {
+      "tool": "bash",
+      "command": "python .github/scripts/validate_agent_docs.py truthfulness"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/docs/agents/quickstart.md"
+    },
+    {
+      "tool": "bash",
+      "command": "grep -n \"stale bare register\\|quickstart\" .github/scripts/validate_agent_docs.py | head -50"
+    },
+    {
+      "tool": "bash",
+      "command": "grep -n \"register\\|truthfulness\" .github/scripts/validate_agent_docs.py | head -80"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/.github/scripts/validate_agent_docs.py"
+    },
+    {
+      "tool": "edit",
+      "command": "<WORKSPACE>/docs/agents/quickstart.md"
+    },
+    {
+      "tool": "bash",
+      "command": "python .github/scripts/validate_agent_docs.py truthfulness && git diff --check && git status --porcelain"
+    },
+    {
+      "tool": "bash",
+      "command": "ls -la trial-output/ 2>/dev/null; ls examples/fresh-agent-evals/ 2>/dev/null"
+    },
+    {
+      "tool": "write",
+      "command": "<WORKSPACE>/trial-output/evidence.json"
+    },
+    {
+      "tool": "bash",
+      "command": "git log --oneline -3 2>&1; git diff --check; git diff -- docs/agents/quickstart.md; git ls-files docs/agents/quickstart.md"
+    },
+    {
+      "tool": "bash",
+      "command": "git diff --check"
+    },
+    {
+      "tool": "bash",
+      "command": "python .github/scripts/validate_agent_docs.py truthfulness"
+    },
+    {
+      "tool": "write",
+      "command": "<WORKSPACE>/trial-output/evidence.json"
+    },
+    {
+      "tool": "bash",
+      "command": "python -c \"import json; d=json.load(open('trial-output/evidence.json')); print(sorted(d)); print(d['observed_result'], len(d['commands']))\" && sed -n '5,9p' docs/agents/quickstart.md"
+    }
+  ],
+  "action_extraction": {
+    "method": "normalized allowlisted tool observations from the native JSON event stream",
+    "events_observed": 41,
+    "actions_observed": 14,
+    "raw_events_scratch": ".tmp/fresh-agent-trials/docs-fix.raw-events.jsonl",
+    "raw_events_sha256": "58008538789ea041fc1411de93afc31275ebbcbab2f615f01b1a4e12247ad1a2",
+    "raw_events_bytes": 39920,
+    "note": "Raw events stay in git-ignored scratch; this record keeps only normalized actions."
+  },
+  "child_environment": {
+    "applied": true,
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "python_on_path": "/usr/bin",
+    "note": "Set for the child session so validator runs create no bytecode under frozen dirs; `python` on the child PATH is this interpreter."
+  },
+  "first_useful_action_seconds": 2.936,
+  "first_useful_action_unknown_reason": null,
+  "clarification_count": null,
+  "plain_text_tail": "",
+  "artifact_refs": {
+    "docs/agents/quickstart.md": "fda29a1329f14215608763ae6c0d2ab82771dba50170c353daf21d77aa959281",
+    "trial-output/evidence.json": "f1ff80972af6da7a4242558fefb1200576a0bce4a14c15129af2a1af5efdd025"
+  },
+  "claim": "single-trial observation; not a measured result"
+}

@@ -1,0 +1,10 @@
+{
+  "case_id": "recovery",
+  "description": "Stale-worker fixture: status says running, background.pid names a dead pid, the event tail carries a worker_error.",
+  "overlay_patches": [],
+  "dead_pid_files": [
+    ".openforage-state/background.pid",
+    ".openforage-state/status.json",
+    ".openforage-state/events.jsonl"
+  ]
+}

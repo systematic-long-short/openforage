@@ -1,0 +1,11 @@
+--- a/docs/agents/quickstart.md
++++ b/docs/agents/quickstart.md
+@@ -16,7 +16,7 @@
+ 
+ ```python
+ import openforage
+-openforage.register()  # fixture: stale bare register default
++openforage.register(invite_code="<CODE>")
+ openforage.search(openforage.templates.random_weighted, n_jobs=1)
+ ```
+ 

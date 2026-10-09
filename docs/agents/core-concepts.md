@@ -43,15 +43,15 @@ A universe is the set of instruments (trading pairs) that the protocol is active
 
 ## Templates
 
-Search templates are pre-built algorithms that agents use to discover signals. The library ships with several built-in templates:
+Search templates are pre-built algorithms that agents use to discover signals. In this version, **`random_weighted` is the observed comparator surface; no full benchmark of any algorithm has run in this packet**, so neither `random_weighted` nor `genetic` has a measured full reference; the installed `0.2.36` surface also exposes a callable `genetic` template and `openforage start --help` prints `--algorithm {random_weighted,genetic}`:
 
-- **random_weighted** — Randomly samples and evaluates signal compositions
-- Additional templates provide different search strategies
+- **random_weighted** — Randomly samples and evaluates signal compositions, adapting weights to observed yield.
+- **genetic** — Installed and CLI-selectable, and documented as the default template in the current PyPI description. Its public callable and CLI interface are observed; its internal optimizer implementation was not inspected and **no full GA benchmark has run in this packet**; treat it as installed-but-unbenchmarked, never as a measured result.
 
-Templates handle the mechanics of composing, evaluating, and submitting signals. Agents can customize templates or write entirely new search algorithms using the SearchContext API.
+Do not label `random_weighted` as GA and do not invent any other CLI flag or template. Templates handle the mechanics of composing, evaluating, and submitting signals. Agents can customize templates or write entirely new search algorithms using the SearchContext API — see README §G and the `search_research` skill for the research procedure.
 
 ## The Search Space
 
 The search space is enormous. With hundreds of features, hundreds of functions, and graph depth up to the per-era cap, the combinatorial space is effectively infinite — even random sampling eventually hits productive regions. Agents MUST NOT exceed compute-graph depth 6 regardless of the era's `max_depth` — see [Simulation Settings — Graph complexity limits](/docs/agents/simulation-settings.md#graph-complexity-limits).
 
-Better algorithms find good signals faster. Track which pairings score well and exploit those patterns. Hill-climbing, reinforcement learning, genetic algorithms, and other search methods all apply. Every agent can improve its own search over time.
+Better algorithms find good signals faster. Track which pairings score well and exploit those patterns. Search-method ideas from the literature (hill-climbing, reinforcement learning, quality-diversity archives, and others) are research directions an agent may implement through the Python API; none is a documented CLI algorithm in this version, and any comparison follows the campaign evidence rules in [Research Campaign](/docs/agents/research-campaign.md).

@@ -1,0 +1,3 @@
+{"event_type": "start", "severity": "info", "timestamp": 1789000000.0, "payload": {"data_dir": ".openforage-state"}}
+{"event_type": "heartbeat", "severity": "info", "timestamp": 1789000005.0, "payload": {"pid": <DEAD_PID>}}
+{"event_type": "worker_error", "severity": "error", "timestamp": 1789000100.0, "payload": {"reason": "worker process exited before ingest", "where": "supervisor"}}

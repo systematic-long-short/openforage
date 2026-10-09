@@ -1,0 +1,99 @@
+{
+  "case_id": "recovery",
+  "variant": "max",
+  "variant_in_argv": true,
+  "execution_mode": "fresh-opencode-run",
+  "fresh_separate_invocation": true,
+  "replay": false,
+  "model": "openrouter/deepseek/deepseek-v4.1-flash",
+  "invocation_argv": [
+    "opencode",
+    "run",
+    "--format",
+    "json",
+    "--dir",
+    "<WORKSPACE>",
+    "--model",
+    "openrouter/deepseek/deepseek-v4.1-flash",
+    "--variant",
+    "max"
+  ],
+  "workspace": "<WORKSPACE>",
+  "workspace_identity": "34798acd287caaa9300c320b6528c00a73b702db6a7ed874bf9abf140dad060d",
+  "source_snapshot_sha256": "3509e0321c351fbd057673dbd2b9d896bd375fda075be08f5ef01ee1d4bc2922",
+  "source_snapshot_files": 121,
+  "source_git_head": "c48cb235fde2d5590601528ef9c83cb9d8f402dd",
+  "harness": "opencode",
+  "harness_version": "1.18.31",
+  "session_id": "ses_f35c35ff5fferHMDmWoFA8KrUu",
+  "started_at": "2026-09-22T17:49:25Z",
+  "ended_at": "2026-09-22T17:49:41Z",
+  "exit_code": 0,
+  "launch_error": null,
+  "owned_process_remaining": false,
+  "observed_actions": [
+    {
+      "tool": "bash",
+      "command": "ls -la && ls -la .openforage-state/ 2>/dev/null; ls -la trial-output/ 2>/dev/null"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/.openforage-state/status.json"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/.openforage-state/background.pid"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/.openforage-state/events.jsonl"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/.openforage-state/worker.log"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/trial-output/prepare-record.json"
+    },
+    {
+      "tool": "bash",
+      "command": "kill -0 999999 2>&1; echo \"kill0_exit=$?\"; if [ -e /proc/999999 ]; then echo \"proc_exists=yes\"; else echo \"proc_exists=no\"; fi; ps -p 999999 -o pid=,comm= 2>&1; echo \"ps_exit=$?\""
+    },
+    {
+      "tool": "bash",
+      "command": "grep -n \"openforage stop\\|openforage start\" README.md docs/agents/background-agent.md 2>/dev/null | head -30"
+    },
+    {
+      "tool": "write",
+      "command": "<WORKSPACE>/trial-output/recovery-report.json"
+    },
+    {
+      "tool": "bash",
+      "command": "python3 -m json.tool trial-output/recovery-report.json > /dev/null && echo \"valid json\"; stat -c '%n %y' .openforage-state/*"
+    }
+  ],
+  "action_extraction": {
+    "method": "normalized allowlisted tool observations from the native JSON event stream",
+    "events_observed": 25,
+    "actions_observed": 10,
+    "raw_events_scratch": ".tmp/fresh-agent-trials/recovery.raw-events.jsonl",
+    "raw_events_sha256": "f80b30f468a69b492f82f89fb3f9287a42ddae4d99afa53f08fbd1947501aea7",
+    "raw_events_bytes": 33204,
+    "note": "Raw events stay in git-ignored scratch; this record keeps only normalized actions."
+  },
+  "child_environment": {
+    "applied": true,
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "python_on_path": "/usr/bin",
+    "note": "Set for the child session so validator runs create no bytecode under frozen dirs; `python` on the child PATH is this interpreter."
+  },
+  "first_useful_action_seconds": 4.123,
+  "first_useful_action_unknown_reason": null,
+  "clarification_count": null,
+  "plain_text_tail": "",
+  "artifact_refs": {
+    "trial-output/recovery-report.json": "45ef2c4f4d60c157c4a477761c4535d39392da4f9d45482051f2e3f0b5108580"
+  },
+  "claim": "single-trial observation; not a measured result"
+}

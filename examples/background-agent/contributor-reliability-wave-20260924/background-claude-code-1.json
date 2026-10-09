@@ -1,0 +1,1546 @@
+{
+  "adapter_id": "claude-code",
+  "adapter_interface_version": 1,
+  "adapter_profile": {
+    "limitation": "the recorded argv describes only this fixture invocation; it does not establish another user's effective profile or configuration behavior",
+    "scope": "temporary fixture workspace only; the recorded Claude Code invocation adds no config or permission override, so user configuration, authentication, and native permissions are inherited for this run; no persisted user configuration is edited",
+    "selected": "isolated"
+  },
+  "cleanup": {
+    "isolated_workspace_removed": true,
+    "runs": {
+      "background-proof-bab7b4daed424d19bbb6b3e5a485e416": {
+        "all_owned_process_groups_proven_gone": true,
+        "child_process_group_statuses_after_cleanup": [
+          "gone"
+        ],
+        "controller_identity_status_after_cleanup": "dead",
+        "run_terminal": true
+      }
+    }
+  },
+  "conformance": {
+    "adapter_id": "claude-code",
+    "capability_projection": {
+      "authority": "scripts/onboarding/capabilities.py:project_capability_records",
+      "automatic_registry_promotion": false,
+      "current_records": [],
+      "projection_error": null,
+      "registry": "src/openforage/skills/agent_runtime_integration/references/harnesses.json",
+      "review_draft": [
+        {
+          "automatic_registry_promotion": false,
+          "capability": "separate-cli-invocation",
+          "evidence_outcome": "unknown",
+          "evidence_path": "edges.fresh_cli_and_distinct_session",
+          "review_state": "not_submitted"
+        },
+        {
+          "automatic_registry_promotion": false,
+          "capability": "distinct-session-identity",
+          "evidence_outcome": "unknown",
+          "evidence_path": "edges.fresh_cli_and_distinct_session",
+          "review_state": "not_submitted"
+        },
+        {
+          "automatic_registry_promotion": false,
+          "capability": "resume",
+          "evidence_outcome": "not_run",
+          "evidence_path": "edges.exact_child_continuation",
+          "review_state": "not_submitted"
+        },
+        {
+          "automatic_registry_promotion": false,
+          "capability": "exact-target-control",
+          "evidence_outcome": "not_run",
+          "evidence_path": "edges.exact_child_continuation",
+          "review_state": "not_submitted"
+        },
+        {
+          "automatic_registry_promotion": false,
+          "capability": "parent-independence",
+          "evidence_outcome": "not_run",
+          "evidence_path": "edges.real_ownership_acknowledgement",
+          "review_state": "not_submitted"
+        },
+        {
+          "automatic_registry_promotion": false,
+          "capability": "parent-independence",
+          "evidence_outcome": "unknown",
+          "evidence_path": "edges.parent_independence",
+          "review_state": "not_submitted"
+        },
+        {
+          "automatic_registry_promotion": false,
+          "capability": "pause",
+          "evidence_outcome": "not_run",
+          "evidence_path": "edges.pause_drain_reconcile",
+          "review_state": "not_submitted"
+        },
+        {
+          "automatic_registry_promotion": false,
+          "capability": "resume",
+          "evidence_outcome": "not_run",
+          "evidence_path": "edges.pause_drain_reconcile",
+          "review_state": "not_submitted"
+        },
+        {
+          "automatic_registry_promotion": false,
+          "capability": "crash-recovery",
+          "evidence_outcome": "not_run",
+          "evidence_path": "edges.controller_crash_recovery",
+          "review_state": "not_submitted"
+        },
+        {
+          "automatic_registry_promotion": false,
+          "capability": "stop",
+          "evidence_outcome": "not_run",
+          "evidence_path": "edges.terminal_stop_no_relaunch",
+          "review_state": "not_submitted"
+        },
+        {
+          "automatic_registry_promotion": false,
+          "capability": "terminal-triggers-stopped",
+          "evidence_outcome": "not_run",
+          "evidence_path": "edges.terminal_stop_no_relaunch",
+          "review_state": "not_submitted"
+        },
+        {
+          "automatic_registry_promotion": false,
+          "capability": "duplicate-start-control",
+          "evidence_outcome": "not_run",
+          "evidence_path": "edges.duplicate_owner_exclusion",
+          "review_state": "not_submitted"
+        },
+        {
+          "automatic_registry_promotion": false,
+          "capability": "stop",
+          "evidence_outcome": "unknown",
+          "evidence_path": "edges.owned_process_cleanup",
+          "review_state": "not_submitted"
+        },
+        {
+          "automatic_registry_promotion": false,
+          "capability": "scheduler-wakeup-and-consumption",
+          "evidence_outcome": "not_run",
+          "evidence_path": "edges.external_due_delivery",
+          "review_state": "not_submitted"
+        },
+        {
+          "automatic_registry_promotion": false,
+          "capability": "native-scheduler",
+          "evidence_outcome": "unknown",
+          "evidence_path": "edges.native_scheduler_delivery",
+          "review_state": "not_submitted"
+        }
+      ]
+    },
+    "edges": {
+      "controller_crash_recovery": {
+        "assertions": [
+          {
+            "expected": "stale_controller",
+            "label": "stale controller was identified",
+            "observed": null,
+            "path": "controller_crash.classification_after_kill",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "controller generation advanced",
+            "observed": null,
+            "path": "recovery.controller_generation_advanced",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "fencing token advanced",
+            "observed": null,
+            "path": "recovery.fence_advanced",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "recovery kept the exact child",
+            "observed": null,
+            "path": "recovery.same_child_session",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "no overlapping child process",
+            "observed": null,
+            "path": "recovery.no_overlapping_child",
+            "status": "not_run"
+          }
+        ],
+        "external_controller_assertions": [
+          {
+            "expected": "stale_controller",
+            "label": "stale controller was identified",
+            "observed": null,
+            "path": "controller_crash.classification_after_kill",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "controller generation advanced",
+            "observed": null,
+            "path": "recovery.controller_generation_advanced",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "fencing token advanced",
+            "observed": null,
+            "path": "recovery.fence_advanced",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "recovery kept the exact child",
+            "observed": null,
+            "path": "recovery.same_child_session",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "no overlapping child process",
+            "observed": null,
+            "path": "recovery.no_overlapping_child",
+            "status": "not_run"
+          }
+        ],
+        "external_controller_status": "not_run",
+        "mechanism": "external-controller identity/fence recovery",
+        "native_product_assertions": [],
+        "native_product_status": "not_applicable",
+        "scope_owner": "external-controller",
+        "status": "not_run"
+      },
+      "duplicate_owner_exclusion": {
+        "assertions": [
+          {
+            "expected": true,
+            "label": "second owner was refused",
+            "observed": null,
+            "path": "duplicate_owner.refused",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "refusal addressed the same workspace",
+            "observed": null,
+            "path": "duplicate_owner.same_canonical_workspace",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "no second child was started",
+            "observed": null,
+            "path": "duplicate_owner.no_child_started",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "original owner remains intact",
+            "observed": null,
+            "path": "duplicate_owner.original_owner_unchanged",
+            "status": "not_run"
+          }
+        ],
+        "external_controller_assertions": [
+          {
+            "expected": true,
+            "label": "second owner was refused",
+            "observed": null,
+            "path": "duplicate_owner.refused",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "refusal addressed the same workspace",
+            "observed": null,
+            "path": "duplicate_owner.same_canonical_workspace",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "no second child was started",
+            "observed": null,
+            "path": "duplicate_owner.no_child_started",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "original owner remains intact",
+            "observed": null,
+            "path": "duplicate_owner.original_owner_unchanged",
+            "status": "not_run"
+          }
+        ],
+        "external_controller_status": "not_run",
+        "mechanism": "external-controller canonical-workspace owner guard",
+        "native_product_assertions": [],
+        "native_product_status": "not_applicable",
+        "scope_owner": "external-controller",
+        "status": "not_run"
+      },
+      "exact_child_continuation": {
+        "assertions": [
+          {
+            "expected": true,
+            "label": "continuation reused child session",
+            "observed": null,
+            "path": "continuation.same_child_session",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "resume targeted recorded child",
+            "observed": null,
+            "path": "resume.exact_recorded_child_target",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "mismatched target was refused",
+            "observed": null,
+            "path": "active_pause.mismatched_target_refused",
+            "status": "not_run"
+          },
+          {
+            "expected": null,
+            "label": "resume session fingerprint matches child",
+            "observed": null,
+            "path": "resume.same_child_session_fingerprint",
+            "status": "not_run"
+          }
+        ],
+        "external_controller_assertions": [
+          {
+            "expected": true,
+            "label": "resume targeted recorded child",
+            "observed": null,
+            "path": "resume.exact_recorded_child_target",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "mismatched target was refused",
+            "observed": null,
+            "path": "active_pause.mismatched_target_refused",
+            "status": "not_run"
+          }
+        ],
+        "external_controller_status": "not_run",
+        "mechanism": "harness-cli exact-ID resume + external-controller request",
+        "native_product_assertions": [
+          {
+            "expected": true,
+            "label": "continuation reused child session",
+            "observed": null,
+            "path": "continuation.same_child_session",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "history marker came from the child session",
+            "observed": null,
+            "path": "resume.history_marker_match",
+            "status": "not_run"
+          },
+          {
+            "expected": null,
+            "label": "resume returned the same child identity",
+            "observed": null,
+            "path": "resume.same_child_session_fingerprint",
+            "status": "not_run"
+          }
+        ],
+        "native_product_status": "not_run",
+        "scope_owner": "harness-cli + external-controller",
+        "status": "not_run"
+      },
+      "external_due_delivery": {
+        "assertions": [
+          {
+            "expected": "explicit_external_interval_delivery",
+            "label": "delivery owner is explicitly external",
+            "observed": null,
+            "path": "external_recurrence.mode",
+            "status": "not_run"
+          },
+          {
+            "expected": {
+              "minimum_length": 2
+            },
+            "label": "at least two due continuations were acknowledged",
+            "observed": null,
+            "path": "external_recurrence.acknowledged_due_continuations",
+            "status": "not_run"
+          },
+          {
+            "expected": {
+              "all_items_match": {
+                "acknowledged": true,
+                "delivery": "external_due_time",
+                "native_session_match": true,
+                "same_child_session": true
+              }
+            },
+            "label": "all due continuations used the same exact child",
+            "observed": null,
+            "path": "external_recurrence.acknowledged_due_continuations",
+            "status": "not_run"
+          }
+        ],
+        "external_controller_assertions": [
+          {
+            "expected": "explicit_external_interval_delivery",
+            "label": "delivery owner is explicitly external",
+            "observed": null,
+            "path": "external_recurrence.mode",
+            "status": "not_run"
+          },
+          {
+            "expected": {
+              "minimum_length": 2
+            },
+            "label": "at least two due continuations were acknowledged",
+            "observed": null,
+            "path": "external_recurrence.acknowledged_due_continuations",
+            "status": "not_run"
+          },
+          {
+            "expected": {
+              "all_items_match": {
+                "acknowledged": true,
+                "delivery": "external_due_time",
+                "native_session_match": true,
+                "same_child_session": true
+              }
+            },
+            "label": "all due continuations used the same exact child",
+            "observed": null,
+            "path": "external_recurrence.acknowledged_due_continuations",
+            "status": "not_run"
+          }
+        ],
+        "external_controller_status": "not_run",
+        "mechanism": "external-controller due-time request and exact-child ack",
+        "native_product_assertions": [],
+        "native_product_status": "not_applicable",
+        "scope_owner": "external-controller",
+        "status": "not_run"
+      },
+      "fresh_cli_and_distinct_session": {
+        "assertions": [
+          {
+            "expected": 0,
+            "label": "parent CLI exited successfully",
+            "observed": 0,
+            "path": "parent.exit_code",
+            "status": "passed"
+          },
+          {
+            "expected": true,
+            "label": "parent exited before child bootstrap",
+            "observed": true,
+            "path": "parent_exited_before_child_start",
+            "status": "passed"
+          },
+          {
+            "expected": true,
+            "label": "child session differs from parent",
+            "observed": null,
+            "path": "child.distinct_from_parent",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "launcher recorded child session",
+            "observed": null,
+            "path": "launcher.child_session_recorded",
+            "status": "not_run"
+          }
+        ],
+        "external_controller_assertions": [
+          {
+            "expected": true,
+            "label": "parent exited before child bootstrap",
+            "observed": true,
+            "path": "parent_exited_before_child_start",
+            "status": "passed"
+          },
+          {
+            "expected": true,
+            "label": "launcher recorded child session",
+            "observed": null,
+            "path": "launcher.child_session_recorded",
+            "status": "not_run"
+          }
+        ],
+        "external_controller_status": "unknown",
+        "mechanism": "harness-cli + external-controller",
+        "native_product_assertions": [
+          {
+            "expected": 0,
+            "label": "parent CLI exited successfully",
+            "observed": 0,
+            "path": "parent.exit_code",
+            "status": "passed"
+          },
+          {
+            "expected": true,
+            "label": "child session differs from parent",
+            "observed": null,
+            "path": "child.distinct_from_parent",
+            "status": "not_run"
+          }
+        ],
+        "native_product_status": "unknown",
+        "scope_owner": "harness-cli + external-controller",
+        "status": "unknown"
+      },
+      "native_scheduler_delivery": {
+        "assertions": [
+          {
+            "expected": "observed_success",
+            "label": "real native delivery evidence exists",
+            "observed": "unknown",
+            "path": "native_primitive_observations.operations.native_scheduler_delivery.outcome",
+            "status": "unknown"
+          }
+        ],
+        "external_controller_assertions": [],
+        "external_controller_status": "not_applicable",
+        "mechanism": "native product scheduler delivery only",
+        "native_product_assertions": [
+          {
+            "expected": "observed_success",
+            "label": "real native delivery evidence exists",
+            "observed": "unknown",
+            "path": "native_primitive_observations.operations.native_scheduler_delivery.outcome",
+            "status": "unknown"
+          }
+        ],
+        "native_product_status": "unknown",
+        "scope_owner": "native-product",
+        "status": "unknown"
+      },
+      "owned_process_cleanup": {
+        "assertions": [
+          {
+            "expected": true,
+            "label": "isolated workspace was removed",
+            "observed": true,
+            "path": "cleanup.isolated_workspace_removed",
+            "status": "passed"
+          },
+          {
+            "expected": true,
+            "label": "main run owned groups are gone",
+            "observed": true,
+            "path": "cleanup.runs.@proof_id.all_owned_process_groups_proven_gone",
+            "status": "passed"
+          },
+          {
+            "expected": true,
+            "label": "recurrence run owned groups are gone",
+            "observed": null,
+            "path": "cleanup.runs.@proof_id-recurrence.all_owned_process_groups_proven_gone",
+            "status": "not_run"
+          }
+        ],
+        "external_controller_assertions": [
+          {
+            "expected": true,
+            "label": "isolated workspace was removed",
+            "observed": true,
+            "path": "cleanup.isolated_workspace_removed",
+            "status": "passed"
+          },
+          {
+            "expected": true,
+            "label": "main run owned groups are gone",
+            "observed": true,
+            "path": "cleanup.runs.@proof_id.all_owned_process_groups_proven_gone",
+            "status": "passed"
+          },
+          {
+            "expected": true,
+            "label": "recurrence run owned groups are gone",
+            "observed": null,
+            "path": "cleanup.runs.@proof_id-recurrence.all_owned_process_groups_proven_gone",
+            "status": "not_run"
+          }
+        ],
+        "external_controller_status": "unknown",
+        "mechanism": "external-controller identity-checked cleanup",
+        "native_product_assertions": [],
+        "native_product_status": "not_applicable",
+        "scope_owner": "external-controller",
+        "status": "unknown"
+      },
+      "parent_independence": {
+        "assertions": [
+          {
+            "expected": true,
+            "label": "parent exited before child bootstrap",
+            "observed": true,
+            "path": "parent_exited_before_child_start",
+            "status": "passed"
+          },
+          {
+            "expected": true,
+            "label": "controller remained after launcher exit",
+            "observed": null,
+            "path": "launcher.detached_controller_alive_after_launcher_exit",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "launcher returned after ownership acknowledgement",
+            "observed": null,
+            "path": "launcher.returned_after_ownership_ack",
+            "status": "not_run"
+          }
+        ],
+        "external_controller_assertions": [
+          {
+            "expected": true,
+            "label": "parent exited before child bootstrap",
+            "observed": true,
+            "path": "parent_exited_before_child_start",
+            "status": "passed"
+          },
+          {
+            "expected": true,
+            "label": "controller remained after launcher exit",
+            "observed": null,
+            "path": "launcher.detached_controller_alive_after_launcher_exit",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "launcher returned after ownership acknowledgement",
+            "observed": null,
+            "path": "launcher.returned_after_ownership_ack",
+            "status": "not_run"
+          }
+        ],
+        "external_controller_status": "unknown",
+        "mechanism": "detached external-controller + separate child CLI",
+        "native_product_assertions": [],
+        "native_product_status": "not_applicable",
+        "scope_owner": "external-controller",
+        "status": "unknown"
+      },
+      "pause_drain_reconcile": {
+        "assertions": [
+          {
+            "expected": "paused",
+            "label": "controller entered paused state",
+            "observed": null,
+            "path": "active_pause.status",
+            "status": "not_run"
+          },
+          {
+            "expected": "uncertain",
+            "label": "interrupted turn remains uncertain",
+            "observed": null,
+            "path": "active_pause.turn_outcome",
+            "status": "not_run"
+          },
+          {
+            "expected": "gone",
+            "label": "owned child process group is gone",
+            "observed": null,
+            "path": "active_pause.process_group_status_after_pause",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "exact child reconciled after pause",
+            "observed": null,
+            "path": "resume.exact_recorded_child_target",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "paused external due window dispatched nothing",
+            "observed": null,
+            "path": "external_recurrence.paused_window_prevented_new_dispatch",
+            "status": "not_run"
+          }
+        ],
+        "external_controller_assertions": [
+          {
+            "expected": "paused",
+            "label": "controller entered paused state",
+            "observed": null,
+            "path": "active_pause.status",
+            "status": "not_run"
+          },
+          {
+            "expected": "uncertain",
+            "label": "interrupted turn remains uncertain",
+            "observed": null,
+            "path": "active_pause.turn_outcome",
+            "status": "not_run"
+          },
+          {
+            "expected": "gone",
+            "label": "owned child process group is gone",
+            "observed": null,
+            "path": "active_pause.process_group_status_after_pause",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "exact child reconciled after pause",
+            "observed": null,
+            "path": "resume.exact_recorded_child_target",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "paused external due window dispatched nothing",
+            "observed": null,
+            "path": "external_recurrence.paused_window_prevented_new_dispatch",
+            "status": "not_run"
+          }
+        ],
+        "external_controller_status": "not_run",
+        "mechanism": "external-controller process-group pause and exact-child reconciliation",
+        "native_product_assertions": [],
+        "native_product_status": "not_applicable",
+        "scope_owner": "external-controller",
+        "status": "not_run"
+      },
+      "real_ownership_acknowledgement": {
+        "assertions": [
+          {
+            "expected": "observed",
+            "label": "ownership acknowledgement observed",
+            "observed": null,
+            "path": "child.ownership_acknowledgement",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "ownership binding matches request/session/task/fence",
+            "observed": null,
+            "path": "child.ownership_binding_matches",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "bootstrap request has a validated acknowledgement",
+            "observed": null,
+            "path": "request_acknowledgements.bootstrap.ack_binding_matches",
+            "status": "not_run"
+          }
+        ],
+        "external_controller_assertions": [
+          {
+            "expected": true,
+            "label": "ownership fields bind to request/session/task/fence",
+            "observed": null,
+            "path": "child.ownership_binding_matches",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "controller accepted the bound acknowledgement",
+            "observed": null,
+            "path": "request_acknowledgements.bootstrap.ack_binding_matches",
+            "status": "not_run"
+          }
+        ],
+        "external_controller_status": "not_run",
+        "mechanism": "native final result validated by external-controller",
+        "native_product_assertions": [
+          {
+            "expected": true,
+            "label": "native ownership result event observed",
+            "observed": null,
+            "path": "request_acknowledgements.bootstrap.native_result_event_observed",
+            "status": "not_run"
+          },
+          {
+            "expected": "observed",
+            "label": "child supplied the structured ownership acknowledgement",
+            "observed": null,
+            "path": "child.ownership_acknowledgement",
+            "status": "not_run"
+          }
+        ],
+        "native_product_status": "not_run",
+        "scope_owner": "harness-cli + external-controller",
+        "status": "not_run"
+      },
+      "terminal_stop_no_relaunch": {
+        "assertions": [
+          {
+            "expected": "stopped",
+            "label": "active stop is terminal",
+            "observed": null,
+            "path": "active_stop.terminal_status",
+            "status": "not_run"
+          },
+          {
+            "expected": "gone",
+            "label": "owned process group is gone",
+            "observed": null,
+            "path": "active_stop.process_group_status_after_stop",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "turn/resume/recover are refused",
+            "observed": null,
+            "path": "terminal_stop.turn_resume_recover_refused",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "stopped external due window dispatched nothing",
+            "observed": null,
+            "path": "external_recurrence.stopped_window_prevented_new_dispatch",
+            "status": "not_run"
+          }
+        ],
+        "external_controller_assertions": [
+          {
+            "expected": "stopped",
+            "label": "active stop is terminal",
+            "observed": null,
+            "path": "active_stop.terminal_status",
+            "status": "not_run"
+          },
+          {
+            "expected": "gone",
+            "label": "owned process group is gone",
+            "observed": null,
+            "path": "active_stop.process_group_status_after_stop",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "turn/resume/recover are refused",
+            "observed": null,
+            "path": "terminal_stop.turn_resume_recover_refused",
+            "status": "not_run"
+          },
+          {
+            "expected": true,
+            "label": "stopped external due window dispatched nothing",
+            "observed": null,
+            "path": "external_recurrence.stopped_window_prevented_new_dispatch",
+            "status": "not_run"
+          }
+        ],
+        "external_controller_status": "not_run",
+        "mechanism": "external-controller terminal stop",
+        "native_product_assertions": [],
+        "native_product_status": "not_applicable",
+        "scope_owner": "external-controller",
+        "status": "not_run"
+      }
+    },
+    "evidence_class": "background-agent-conformance-report",
+    "external_controller_overall": "partial",
+    "native_primitive_observations": {
+      "evidence_class": "typed-native-operation-observations",
+      "external_delivery_is_native_scheduler_evidence": false,
+      "operations": {
+        "goal_declaration": {
+          "availability": "documented",
+          "declaration_basis": "Official Claude Code goal documentation describes session-scoped /goal controls; no goal use is inferred here.",
+          "evidence": [],
+          "outcome": "unknown",
+          "reason": "No matching operation event with an explicit outcome was observed.",
+          "scope": {
+            "adapter_id": "claude-code",
+            "mechanism": "native-tool-event",
+            "os": "linux",
+            "product": "Claude Code",
+            "product_version": "2.1.281 (Claude Code)",
+            "profile": "isolated",
+            "proof_id": "background-proof-bab7b4daed424d19bbb6b3e5a485e416"
+          },
+          "tool_names_declared": []
+        },
+        "memory_durable_reread": {
+          "availability": "documented",
+          "declaration_basis": "Claude Code documents auto memory; this adapter has no observed durable reread event.",
+          "evidence": [],
+          "outcome": "unknown",
+          "reason": "No matching operation event with an explicit outcome was observed.",
+          "scope": {
+            "adapter_id": "claude-code",
+            "mechanism": "native-tool-event",
+            "os": "linux",
+            "product": "Claude Code",
+            "product_version": "2.1.281 (Claude Code)",
+            "profile": "isolated",
+            "proof_id": "background-proof-bab7b4daed424d19bbb6b3e5a485e416"
+          },
+          "tool_names_declared": []
+        },
+        "memory_write": {
+          "availability": "documented",
+          "declaration_basis": "Claude Code documents auto memory, but no matching write outcome is inferred from session history.",
+          "evidence": [],
+          "outcome": "unknown",
+          "reason": "No matching operation event with an explicit outcome was observed.",
+          "scope": {
+            "adapter_id": "claude-code",
+            "mechanism": "native-tool-event",
+            "os": "linux",
+            "product": "Claude Code",
+            "product_version": "2.1.281 (Claude Code)",
+            "profile": "isolated",
+            "proof_id": "background-proof-bab7b4daed424d19bbb6b3e5a485e416"
+          },
+          "tool_names_declared": []
+        },
+        "native_scheduler_creation": {
+          "availability": "documented",
+          "declaration_basis": "Official tools reference documents CronCreate; declaration is not scheduler use.",
+          "evidence": [],
+          "outcome": "unknown",
+          "reason": "No matching operation event with an explicit outcome was observed.",
+          "scope": {
+            "adapter_id": "claude-code",
+            "mechanism": "native-tool-event",
+            "os": "linux",
+            "product": "Claude Code",
+            "product_version": "2.1.281 (Claude Code)",
+            "profile": "isolated",
+            "proof_id": "background-proof-bab7b4daed424d19bbb6b3e5a485e416"
+          },
+          "tool_names_declared": [
+            "CronCreate"
+          ]
+        },
+        "native_scheduler_delivery": {
+          "availability": "documented",
+          "declaration_basis": "Native delivery requires a real exact scheduler wakeup and consumed task event; no CLI availability flag or external due event qualifies.",
+          "evidence": [],
+          "outcome": "unknown",
+          "reason": "No matching operation event with an explicit outcome was observed.",
+          "scope": {
+            "adapter_id": "claude-code",
+            "mechanism": "native-tool-event",
+            "os": "linux",
+            "product": "Claude Code",
+            "product_version": "2.1.281 (Claude Code)",
+            "profile": "isolated",
+            "proof_id": "background-proof-bab7b4daed424d19bbb6b3e5a485e416"
+          },
+          "tool_names_declared": []
+        },
+        "task_creation": {
+          "availability": "documented",
+          "declaration_basis": "Official tools reference names TaskCreate; models differ in default availability.",
+          "evidence": [],
+          "outcome": "unknown",
+          "reason": "No matching operation event with an explicit outcome was observed.",
+          "scope": {
+            "adapter_id": "claude-code",
+            "mechanism": "native-tool-event",
+            "os": "linux",
+            "product": "Claude Code",
+            "product_version": "2.1.281 (Claude Code)",
+            "profile": "isolated",
+            "proof_id": "background-proof-bab7b4daed424d19bbb6b3e5a485e416"
+          },
+          "tool_names_declared": [
+            "TaskCreate"
+          ]
+        },
+        "task_durable_reread": {
+          "availability": "documented",
+          "declaration_basis": "Official tools reference names TaskGet and TaskList; durable reread still requires correlated observed results.",
+          "evidence": [],
+          "outcome": "unknown",
+          "reason": "No matching operation event with an explicit outcome was observed.",
+          "scope": {
+            "adapter_id": "claude-code",
+            "mechanism": "native-tool-event",
+            "os": "linux",
+            "product": "Claude Code",
+            "product_version": "2.1.281 (Claude Code)",
+            "profile": "isolated",
+            "proof_id": "background-proof-bab7b4daed424d19bbb6b3e5a485e416"
+          },
+          "tool_names_declared": [
+            "TaskGet",
+            "TaskList"
+          ]
+        },
+        "task_list_write": {
+          "availability": "unknown",
+          "declaration_basis": "No adapter declaration exists.",
+          "evidence": [],
+          "outcome": "unknown",
+          "reason": "No matching operation event with an explicit outcome was observed.",
+          "scope": {
+            "adapter_id": "claude-code",
+            "mechanism": "native-tool-event",
+            "os": "linux",
+            "product": "Claude Code",
+            "product_version": "2.1.281 (Claude Code)",
+            "profile": "isolated",
+            "proof_id": "background-proof-bab7b4daed424d19bbb6b3e5a485e416"
+          },
+          "tool_names_declared": []
+        },
+        "task_state_update": {
+          "availability": "documented",
+          "declaration_basis": "Official tools reference names TaskUpdate; availability and effect require an observed result event.",
+          "evidence": [],
+          "outcome": "unknown",
+          "reason": "No matching operation event with an explicit outcome was observed.",
+          "scope": {
+            "adapter_id": "claude-code",
+            "mechanism": "native-tool-event",
+            "os": "linux",
+            "product": "Claude Code",
+            "product_version": "2.1.281 (Claude Code)",
+            "profile": "isolated",
+            "proof_id": "background-proof-bab7b4daed424d19bbb6b3e5a485e416"
+          },
+          "tool_names_declared": [
+            "TaskUpdate"
+          ]
+        }
+      },
+      "schema_version": 1
+    },
+    "os": "linux",
+    "overall": "partial",
+    "product": "Claude Code",
+    "product_version": "2.1.281 (Claude Code)",
+    "profile": "isolated",
+    "request_ack_bindings": [
+      {
+        "ack_binding_matches": true,
+        "adapter_id": "claude-code",
+        "command_sha256": null,
+        "fence": 0,
+        "kind": "proof_parent_ack",
+        "native_result_event_observed": true,
+        "os": "linux",
+        "process_exit_code": 0,
+        "product_version": "2.1.281 (Claude Code)",
+        "profile": "isolated",
+        "related_session_fingerprint": null,
+        "request_id": "parent-background-proof-bab7b4daed424d19bbb6b3e5a485e416",
+        "returned_session_fingerprint": "fe2639e0a89cef0c1468a156120243423bada15bc7638d098a104ed3a5375194",
+        "target_session_fingerprint": "fe2639e0a89cef0c1468a156120243423bada15bc7638d098a104ed3a5375194",
+        "task_sha256": null,
+        "turn_id": "parent-bootstrap"
+      }
+    ],
+    "schema_version": 1,
+    "scope": {
+      "external_controller": "bounded external-controller process/request lifecycle only",
+      "external_due_delivery_is_native_scheduler": false,
+      "native_product": "CLI identity/session/ack and explicit operation events only; native pause/stop/scheduler are separate evidence",
+      "native_scheduler_delivery_outcome": "unknown"
+    },
+    "synthetic": false
+  },
+  "effort": "medium",
+  "ended_at": "2026-09-24T10:04:13Z",
+  "evidence_class": "failed-bounded-native-background-agent-proof",
+  "failures": [
+    "child_ownership_acknowledgement_not_ready",
+    "external_controller_conformance_incomplete"
+  ],
+  "global_memory": "unknown",
+  "harness": "claude-code",
+  "harness_version": "2.1.281 (Claude Code)",
+  "model": "sonnet",
+  "native_goal_task_memory": {
+    "external_delivery_is_native_scheduler_evidence": false,
+    "goal": {
+      "status": "unknown",
+      "tools": []
+    },
+    "memory": {
+      "status": "unknown",
+      "tools": []
+    },
+    "operations": {
+      "goal_declaration": {
+        "availability": "documented",
+        "declaration_basis": "Official Claude Code goal documentation describes session-scoped /goal controls; no goal use is inferred here.",
+        "evidence": [],
+        "outcome": "unknown",
+        "reason": "No matching operation event with an explicit outcome was observed.",
+        "scope": {
+          "adapter_id": "claude-code",
+          "mechanism": "native-tool-event"
+        },
+        "tool_names_declared": []
+      },
+      "memory_durable_reread": {
+        "availability": "documented",
+        "declaration_basis": "Claude Code documents auto memory; this adapter has no observed durable reread event.",
+        "evidence": [],
+        "outcome": "unknown",
+        "reason": "No matching operation event with an explicit outcome was observed.",
+        "scope": {
+          "adapter_id": "claude-code",
+          "mechanism": "native-tool-event"
+        },
+        "tool_names_declared": []
+      },
+      "memory_write": {
+        "availability": "documented",
+        "declaration_basis": "Claude Code documents auto memory, but no matching write outcome is inferred from session history.",
+        "evidence": [],
+        "outcome": "unknown",
+        "reason": "No matching operation event with an explicit outcome was observed.",
+        "scope": {
+          "adapter_id": "claude-code",
+          "mechanism": "native-tool-event"
+        },
+        "tool_names_declared": []
+      },
+      "native_scheduler_creation": {
+        "availability": "documented",
+        "declaration_basis": "Official tools reference documents CronCreate; declaration is not scheduler use.",
+        "evidence": [],
+        "outcome": "unknown",
+        "reason": "No matching operation event with an explicit outcome was observed.",
+        "scope": {
+          "adapter_id": "claude-code",
+          "mechanism": "native-tool-event"
+        },
+        "tool_names_declared": [
+          "CronCreate"
+        ]
+      },
+      "native_scheduler_delivery": {
+        "availability": "documented",
+        "declaration_basis": "Native delivery requires a real exact scheduler wakeup and consumed task event; no CLI availability flag or external due event qualifies.",
+        "evidence": [],
+        "outcome": "unknown",
+        "reason": "No matching operation event with an explicit outcome was observed.",
+        "scope": {
+          "adapter_id": "claude-code",
+          "mechanism": "native-tool-event"
+        },
+        "tool_names_declared": []
+      },
+      "task_creation": {
+        "availability": "documented",
+        "declaration_basis": "Official tools reference names TaskCreate; models differ in default availability.",
+        "evidence": [],
+        "outcome": "unknown",
+        "reason": "No matching operation event with an explicit outcome was observed.",
+        "scope": {
+          "adapter_id": "claude-code",
+          "mechanism": "native-tool-event"
+        },
+        "tool_names_declared": [
+          "TaskCreate"
+        ]
+      },
+      "task_durable_reread": {
+        "availability": "documented",
+        "declaration_basis": "Official tools reference names TaskGet and TaskList; durable reread still requires correlated observed results.",
+        "evidence": [],
+        "outcome": "unknown",
+        "reason": "No matching operation event with an explicit outcome was observed.",
+        "scope": {
+          "adapter_id": "claude-code",
+          "mechanism": "native-tool-event"
+        },
+        "tool_names_declared": [
+          "TaskGet",
+          "TaskList"
+        ]
+      },
+      "task_list_write": {
+        "availability": "unknown",
+        "declaration_basis": "No adapter declaration exists.",
+        "evidence": [],
+        "outcome": "unknown",
+        "reason": "No matching operation event with an explicit outcome was observed.",
+        "scope": {
+          "adapter_id": "claude-code",
+          "mechanism": "native-tool-event"
+        },
+        "tool_names_declared": []
+      },
+      "task_state_update": {
+        "availability": "documented",
+        "declaration_basis": "Official tools reference names TaskUpdate; availability and effect require an observed result event.",
+        "evidence": [],
+        "outcome": "unknown",
+        "reason": "No matching operation event with an explicit outcome was observed.",
+        "scope": {
+          "adapter_id": "claude-code",
+          "mechanism": "native-tool-event"
+        },
+        "tool_names_declared": [
+          "TaskUpdate"
+        ]
+      }
+    },
+    "source": "typed adapter-normalized tool events; no prose, feature flag, planning record, or external due event is native-operation evidence",
+    "task": {
+      "status": "unknown",
+      "tools": []
+    }
+  },
+  "native_parent_process_attempted": true,
+  "native_primitive_observations": {
+    "evidence_class": "typed-native-operation-observations",
+    "external_delivery_is_native_scheduler_evidence": false,
+    "operations": {
+      "goal_declaration": {
+        "availability": "documented",
+        "declaration_basis": "Official Claude Code goal documentation describes session-scoped /goal controls; no goal use is inferred here.",
+        "evidence": [],
+        "outcome": "unknown",
+        "reason": "No matching operation event with an explicit outcome was observed.",
+        "scope": {
+          "adapter_id": "claude-code",
+          "mechanism": "native-tool-event",
+          "os": "linux",
+          "product": "Claude Code",
+          "product_version": "2.1.281 (Claude Code)",
+          "profile": "isolated",
+          "proof_id": "background-proof-bab7b4daed424d19bbb6b3e5a485e416"
+        },
+        "tool_names_declared": []
+      },
+      "memory_durable_reread": {
+        "availability": "documented",
+        "declaration_basis": "Claude Code documents auto memory; this adapter has no observed durable reread event.",
+        "evidence": [],
+        "outcome": "unknown",
+        "reason": "No matching operation event with an explicit outcome was observed.",
+        "scope": {
+          "adapter_id": "claude-code",
+          "mechanism": "native-tool-event",
+          "os": "linux",
+          "product": "Claude Code",
+          "product_version": "2.1.281 (Claude Code)",
+          "profile": "isolated",
+          "proof_id": "background-proof-bab7b4daed424d19bbb6b3e5a485e416"
+        },
+        "tool_names_declared": []
+      },
+      "memory_write": {
+        "availability": "documented",
+        "declaration_basis": "Claude Code documents auto memory, but no matching write outcome is inferred from session history.",
+        "evidence": [],
+        "outcome": "unknown",
+        "reason": "No matching operation event with an explicit outcome was observed.",
+        "scope": {
+          "adapter_id": "claude-code",
+          "mechanism": "native-tool-event",
+          "os": "linux",
+          "product": "Claude Code",
+          "product_version": "2.1.281 (Claude Code)",
+          "profile": "isolated",
+          "proof_id": "background-proof-bab7b4daed424d19bbb6b3e5a485e416"
+        },
+        "tool_names_declared": []
+      },
+      "native_scheduler_creation": {
+        "availability": "documented",
+        "declaration_basis": "Official tools reference documents CronCreate; declaration is not scheduler use.",
+        "evidence": [],
+        "outcome": "unknown",
+        "reason": "No matching operation event with an explicit outcome was observed.",
+        "scope": {
+          "adapter_id": "claude-code",
+          "mechanism": "native-tool-event",
+          "os": "linux",
+          "product": "Claude Code",
+          "product_version": "2.1.281 (Claude Code)",
+          "profile": "isolated",
+          "proof_id": "background-proof-bab7b4daed424d19bbb6b3e5a485e416"
+        },
+        "tool_names_declared": [
+          "CronCreate"
+        ]
+      },
+      "native_scheduler_delivery": {
+        "availability": "documented",
+        "declaration_basis": "Native delivery requires a real exact scheduler wakeup and consumed task event; no CLI availability flag or external due event qualifies.",
+        "evidence": [],
+        "outcome": "unknown",
+        "reason": "No matching operation event with an explicit outcome was observed.",
+        "scope": {
+          "adapter_id": "claude-code",
+          "mechanism": "native-tool-event",
+          "os": "linux",
+          "product": "Claude Code",
+          "product_version": "2.1.281 (Claude Code)",
+          "profile": "isolated",
+          "proof_id": "background-proof-bab7b4daed424d19bbb6b3e5a485e416"
+        },
+        "tool_names_declared": []
+      },
+      "task_creation": {
+        "availability": "documented",
+        "declaration_basis": "Official tools reference names TaskCreate; models differ in default availability.",
+        "evidence": [],
+        "outcome": "unknown",
+        "reason": "No matching operation event with an explicit outcome was observed.",
+        "scope": {
+          "adapter_id": "claude-code",
+          "mechanism": "native-tool-event",
+          "os": "linux",
+          "product": "Claude Code",
+          "product_version": "2.1.281 (Claude Code)",
+          "profile": "isolated",
+          "proof_id": "background-proof-bab7b4daed424d19bbb6b3e5a485e416"
+        },
+        "tool_names_declared": [
+          "TaskCreate"
+        ]
+      },
+      "task_durable_reread": {
+        "availability": "documented",
+        "declaration_basis": "Official tools reference names TaskGet and TaskList; durable reread still requires correlated observed results.",
+        "evidence": [],
+        "outcome": "unknown",
+        "reason": "No matching operation event with an explicit outcome was observed.",
+        "scope": {
+          "adapter_id": "claude-code",
+          "mechanism": "native-tool-event",
+          "os": "linux",
+          "product": "Claude Code",
+          "product_version": "2.1.281 (Claude Code)",
+          "profile": "isolated",
+          "proof_id": "background-proof-bab7b4daed424d19bbb6b3e5a485e416"
+        },
+        "tool_names_declared": [
+          "TaskGet",
+          "TaskList"
+        ]
+      },
+      "task_list_write": {
+        "availability": "unknown",
+        "declaration_basis": "No adapter declaration exists.",
+        "evidence": [],
+        "outcome": "unknown",
+        "reason": "No matching operation event with an explicit outcome was observed.",
+        "scope": {
+          "adapter_id": "claude-code",
+          "mechanism": "native-tool-event",
+          "os": "linux",
+          "product": "Claude Code",
+          "product_version": "2.1.281 (Claude Code)",
+          "profile": "isolated",
+          "proof_id": "background-proof-bab7b4daed424d19bbb6b3e5a485e416"
+        },
+        "tool_names_declared": []
+      },
+      "task_state_update": {
+        "availability": "documented",
+        "declaration_basis": "Official tools reference names TaskUpdate; availability and effect require an observed result event.",
+        "evidence": [],
+        "outcome": "unknown",
+        "reason": "No matching operation event with an explicit outcome was observed.",
+        "scope": {
+          "adapter_id": "claude-code",
+          "mechanism": "native-tool-event",
+          "os": "linux",
+          "product": "Claude Code",
+          "product_version": "2.1.281 (Claude Code)",
+          "profile": "isolated",
+          "proof_id": "background-proof-bab7b4daed424d19bbb6b3e5a485e416"
+        },
+        "tool_names_declared": [
+          "TaskUpdate"
+        ]
+      }
+    },
+    "schema_version": 1
+  },
+  "native_scheduler": "unknown; the controller supports manual delivery or one explicit external interval owner",
+  "network_policy": "offline task/rules; no network/search/browser/MCP calls requested; explicit tool events checked",
+  "network_tool_events": {
+    "parent": []
+  },
+  "openforage_worker": {
+    "checkpoint": "unknown",
+    "started_by_adapter": false,
+    "stop": "unknown"
+  },
+  "os": "linux",
+  "parent": {
+    "ack_fields_match": true,
+    "cleanup": {
+      "identity_captured": true,
+      "identity_status_after": "dead",
+      "killed": false,
+      "process_group_alive_after": false,
+      "process_group_status_after": "gone",
+      "terminated": false,
+      "termination_attempted": false
+    },
+    "exit_code": 0,
+    "fence": 0,
+    "final_ack_observed": true,
+    "malformed_event_count": 0,
+    "native_event_count": 29,
+    "native_tools": [],
+    "network_tool_names_observed": [],
+    "raw_bytes": 15046,
+    "raw_sha256": "2008634ac02c628c6d1796e411862b00b3abb4e4beee031f99a1588d304bfb49",
+    "request_id": "parent-background-proof-bab7b4daed424d19bbb6b3e5a485e416",
+    "session_fingerprint": "fe2639e0a89cef0c1468a156120243423bada15bc7638d098a104ed3a5375194",
+    "timed_out": false,
+    "turn_id": "parent-bootstrap"
+  },
+  "parent_exited_before_child_start": true,
+  "passed": false,
+  "product": "Claude Code",
+  "proof_applicability": "Exact product version, OS, profile, adapter identity, and source hashes are required; a version change requires a fresh proof review.",
+  "proof_id": "background-proof-bab7b4daed424d19bbb6b3e5a485e416",
+  "reasoning_effort": null,
+  "request_acknowledgements": {
+    "parent-bootstrap": {
+      "ack_binding_matches": true,
+      "adapter_id": "claude-code",
+      "command_sha256": null,
+      "fence": 0,
+      "kind": "proof_parent_ack",
+      "native_result_event_observed": true,
+      "os": "linux",
+      "process_exit_code": 0,
+      "product_version": "2.1.281 (Claude Code)",
+      "profile": "isolated",
+      "related_session_fingerprint": null,
+      "request_id": "parent-background-proof-bab7b4daed424d19bbb6b3e5a485e416",
+      "returned_session_fingerprint": "fe2639e0a89cef0c1468a156120243423bada15bc7638d098a104ed3a5375194",
+      "target_session_fingerprint": "fe2639e0a89cef0c1468a156120243423bada15bc7638d098a104ed3a5375194",
+      "task_sha256": null,
+      "turn_id": "parent-bootstrap"
+    }
+  },
+  "schema_version": 2,
+  "scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config.",
+  "session_history": {
+    "scope": "exact native child session only",
+    "status": "not_yet_observed"
+  },
+  "source_file_digests": {
+    "examples/background-agent/conformance.py": {
+      "bytes": 4432,
+      "sha256": "dab3717d0218cdfa318e4c81ca8fd20bac417426fb4d7e789ca34a25ada224c1"
+    },
+    "examples/background-agent/conformance.schema.json": {
+      "bytes": 5753,
+      "sha256": "b1c842611a71e3c8e52c26e12463a005383795eef6ad7716dca9d040ec004503"
+    },
+    "examples/background-agent/native-contribution-wave-20260924/codex-proof.json": {
+      "bytes": 10961,
+      "sha256": "8c0c31ca30f179ac82584df5405bf18fcb7acbf72c506b6d92498a955e3ff28a"
+    },
+    "examples/background-agent/native-contribution-wave-20260924/opencode-proof.json": {
+      "bytes": 12312,
+      "sha256": "265b35dd9b3685fdcdb9f6358d76a4134a56856570bc3b845f33b1f6435eb353"
+    },
+    "examples/background-agent/proof.py": {
+      "bytes": 84016,
+      "sha256": "ce2d0031c25a110c04aaabe54c9763e732fedf402bbe4ac2c01aa00a9a2e13c0"
+    },
+    "examples/background-agent/proof.schema.json": {
+      "bytes": 7411,
+      "sha256": "4682d20782f236a9c615864453b8c80ddba645a14e03278d633eff45c254a6f9"
+    },
+    "examples/codex-lifecycle/codex_events.py": {
+      "bytes": 10145,
+      "sha256": "a24fd63b59a26c16d4f29b2cccdce79e91560c3e7e5e199b00cbffae870c5158"
+    },
+    "examples/opencode-lifecycle/bridge_core.py": {
+      "bytes": 29451,
+      "sha256": "c9dfbfd0eb1861db0a6e0cdab08e3221b8d64015f7a1c70e3d37e31c25b96ebf"
+    },
+    "scripts/background_adapters/__init__.py": {
+      "bytes": 3535,
+      "sha256": "bec086762fbdd8224b3f55321fec1da57af0c353a81046853533fd87e9054f41"
+    },
+    "scripts/background_adapters/claude_code.py": {
+      "bytes": 9511,
+      "sha256": "51bef586af19fea409fdab1c37dc10f793634ca25d74f0c9d2aadc7d595a1c5c"
+    },
+    "scripts/background_adapters/codex.py": {
+      "bytes": 6551,
+      "sha256": "41a91e332b9f22786cc74e2af0cfae763984430a3d0625bc45515e1790ecf079"
+    },
+    "scripts/background_adapters/conformance.py": {
+      "bytes": 28799,
+      "sha256": "cf9cbe1ad2723d18ffb9264c0f8af8ab90c51e51a5feddda79b0f03dd85105cf"
+    },
+    "scripts/background_adapters/contract.py": {
+      "bytes": 7479,
+      "sha256": "adc5f0a5f7daf5e62ed8e7974a40de2bb50faa2cc84ddb9c18ea708e4a841d95"
+    },
+    "scripts/background_adapters/native_evidence.py": {
+      "bytes": 10080,
+      "sha256": "e8865d82ca5c7f305ea2a836d576dd718422658f9db9daec2787df66bcb7e644"
+    },
+    "scripts/background_adapters/opencode.py": {
+      "bytes": 7867,
+      "sha256": "5ad742dbaac4d643bd86d073b98bc0f45759824c59bb4f53b3d0c4813bebcfcb"
+    },
+    "scripts/background_agent.py": {
+      "bytes": 53019,
+      "sha256": "0d4f93f80f870777a21e4b630a8c1b51405c90342b38ca68de99ed0bbb1006a5"
+    },
+    "scripts/background_agent_adapters.py": {
+      "bytes": 9542,
+      "sha256": "72c3cb9fc2de70a5e4c2df163ab39dc269ea4428333207957580ad0b1eed71fb"
+    },
+    "scripts/background_agent_ownership.py": {
+      "bytes": 12537,
+      "sha256": "42a939a1afa983d7a104fb83340c0391a2f47e1bf3925569bd924c18d23ced35"
+    },
+    "scripts/background_agent_selfcheck.py": {
+      "bytes": 81453,
+      "sha256": "5e8a630f1898e2034c3730a967a60dd83ebe771436e89018ad0c2fa436f4c2c1"
+    },
+    "scripts/background_agent_service.py": {
+      "bytes": 32741,
+      "sha256": "a33fc7e13ea7f1d7ba219f595b317661de2655c21ef40a01784054c547bc482d"
+    },
+    "scripts/background_agent_store.py": {
+      "bytes": 27054,
+      "sha256": "464a06f6dc129751c3ca8c5509f9ab4eb8a2e63a2845aca99255f0f994ba99a5"
+    },
+    "scripts/onboarding/capabilities.py": {
+      "bytes": 51347,
+      "sha256": "9d9e39731d9086ca87be0a6dcc5874f13d4d1d161f9302892078802f4d59618a"
+    },
+    "src/openforage/skills/agent_runtime_integration/references/evidence/codex-native-marker-20260923.json": {
+      "bytes": 20094,
+      "sha256": "9bef8e96f7b639e117905aecd61203303a792a5999fd27b2ff45059db3211951"
+    },
+    "src/openforage/skills/agent_runtime_integration/references/evidence/opencode-native-marker-20260922.json": {
+      "bytes": 6351,
+      "sha256": "a6fa0d1d5860551c9c66112034389afa855360b1d92849a5e9d664aa95d22eb5"
+    },
+    "src/openforage/skills/agent_runtime_integration/references/harnesses.json": {
+      "bytes": 88284,
+      "sha256": "4b28c0dc26fd1dba684a44bc229de4d5083dc75c0956fcd273bc8faafe884efb"
+    }
+  },
+  "started_at": "2026-09-24T10:03:36Z",
+  "variant": null
+}

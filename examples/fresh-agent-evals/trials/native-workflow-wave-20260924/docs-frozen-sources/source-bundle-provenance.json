@@ -1,0 +1,11 @@
+{
+  "kind": "exact_frozen_grading_source_bundle",
+  "series_id": "native-workflow-docs-1",
+  "manifest_path": "examples/fresh-agent-evals/v2/series/native-workflow-docs-1.json",
+  "manifest_sha256": "d6655322dbfb9eb13c3a96671aa83d9de7d9a2a04091cfb07e4c712b698ccb3d",
+  "frozen_source_files": 77,
+  "bundle_sha256": "9ac211475cc043b70a0d851814af9ffe30fb069bfba777190d7d04d25147a28a",
+  "bundle_bytes": 323113,
+  "entry_paths": "repository-relative with fixed metadata",
+  "scope": "Frozen public grading closure and selected manifest; no native streams"
+}

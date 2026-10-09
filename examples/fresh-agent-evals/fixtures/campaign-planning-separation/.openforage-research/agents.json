@@ -1,0 +1,26 @@
+{
+  "registry_version": 1,
+  "campaign_id": "campaign-fixture-20260101",
+  "agents": [
+    {
+      "session_identity": "parent-fixture-01",
+      "role": "onboarding-parent",
+      "state": "exited",
+      "last_seen": "2026-09-21T00:10:00Z"
+    },
+    {
+      "session_identity": "child-fixture-01",
+      "role": "background-research-agent",
+      "state": "live",
+      "distinct_cli_invocation": true,
+      "owns": {
+        "worker": true,
+        "callback_registry": true,
+        "improvement_prompt_consumption": true,
+        "campaign_manifest": true
+      },
+      "last_seen": "2026-09-22T12:00:00Z"
+    }
+  ],
+  "notes": "The registry records the parent as exited and child-fixture-01 as the live owner. The ownership claim still names the exited parent."
+}

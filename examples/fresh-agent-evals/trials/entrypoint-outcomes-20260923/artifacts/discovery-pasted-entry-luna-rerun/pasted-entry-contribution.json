@@ -1,0 +1,27 @@
+{
+  "case_id": "discovery-pasted-entry",
+  "selected_task": "contribute",
+  "target_file": "docs/agents/references/onboarding.json",
+  "rationale": "Make a narrow wording clarification in `tasks.contribute.immediate_action`: an explicit documentation request uses the `contribute` route and the matching row in `docs/agents/first-contribution.md`; the default `research` route is only for signal-seeking requests without a more specific task, and the guide can be read directly when Python or automatic instruction loading is unavailable. This file is the canonical route data consumed by `scripts/start_here.py`.",
+  "baseline_check": "Before editing, the “Improve root routing or onboarding” row prescribes `python scripts/start_here.py --selfcheck`, `python scripts/start_here.py --check`, and `python .github/scripts/validate_agent_docs.py first-read guidance links`. These are the planned baseline validations; they were not run.",
+  "evidence_paths": [
+    "docs/agents/first-contribution.md",
+    "docs/agents/references/onboarding.json",
+    "scripts/start_here.py",
+    "docs/agents/start-here.md",
+    "README.md",
+    "docs/start-here/onboard-your-agent.md"
+  ],
+  "offline_access": "This documentation plan is permitted offline; reading and documentation do not require an invite code, wallet, installed OpenForage package, daemon, worker, or campaign.",
+  "live_route": "No live route is authorized or needed for this contribution. Live campaign registration or search requires explicit user authorization and the README bootstrap; an invite code is required only for first registration. Continuous signal search additionally requires an independently started CLI process of the same harness with a distinct session identity. If that is not established, keep search blocked and never use the main session.",
+  "continuous_search_posture": "blocked_until_separate_session",
+  "main_session_fallback": false,
+  "live_actions": [],
+  "no_repo_edit": true,
+  "completion_criteria": [
+    "The contributor route clearly maps explicit documentation requests to task ID `contribute` and the matching task/file/validation row, without sending them to default research.",
+    "Readers without Python or automatic instruction loading can follow the route from the readable documentation.",
+    "The listed baseline and matching post-edit validations pass, generated onboarding remains synchronized, and `git diff --check` is clean.",
+    "The contribution remains offline; no live campaign action, unsupported capability, or live result is claimed."
+  ]
+}

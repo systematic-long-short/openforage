@@ -1,0 +1,127 @@
+{
+  "artifact_diff": [
+    {
+      "after_sha256": "1350e9e5438cc2a47dbac85acfb68528c77a5b89a6451c4120053a0284c3d379",
+      "before_sha256": "8aa6d00c03210614aa655f3bce19d7afc89ded1ddd1344e3f9dba45550b39d5a",
+      "change": "modified",
+      "path": "docs/agents/quickstart.md"
+    },
+    {
+      "after_sha256": "b79d6a63fa804edf47bf737fa3ce3f576fe2b5d4597bf7c4d85d2c879b5e6933",
+      "before_sha256": null,
+      "change": "created",
+      "path": "trial-output/completion.json"
+    }
+  ],
+  "artifact_refs": {
+    "docs/agents/quickstart.md": "1350e9e5438cc2a47dbac85acfb68528c77a5b89a6451c4120053a0284c3d379",
+    "trial-output/completion.json": "b79d6a63fa804edf47bf737fa3ce3f576fe2b5d4597bf7c4d85d2c879b5e6933"
+  },
+  "case_id": "first-finished-contribution-primary",
+  "evidence_scope": "fresh-native-trial",
+  "failure_reasons": [
+    "direct evaluation-suite access audit is unknown; absence is not established",
+    "authoritative_sources are not supported by completed native reads",
+    "repository route was not established by a root entry read or contribute selector",
+    "canonical contribution route sources were not actually read",
+    "validation.baseline has no exact native command in its required causal phase",
+    "validation.final has no exact native command in its required causal phase"
+  ],
+  "harness": "codex",
+  "human_review": {
+    "automated_quality_assessment": "not_performed",
+    "rationale": "The bare registration call contradicted the same page's first-registration requirement and documented invocation. The one-line correction removes the stale fixture comment and matches register(invite_code=\"<CODE>\"). The focused truthfulness and links baseline failed on that call before editing and passed afterward. The documented .venv-docs interpreter was absent, so validation used the available Python without installing packages. git diff --check passed, but the initial snapshot files were untracked, so that command alone does not review the edited file.",
+    "summary": "Corrected the quickstart registration example to pass an invite-code placeholder explicitly."
+  },
+  "metrics": {
+    "artifact_diff": {
+      "changed_file_count": 2,
+      "changed_paths": [
+        "docs/agents/quickstart.md",
+        "trial-output/completion.json"
+      ],
+      "sha256_evidence": [
+        {
+          "after_sha256": "1350e9e5438cc2a47dbac85acfb68528c77a5b89a6451c4120053a0284c3d379",
+          "before_sha256": "8aa6d00c03210614aa655f3bce19d7afc89ded1ddd1344e3f9dba45550b39d5a",
+          "change": "modified",
+          "path": "docs/agents/quickstart.md"
+        },
+        {
+          "after_sha256": "b79d6a63fa804edf47bf737fa3ce3f576fe2b5d4597bf7c4d85d2c879b5e6933",
+          "before_sha256": null,
+          "change": "created",
+          "path": "trial-output/completion.json"
+        }
+      ]
+    },
+    "clarification_observations": {
+      "count": 0,
+      "status": "observed"
+    },
+    "time_to_first_meaningful_action": {
+      "elapsed_seconds": null,
+      "event_sequence": 26,
+      "reason": "native trace did not expose a usable event timestamp",
+      "status": "unknown"
+    },
+    "time_to_first_verified_completed_contribution": {
+      "elapsed_seconds": null,
+      "exact_completion_time": false,
+      "measurement": "elapsed_at_verification_upper_bound",
+      "status": "unknown"
+    },
+    "unnecessary_setup_attempts": {
+      "attempts": [],
+      "count": null,
+      "observed_lower_bound": 0,
+      "status": "unknown"
+    },
+    "unsupported_structured_claims": {
+      "count": 3,
+      "status": "observed"
+    },
+    "validation_outcome": {
+      "agent_baseline": "unknown",
+      "agent_final": "unknown",
+      "independent_final": "pass"
+    }
+  },
+  "native_trace": {
+    "actions_observed": 22,
+    "direct_suite_access_audit": "unknown",
+    "direct_suite_access_indices": [],
+    "events_observed": 50,
+    "raw_events_sha256": "03224720e77532b9031e1595ffcb333cf854510110123e768286bba5394f3ab6",
+    "trace_complete": true
+  },
+  "run_id": "reliability-docs-codex-1",
+  "series_id": "contributor-reliability-docs-1",
+  "series_manifest_sha256": "505e31e9b0d56b3e65c477d1ec8270802f017afc6da4eed53fbdf171715bca1d",
+  "status": "fail",
+  "success": false,
+  "synthetic_regression": false,
+  "validation": {
+    "baseline_native_item_id_sha256": null,
+    "baseline_outcome_provenance": null,
+    "final_native_item_id_sha256": null,
+    "final_outcome_provenance": null,
+    "independent_final": {
+      "executed": true,
+      "exit_code": 0,
+      "method": "independent unchanged repository validator on final workspace",
+      "modes": [
+        "truthfulness",
+        "links"
+      ],
+      "owned_process_group_remaining": false,
+      "status": "pass",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 34,
+      "stdout_sha256": "47e72519f3d78aa66237ad94c9d5ff537b8a03e0584c4fbfdcbfc61cf9f97303",
+      "timed_out": false
+    },
+    "observed_validator_outcomes": []
+  }
+}

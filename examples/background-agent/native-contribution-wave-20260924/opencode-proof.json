@@ -1,0 +1,397 @@
+{
+  "active_pause": {
+    "application_worker_checkpoint": "unknown",
+    "application_worker_stop": "unknown",
+    "controller_exit_not_required": true,
+    "expected_session_observed_in_live_trace": true,
+    "fence_advanced": true,
+    "live_recorded_cli_identity": true,
+    "mismatched_target_refused": true,
+    "phase_marker_observed": true,
+    "process_group_alive_after_pause": false,
+    "process_group_status_after_pause": "gone",
+    "status": "paused",
+    "termination": {
+      "attempted": true,
+      "killed": false,
+      "reason": null,
+      "terminated": true
+    },
+    "tool_state_limitation": "native event output may omit the exact shell command/state; the marker and live exact-session trace establish phase readiness only",
+    "turn_outcome": "uncertain"
+  },
+  "active_stop": {
+    "application_worker_checkpoint": "unknown",
+    "application_worker_stop": "unknown",
+    "expected_session_observed_in_live_trace": true,
+    "live_recorded_cli_identity": true,
+    "phase_marker_observed": true,
+    "process_group_alive_after_stop": false,
+    "process_group_status_after_stop": "gone",
+    "stop_exit_code": 0,
+    "terminal_status": "stopped",
+    "termination": {
+      "attempted": true,
+      "killed": false,
+      "reason": null,
+      "terminated": true
+    },
+    "tool_state_limitation": "native event output may omit the exact shell command/state; the marker and live exact-session trace establish phase readiness only",
+    "turn_outcome": "uncertain"
+  },
+  "adapter_profile": {
+    "limitation": "native user plugins/providers/config are not exercised by this fixture",
+    "selected": "isolated"
+  },
+  "child": {
+    "bootstrap_marker_effect": true,
+    "distinct_from_parent": true,
+    "native_tools": [
+      {
+        "status": "completed",
+        "tool": "read"
+      },
+      {
+        "status": "completed",
+        "tool": "bash"
+      },
+      {
+        "status": "completed",
+        "tool": "todowrite"
+      },
+      {
+        "status": "completed",
+        "tool": "apply_patch"
+      },
+      {
+        "status": "completed",
+        "tool": "bash"
+      },
+      {
+        "status": "completed",
+        "tool": "read"
+      },
+      {
+        "status": "completed",
+        "tool": "todowrite"
+      }
+    ],
+    "ownership_acknowledgement": "observed",
+    "ownership_binding_matches": true,
+    "session_fingerprint": "6427bb2602e84ccca45c4fb9c71cf7c3fb89502cfa14bf682d82cc2808ba4849"
+  },
+  "cleanup": {
+    "isolated_workspace_removed": true,
+    "runs": {
+      "background-proof-ad1a6d07359d4573bf5ab25628d184fe": {
+        "all_owned_process_groups_proven_gone": true,
+        "child_process_group_statuses_after_cleanup": [
+          "gone",
+          "gone",
+          "gone",
+          "gone",
+          "gone",
+          "gone"
+        ],
+        "controller_identity_status_after_cleanup": "dead",
+        "run_terminal": true
+      },
+      "background-proof-ad1a6d07359d4573bf5ab25628d184fe-recurrence": {
+        "all_owned_process_groups_proven_gone": true,
+        "child_process_group_statuses_after_cleanup": [
+          "gone",
+          "gone",
+          "gone",
+          "gone"
+        ],
+        "controller_identity_status_after_cleanup": "dead",
+        "run_terminal": true
+      }
+    }
+  },
+  "continuation": {
+    "durable_task_marker_stage_two": true,
+    "history_marker_absent_from_workspace": true,
+    "history_marker_match": true,
+    "native_tools": [
+      {
+        "status": "completed",
+        "tool": "read"
+      },
+      {
+        "status": "completed",
+        "tool": "read"
+      },
+      {
+        "status": "completed",
+        "tool": "bash"
+      },
+      {
+        "status": "completed",
+        "tool": "todowrite"
+      },
+      {
+        "status": "completed",
+        "tool": "apply_patch"
+      },
+      {
+        "status": "completed",
+        "tool": "bash"
+      },
+      {
+        "status": "completed",
+        "tool": "read"
+      },
+      {
+        "status": "completed",
+        "tool": "todowrite"
+      }
+    ],
+    "same_child_session": true,
+    "task_status_reported_by_agent": "agent_reported_complete",
+    "turn_acknowledged": true
+  },
+  "controller_crash": {
+    "classification_after_kill": "stale_controller",
+    "controller_generation_before": 1,
+    "deliberately_killed_by_recorded_identity": true,
+    "no_child_cli_overlapped_recovery": true
+  },
+  "ended_at": "2026-09-23T20:19:35Z",
+  "evidence_class": "bounded-native-background-agent-proof",
+  "external_recurrence": {
+    "acknowledged_due_continuations": [
+      {
+        "acknowledged": true,
+        "delivery": "external_due_time",
+        "due_time_present": true,
+        "native_session_match": true,
+        "same_child_session": true,
+        "task_status": "in_progress"
+      },
+      {
+        "acknowledged": true,
+        "delivery": "external_due_time",
+        "due_time_present": true,
+        "native_session_match": true,
+        "same_child_session": true,
+        "task_status": "in_progress"
+      }
+    ],
+    "all_owned_process_groups_proven_gone": true,
+    "child_session_distinct_from_parent": true,
+    "interval_seconds": 5,
+    "launcher_returned_before_first_due": true,
+    "mode": "explicit_external_interval_delivery",
+    "paused_window_prevented_new_dispatch": true,
+    "paused_window_seconds": 6.0,
+    "reconciliation_restored_previously_authorized_schedule": true,
+    "scheduler_scope": "external controller due-time dispatch; no native scheduler claim",
+    "stopped_window_prevented_new_dispatch": true,
+    "stopped_window_seconds": 6.0,
+    "terminal_status": "stopped",
+    "useful_marker_effects_match": true
+  },
+  "failures": [],
+  "final_status": {
+    "fencing_token": 9,
+    "native_goal_task_memory": {
+      "ambiguous_tools": [],
+      "goal": {
+        "status": "unknown",
+        "tools": []
+      },
+      "memory": {
+        "status": "unknown",
+        "tools": []
+      },
+      "source": "separate explicit successful/failed native tool observations; missing categories remain unknown",
+      "task": {
+        "status": "observed_success",
+        "tools": [
+          {
+            "status": "completed",
+            "tool": "todowrite"
+          },
+          {
+            "status": "completed",
+            "tool": "todowrite"
+          },
+          {
+            "status": "completed",
+            "tool": "todowrite"
+          },
+          {
+            "status": "completed",
+            "tool": "todowrite"
+          },
+          {
+            "status": "completed",
+            "tool": "todowrite"
+          },
+          {
+            "status": "completed",
+            "tool": "todowrite"
+          }
+        ]
+      }
+    },
+    "status": "stopped",
+    "task_status_reported_by_agent": "in_progress"
+  },
+  "global_memory": "unknown",
+  "harness": "opencode",
+  "harness_version": "1.18.31",
+  "launcher": {
+    "child_session_recorded": true,
+    "detached_controller_alive_after_launcher_exit": true,
+    "launcher_exit_code": 0,
+    "returned_after_ownership_ack": true
+  },
+  "model": "openrouter/openai/gpt-6-luna",
+  "native_goal_task_memory": {
+    "ambiguous_tools": [],
+    "goal": {
+      "status": "unknown",
+      "tools": []
+    },
+    "memory": {
+      "status": "unknown",
+      "tools": []
+    },
+    "source": "independent explicit successful/failed tool observations; no prose or feature-availability inference",
+    "task": {
+      "status": "observed_success",
+      "tools": [
+        {
+          "status": "completed",
+          "tool": "todowrite"
+        },
+        {
+          "status": "completed",
+          "tool": "todowrite"
+        },
+        {
+          "status": "completed",
+          "tool": "todowrite"
+        },
+        {
+          "status": "completed",
+          "tool": "todowrite"
+        }
+      ]
+    }
+  },
+  "native_parent_process_attempted": true,
+  "native_scheduler": "unknown; the controller supports manual delivery or one explicit external interval owner",
+  "network_policy": "offline task/rules; no network/search/browser/MCP calls requested; explicit tool events checked",
+  "network_tool_events": {
+    "child_bootstrap": [],
+    "external_due_1": [],
+    "external_due_2": [],
+    "history_continuation": [],
+    "parent": [],
+    "pause_reconciliation": [],
+    "stale_controller_reconciliation": []
+  },
+  "openforage_worker": {
+    "checkpoint": "unknown",
+    "started_by_adapter": false,
+    "stop": "unknown"
+  },
+  "os": "linux",
+  "parent": {
+    "ack_fields_match": true,
+    "cleanup": {
+      "identity_captured": true,
+      "identity_status_after": "dead",
+      "killed": false,
+      "process_group_alive_after": false,
+      "process_group_status_after": "gone",
+      "terminated": false,
+      "termination_attempted": false
+    },
+    "exit_code": 0,
+    "final_ack_observed": true,
+    "malformed_event_count": 0,
+    "native_event_count": 3,
+    "native_tools": [],
+    "network_tool_names_observed": [],
+    "raw_bytes": 1072,
+    "raw_sha256": "39b375da8d4f4c6cda0257fc98987a01c76a2de50bd4c4bda0c552ef2ceda996",
+    "session_fingerprint": "6409314366b8acb54af9eaadff13b3d2747245bf1d7536693ce0f37360ec0d00",
+    "timed_out": false
+  },
+  "parent_exited_before_child_start": true,
+  "passed": true,
+  "proof_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe",
+  "reasoning_effort": null,
+  "recovery": {
+    "controller_generation_advanced": true,
+    "fence_advanced": true,
+    "history_marker_match": true,
+    "new_controller_identity": true,
+    "no_overlapping_child": true,
+    "reconciliation_acknowledged": true,
+    "same_child_session": true
+  },
+  "resume": {
+    "exact_recorded_child_target": true,
+    "history_marker_match": true,
+    "new_fence": 6,
+    "reconciliation_instruction_acknowledged": true,
+    "same_child_session_fingerprint": "6427bb2602e84ccca45c4fb9c71cf7c3fb89502cfa14bf682d82cc2808ba4849",
+    "status": "ready"
+  },
+  "run_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe",
+  "schema_version": 1,
+  "scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config.",
+  "session_history": {
+    "scope": "one-time marker recalled from the exact child session history; not global memory",
+    "status": "observed"
+  },
+  "source_file_digests": {
+    "examples/background-agent/proof.py": {
+      "bytes": 66792,
+      "sha256": "3adc857fc4436aee3ee38bcd04876cde238d08c4a3e12e1127c3017b6509be3a"
+    },
+    "examples/codex-lifecycle/codex_events.py": {
+      "bytes": 10145,
+      "sha256": "a24fd63b59a26c16d4f29b2cccdce79e91560c3e7e5e199b00cbffae870c5158"
+    },
+    "examples/opencode-lifecycle/bridge_core.py": {
+      "bytes": 29451,
+      "sha256": "c9dfbfd0eb1861db0a6e0cdab08e3221b8d64015f7a1c70e3d37e31c25b96ebf"
+    },
+    "scripts/background_agent.py": {
+      "bytes": 52608,
+      "sha256": "4335d75ffbe039606b769a690e4dcc32de8d33022611d31ca36cb464911e9478"
+    },
+    "scripts/background_agent_adapters.py": {
+      "bytes": 18240,
+      "sha256": "97404f17aaee14d2bd1feb106e13fe018b079e5bef1359b162d2d950d58ce2d2"
+    },
+    "scripts/background_agent_ownership.py": {
+      "bytes": 12537,
+      "sha256": "42a939a1afa983d7a104fb83340c0391a2f47e1bf3925569bd924c18d23ced35"
+    },
+    "scripts/background_agent_selfcheck.py": {
+      "bytes": 73486,
+      "sha256": "030b3c47fee0c1fd625127383614a092d7dab5f2620f7fe2b3e3e1a7ffcea80b"
+    },
+    "scripts/background_agent_service.py": {
+      "bytes": 31028,
+      "sha256": "feded0aed19969a30da97b4e714a463078b8aec51bc8cd5a58247e9947457594"
+    },
+    "scripts/background_agent_store.py": {
+      "bytes": 27083,
+      "sha256": "ce8cb81d6506a1785159b25689436c13f0ff3e1eef472a609f432b4deb01ac85"
+    }
+  },
+  "started_at": "2026-09-23T20:13:04Z",
+  "task_sha256": "d45f6bdc86cf8a61f6cf36c65c5349cb77eb6b8065db7df5f23a9316314b19bc",
+  "terminal_stop": {
+    "turn_resume_recover_refused": true
+  },
+  "variant": "max"
+}

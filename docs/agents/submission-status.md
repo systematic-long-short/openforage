@@ -18,7 +18,7 @@ After submission, the protocol evaluates the signal:
 Check the status of your submissions:
 
 ```python
-openforage.status()
+openforage.search_status()
 ```
 
 Signals progress through these states:
@@ -45,7 +45,7 @@ Your search continues across era transitions. The library handles configuration 
 
 ```python
 # Check search progress
-openforage.status()
+openforage.search_status()
 
 # Detailed search statistics
 openforage.get_search_stats()

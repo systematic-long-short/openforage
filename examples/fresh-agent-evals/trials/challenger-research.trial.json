@@ -1,0 +1,108 @@
+{
+  "case_id": "challenger-research",
+  "variant": "max",
+  "variant_in_argv": true,
+  "execution_mode": "fresh-opencode-run",
+  "fresh_separate_invocation": true,
+  "replay": false,
+  "model": "openrouter/deepseek/deepseek-v4.1-flash",
+  "invocation_argv": [
+    "opencode",
+    "run",
+    "--format",
+    "json",
+    "--dir",
+    "<WORKSPACE>",
+    "--model",
+    "openrouter/deepseek/deepseek-v4.1-flash",
+    "--variant",
+    "max"
+  ],
+  "workspace": "<WORKSPACE>",
+  "workspace_identity": "905d2a57a60f454a8a31bb618c2b7e0030ce357f880b5b3b7902020ab7a52f4e",
+  "source_snapshot_sha256": "3a1cc94df5c180c5cf81495948e1435c368b16cfb1cebca8a363fb4709100cb4",
+  "source_snapshot_files": 118,
+  "source_git_head": "c48cb235fde2d5590601528ef9c83cb9d8f402dd",
+  "harness": "opencode",
+  "harness_version": "1.18.31",
+  "session_id": "ses_f35c31fa2ffeOOOPLso4BuWAGP",
+  "started_at": "2026-09-22T17:49:41Z",
+  "ended_at": "2026-09-22T17:50:10Z",
+  "exit_code": 0,
+  "launch_error": null,
+  "owned_process_remaining": false,
+  "observed_actions": [
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/docs/agents/research-opportunities.json"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/trial-inputs/primary-source-excerpt.md"
+    },
+    {
+      "tool": "bash",
+      "command": "ls trial-inputs trial-output 2>&1; python -c \"import openforage; print(openforage.__version__ if hasattr(openforage,'__version__') else 'no attr')\" 2>&1"
+    },
+    {
+      "tool": "bash",
+      "command": "python - <<'EOF'\nimport importlib\nmods = [\n (\"openforage.templates.random_weighted\", None),\n (\"openforage.catalog.function_loader.load_function_catalog\", \"load_function_catalog\"),\n (\"openforage.catalog.features.feature_names_from_runtime_vocabulary\", \"feature_names_from_runtime_vocabulary\"),\n (\"open"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/trial-output/prepare-record.json"
+    },
+    {
+      "tool": "bash",
+      "command": "ls -a; ls .venv* 2>/dev/null; find / -maxdepth 6 -name \"openforage\" -type d 2>/dev/null | head -20"
+    },
+    {
+      "tool": "bash",
+      "command": "ls examples/fresh-agent-evals/; ls examples/fresh-agent-evals/cases 2>/dev/null"
+    },
+    {
+      "tool": "bash",
+      "command": "python3 -c \"import openforage\" 2>&1; for p in <REPO>/.venv* <REPO>/*venv*; do [ -e \"$p\" ] && echo \"$p\"; done; pip list 2>/dev/null | grep -i openforage; python -m pip list 2>/dev/null | grep -i openforage"
+    },
+    {
+      "tool": "bash",
+      "command": "ls examples/; <REPO>/.venv-docs/bin/python -c \"import openforage; print(getattr(openforage,'__version__','?'), openforage.__file__)\" 2>&1"
+    },
+    {
+      "tool": "write",
+      "command": "<WORKSPACE>/trial-output/research-plan.json"
+    },
+    {
+      "tool": "write",
+      "command": "<WORKSPACE>/trial-output/evidence.json"
+    },
+    {
+      "tool": "bash",
+      "command": "python - <<'EOF'\nimport json\np = json.load(open('trial-output/research-plan.json'))\ne = json.load(open('trial-output/evidence.json'))\nassert p['case_id']=='challenger-research' and p['opportunity_id']=='coverage-stratified-sampling'\nassert p['primary_source']=='https://arxiv.org/abs/1504.04909'\nasse"
+    }
+  ],
+  "action_extraction": {
+    "method": "normalized allowlisted tool observations from the native JSON event stream",
+    "events_observed": 30,
+    "actions_observed": 12,
+    "raw_events_scratch": ".tmp/fresh-agent-trials/challenger-research.raw-events.jsonl",
+    "raw_events_sha256": "d4490c2367e16099b30dd782e63038238e0cce03b15989d123f8da92dee20ef3",
+    "raw_events_bytes": 86656,
+    "note": "Raw events stay in git-ignored scratch; this record keeps only normalized actions."
+  },
+  "child_environment": {
+    "applied": true,
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "python_on_path": "/usr/bin",
+    "note": "Set for the child session so validator runs create no bytecode under frozen dirs; `python` on the child PATH is this interpreter."
+  },
+  "first_useful_action_seconds": 2.837,
+  "first_useful_action_unknown_reason": null,
+  "clarification_count": null,
+  "plain_text_tail": "",
+  "artifact_refs": {
+    "trial-output/research-plan.json": "1c3a4ebcc3f43e8f7ab8ac539a9d95260fa0dbdb255d7b5f34e669897b89e4e0",
+    "trial-output/evidence.json": "ce58919975be3849aeb3de593674be1feac715e756cd581dfb32514a7ce95652"
+  },
+  "claim": "single-trial observation; not a measured result"
+}

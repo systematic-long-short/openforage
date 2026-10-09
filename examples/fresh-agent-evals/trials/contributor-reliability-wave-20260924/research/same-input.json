@@ -1,0 +1,13 @@
+{
+  "series_id": "contributor-reliability-research-1",
+  "run_ids": [
+    "reliability-research-opencode-1",
+    "reliability-research-codex-1"
+  ],
+  "snapshot_sha256": "a2c7a7844c027e75bc35fdafc583e8ab8df7f262d2bebd2072452471a3d9236a",
+  "source_tree_sha256": "b8de481d974cb6e764eee00d173cd61f380d9501232abc112990cad360fe7fde",
+  "initial_file_maps_equal": true,
+  "codex_launch_snapshot_pin_matched": true,
+  "requested_models_differ": true,
+  "harness_only_causal_comparison": false
+}

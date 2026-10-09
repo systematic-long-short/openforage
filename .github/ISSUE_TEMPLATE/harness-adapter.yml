@@ -1,0 +1,138 @@
+name: Harness adapter
+description: Add, update, or challenge one public harness routing page and its registry entry.
+title: "[Harness] "
+labels:
+  - harness-adapter
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Adapter facts follow the evidence standard in
+        `docs/agents/harness-verification.md`. A capability is verified only
+        when **observed on the installed product and version**, with the
+        standard conformance fixture and bounded benign marker tasks —
+        documentation review alone is `documented-unverified`.
+
+        No harness spawn, pause, resume, stop, or probe command is verified or
+        published in this packet. Do not guess commands or copy them from
+        another product. Discovery via local `--help` and official docs is
+        allowed for research; discovered commands stay unverified until the
+        evidence above exists.
+  - type: input
+    id: product
+    attributes:
+      label: Product and version
+      description: The exact harness product name and the installed version the evidence was gathered on. Preserve product identity (Grok Build is not Grok Bot).
+      placeholder: Product X 1.2.3
+    validations:
+      required: true
+  - type: dropdown
+    id: proposed-status
+    attributes:
+      label: Proposed registry status
+      description: Choose the honest status for `harnesses.json`. `verified` is per capability and requires every evidence field below.
+      options:
+        - documented-unverified
+        - discovery-only
+        - unresolved
+        - verified (per capability, evidence required)
+    validations:
+      required: true
+  - type: input
+    id: capability
+    attributes:
+      label: Capability
+      description: If proposing `verified`, the single capability observed (for example distinct-session or pause). One verified capability does not verify others.
+      placeholder: distinct-session
+    validations:
+      required: false
+  - type: input
+    id: primary-source
+    attributes:
+      label: Primary source
+      description: Official documentation URL for the surface being recorded, or "none found" for discovery-only/unresolved.
+      placeholder: https://...
+    validations:
+      required: true
+  - type: input
+    id: route
+    attributes:
+      label: Routed page
+      description: The page under `src/openforage/skills/agent_runtime_integration/references/` this entry routes to.
+      placeholder: references/<product>.md
+    validations:
+      required: true
+  - type: textarea
+    id: session-evidence
+    attributes:
+      label: Separate-session evidence
+      description: What the source (or an observed probe) says about creating a distinct session/conversation identity and starting the same harness as a separate CLI process. State explicitly when this is not documented.
+    validations:
+      required: true
+  - type: textarea
+    id: scheduler-evidence
+    attributes:
+      label: Scheduler evidence
+      description: What the source documents about recurring ticks and child consumption of a tick. A plan record is not a scheduler. A native scheduler may be replaced by a verified external bridge using the same harness; record the real mechanism. State explicitly when none is documented.
+    validations:
+      required: true
+  - type: textarea
+    id: lifecycle-evidence
+    attributes:
+      label: Lifecycle evidence
+      description: What the source documents about pause, resume to the exact stored target with transferred ownership, stop, crash recovery, duplicate-start control, exact target control, and terminal triggers stopped. State explicitly when this is ambiguous or absent.
+    validations:
+      required: true
+  - type: input
+    id: evidence-artifact
+    attributes:
+      label: Evidence artifact (verified claims)
+      description: Repository path to the sanitized probe log, transcript, or fixture output supporting a `verified` claim. No credentials or private paths.
+      placeholder: src/openforage/skills/agent_runtime_integration/references/evidence/<file>
+    validations:
+      required: false
+  - type: input
+    id: test-id-and-date
+    attributes:
+      label: Test id and date (verified claims)
+      description: The test identifier and the ISO-8601 date the evidence was recorded.
+      placeholder: "<test-id>; 2026-01-01"
+    validations:
+      required: false
+  - type: input
+    id: evidence-scope
+    attributes:
+      label: Evidence scope (verified claims)
+      description: The product version, surface, operating system, and lifecycle edge the evidence covers.
+      placeholder: "1.2.3; CLI; linux; pause"
+    validations:
+      required: false
+  - type: textarea
+    id: observed-result
+    attributes:
+      label: Observed result (verified claims)
+      description: The exact probe instruction used and the observed result for the claimed capability.
+    validations:
+      required: false
+  - type: textarea
+    id: observed-probes
+    attributes:
+      label: Observed probes (if any)
+      description: For each probe record the instruction used, the observed result, the observer, and the date. Leave empty for documentation-only entries.
+    validations:
+      required: false
+  - type: checkboxes
+    id: honesty-checks
+    attributes:
+      label: Honesty checks
+      options:
+        - label: I did not publish, guess, teach, or infer any spawn/pause/resume/stop/probe command for an unverified capability.
+          required: true
+        - label: I did not mark any capability as verified without observed installed-product evidence covering the stated scope.
+          required: true
+        - label: The routed page reports unsupported facts instead of guessing and preserves exact product identity.
+          required: true
+        - label: Any `verified` claim includes an evidence artifact, test id, date, product version, scope, and observed result, and covers only the capability actually observed.
+          required: true
+        - label: No private host path, credential, or invite code is included.
+          required: true

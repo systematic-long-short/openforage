@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "case_id": "first-finished-contribution-primary",
+  "route": {
+    "selected_task": "contribute",
+    "offline_contribution_access": "not_required",
+    "live_campaign_authorization": "explicit_user_authorization_required",
+    "authoritative_sources": [
+      "README.md",
+      "AGENTS.md",
+      "CLAUDE.md",
+      "docs/agents/first-contribution.md",
+      "docs/agents/start-here.md",
+      "docs/agents/references/onboarding.json"
+    ]
+  },
+  "contribution": {
+    "kind": "documentation_correction",
+    "changed_paths": [
+      "docs/agents/quickstart.md"
+    ]
+  },
+  "validation": {
+    "baseline": {
+      "command": "python .github/scripts/validate_agent_docs.py truthfulness links --root .",
+      "modes": [
+        "truthfulness",
+        "links"
+      ],
+      "exit_code": 1,
+      "result": "failed"
+    },
+    "final": {
+      "command": "python .github/scripts/validate_agent_docs.py truthfulness links --root .",
+      "modes": [
+        "truthfulness",
+        "links"
+      ],
+      "exit_code": 0,
+      "result": "passed"
+    }
+  },
+  "human_review": {
+    "summary": "Replaced the stale bare registration call in the live-search example with the documented invite-code form.",
+    "rationale": "The README states that first live registration requires an operator-issued invite code and documents the Python register(invite_code=...) form; the baseline truthfulness check flagged the bare call. The update makes the example consistent with that public guidance."
+  }
+}

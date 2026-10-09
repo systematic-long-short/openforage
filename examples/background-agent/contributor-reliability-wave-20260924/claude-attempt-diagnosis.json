@@ -1,0 +1,27 @@
+{
+  "kind": "native permission denial in selected fixture profile",
+  "proof_artifact": "background-claude-code-1.json",
+  "proof_sha256": "166e345fcfe6fd63fedd5382880a939514080c0b07f20dadaca55bcb2df926a3",
+  "product": "Claude Code",
+  "product_version": "2.1.281 (Claude Code)",
+  "profile": "isolated fixture workspace with native permissions inherited",
+  "native_exit_code": 0,
+  "native_result_subtype": "success",
+  "permission_denials": [
+    {
+      "tool_name": "Write",
+      "tool_use_id_sha256": "665b1eedd0684d6da632a0abb12a92846e5fa606739dd5f57e2c9132c54e2702"
+    }
+  ],
+  "denied_operation": "fixture marker file write",
+  "controller_failure_code": "missing_native_ack",
+  "task_outcome": "blocked; final result did not satisfy the strict structured acknowledgement contract",
+  "cleanup_proved": true,
+  "source_bundle": "background-runtime-2",
+  "original_proof_outcome": "failed",
+  "original_outcome_unchanged": true,
+  "native_configuration_changed": false,
+  "retry_with_permission_bypass_attempted": false,
+  "raw_stream_sha256": "49d18a25c1a518ba46ec895e468001065ce9ab7a4a90d62c7eb96271ef641fd2",
+  "limitation": "This profile is not verified for lifecycle operation; read-only CLI availability and implemented adapter code do not establish it."
+}

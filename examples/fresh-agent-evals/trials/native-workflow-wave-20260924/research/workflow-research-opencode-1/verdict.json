@@ -1,0 +1,1424 @@
+{
+  "artifact_hashes": {
+    "trial-output/challenger.py": "e73345edec7ea6fbd5a7415f76d434057914665fa8fc6a0cfdc938f88e3d8ac6",
+    "trial-output/comparison-report.json": "7104369732eb6ea049ef3d260617fa8c88860f67555e1aa85eee276874ecdeba",
+    "trial-output/research-result.json": "58b497cd116b3832b6b5f915362cf2a9c134001879a120b254e9ab95d7c8025c"
+  },
+  "case_id": "paper-backed-coverage-challenger",
+  "diagnostics": [
+    {
+      "actionable": true,
+      "artifact_path": null,
+      "category": "protocol_violation",
+      "code": "protocol.requirement_unmet",
+      "missing_evidence": [
+        "the exact permitted action and event order required by the trial contract",
+        "a uniquely identified causal native action with sequence and hashed identity"
+      ],
+      "native_action": null,
+      "next_step": "Repeat the relevant step in a fresh isolated workspace using the documented entry route and preserve the required native action order.",
+      "observed_evidence": [
+        "native content read/search is outside the documented public-input/output allowlist"
+      ],
+      "severity": "error",
+      "summary": "native content read/search is outside the documented public-input/output allowlist"
+    },
+    {
+      "actionable": true,
+      "artifact_path": "trial-output/comparison-report.json",
+      "category": "research_comparison_outcome",
+      "code": "research.comparison_outcome",
+      "missing_evidence": [
+        "live performance and out-of-sample return-correlation evidence remain unobserved"
+      ],
+      "native_action": null,
+      "next_step": "Retain the observed synthetic result without a superiority claim. If justified, define a new bounded development-only comparison before drawing broader conclusions; keep live and out-of-sample claims unknown.",
+      "observed_evidence": [
+        "Observed synthetic development comparison status: complete_equal_calls.",
+        "development pair development-alpha: completed-call status=complete_equal_calls; synthetic unique-cell difference=0; synthetic quality-pass difference=1",
+        "development pair development-alpha: completed-call status=complete_equal_calls; synthetic unique-cell difference=0; synthetic quality-pass difference=-1",
+        "development pair development-beta: completed-call status=complete_equal_calls; synthetic unique-cell difference=1; synthetic quality-pass difference=0",
+        "development pair development-beta: completed-call status=complete_equal_calls; synthetic unique-cell difference=2; synthetic quality-pass difference=-1"
+      ],
+      "severity": "info",
+      "summary": "Observed synthetic development comparison status: complete_equal_calls."
+    }
+  ],
+  "entry_route": {
+    "content_read_observations": [
+      {
+        "action": {
+          "completion_sequence": 1,
+          "event_sequence": 1,
+          "identity_kind": "native_tool_call_id_sha256",
+          "identity_sha256": "bffbd8ecaa99e826f82b372db109f56f57a1195d0f7851319e4066ed0821e240",
+          "tool": "read"
+        },
+        "kind": "native_content_read",
+        "operand_index": null,
+        "path": "README.md",
+        "segment_index": null,
+        "sequence": 1,
+        "start_sequence": 1
+      },
+      {
+        "action": {
+          "completion_sequence": 7,
+          "event_sequence": 7,
+          "identity_kind": "native_tool_call_id_sha256",
+          "identity_sha256": "fef9da09c029de2bf21a7e229dae40f7ccc22b574b4721bc2ee6f9ab0c597130",
+          "tool": "read"
+        },
+        "kind": "native_content_read",
+        "operand_index": null,
+        "path": "AGENTS.md",
+        "segment_index": null,
+        "sequence": 7,
+        "start_sequence": 7
+      },
+      {
+        "action": {
+          "completion_sequence": 16,
+          "event_sequence": 16,
+          "identity_kind": "native_tool_call_id_sha256",
+          "identity_sha256": "e8c00ac2b4ded6a5da5776ced6caac6fd1ec87ce2b8c2b6bebf9350462d7f639",
+          "tool": "read"
+        },
+        "kind": "native_content_read",
+        "operand_index": null,
+        "path": "examples/fresh-agent-evals/research/README.md",
+        "segment_index": null,
+        "sequence": 16,
+        "start_sequence": 16
+      },
+      {
+        "action": {
+          "completion_sequence": 19,
+          "event_sequence": 19,
+          "identity_kind": "native_tool_call_id_sha256",
+          "identity_sha256": "836cee85db26437f45c39d66e665a3bdba85408532ad14aa6093a2a664c0a762",
+          "tool": "read"
+        },
+        "kind": "native_content_read",
+        "operand_index": null,
+        "path": "examples/fresh-agent-evals/research/task.md",
+        "segment_index": null,
+        "sequence": 19,
+        "start_sequence": 19
+      },
+      {
+        "action": {
+          "completion_sequence": 22,
+          "event_sequence": 22,
+          "identity_kind": "native_tool_call_id_sha256",
+          "identity_sha256": "e0f2ef779d9541c54fd4c9a4f0612001a45a5fe0750670f064596c820ea21809",
+          "tool": "read"
+        },
+        "kind": "native_content_read",
+        "operand_index": null,
+        "path": "examples/fresh-agent-evals/research/contract.py",
+        "segment_index": null,
+        "sequence": 22,
+        "start_sequence": 22
+      },
+      {
+        "action": {
+          "completion_sequence": 23,
+          "event_sequence": 23,
+          "identity_kind": "native_tool_call_id_sha256",
+          "identity_sha256": "9ac01fd9d5f852f9f95658ace3ab07ee6b1a17c831628147cfb4807f883bbcd9",
+          "tool": "read"
+        },
+        "kind": "native_content_read",
+        "operand_index": null,
+        "path": "examples/fresh-agent-evals/research/comparison-report.schema.json",
+        "segment_index": null,
+        "sequence": 23,
+        "start_sequence": 23
+      },
+      {
+        "action": {
+          "completion_sequence": 24,
+          "event_sequence": 24,
+          "identity_kind": "native_tool_call_id_sha256",
+          "identity_sha256": "3e9ee8294c14895c47657ddee2ff7a73fd8c7eaa5878b64d1e700002ae4cc370",
+          "tool": "read"
+        },
+        "kind": "native_content_read",
+        "operand_index": null,
+        "path": "examples/fresh-agent-evals/research/callback-contract.md",
+        "segment_index": null,
+        "sequence": 24,
+        "start_sequence": 24
+      },
+      {
+        "action": {
+          "completion_sequence": 25,
+          "event_sequence": 25,
+          "identity_kind": "native_tool_call_id_sha256",
+          "identity_sha256": "d0b4231da0a0eaaf3f2f2e3196acc49148c80c8d433177f2f9a68f2e9108453c",
+          "tool": "read"
+        },
+        "kind": "native_content_read",
+        "operand_index": null,
+        "path": "examples/fresh-agent-evals/research/research-result.schema.json",
+        "segment_index": null,
+        "sequence": 25,
+        "start_sequence": 25
+      },
+      {
+        "action": {
+          "completion_sequence": 26,
+          "event_sequence": 26,
+          "identity_kind": "native_tool_call_id_sha256",
+          "identity_sha256": "737273a98325f1f594762be350cfbf140375da835cdd2bbb5183c570eaa493ef",
+          "tool": "read"
+        },
+        "kind": "native_content_read",
+        "operand_index": null,
+        "path": "examples/fresh-agent-evals/research/series/native-workflow-research-1.json",
+        "segment_index": null,
+        "sequence": 26,
+        "start_sequence": 26
+      },
+      {
+        "action": {
+          "completion_sequence": 29,
+          "event_sequence": 29,
+          "identity_kind": "native_tool_call_id_sha256",
+          "identity_sha256": "b1da2b8a855a27607e16c0323781576fe919e615aa192f8075ddface6164a6bf",
+          "tool": "read"
+        },
+        "kind": "native_content_read",
+        "operand_index": null,
+        "path": "examples/fresh-agent-evals/README.md",
+        "segment_index": null,
+        "sequence": 29,
+        "start_sequence": 29
+      },
+      {
+        "action": {
+          "completion_sequence": 30,
+          "event_sequence": 30,
+          "identity_kind": "native_tool_call_id_sha256",
+          "identity_sha256": "a8cf25b30d0086ae35085e3e4cf2975df6cd4a8fcf16ab9b1977a60aa9a2e469",
+          "tool": "read"
+        },
+        "kind": "native_content_read",
+        "operand_index": null,
+        "path": "examples/fresh-agent-evals/research/source-provenance.json",
+        "segment_index": null,
+        "sequence": 30,
+        "start_sequence": 30
+      },
+      {
+        "action": {
+          "completion_sequence": 31,
+          "event_sequence": 31,
+          "identity_kind": "native_tool_call_id_sha256",
+          "identity_sha256": "3fdbc60e9b872a5255ddca066e432391eb37c42eef08116749e7f798a73cd4f5",
+          "tool": "read"
+        },
+        "kind": "native_content_read",
+        "operand_index": null,
+        "path": "examples/fresh-agent-evals/fixtures/challenger-research/trial-inputs/primary-source-excerpt.md",
+        "segment_index": null,
+        "sequence": 31,
+        "start_sequence": 31
+      },
+      {
+        "action": {
+          "completion_sequence": 34,
+          "event_sequence": 34,
+          "identity_kind": "native_tool_call_id_sha256",
+          "identity_sha256": "64682eaeec8b8151d5e62896081b10265ea8b1441cc333b6383f7e3960c91d3f",
+          "tool": "read"
+        },
+        "kind": "native_content_read",
+        "operand_index": null,
+        "path": "docs/agents/research-opportunities.json",
+        "segment_index": null,
+        "sequence": 34,
+        "start_sequence": 34
+      },
+      {
+        "action": {
+          "completion_sequence": 47,
+          "event_sequence": 47,
+          "identity_kind": "native_tool_call_id_sha256",
+          "identity_sha256": "799c13b03db8ae7a3b575c60c1add6fa1f3b8f91bef62209ba9e7c1ea717fa46",
+          "tool": "read"
+        },
+        "kind": "native_content_read",
+        "operand_index": null,
+        "path": "trial-output/challenger.py",
+        "segment_index": null,
+        "sequence": 47,
+        "start_sequence": 47
+      },
+      {
+        "action": {
+          "completion_sequence": 60,
+          "event_sequence": 60,
+          "identity_kind": "native_tool_call_id_sha256",
+          "identity_sha256": "139e65619817b714741b559edc8f106d8b988305b651f2243df654d73d9209a9",
+          "tool": "read"
+        },
+        "kind": "native_content_read",
+        "operand_index": null,
+        "path": "trial-output/comparison-report.json",
+        "segment_index": null,
+        "sequence": 60,
+        "start_sequence": 60
+      },
+      {
+        "action": {
+          "completion_sequence": 69,
+          "event_sequence": 69,
+          "identity_kind": "native_tool_call_id_sha256",
+          "identity_sha256": "33f45465aeada7b57e3ba323b5769d0caa425bc48d8616e2d5424175e099bc60",
+          "tool": "read"
+        },
+        "kind": "native_content_read",
+        "operand_index": null,
+        "path": "trial-output/research-result.json",
+        "segment_index": null,
+        "sequence": 69,
+        "start_sequence": 69
+      }
+    ],
+    "contract_version": "entrypoint-first-v1",
+    "criteria": {
+      "entry_route": [
+        "scripts/start_here.py --task <task>",
+        "docs/agents/start-here.md"
+      ],
+      "injected_prompt_alone_satisfies_no_criterion": true,
+      "root_files": [
+        "README.md",
+        "AGENTS.md"
+      ],
+      "root_files_first_content_sources": true,
+      "task_route_paths": [
+        "examples/fresh-agent-evals/research/README.md",
+        "examples/fresh-agent-evals/research/task.md"
+      ]
+    },
+    "entry_route_observation": {
+      "action": {
+        "completion_sequence": 10,
+        "event_sequence": 10,
+        "identity_kind": "native_tool_call_id_sha256",
+        "identity_sha256": "25c63fad5e643cff350ed7aa7519a3ad389a48edf8caedd989f5839e2230c081",
+        "tool": "bash"
+      },
+      "kind": "start_here_cli_selector",
+      "operand_index": null,
+      "segment_index": 0,
+      "sequence": 10,
+      "start_sequence": 10,
+      "task": "research"
+    },
+    "missing_evidence": [],
+    "root_entry_reads": {
+      "AGENTS.md": {
+        "action": {
+          "completion_sequence": 7,
+          "event_sequence": 7,
+          "identity_kind": "native_tool_call_id_sha256",
+          "identity_sha256": "fef9da09c029de2bf21a7e229dae40f7ccc22b574b4721bc2ee6f9ab0c597130",
+          "tool": "read"
+        },
+        "operand_index": null,
+        "segment_index": null,
+        "sequence": 7
+      },
+      "README.md": {
+        "action": {
+          "completion_sequence": 1,
+          "event_sequence": 1,
+          "identity_kind": "native_tool_call_id_sha256",
+          "identity_sha256": "bffbd8ecaa99e826f82b372db109f56f57a1195d0f7851319e4066ed0821e240",
+          "tool": "read"
+        },
+        "operand_index": null,
+        "segment_index": null,
+        "sequence": 1
+      }
+    },
+    "status": "pass",
+    "task": "research",
+    "task_route_reads": {
+      "examples/fresh-agent-evals/research/README.md": {
+        "action": {
+          "completion_sequence": 16,
+          "event_sequence": 16,
+          "identity_kind": "native_tool_call_id_sha256",
+          "identity_sha256": "e8c00ac2b4ded6a5da5776ced6caac6fd1ec87ce2b8c2b6bebf9350462d7f639",
+          "tool": "read"
+        },
+        "kind": "native_content_read",
+        "operand_index": null,
+        "path": "examples/fresh-agent-evals/research/README.md",
+        "segment_index": null,
+        "sequence": 16,
+        "start_sequence": 16
+      },
+      "examples/fresh-agent-evals/research/task.md": {
+        "action": {
+          "completion_sequence": 19,
+          "event_sequence": 19,
+          "identity_kind": "native_tool_call_id_sha256",
+          "identity_sha256": "836cee85db26437f45c39d66e665a3bdba85408532ad14aa6093a2a664c0a762",
+          "tool": "read"
+        },
+        "kind": "native_content_read",
+        "operand_index": null,
+        "path": "examples/fresh-agent-evals/research/task.md",
+        "segment_index": null,
+        "sequence": 19,
+        "start_sequence": 19
+      }
+    }
+  },
+  "evidence_scope": "fresh-native-trial",
+  "failure_reasons": [
+    "native content read/search is outside the documented public-input/output allowlist"
+  ],
+  "independent_report": {
+    "comparison_status": "complete_equal_calls",
+    "construction_coverage_note": "unique valid feature\u00d7rotation cells reached; not out-of-sample return correlation",
+    "eligible_denominator_note": "known only for each explicit synthetic fixture input",
+    "evidence_scope": "synthetic_fixture_only",
+    "fixture_id": "paper-backed-coverage-fixture-v1",
+    "fixture_sha256": "6baefe26ad0c14a741de14da835d7439d40ab891a6119381a3f89c4acfbd1b4f",
+    "implementation_sha256": "e73345edec7ea6fbd5a7415f76d434057914665fa8fc6a0cfdc938f88e3d8ac6",
+    "interpretation": "descriptive synthetic fixture comparison only; no superiority or live-performance inference",
+    "live_measurements": {
+      "live_performance": {
+        "status": "unknown",
+        "value": null
+      },
+      "out_of_sample_return_correlation": {
+        "status": "unknown",
+        "value": null
+      },
+      "server_acceptance": {
+        "status": "unknown",
+        "value": null
+      }
+    },
+    "paired_run_count": 6,
+    "proposal_acceptance_note": "local fixture proposal accounting is not server acceptance",
+    "reference": {
+      "identity": "synthetic_uniform_pair_selector_v1",
+      "is_library_measurement": false,
+      "is_openforage_genetic": false,
+      "kind": "synthetic uniform selector over fixture eligible pairs"
+    },
+    "report_type": "synthetic_research_comparison",
+    "role_scope": "development_plus_reserved_heldout",
+    "run_count": 6,
+    "runs": [
+      {
+        "challenger": {
+          "arm": "challenger",
+          "callback_yield_count_lower_bound": 13,
+          "callback_yield_count_status": "exact",
+          "callback_yields_captured": 13,
+          "completed_evaluator_calls": 4,
+          "coverage_scope": "synthetic_construction_coverage_only_not_oos_return_correlation",
+          "eligible_denominator": 4,
+          "eligible_denominator_scope": "known_only_for_this_synthetic_fixture",
+          "eligible_pair_ids": [
+            "carry|basis",
+            "mean_reversion|spread",
+            "momentum|flow",
+            "trend|volume"
+          ],
+          "evaluator_attempts_processed": 5,
+          "excluded_pair_ids": [
+            "volatility|flow"
+          ],
+          "input_id": "development-alpha",
+          "not_evaluated_after_target": 8,
+          "proposal_acceptance_scope": "synthetic_fixture_policy_only_not_server_acceptance",
+          "reference_generator": null,
+          "rejections": {
+            "depth_over_six": 0,
+            "duplicate_identity": 0,
+            "excluded_pair": 0,
+            "invalid_payload": 0,
+            "unknown_identity": 1,
+            "unloaded_pair": 0
+          },
+          "role": "development",
+          "scope": {
+            "config_id": "synthetic-config-alpha",
+            "era_id": "synthetic-era-alpha",
+            "scope_origin": "synthetic_fixture_only"
+          },
+          "seed": 11,
+          "shared_ledger": {
+            "accepted_proposals": 4,
+            "accounting_module": "examples/agent-campaign/stratified_policy.py",
+            "completed_evaluator_calls": 4,
+            "depth_rejections": 0,
+            "duplicate_rejections": 0,
+            "other_rejections": 0,
+            "unavailable_rejections": 1
+          },
+          "stream_exhausted": true,
+          "synthetic_coverage_fraction": 0.75,
+          "synthetic_quality_label": "synthetic_fixture_quality_pass_bit",
+          "synthetic_quality_passes": 2,
+          "synthetic_quality_rate": 0.5,
+          "synthetic_unique_proposals_accepted": 4,
+          "target_completed_evaluations": 4,
+          "target_reached": true,
+          "unique_valid_cell_count": 3,
+          "unique_valid_cells_reached": [
+            "carry|basis",
+            "mean_reversion|spread",
+            "trend|volume"
+          ],
+          "unloaded_pair_ids": [
+            "seasonality|unloaded_feature",
+            "unloaded_rotation|flow"
+          ],
+          "yield_limit_reached": false
+        },
+        "input_id": "development-alpha",
+        "paired_comparison": {
+          "comparison_status": "complete_equal_calls",
+          "equal_completed_evaluator_calls": true,
+          "same_input_and_seed": true,
+          "synthetic_quality_pass_difference": 1,
+          "unique_valid_cell_difference": 0
+        },
+        "reference": {
+          "arm": "synthetic_uniform_reference",
+          "callback_yield_count_lower_bound": 6,
+          "callback_yield_count_status": "exact",
+          "callback_yields_captured": 6,
+          "completed_evaluator_calls": 4,
+          "coverage_scope": "synthetic_construction_coverage_only_not_oos_return_correlation",
+          "eligible_denominator": 4,
+          "eligible_denominator_scope": "known_only_for_this_synthetic_fixture",
+          "eligible_pair_ids": [
+            "carry|basis",
+            "mean_reversion|spread",
+            "momentum|flow",
+            "trend|volume"
+          ],
+          "evaluator_attempts_processed": 6,
+          "excluded_pair_ids": [
+            "volatility|flow"
+          ],
+          "input_id": "development-alpha",
+          "not_evaluated_after_target": 0,
+          "proposal_acceptance_scope": "synthetic_fixture_policy_only_not_server_acceptance",
+          "reference_generator": {
+            "all_streams_exhausted": false,
+            "draws": 6,
+            "identity": "synthetic_uniform_pair_selector_v1",
+            "is_openforage_genetic": false,
+            "max_draws": 128,
+            "selection": "uniform choice among remaining eligible loaded pair ids per draw",
+            "stream_exhaustion_draws": 1
+          },
+          "rejections": {
+            "depth_over_six": 1,
+            "duplicate_identity": 0,
+            "excluded_pair": 0,
+            "invalid_payload": 0,
+            "unknown_identity": 1,
+            "unloaded_pair": 0
+          },
+          "role": "development",
+          "scope": {
+            "config_id": "synthetic-config-alpha",
+            "era_id": "synthetic-era-alpha",
+            "scope_origin": "synthetic_fixture_only"
+          },
+          "seed": 11,
+          "shared_ledger": {
+            "accepted_proposals": 4,
+            "accounting_module": "examples/agent-campaign/stratified_policy.py",
+            "completed_evaluator_calls": 4,
+            "depth_rejections": 1,
+            "duplicate_rejections": 0,
+            "other_rejections": 0,
+            "unavailable_rejections": 1
+          },
+          "stream_exhausted": false,
+          "synthetic_coverage_fraction": 0.75,
+          "synthetic_quality_label": "synthetic_fixture_quality_pass_bit",
+          "synthetic_quality_passes": 1,
+          "synthetic_quality_rate": 0.25,
+          "synthetic_unique_proposals_accepted": 4,
+          "target_completed_evaluations": 4,
+          "target_reached": true,
+          "unique_valid_cell_count": 3,
+          "unique_valid_cells_reached": [
+            "carry|basis",
+            "mean_reversion|spread",
+            "momentum|flow"
+          ],
+          "unloaded_pair_ids": [
+            "seasonality|unloaded_feature",
+            "unloaded_rotation|flow"
+          ],
+          "yield_limit_reached": false
+        },
+        "role": "development",
+        "scope": {
+          "config_id": "synthetic-config-alpha",
+          "era_id": "synthetic-era-alpha",
+          "scope_origin": "synthetic_fixture_only"
+        },
+        "seed": 11
+      },
+      {
+        "challenger": {
+          "arm": "challenger",
+          "callback_yield_count_lower_bound": 13,
+          "callback_yield_count_status": "exact",
+          "callback_yields_captured": 13,
+          "completed_evaluator_calls": 4,
+          "coverage_scope": "synthetic_construction_coverage_only_not_oos_return_correlation",
+          "eligible_denominator": 4,
+          "eligible_denominator_scope": "known_only_for_this_synthetic_fixture",
+          "eligible_pair_ids": [
+            "carry|basis",
+            "mean_reversion|spread",
+            "momentum|flow",
+            "trend|volume"
+          ],
+          "evaluator_attempts_processed": 5,
+          "excluded_pair_ids": [
+            "volatility|flow"
+          ],
+          "input_id": "development-alpha",
+          "not_evaluated_after_target": 8,
+          "proposal_acceptance_scope": "synthetic_fixture_policy_only_not_server_acceptance",
+          "reference_generator": null,
+          "rejections": {
+            "depth_over_six": 1,
+            "duplicate_identity": 0,
+            "excluded_pair": 0,
+            "invalid_payload": 0,
+            "unknown_identity": 0,
+            "unloaded_pair": 0
+          },
+          "role": "development",
+          "scope": {
+            "config_id": "synthetic-config-alpha",
+            "era_id": "synthetic-era-alpha",
+            "scope_origin": "synthetic_fixture_only"
+          },
+          "seed": 29,
+          "shared_ledger": {
+            "accepted_proposals": 4,
+            "accounting_module": "examples/agent-campaign/stratified_policy.py",
+            "completed_evaluator_calls": 4,
+            "depth_rejections": 1,
+            "duplicate_rejections": 0,
+            "other_rejections": 0,
+            "unavailable_rejections": 0
+          },
+          "stream_exhausted": true,
+          "synthetic_coverage_fraction": 0.75,
+          "synthetic_quality_label": "synthetic_fixture_quality_pass_bit",
+          "synthetic_quality_passes": 1,
+          "synthetic_quality_rate": 0.25,
+          "synthetic_unique_proposals_accepted": 4,
+          "target_completed_evaluations": 4,
+          "target_reached": true,
+          "unique_valid_cell_count": 3,
+          "unique_valid_cells_reached": [
+            "carry|basis",
+            "mean_reversion|spread",
+            "trend|volume"
+          ],
+          "unloaded_pair_ids": [
+            "seasonality|unloaded_feature",
+            "unloaded_rotation|flow"
+          ],
+          "yield_limit_reached": false
+        },
+        "input_id": "development-alpha",
+        "paired_comparison": {
+          "comparison_status": "complete_equal_calls",
+          "equal_completed_evaluator_calls": true,
+          "same_input_and_seed": true,
+          "synthetic_quality_pass_difference": -1,
+          "unique_valid_cell_difference": 0
+        },
+        "reference": {
+          "arm": "synthetic_uniform_reference",
+          "callback_yield_count_lower_bound": 6,
+          "callback_yield_count_status": "exact",
+          "callback_yields_captured": 6,
+          "completed_evaluator_calls": 4,
+          "coverage_scope": "synthetic_construction_coverage_only_not_oos_return_correlation",
+          "eligible_denominator": 4,
+          "eligible_denominator_scope": "known_only_for_this_synthetic_fixture",
+          "eligible_pair_ids": [
+            "carry|basis",
+            "mean_reversion|spread",
+            "momentum|flow",
+            "trend|volume"
+          ],
+          "evaluator_attempts_processed": 6,
+          "excluded_pair_ids": [
+            "volatility|flow"
+          ],
+          "input_id": "development-alpha",
+          "not_evaluated_after_target": 0,
+          "proposal_acceptance_scope": "synthetic_fixture_policy_only_not_server_acceptance",
+          "reference_generator": {
+            "all_streams_exhausted": false,
+            "draws": 6,
+            "identity": "synthetic_uniform_pair_selector_v1",
+            "is_openforage_genetic": false,
+            "max_draws": 128,
+            "selection": "uniform choice among remaining eligible loaded pair ids per draw",
+            "stream_exhaustion_draws": 0
+          },
+          "rejections": {
+            "depth_over_six": 2,
+            "duplicate_identity": 0,
+            "excluded_pair": 0,
+            "invalid_payload": 0,
+            "unknown_identity": 0,
+            "unloaded_pair": 0
+          },
+          "role": "development",
+          "scope": {
+            "config_id": "synthetic-config-alpha",
+            "era_id": "synthetic-era-alpha",
+            "scope_origin": "synthetic_fixture_only"
+          },
+          "seed": 29,
+          "shared_ledger": {
+            "accepted_proposals": 4,
+            "accounting_module": "examples/agent-campaign/stratified_policy.py",
+            "completed_evaluator_calls": 4,
+            "depth_rejections": 2,
+            "duplicate_rejections": 0,
+            "other_rejections": 0,
+            "unavailable_rejections": 0
+          },
+          "stream_exhausted": false,
+          "synthetic_coverage_fraction": 0.75,
+          "synthetic_quality_label": "synthetic_fixture_quality_pass_bit",
+          "synthetic_quality_passes": 2,
+          "synthetic_quality_rate": 0.5,
+          "synthetic_unique_proposals_accepted": 4,
+          "target_completed_evaluations": 4,
+          "target_reached": true,
+          "unique_valid_cell_count": 3,
+          "unique_valid_cells_reached": [
+            "carry|basis",
+            "mean_reversion|spread",
+            "momentum|flow"
+          ],
+          "unloaded_pair_ids": [
+            "seasonality|unloaded_feature",
+            "unloaded_rotation|flow"
+          ],
+          "yield_limit_reached": false
+        },
+        "role": "development",
+        "scope": {
+          "config_id": "synthetic-config-alpha",
+          "era_id": "synthetic-era-alpha",
+          "scope_origin": "synthetic_fixture_only"
+        },
+        "seed": 29
+      },
+      {
+        "challenger": {
+          "arm": "challenger",
+          "callback_yield_count_lower_bound": 10,
+          "callback_yield_count_status": "exact",
+          "callback_yields_captured": 10,
+          "completed_evaluator_calls": 4,
+          "coverage_scope": "synthetic_construction_coverage_only_not_oos_return_correlation",
+          "eligible_denominator": 4,
+          "eligible_denominator_scope": "known_only_for_this_synthetic_fixture",
+          "eligible_pair_ids": [
+            "carry|flow",
+            "dispersion|volume",
+            "liquidity|spread",
+            "momentum|basis"
+          ],
+          "evaluator_attempts_processed": 5,
+          "excluded_pair_ids": [
+            "seasonality|spread"
+          ],
+          "input_id": "development-beta",
+          "not_evaluated_after_target": 5,
+          "proposal_acceptance_scope": "synthetic_fixture_policy_only_not_server_acceptance",
+          "reference_generator": null,
+          "rejections": {
+            "depth_over_six": 1,
+            "duplicate_identity": 0,
+            "excluded_pair": 0,
+            "invalid_payload": 0,
+            "unknown_identity": 0,
+            "unloaded_pair": 0
+          },
+          "role": "development",
+          "scope": {
+            "config_id": "synthetic-config-beta",
+            "era_id": "synthetic-era-beta",
+            "scope_origin": "synthetic_fixture_only"
+          },
+          "seed": 11,
+          "shared_ledger": {
+            "accepted_proposals": 4,
+            "accounting_module": "examples/agent-campaign/stratified_policy.py",
+            "completed_evaluator_calls": 4,
+            "depth_rejections": 1,
+            "duplicate_rejections": 0,
+            "other_rejections": 0,
+            "unavailable_rejections": 0
+          },
+          "stream_exhausted": true,
+          "synthetic_coverage_fraction": 0.75,
+          "synthetic_quality_label": "synthetic_fixture_quality_pass_bit",
+          "synthetic_quality_passes": 2,
+          "synthetic_quality_rate": 0.5,
+          "synthetic_unique_proposals_accepted": 4,
+          "target_completed_evaluations": 4,
+          "target_reached": true,
+          "unique_valid_cell_count": 3,
+          "unique_valid_cells_reached": [
+            "carry|flow",
+            "dispersion|volume",
+            "momentum|basis"
+          ],
+          "unloaded_pair_ids": [
+            "trend|unloaded_feature",
+            "unloaded_rotation|volume"
+          ],
+          "yield_limit_reached": false
+        },
+        "input_id": "development-beta",
+        "paired_comparison": {
+          "comparison_status": "complete_equal_calls",
+          "equal_completed_evaluator_calls": true,
+          "same_input_and_seed": true,
+          "synthetic_quality_pass_difference": 0,
+          "unique_valid_cell_difference": 1
+        },
+        "reference": {
+          "arm": "synthetic_uniform_reference",
+          "callback_yield_count_lower_bound": 4,
+          "callback_yield_count_status": "exact",
+          "callback_yields_captured": 4,
+          "completed_evaluator_calls": 4,
+          "coverage_scope": "synthetic_construction_coverage_only_not_oos_return_correlation",
+          "eligible_denominator": 4,
+          "eligible_denominator_scope": "known_only_for_this_synthetic_fixture",
+          "eligible_pair_ids": [
+            "carry|flow",
+            "dispersion|volume",
+            "liquidity|spread",
+            "momentum|basis"
+          ],
+          "evaluator_attempts_processed": 4,
+          "excluded_pair_ids": [
+            "seasonality|spread"
+          ],
+          "input_id": "development-beta",
+          "not_evaluated_after_target": 0,
+          "proposal_acceptance_scope": "synthetic_fixture_policy_only_not_server_acceptance",
+          "reference_generator": {
+            "all_streams_exhausted": false,
+            "draws": 4,
+            "identity": "synthetic_uniform_pair_selector_v1",
+            "is_openforage_genetic": false,
+            "max_draws": 128,
+            "selection": "uniform choice among remaining eligible loaded pair ids per draw",
+            "stream_exhaustion_draws": 1
+          },
+          "rejections": {
+            "depth_over_six": 0,
+            "duplicate_identity": 0,
+            "excluded_pair": 0,
+            "invalid_payload": 0,
+            "unknown_identity": 0,
+            "unloaded_pair": 0
+          },
+          "role": "development",
+          "scope": {
+            "config_id": "synthetic-config-beta",
+            "era_id": "synthetic-era-beta",
+            "scope_origin": "synthetic_fixture_only"
+          },
+          "seed": 11,
+          "shared_ledger": {
+            "accepted_proposals": 4,
+            "accounting_module": "examples/agent-campaign/stratified_policy.py",
+            "completed_evaluator_calls": 4,
+            "depth_rejections": 0,
+            "duplicate_rejections": 0,
+            "other_rejections": 0,
+            "unavailable_rejections": 0
+          },
+          "stream_exhausted": false,
+          "synthetic_coverage_fraction": 0.5,
+          "synthetic_quality_label": "synthetic_fixture_quality_pass_bit",
+          "synthetic_quality_passes": 2,
+          "synthetic_quality_rate": 0.5,
+          "synthetic_unique_proposals_accepted": 4,
+          "target_completed_evaluations": 4,
+          "target_reached": true,
+          "unique_valid_cell_count": 2,
+          "unique_valid_cells_reached": [
+            "carry|flow",
+            "momentum|basis"
+          ],
+          "unloaded_pair_ids": [
+            "trend|unloaded_feature",
+            "unloaded_rotation|volume"
+          ],
+          "yield_limit_reached": false
+        },
+        "role": "development",
+        "scope": {
+          "config_id": "synthetic-config-beta",
+          "era_id": "synthetic-era-beta",
+          "scope_origin": "synthetic_fixture_only"
+        },
+        "seed": 11
+      },
+      {
+        "challenger": {
+          "arm": "challenger",
+          "callback_yield_count_lower_bound": 10,
+          "callback_yield_count_status": "exact",
+          "callback_yields_captured": 10,
+          "completed_evaluator_calls": 4,
+          "coverage_scope": "synthetic_construction_coverage_only_not_oos_return_correlation",
+          "eligible_denominator": 4,
+          "eligible_denominator_scope": "known_only_for_this_synthetic_fixture",
+          "eligible_pair_ids": [
+            "carry|flow",
+            "dispersion|volume",
+            "liquidity|spread",
+            "momentum|basis"
+          ],
+          "evaluator_attempts_processed": 4,
+          "excluded_pair_ids": [
+            "seasonality|spread"
+          ],
+          "input_id": "development-beta",
+          "not_evaluated_after_target": 6,
+          "proposal_acceptance_scope": "synthetic_fixture_policy_only_not_server_acceptance",
+          "reference_generator": null,
+          "rejections": {
+            "depth_over_six": 0,
+            "duplicate_identity": 0,
+            "excluded_pair": 0,
+            "invalid_payload": 0,
+            "unknown_identity": 0,
+            "unloaded_pair": 0
+          },
+          "role": "development",
+          "scope": {
+            "config_id": "synthetic-config-beta",
+            "era_id": "synthetic-era-beta",
+            "scope_origin": "synthetic_fixture_only"
+          },
+          "seed": 29,
+          "shared_ledger": {
+            "accepted_proposals": 4,
+            "accounting_module": "examples/agent-campaign/stratified_policy.py",
+            "completed_evaluator_calls": 4,
+            "depth_rejections": 0,
+            "duplicate_rejections": 0,
+            "other_rejections": 0,
+            "unavailable_rejections": 0
+          },
+          "stream_exhausted": true,
+          "synthetic_coverage_fraction": 1.0,
+          "synthetic_quality_label": "synthetic_fixture_quality_pass_bit",
+          "synthetic_quality_passes": 1,
+          "synthetic_quality_rate": 0.25,
+          "synthetic_unique_proposals_accepted": 4,
+          "target_completed_evaluations": 4,
+          "target_reached": true,
+          "unique_valid_cell_count": 4,
+          "unique_valid_cells_reached": [
+            "carry|flow",
+            "dispersion|volume",
+            "liquidity|spread",
+            "momentum|basis"
+          ],
+          "unloaded_pair_ids": [
+            "trend|unloaded_feature",
+            "unloaded_rotation|volume"
+          ],
+          "yield_limit_reached": false
+        },
+        "input_id": "development-beta",
+        "paired_comparison": {
+          "comparison_status": "complete_equal_calls",
+          "equal_completed_evaluator_calls": true,
+          "same_input_and_seed": true,
+          "synthetic_quality_pass_difference": -1,
+          "unique_valid_cell_difference": 2
+        },
+        "reference": {
+          "arm": "synthetic_uniform_reference",
+          "callback_yield_count_lower_bound": 4,
+          "callback_yield_count_status": "exact",
+          "callback_yields_captured": 4,
+          "completed_evaluator_calls": 4,
+          "coverage_scope": "synthetic_construction_coverage_only_not_oos_return_correlation",
+          "eligible_denominator": 4,
+          "eligible_denominator_scope": "known_only_for_this_synthetic_fixture",
+          "eligible_pair_ids": [
+            "carry|flow",
+            "dispersion|volume",
+            "liquidity|spread",
+            "momentum|basis"
+          ],
+          "evaluator_attempts_processed": 4,
+          "excluded_pair_ids": [
+            "seasonality|spread"
+          ],
+          "input_id": "development-beta",
+          "not_evaluated_after_target": 0,
+          "proposal_acceptance_scope": "synthetic_fixture_policy_only_not_server_acceptance",
+          "reference_generator": {
+            "all_streams_exhausted": false,
+            "draws": 4,
+            "identity": "synthetic_uniform_pair_selector_v1",
+            "is_openforage_genetic": false,
+            "max_draws": 128,
+            "selection": "uniform choice among remaining eligible loaded pair ids per draw",
+            "stream_exhaustion_draws": 0
+          },
+          "rejections": {
+            "depth_over_six": 0,
+            "duplicate_identity": 0,
+            "excluded_pair": 0,
+            "invalid_payload": 0,
+            "unknown_identity": 0,
+            "unloaded_pair": 0
+          },
+          "role": "development",
+          "scope": {
+            "config_id": "synthetic-config-beta",
+            "era_id": "synthetic-era-beta",
+            "scope_origin": "synthetic_fixture_only"
+          },
+          "seed": 29,
+          "shared_ledger": {
+            "accepted_proposals": 4,
+            "accounting_module": "examples/agent-campaign/stratified_policy.py",
+            "completed_evaluator_calls": 4,
+            "depth_rejections": 0,
+            "duplicate_rejections": 0,
+            "other_rejections": 0,
+            "unavailable_rejections": 0
+          },
+          "stream_exhausted": false,
+          "synthetic_coverage_fraction": 0.5,
+          "synthetic_quality_label": "synthetic_fixture_quality_pass_bit",
+          "synthetic_quality_passes": 2,
+          "synthetic_quality_rate": 0.5,
+          "synthetic_unique_proposals_accepted": 4,
+          "target_completed_evaluations": 4,
+          "target_reached": true,
+          "unique_valid_cell_count": 2,
+          "unique_valid_cells_reached": [
+            "liquidity|spread",
+            "momentum|basis"
+          ],
+          "unloaded_pair_ids": [
+            "trend|unloaded_feature",
+            "unloaded_rotation|volume"
+          ],
+          "yield_limit_reached": false
+        },
+        "role": "development",
+        "scope": {
+          "config_id": "synthetic-config-beta",
+          "era_id": "synthetic-era-beta",
+          "scope_origin": "synthetic_fixture_only"
+        },
+        "seed": 29
+      },
+      {
+        "challenger": {
+          "arm": "challenger",
+          "callback_yield_count_lower_bound": 10,
+          "callback_yield_count_status": "exact",
+          "callback_yields_captured": 10,
+          "completed_evaluator_calls": 4,
+          "coverage_scope": "synthetic_construction_coverage_only_not_oos_return_correlation",
+          "eligible_denominator": 4,
+          "eligible_denominator_scope": "known_only_for_this_synthetic_fixture",
+          "eligible_pair_ids": [
+            "dispersion|basis",
+            "liquidity|open_interest",
+            "mean_reversion|volume",
+            "trend|flow"
+          ],
+          "evaluator_attempts_processed": 6,
+          "excluded_pair_ids": [
+            "momentum|open_interest"
+          ],
+          "input_id": "reserved-heldout-gamma",
+          "not_evaluated_after_target": 4,
+          "proposal_acceptance_scope": "synthetic_fixture_policy_only_not_server_acceptance",
+          "reference_generator": null,
+          "rejections": {
+            "depth_over_six": 2,
+            "duplicate_identity": 0,
+            "excluded_pair": 0,
+            "invalid_payload": 0,
+            "unknown_identity": 0,
+            "unloaded_pair": 0
+          },
+          "role": "reserved-heldout",
+          "scope": {
+            "config_id": "synthetic-config-heldout",
+            "era_id": "synthetic-era-heldout",
+            "scope_origin": "synthetic_fixture_only"
+          },
+          "seed": 83,
+          "shared_ledger": {
+            "accepted_proposals": 4,
+            "accounting_module": "examples/agent-campaign/stratified_policy.py",
+            "completed_evaluator_calls": 4,
+            "depth_rejections": 2,
+            "duplicate_rejections": 0,
+            "other_rejections": 0,
+            "unavailable_rejections": 0
+          },
+          "stream_exhausted": true,
+          "synthetic_coverage_fraction": 0.75,
+          "synthetic_quality_label": "synthetic_fixture_quality_pass_bit",
+          "synthetic_quality_passes": 2,
+          "synthetic_quality_rate": 0.5,
+          "synthetic_unique_proposals_accepted": 4,
+          "target_completed_evaluations": 4,
+          "target_reached": true,
+          "unique_valid_cell_count": 3,
+          "unique_valid_cells_reached": [
+            "dispersion|basis",
+            "liquidity|open_interest",
+            "mean_reversion|volume"
+          ],
+          "unloaded_pair_ids": [
+            "carry|unloaded_feature",
+            "unloaded_rotation|basis"
+          ],
+          "yield_limit_reached": false
+        },
+        "input_id": "reserved-heldout-gamma",
+        "paired_comparison": {
+          "comparison_status": "complete_equal_calls",
+          "equal_completed_evaluator_calls": true,
+          "same_input_and_seed": true,
+          "synthetic_quality_pass_difference": 0,
+          "unique_valid_cell_difference": 0
+        },
+        "reference": {
+          "arm": "synthetic_uniform_reference",
+          "callback_yield_count_lower_bound": 6,
+          "callback_yield_count_status": "exact",
+          "callback_yields_captured": 6,
+          "completed_evaluator_calls": 4,
+          "coverage_scope": "synthetic_construction_coverage_only_not_oos_return_correlation",
+          "eligible_denominator": 4,
+          "eligible_denominator_scope": "known_only_for_this_synthetic_fixture",
+          "eligible_pair_ids": [
+            "dispersion|basis",
+            "liquidity|open_interest",
+            "mean_reversion|volume",
+            "trend|flow"
+          ],
+          "evaluator_attempts_processed": 6,
+          "excluded_pair_ids": [
+            "momentum|open_interest"
+          ],
+          "input_id": "reserved-heldout-gamma",
+          "not_evaluated_after_target": 0,
+          "proposal_acceptance_scope": "synthetic_fixture_policy_only_not_server_acceptance",
+          "reference_generator": {
+            "all_streams_exhausted": false,
+            "draws": 6,
+            "identity": "synthetic_uniform_pair_selector_v1",
+            "is_openforage_genetic": false,
+            "max_draws": 128,
+            "selection": "uniform choice among remaining eligible loaded pair ids per draw",
+            "stream_exhaustion_draws": 1
+          },
+          "rejections": {
+            "depth_over_six": 1,
+            "duplicate_identity": 1,
+            "excluded_pair": 0,
+            "invalid_payload": 0,
+            "unknown_identity": 0,
+            "unloaded_pair": 0
+          },
+          "role": "reserved-heldout",
+          "scope": {
+            "config_id": "synthetic-config-heldout",
+            "era_id": "synthetic-era-heldout",
+            "scope_origin": "synthetic_fixture_only"
+          },
+          "seed": 83,
+          "shared_ledger": {
+            "accepted_proposals": 4,
+            "accounting_module": "examples/agent-campaign/stratified_policy.py",
+            "completed_evaluator_calls": 4,
+            "depth_rejections": 1,
+            "duplicate_rejections": 1,
+            "other_rejections": 0,
+            "unavailable_rejections": 0
+          },
+          "stream_exhausted": false,
+          "synthetic_coverage_fraction": 0.75,
+          "synthetic_quality_label": "synthetic_fixture_quality_pass_bit",
+          "synthetic_quality_passes": 2,
+          "synthetic_quality_rate": 0.5,
+          "synthetic_unique_proposals_accepted": 4,
+          "target_completed_evaluations": 4,
+          "target_reached": true,
+          "unique_valid_cell_count": 3,
+          "unique_valid_cells_reached": [
+            "dispersion|basis",
+            "liquidity|open_interest",
+            "trend|flow"
+          ],
+          "unloaded_pair_ids": [
+            "carry|unloaded_feature",
+            "unloaded_rotation|basis"
+          ],
+          "yield_limit_reached": false
+        },
+        "role": "reserved-heldout",
+        "scope": {
+          "config_id": "synthetic-config-heldout",
+          "era_id": "synthetic-era-heldout",
+          "scope_origin": "synthetic_fixture_only"
+        },
+        "seed": 83
+      },
+      {
+        "challenger": {
+          "arm": "challenger",
+          "callback_yield_count_lower_bound": 10,
+          "callback_yield_count_status": "exact",
+          "callback_yields_captured": 10,
+          "completed_evaluator_calls": 4,
+          "coverage_scope": "synthetic_construction_coverage_only_not_oos_return_correlation",
+          "eligible_denominator": 4,
+          "eligible_denominator_scope": "known_only_for_this_synthetic_fixture",
+          "eligible_pair_ids": [
+            "dispersion|basis",
+            "liquidity|open_interest",
+            "mean_reversion|volume",
+            "trend|flow"
+          ],
+          "evaluator_attempts_processed": 4,
+          "excluded_pair_ids": [
+            "momentum|open_interest"
+          ],
+          "input_id": "reserved-heldout-gamma",
+          "not_evaluated_after_target": 6,
+          "proposal_acceptance_scope": "synthetic_fixture_policy_only_not_server_acceptance",
+          "reference_generator": null,
+          "rejections": {
+            "depth_over_six": 0,
+            "duplicate_identity": 0,
+            "excluded_pair": 0,
+            "invalid_payload": 0,
+            "unknown_identity": 0,
+            "unloaded_pair": 0
+          },
+          "role": "reserved-heldout",
+          "scope": {
+            "config_id": "synthetic-config-heldout",
+            "era_id": "synthetic-era-heldout",
+            "scope_origin": "synthetic_fixture_only"
+          },
+          "seed": 97,
+          "shared_ledger": {
+            "accepted_proposals": 4,
+            "accounting_module": "examples/agent-campaign/stratified_policy.py",
+            "completed_evaluator_calls": 4,
+            "depth_rejections": 0,
+            "duplicate_rejections": 0,
+            "other_rejections": 0,
+            "unavailable_rejections": 0
+          },
+          "stream_exhausted": true,
+          "synthetic_coverage_fraction": 1.0,
+          "synthetic_quality_label": "synthetic_fixture_quality_pass_bit",
+          "synthetic_quality_passes": 1,
+          "synthetic_quality_rate": 0.25,
+          "synthetic_unique_proposals_accepted": 4,
+          "target_completed_evaluations": 4,
+          "target_reached": true,
+          "unique_valid_cell_count": 4,
+          "unique_valid_cells_reached": [
+            "dispersion|basis",
+            "liquidity|open_interest",
+            "mean_reversion|volume",
+            "trend|flow"
+          ],
+          "unloaded_pair_ids": [
+            "carry|unloaded_feature",
+            "unloaded_rotation|basis"
+          ],
+          "yield_limit_reached": false
+        },
+        "input_id": "reserved-heldout-gamma",
+        "paired_comparison": {
+          "comparison_status": "complete_equal_calls",
+          "equal_completed_evaluator_calls": true,
+          "same_input_and_seed": true,
+          "synthetic_quality_pass_difference": 0,
+          "unique_valid_cell_difference": 0
+        },
+        "reference": {
+          "arm": "synthetic_uniform_reference",
+          "callback_yield_count_lower_bound": 4,
+          "callback_yield_count_status": "exact",
+          "callback_yields_captured": 4,
+          "completed_evaluator_calls": 4,
+          "coverage_scope": "synthetic_construction_coverage_only_not_oos_return_correlation",
+          "eligible_denominator": 4,
+          "eligible_denominator_scope": "known_only_for_this_synthetic_fixture",
+          "eligible_pair_ids": [
+            "dispersion|basis",
+            "liquidity|open_interest",
+            "mean_reversion|volume",
+            "trend|flow"
+          ],
+          "evaluator_attempts_processed": 4,
+          "excluded_pair_ids": [
+            "momentum|open_interest"
+          ],
+          "input_id": "reserved-heldout-gamma",
+          "not_evaluated_after_target": 0,
+          "proposal_acceptance_scope": "synthetic_fixture_policy_only_not_server_acceptance",
+          "reference_generator": {
+            "all_streams_exhausted": false,
+            "draws": 4,
+            "identity": "synthetic_uniform_pair_selector_v1",
+            "is_openforage_genetic": false,
+            "max_draws": 128,
+            "selection": "uniform choice among remaining eligible loaded pair ids per draw",
+            "stream_exhaustion_draws": 0
+          },
+          "rejections": {
+            "depth_over_six": 0,
+            "duplicate_identity": 0,
+            "excluded_pair": 0,
+            "invalid_payload": 0,
+            "unknown_identity": 0,
+            "unloaded_pair": 0
+          },
+          "role": "reserved-heldout",
+          "scope": {
+            "config_id": "synthetic-config-heldout",
+            "era_id": "synthetic-era-heldout",
+            "scope_origin": "synthetic_fixture_only"
+          },
+          "seed": 97,
+          "shared_ledger": {
+            "accepted_proposals": 4,
+            "accounting_module": "examples/agent-campaign/stratified_policy.py",
+            "completed_evaluator_calls": 4,
+            "depth_rejections": 0,
+            "duplicate_rejections": 0,
+            "other_rejections": 0,
+            "unavailable_rejections": 0
+          },
+          "stream_exhausted": false,
+          "synthetic_coverage_fraction": 1.0,
+          "synthetic_quality_label": "synthetic_fixture_quality_pass_bit",
+          "synthetic_quality_passes": 1,
+          "synthetic_quality_rate": 0.25,
+          "synthetic_unique_proposals_accepted": 4,
+          "target_completed_evaluations": 4,
+          "target_reached": true,
+          "unique_valid_cell_count": 4,
+          "unique_valid_cells_reached": [
+            "dispersion|basis",
+            "liquidity|open_interest",
+            "mean_reversion|volume",
+            "trend|flow"
+          ],
+          "unloaded_pair_ids": [
+            "carry|unloaded_feature",
+            "unloaded_rotation|basis"
+          ],
+          "yield_limit_reached": false
+        },
+        "role": "reserved-heldout",
+        "scope": {
+          "config_id": "synthetic-config-heldout",
+          "era_id": "synthetic-era-heldout",
+          "scope_origin": "synthetic_fixture_only"
+        },
+        "seed": 97
+      }
+    ],
+    "schema_version": 1,
+    "separate_genetic_campaign_target": {
+      "algorithm": "genetic",
+      "observed_completed_simulations": null,
+      "status": "unmeasured_target",
+      "target_completed_simulations": 100000
+    },
+    "series_id": "native-workflow-research-1",
+    "series_manifest_sha256": "19b6297970155929ee928a4197c24105578138bfeb23044e0f1d16c4a1090ab3",
+    "source_excerpt_sha256": "08ecc9767bf0f37055bbda96999dc97c80a86918038ef3ca833b5b3367bd7373",
+    "target_completed_evaluations_per_arm": 4
+  },
+  "limitations": [
+    "The eligible pair denominator and every quality bit are known only for the synthetic fixture.",
+    "The synthetic uniform reference is not OpenForage genetic and does not measure live performance.",
+    "Live performance, out-of-sample return correlation, and server acceptance remain unknown.",
+    "The public suite is instruction-isolated and bounded, not a perfect blind evaluation or OS security boundary."
+  ],
+  "native_command_evidence": {
+    "command_bytes": 287,
+    "command_identity": "declared-development-evaluator-v1",
+    "command_sha256": "31d6cbc7ac1bfe46edff0ce79b984bc248c46cdc630f8262b6bf35f488e15eb2",
+    "completion_sequence": 53,
+    "event_sequence": 53,
+    "explicit_native_exit_code": 0,
+    "native_lifecycle_identity_sha256": "63051d22115ea89b059e6779bfcc6952a80285a04f718af1d8fcb29d7a729e43",
+    "native_status": "completed",
+    "outcome_basis": "B-v2 parsed command key, full digest, explicit exit, and unique lifecycle identity",
+    "write_sequences": {
+      "trial-output/challenger.py": [
+        44
+      ],
+      "trial-output/comparison-report.json": [
+        53
+      ],
+      "trial-output/research-result.json": [
+        66
+      ]
+    }
+  },
+  "series_id": "native-workflow-research-1",
+  "series_manifest_sha256": "19b6297970155929ee928a4197c24105578138bfeb23044e0f1d16c4a1090ab3",
+  "status": "fail",
+  "success": false,
+  "verdict_schema_version": 1
+}

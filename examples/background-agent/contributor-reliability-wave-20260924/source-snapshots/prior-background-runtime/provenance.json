@@ -1,0 +1,9 @@
+{
+  "kind": "previous_wave_exact_background_runtime_sources",
+  "source_file_count": 9,
+  "proof_record_count": 2,
+  "bundle_sha256": "0f69012ddede8067bdadb70b51ee2e4c9d3fbe3f698f67b0698f89e9cc7f878c",
+  "bundle_bytes": 70499,
+  "member_paths": "repository-relative regular files only; deterministic metadata",
+  "contains_raw_native_streams": false
+}

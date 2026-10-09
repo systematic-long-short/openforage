@@ -1,0 +1,52 @@
+name: Compatibility observation (latest wheel)
+
+# This workflow OBSERVES the latest PyPI wheel for drift. It is not a
+# supported-version promise, never edits compatibility.json, and never opens
+# issues or comments. The tested-supported version lives in
+# docs/agents/references/compatibility.json and is exercised by the
+# pinned-wheel job in agent-guidance.yml.
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 1 * *"
+
+permissions:
+  contents: read
+
+jobs:
+  observe-latest:
+    name: Observe latest wheel (observation only)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install the latest wheel (observation, not support)
+        run: python -m pip install --quiet --upgrade openforage
+
+      - name: Probe and record differences
+        run: python .github/scripts/check_compatibility.py --observe --json-out compatibility-observation.json
+
+      - name: Summarize the observation
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          data = json.load(open("compatibility-observation.json", encoding="utf-8"))
+          print("## Compatibility observation (observation only)")
+          print(f"- installed: `openforage=={data.get('installed_version')}` on python {data['environment']['python']}")
+          print(f"- tested-supported: `{data['supported']['version']}`")
+          drift = [item for item in data.get("differences", [])
+                   if item.get("kind") != "contract_evidence"]
+          evidence = data.get("contract_evidence", [])
+          print(f"- genuine drift rows: {len(drift)}")
+          for item in drift:
+              print(f"  - `{item.get('kind')}`: {item.get('call', item.get('installed', ''))}")
+          print(f"- informational contract-evidence rows: {len(evidence)} (not drift)")
+          print("- Promise: none. Update compatibility.json only with evidence and a pinned CI run.")
+          PY

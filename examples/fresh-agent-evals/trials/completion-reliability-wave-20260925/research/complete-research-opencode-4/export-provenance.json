@@ -1,0 +1,11 @@
+{
+  "run_id": "complete-research-opencode-4",
+  "series_manifest_sha256": "a852b5d5e84a4d6dddb9e9df12454603ad0bcdcd89ecf444d646567d950eac7c",
+  "exact_authored_artifact_sha256": {
+    "trial-output/challenger.py": "2f5a76b4c3422d05f479c6533f99b936c0fa7b9099e1c72563d5e6885075c093",
+    "trial-output/comparison-report.json": "1c79292fa80f6a2a399b0b25312068965fa05bcc8f5be2b4e374166d8a5c57ec",
+    "trial-output/research-result.json": "4e1fcd27c6dab0554fd5fd028b66d49c2875cce415032f6ff29d120036d13ab0"
+  },
+  "original_verdict_unchanged": true,
+  "raw_native_streams_in_export": false
+}

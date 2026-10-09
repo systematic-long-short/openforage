@@ -1,0 +1,153 @@
+{
+  "fixture_schema_version": 1,
+  "fixture_id": "paper-backed-coverage-fixture-v1",
+  "evaluation_origin": "synthetic_fixture_only",
+  "target_completed_evaluations_per_arm": 4,
+  "max_callback_yields_per_run": 64,
+  "uniform_reference": {
+    "identity": "synthetic_uniform_pair_selector_v1",
+    "selection": "uniform choice over eligible loaded pair ids, then the next fixture payload for that pair",
+    "is_openforage_genetic": false,
+    "is_library_measurement": false
+  },
+  "inputs": [
+    {
+      "input_id": "development-alpha",
+      "role": "development",
+      "era_id": "synthetic-era-alpha",
+      "config_id": "synthetic-config-alpha",
+      "paired_seeds": [11, 29],
+      "pairs": [
+        {"pair_id": "momentum|flow", "rotation": "momentum", "feature": "flow", "loaded": true, "eligible": true, "exclusion_reason": null},
+        {"pair_id": "trend|volume", "rotation": "trend", "feature": "volume", "loaded": true, "eligible": true, "exclusion_reason": null},
+        {"pair_id": "mean_reversion|spread", "rotation": "mean_reversion", "feature": "spread", "loaded": true, "eligible": true, "exclusion_reason": null},
+        {"pair_id": "carry|basis", "rotation": "carry", "feature": "basis", "loaded": true, "eligible": true, "exclusion_reason": null},
+        {"pair_id": "volatility|flow", "rotation": "volatility", "feature": "flow", "loaded": true, "eligible": false, "exclusion_reason": "fixture_scope_excluded"},
+        {"pair_id": "seasonality|unloaded_feature", "rotation": "seasonality", "feature": "unloaded_feature", "loaded": false, "eligible": false, "exclusion_reason": "feature_not_loaded"},
+        {"pair_id": "unloaded_rotation|flow", "rotation": "unloaded_rotation", "feature": "flow", "loaded": false, "eligible": false, "exclusion_reason": "rotation_not_loaded"}
+      ],
+      "candidate_streams": {
+        "momentum|flow": [
+          {"payload": {"graph": {"fixture_id": "da-mf-1", "rotation": "momentum", "feature": "flow", "nodes": ["leaf", "rotate"]}}, "depth": 2, "synthetic_quality_pass": true},
+          {"payload": {"graph": {"fixture_id": "da-mf-1", "rotation": "momentum", "feature": "flow", "nodes": ["leaf", "rotate"]}}, "depth": 2, "synthetic_quality_pass": true},
+          {"payload": {"graph": {"fixture_id": "da-mf-7", "rotation": "momentum", "feature": "flow", "nodes": ["a", "b", "c", "d", "e", "f", "g"]}}, "depth": 7, "synthetic_quality_pass": true},
+          {"payload": {"graph": {"fixture_id": "da-mf-2", "rotation": "momentum", "feature": "flow", "nodes": ["leaf", "clip", "rotate"]}}, "depth": 3, "synthetic_quality_pass": false},
+          {"payload": {"graph": {"fixture_id": "da-mf-unknown", "rotation": "momentum", "feature": "flow", "nodes": ["unregistered"]}}, "depth": 2, "synthetic_quality_pass": null}
+        ],
+        "trend|volume": [
+          {"payload": {"graph": {"fixture_id": "da-tv-1", "rotation": "trend", "feature": "volume", "nodes": ["leaf", "trend"]}}, "depth": 2, "synthetic_quality_pass": false},
+          {"payload": {"graph": {"fixture_id": "da-tv-2", "rotation": "trend", "feature": "volume", "nodes": ["leaf", "smooth", "trend"]}}, "depth": 3, "synthetic_quality_pass": true},
+          {"payload": {"graph": {"fixture_id": "da-tv-2", "rotation": "trend", "feature": "volume", "nodes": ["leaf", "smooth", "trend"]}}, "depth": 3, "synthetic_quality_pass": true}
+        ],
+        "mean_reversion|spread": [
+          {"payload": {"graph": {"fixture_id": "da-ms-1", "rotation": "mean_reversion", "feature": "spread", "nodes": ["leaf", "mean"]}}, "depth": 2, "synthetic_quality_pass": true},
+          {"payload": {"graph": {"fixture_id": "da-ms-8", "rotation": "mean_reversion", "feature": "spread", "nodes": ["a", "b", "c", "d", "e", "f", "g", "h"]}}, "depth": 8, "synthetic_quality_pass": false},
+          {"payload": {"graph": {"fixture_id": "da-ms-2", "rotation": "mean_reversion", "feature": "spread", "nodes": ["leaf", "winsor", "mean"]}}, "depth": 3, "synthetic_quality_pass": false}
+        ],
+        "carry|basis": [
+          {"payload": {"graph": {"fixture_id": "da-cb-1", "rotation": "carry", "feature": "basis", "nodes": ["leaf", "carry"]}}, "depth": 2, "synthetic_quality_pass": true},
+          {"payload": {"graph": {"fixture_id": "da-cb-2", "rotation": "carry", "feature": "basis", "nodes": ["leaf", "normalize", "carry"]}}, "depth": 3, "synthetic_quality_pass": false}
+        ],
+        "volatility|flow": [
+          {"payload": {"graph": {"fixture_id": "da-vf-excluded", "rotation": "volatility", "feature": "flow", "nodes": ["leaf", "volatility"]}}, "depth": 2, "synthetic_quality_pass": true}
+        ],
+        "seasonality|unloaded_feature": [
+          {"payload": {"graph": {"fixture_id": "da-su-unloaded", "rotation": "seasonality", "feature": "unloaded_feature", "nodes": ["leaf", "season"]}}, "depth": 2, "synthetic_quality_pass": true}
+        ],
+        "unloaded_rotation|flow": [
+          {"payload": {"graph": {"fixture_id": "da-ur-unloaded", "rotation": "unloaded_rotation", "feature": "flow", "nodes": ["leaf", "rotate"]}}, "depth": 2, "synthetic_quality_pass": true}
+        ]
+      }
+    },
+    {
+      "input_id": "development-beta",
+      "role": "development",
+      "era_id": "synthetic-era-beta",
+      "config_id": "synthetic-config-beta",
+      "paired_seeds": [11, 29],
+      "pairs": [
+        {"pair_id": "liquidity|spread", "rotation": "liquidity", "feature": "spread", "loaded": true, "eligible": true, "exclusion_reason": null},
+        {"pair_id": "dispersion|volume", "rotation": "dispersion", "feature": "volume", "loaded": true, "eligible": true, "exclusion_reason": null},
+        {"pair_id": "momentum|basis", "rotation": "momentum", "feature": "basis", "loaded": true, "eligible": true, "exclusion_reason": null},
+        {"pair_id": "carry|flow", "rotation": "carry", "feature": "flow", "loaded": true, "eligible": true, "exclusion_reason": null},
+        {"pair_id": "trend|unloaded_feature", "rotation": "trend", "feature": "unloaded_feature", "loaded": false, "eligible": false, "exclusion_reason": "feature_not_loaded"},
+        {"pair_id": "unloaded_rotation|volume", "rotation": "unloaded_rotation", "feature": "volume", "loaded": false, "eligible": false, "exclusion_reason": "rotation_not_loaded"},
+        {"pair_id": "seasonality|spread", "rotation": "seasonality", "feature": "spread", "loaded": true, "eligible": false, "exclusion_reason": "fixture_scope_excluded"}
+      ],
+      "candidate_streams": {
+        "liquidity|spread": [
+          {"payload": {"graph": {"fixture_id": "db-ls-1", "rotation": "liquidity", "feature": "spread", "nodes": ["leaf", "liquidity"]}}, "depth": 2, "synthetic_quality_pass": true},
+          {"payload": {"graph": {"fixture_id": "db-ls-1", "rotation": "liquidity", "feature": "spread", "nodes": ["leaf", "liquidity"]}}, "depth": 2, "synthetic_quality_pass": true},
+          {"payload": {"graph": {"fixture_id": "db-ls-7", "rotation": "liquidity", "feature": "spread", "nodes": ["a", "b", "c", "d", "e", "f", "g"]}}, "depth": 7, "synthetic_quality_pass": false},
+          {"payload": {"graph": {"fixture_id": "db-ls-2", "rotation": "liquidity", "feature": "spread", "nodes": ["leaf", "liquidity", "smooth"]}}, "depth": 3, "synthetic_quality_pass": false}
+        ],
+        "dispersion|volume": [
+          {"payload": {"graph": {"fixture_id": "db-dv-1", "rotation": "dispersion", "feature": "volume", "nodes": ["leaf", "dispersion"]}}, "depth": 2, "synthetic_quality_pass": false},
+          {"payload": {"graph": {"fixture_id": "db-dv-2", "rotation": "dispersion", "feature": "volume", "nodes": ["leaf", "scale", "dispersion"]}}, "depth": 3, "synthetic_quality_pass": true}
+        ],
+        "momentum|basis": [
+          {"payload": {"graph": {"fixture_id": "db-mb-1", "rotation": "momentum", "feature": "basis", "nodes": ["leaf", "momentum"]}}, "depth": 2, "synthetic_quality_pass": true},
+          {"payload": {"graph": {"fixture_id": "db-mb-2", "rotation": "momentum", "feature": "basis", "nodes": ["leaf", "center", "momentum"]}}, "depth": 3, "synthetic_quality_pass": false}
+        ],
+        "carry|flow": [
+          {"payload": {"graph": {"fixture_id": "db-cf-1", "rotation": "carry", "feature": "flow", "nodes": ["leaf", "carry"]}}, "depth": 2, "synthetic_quality_pass": true},
+          {"payload": {"graph": {"fixture_id": "db-cf-2", "rotation": "carry", "feature": "flow", "nodes": ["leaf", "lag", "carry"]}}, "depth": 3, "synthetic_quality_pass": false}
+        ],
+        "trend|unloaded_feature": [
+          {"payload": {"graph": {"fixture_id": "db-tu-unloaded", "rotation": "trend", "feature": "unloaded_feature", "nodes": ["leaf", "trend"]}}, "depth": 2, "synthetic_quality_pass": true}
+        ],
+        "unloaded_rotation|volume": [
+          {"payload": {"graph": {"fixture_id": "db-ur-unloaded", "rotation": "unloaded_rotation", "feature": "volume", "nodes": ["leaf", "rotate"]}}, "depth": 2, "synthetic_quality_pass": true}
+        ],
+        "seasonality|spread": [
+          {"payload": {"graph": {"fixture_id": "db-ss-excluded", "rotation": "seasonality", "feature": "spread", "nodes": ["leaf", "season"]}}, "depth": 2, "synthetic_quality_pass": false}
+        ]
+      }
+    },
+    {
+      "input_id": "reserved-heldout-gamma",
+      "role": "reserved-heldout",
+      "era_id": "synthetic-era-heldout",
+      "config_id": "synthetic-config-heldout",
+      "paired_seeds": [83, 97],
+      "pairs": [
+        {"pair_id": "trend|flow", "rotation": "trend", "feature": "flow", "loaded": true, "eligible": true, "exclusion_reason": null},
+        {"pair_id": "dispersion|basis", "rotation": "dispersion", "feature": "basis", "loaded": true, "eligible": true, "exclusion_reason": null},
+        {"pair_id": "mean_reversion|volume", "rotation": "mean_reversion", "feature": "volume", "loaded": true, "eligible": true, "exclusion_reason": null},
+        {"pair_id": "liquidity|open_interest", "rotation": "liquidity", "feature": "open_interest", "loaded": true, "eligible": true, "exclusion_reason": null},
+        {"pair_id": "carry|unloaded_feature", "rotation": "carry", "feature": "unloaded_feature", "loaded": false, "eligible": false, "exclusion_reason": "feature_not_loaded"},
+        {"pair_id": "unloaded_rotation|basis", "rotation": "unloaded_rotation", "feature": "basis", "loaded": false, "eligible": false, "exclusion_reason": "rotation_not_loaded"},
+        {"pair_id": "momentum|open_interest", "rotation": "momentum", "feature": "open_interest", "loaded": true, "eligible": false, "exclusion_reason": "fixture_scope_excluded"}
+      ],
+      "candidate_streams": {
+        "trend|flow": [
+          {"payload": {"graph": {"fixture_id": "hg-tf-1", "rotation": "trend", "feature": "flow", "nodes": ["leaf", "trend"]}}, "depth": 2, "synthetic_quality_pass": false},
+          {"payload": {"graph": {"fixture_id": "hg-tf-1", "rotation": "trend", "feature": "flow", "nodes": ["leaf", "trend"]}}, "depth": 2, "synthetic_quality_pass": false},
+          {"payload": {"graph": {"fixture_id": "hg-tf-7", "rotation": "trend", "feature": "flow", "nodes": ["a", "b", "c", "d", "e", "f", "g"]}}, "depth": 7, "synthetic_quality_pass": true},
+          {"payload": {"graph": {"fixture_id": "hg-tf-2", "rotation": "trend", "feature": "flow", "nodes": ["leaf", "trend", "rank"]}}, "depth": 3, "synthetic_quality_pass": true}
+        ],
+        "dispersion|basis": [
+          {"payload": {"graph": {"fixture_id": "hg-db-1", "rotation": "dispersion", "feature": "basis", "nodes": ["leaf", "dispersion"]}}, "depth": 2, "synthetic_quality_pass": true},
+          {"payload": {"graph": {"fixture_id": "hg-db-2", "rotation": "dispersion", "feature": "basis", "nodes": ["leaf", "dispersion", "rank"]}}, "depth": 3, "synthetic_quality_pass": false}
+        ],
+        "mean_reversion|volume": [
+          {"payload": {"graph": {"fixture_id": "hg-mv-1", "rotation": "mean_reversion", "feature": "volume", "nodes": ["leaf", "mean"]}}, "depth": 2, "synthetic_quality_pass": true},
+          {"payload": {"graph": {"fixture_id": "hg-mv-8", "rotation": "mean_reversion", "feature": "volume", "nodes": ["a", "b", "c", "d", "e", "f", "g", "h"]}}, "depth": 8, "synthetic_quality_pass": false},
+          {"payload": {"graph": {"fixture_id": "hg-mv-2", "rotation": "mean_reversion", "feature": "volume", "nodes": ["leaf", "mean", "clip"]}}, "depth": 3, "synthetic_quality_pass": false}
+        ],
+        "liquidity|open_interest": [
+          {"payload": {"graph": {"fixture_id": "hg-lo-1", "rotation": "liquidity", "feature": "open_interest", "nodes": ["leaf", "liquidity"]}}, "depth": 2, "synthetic_quality_pass": true}
+        ],
+        "carry|unloaded_feature": [
+          {"payload": {"graph": {"fixture_id": "hg-cu-unloaded", "rotation": "carry", "feature": "unloaded_feature", "nodes": ["leaf", "carry"]}}, "depth": 2, "synthetic_quality_pass": true}
+        ],
+        "unloaded_rotation|basis": [
+          {"payload": {"graph": {"fixture_id": "hg-ur-unloaded", "rotation": "unloaded_rotation", "feature": "basis", "nodes": ["leaf", "rotate"]}}, "depth": 2, "synthetic_quality_pass": true}
+        ],
+        "momentum|open_interest": [
+          {"payload": {"graph": {"fixture_id": "hg-mo-excluded", "rotation": "momentum", "feature": "open_interest", "nodes": ["leaf", "momentum"]}}, "depth": 2, "synthetic_quality_pass": true}
+        ]
+      }
+    }
+  ]
+}

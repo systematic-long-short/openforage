@@ -1,0 +1,8 @@
+{
+  "conditions": [
+    "AGENTS.md and CLAUDE.md are removed from the prepared workspace snapshot.",
+    "This fixture condition describes visible workspace contents only and makes no blanket claim about native harness loading."
+  ],
+  "remove_paths": ["AGENTS.md", "CLAUDE.md"],
+  "overlay_files": []
+}

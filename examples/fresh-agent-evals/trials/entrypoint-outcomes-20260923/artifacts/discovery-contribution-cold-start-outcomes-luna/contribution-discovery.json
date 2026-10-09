@@ -1,0 +1,28 @@
+{
+  "case_id": "discovery-contribution-cold-start",
+  "selected_task": "contribute",
+  "target_file": "docs/agents/research-opportunities.md",
+  "rationale": "The guide's first-step section tells a new researcher to select a proposal and identify its source claim, falsifiable mechanism or hypothesis, required public capabilities, and evidence gaps, but offers no copy-ready shape for that first offline note. A short scaffold there would make the existing route actionable while keeping proposals separate from measured results. The pre-edit opportunities check passed; the links check reported five missing AGENTS.md/CLAUDE.md targets in CONTRIBUTING.md and first-contribution.md.",
+  "baseline_command": "PYTHONDONTWRITEBYTECODE=1 python .github/scripts/validate_agent_docs.py opportunities links",
+  "baseline_shell_exit_code": 1,
+  "baseline_result": "fail",
+  "evidence_paths": [
+    "README.md",
+    "CONTRIBUTING.md",
+    "scripts/start_here.py",
+    "docs/agents/references/onboarding.json",
+    "docs/agents/start-here.md",
+    "docs/agents/first-contribution.md",
+    "docs/agents/research-opportunities.md",
+    "docs/agents/research-opportunities.json"
+  ],
+  "offline_access": "Offline documentation planning and local validation are available without an invite, wallet, installed OpenForage package, daemon, or worker. The startup helper reported that the package is not installed; that does not block this contribution route.",
+  "live_actions": [],
+  "no_edit_made": true,
+  "completion_criteria": [
+    "Add a concise, copy-ready offline note scaffold covering the selected proposal and primary-source claim, falsifiable mechanism and hypothesis, required public capabilities, evidence gaps, and one next offline step.",
+    "Keep proposals and hypotheses clearly distinct from results; preserve unknown or unavailable capabilities and metrics, and do not imply that live access is needed to write the note.",
+    "Run the opportunities and links validators plus git diff --check after editing; introduce no new failures, and keep the five baseline missing-link targets out of scope unless separately authorized.",
+    "Keep the diff focused on the selected documentation and preserve unrelated workspace changes."
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "original_outcomes_unchanged": true,
+  "attempts": [
+    {
+      "artifact": "background-opencode-1.json",
+      "sha256": "6dbc25b6ab887d898e96e07e607d86347e7f4cc72fb0d0324af6895deda595b5",
+      "passed": false,
+      "failures": [
+        "child_ownership_acknowledgement_not_ready",
+        "external_controller_conformance_incomplete"
+      ],
+      "external_controller_overall": "partial",
+      "conformance_overall": "partial",
+      "cleanup_proved": true,
+      "source_bundle": "background-runtime-1",
+      "edges": {
+        "controller_crash_recovery": "not_run",
+        "duplicate_owner_exclusion": "not_run",
+        "exact_child_continuation": "not_run",
+        "external_due_delivery": "not_run",
+        "fresh_cli_and_distinct_session": "unknown",
+        "native_scheduler_delivery": "unknown",
+        "owned_process_cleanup": "unknown",
+        "parent_independence": "unknown",
+        "pause_drain_reconcile": "not_run",
+        "real_ownership_acknowledgement": "not_run",
+        "terminal_stop_no_relaunch": "not_run"
+      }
+    },
+    {
+      "artifact": "background-opencode-2.json",
+      "sha256": "6ca3e39beae1bf5b8ee1fdbc0298b625ff6009a31615bf39b1b70cfacb36ad43",
+      "passed": true,
+      "failures": [],
+      "external_controller_overall": "passed",
+      "conformance_overall": "partial",
+      "cleanup_proved": true,
+      "source_bundle": "background-runtime-2",
+      "edges": {
+        "controller_crash_recovery": "passed",
+        "duplicate_owner_exclusion": "passed",
+        "exact_child_continuation": "passed",
+        "external_due_delivery": "passed",
+        "fresh_cli_and_distinct_session": "passed",
+        "native_scheduler_delivery": "unknown",
+        "owned_process_cleanup": "passed",
+        "parent_independence": "passed",
+        "pause_drain_reconcile": "passed",
+        "real_ownership_acknowledgement": "passed",
+        "terminal_stop_no_relaunch": "passed"
+      }
+    }
+  ]
+}

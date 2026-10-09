@@ -1,0 +1,526 @@
+{
+  "case_id": "discovery-quickstart-entry",
+  "task_mode": "discovery",
+  "fixture_conditions": [
+    "AGENTS.md and CLAUDE.md are absent from the prepared workspace; this describes visible files, not native harness autoload behavior.",
+    "The parent supplies a runtime JSON agent through OPENCODE_CONFIG_CONTENT; the effective wildcard default is deny, and permission keys read, list, glob, grep, and edit are allowed. OpenCode's edit permission covers edit/write/patch operations; the normalized event label remains edit, write, or apply_patch.",
+    "The prepared workspace has no .opencode project directory or node_modules tree; a non-model debug-agent probe checks the effective matrix without retaining unrelated output.",
+    "This profile limits tools exposed to the child agent; it does not claim the host has no Python executable."
+  ],
+  "variant": "max",
+  "variant_in_argv": true,
+  "execution_mode": "fresh-opencode-run",
+  "fresh_separate_invocation": true,
+  "replay": false,
+  "model": "openrouter/openai/gpt-6-luna",
+  "invocation_argv": [
+    "opencode",
+    "run",
+    "--pure",
+    "--format",
+    "json",
+    "--dir",
+    "<WORKSPACE>",
+    "--model",
+    "openrouter/openai/gpt-6-luna",
+    "--agent",
+    "entry-files-only",
+    "--variant",
+    "max"
+  ],
+  "workspace": "<WORKSPACE>",
+  "workspace_identity": "c6d7469c53893883824acec18e49908829ce1ce65fdda2d62bde5759f9431e9e",
+  "source_snapshot_sha256": "63d6af85f2d6e2f51d52ef42df3ea3ecb3c45dedbd9d0b30acb8d1ccb1792db3",
+  "source_snapshot_files": 137,
+  "source_git_head": "c48cb235fde2d5590601528ef9c83cb9d8f402dd",
+  "harness": "opencode",
+  "harness_version": "1.18.31",
+  "session_id": "ses_f31a1ffb1ffeawRaKBJuy86hb5",
+  "started_at": "2026-09-23T13:04:21Z",
+  "ended_at": "2026-09-23T13:07:21Z",
+  "exit_code": 0,
+  "launch_error": null,
+  "model_process_started": true,
+  "owned_process_remaining": false,
+  "observed_actions": [
+    {
+      "tool": "glob",
+      "event_sequence": 1,
+      "native_tool_call_id_sha256": "49c5416bbf43c836b28f5aa893b0000d2ba0d91450a1f573811605845fb02b99",
+      "command": "<WORKSPACE>",
+      "command_sha256": "cb474a78c0c3ecceac06e1601434613c988e23a21b0d96fc0d14451e00ff4e13",
+      "command_bytes": 11,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 275,
+        "output_sha256": "6c703b519e84f724e87e1ca42ad6ef7c971780edf70a43af30674283a7379f84"
+      }
+    },
+    {
+      "tool": "glob",
+      "event_sequence": 2,
+      "native_tool_call_id_sha256": "9336d1df496d6e3d81f52b5cee737b7a1bf06d1a9174933b07586b12a088c8ae",
+      "command": "<WORKSPACE>",
+      "command_sha256": "cb474a78c0c3ecceac06e1601434613c988e23a21b0d96fc0d14451e00ff4e13",
+      "command_bytes": 11,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 54,
+        "output_sha256": "992efa063f4258fc0fd9962d3bec2128ca00faa098b793aadd1019b40e9bb8a6"
+      }
+    },
+    {
+      "tool": "glob",
+      "event_sequence": 3,
+      "native_tool_call_id_sha256": "bd79cf04e72da1df0764457c2496d7d40a150f57bed56dbf03bfd9cb79b643bc",
+      "command": "<WORKSPACE>",
+      "command_sha256": "cb474a78c0c3ecceac06e1601434613c988e23a21b0d96fc0d14451e00ff4e13",
+      "command_bytes": 11,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 985,
+        "output_sha256": "588d0ab78d740fa7a438fcf6d1d4461220cfd623f70c22bd4bef91a75bd050b3"
+      }
+    },
+    {
+      "tool": "glob",
+      "event_sequence": 4,
+      "native_tool_call_id_sha256": "c031ddadc03db898f87eb72ebbd1e7644d64f057368a3d6d10abe11553ae603f",
+      "command": "<WORKSPACE>",
+      "command_sha256": "cb474a78c0c3ecceac06e1601434613c988e23a21b0d96fc0d14451e00ff4e13",
+      "command_bytes": 11,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 139,
+        "output_sha256": "e1ce3cc07c4cc5b179fc1fcddaf2f1628e6da988d10b99569567ec7f00861b5c"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 8,
+      "native_tool_call_id_sha256": "f3dac91e9d4537c08b9221c5c1fd687ab905dfa5831b767db6e7329adb6f4470",
+      "command": "<WORKSPACE>/trial-output/quickstart-research.json",
+      "command_sha256": "b0a9897b6f64653097d3d370c9b514acd3d4b4b0095ce52f16bcd8b55e731f4d",
+      "command_bytes": 49,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 138,
+        "output_sha256": "5ee4bc63ef3742a0bfbeb98c81b83ffb973fe6a3ebd50ef22a55d20ed96a83db"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 9,
+      "native_tool_call_id_sha256": "06f87be8c0814b148cc54641db221aad1599e4eb24a56a08f335b4920dfd74be",
+      "command": "<WORKSPACE>/trial-output/prepare-record.json",
+      "command_sha256": "a2106ff7e6de12740d4462893f76a7bc845f3974f6b9b7920ee86b466efe12ba",
+      "command_bytes": 44,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 1996,
+        "output_sha256": "c246da2ce51126f5decc72abef9a2616dc0fee0ed81f641d07bab2f36926eb1e"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 10,
+      "native_tool_call_id_sha256": "9d6b6c3b09941943a1b2f1dc21d671cefb5be3429f6884c997dc001f6c78790c",
+      "command": "<WORKSPACE>/docs/agents/quickstart.md",
+      "command_sha256": "88bbb4cd8c34051e5871237571692df05bb57d4ed82c0a54548de3fdab310499",
+      "command_bytes": 37,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 3892,
+        "output_sha256": "354832c1c320dfb156c7f17a66bc94ddc40cacf2120af512761f14127d6e353a"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 11,
+      "native_tool_call_id_sha256": "7b3dd7674b2b0032ce8107f454977bd3401e0488504cc7e49071742bbaef3f15",
+      "command": "<WORKSPACE>/docs/agents/first-search.md",
+      "command_sha256": "30dd431174e4b58a67e2745e8636db222f435d36ec0ad3792872eeb7367af97a",
+      "command_bytes": 39,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 4866,
+        "output_sha256": "b45cbea5b5abedd0d3e9b4f4b3b19b906b4e6efba66b8cd0b3b40fc22cabb1d1"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 12,
+      "native_tool_call_id_sha256": "d2e3b2fa522fc1b592419b003bdda1aec9dab955ab83d925bfcb6c662810ef72",
+      "command": "<WORKSPACE>/docs/agents/start-here.md",
+      "command_sha256": "3cdbeddb6bd9cab8fb91caa784210a5ba8f7afccadb87a0cdc565172001624ad",
+      "command_bytes": 37,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 9516,
+        "output_sha256": "a0d989090039c5c0ebfdf9925fd57cd9bf1366009974d1897da3aa4a787fe06b"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 13,
+      "native_tool_call_id_sha256": "23832779d99531fab8e49b870829ed828d9f949083ac24a293a13f327fa763e3",
+      "command": "<WORKSPACE>/docs/agents/research-opportunities.json",
+      "command_sha256": "a6a446159bc81c4ecc17a00acea67ea865b1938c8ba6a9db1dcca7fb3385f6f2",
+      "command_bytes": 51,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 18712,
+        "output_sha256": "caabb0f8c1cf4bdc71a4aa3c770b0c69d0ca04cc1ec7c4016cd630d5bc367265"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 14,
+      "native_tool_call_id_sha256": "6c2688f5a04c3e94f71f41d9b8de9dcc837915b0f1152a4adbd21e0b92f7ebcf",
+      "command": "<WORKSPACE>/docs/agents/research-opportunities.md",
+      "command_sha256": "5a064a2215f3bc07171beb7cd5a8b17a660065b8e4bd6cd5c0ce3a710359e486",
+      "command_bytes": 49,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 14598,
+        "output_sha256": "c7a3e16d3af014956e037a4360e8593985ff4a4ec1add8e20bb05241c72d8242"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 15,
+      "native_tool_call_id_sha256": "b99d032633a74c64f87cb7ae15fd4e2e4b93d2207fb34f9dd0aff6439bf2dada",
+      "command": "<WORKSPACE>/docs/agents/references/onboarding.json",
+      "command_sha256": "c7ae2d11ad2aa10c79467c715c9dd67fcb78e4b9e42c39d4b77fd7bfd4ba426e",
+      "command_bytes": 50,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 19359,
+        "output_sha256": "6476fb7288fe0c06b459de0ff6b65d5baada201a60f48d37e723e37b02e29084"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 16,
+      "native_tool_call_id_sha256": "10222a011d3c744e6f2cf83527a5f84f1d9ae9e315799865b4b60633783f9f4d",
+      "command": "<WORKSPACE>/docs/agents/references/compatibility.json",
+      "command_sha256": "4e2cb2a09bceb9706c810290700c6338d582acc607e27678604eebfd91e1ddae",
+      "command_bytes": 53,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 11178,
+        "output_sha256": "ab32b33283d7132425e578ae91a1a9c9993d6e3196d502deeab764302da044b5"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 19,
+      "native_tool_call_id_sha256": "c73e323f94505ddf047d53713ad964a18617f7de85b7fda508342b7b311ec463",
+      "command": "<WORKSPACE>/docs/agents/research-campaign.md",
+      "command_sha256": "c4057bd9b0307655b1bfe80b1941bfeeb2722371add5ce5580895f20d1eff1b3",
+      "command_bytes": 44,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 17804,
+        "output_sha256": "a39a9ad3ea711e6d3c571bb00165c9aee9fdab5a139fcc5f9bd4632ce8ae2803"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 20,
+      "native_tool_call_id_sha256": "4058faadb26ad535563d93aa7f89f89f5f6e658faa1a34dda34363bfea6a9e31",
+      "command": "<WORKSPACE>/examples/agent-campaign/campaign.json",
+      "command_sha256": "44f42c8570a8b410854a64af8fc5b2b1aa4156df5d12db5bd5c428efbcbd3deb",
+      "command_bytes": 49,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 13032,
+        "output_sha256": "950c424ebb674fda72284af1a845ac2e403f7151b8a8d181c94bda2d8e987539"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 21,
+      "native_tool_call_id_sha256": "d344389c8b6ad6cdcbacce53686598a0154a99cda636d8dda382dd99dd1ecd56",
+      "command": "<WORKSPACE>/examples/agent-campaign/challenger_design.md",
+      "command_sha256": "1ce018bc9571aa6cdedfc229b16aeaa87f8fbef4fa135f58aa5217205c6910e9",
+      "command_bytes": 56,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 15416,
+        "output_sha256": "e6be5c16ecfa9731a3ffe51a5eba6da8153cbd386828f5e49a1467c85650c1ee"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 22,
+      "native_tool_call_id_sha256": "54131eccd58aba7cd55c7b539a7d24220a7de12ab98bb71e39f8456c4d9fe649",
+      "command": "<WORKSPACE>/examples/agent-campaign/stratified_policy.py",
+      "command_sha256": "4e05849d935c14710e0a282f33ba8e9aad77237c7f87ecb7502214caaef5d1d3",
+      "command_bytes": 56,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 13791,
+        "output_sha256": "ca55f13681dc1d395f3bbe28a0947fddc3abd748de36117230d54bd24027e268"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 23,
+      "native_tool_call_id_sha256": "4d9b8e0114dcb5a509c3267808eeb5caf428a951018914c2ee92e0c770489298",
+      "command": "<WORKSPACE>/examples/agent-campaign/benchmark_record.json",
+      "command_sha256": "53095a0f4309a0b6c72edb7c4d71375b2182fec67de3267730d3bf6eb8b8acac",
+      "command_bytes": 57,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 3599,
+        "output_sha256": "2b07c21ad23514a6ca3db21d15447581805f6222d6fc664b208063d4d407ed76"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 24,
+      "native_tool_call_id_sha256": "95e44399e434e5d42665a8f6fe2c10d1c483c464a528584e3272d7649f17e6b2",
+      "command": "<WORKSPACE>/docs/agents/references/campaign-state-machine.json",
+      "command_sha256": "c7487bf407eca93944c3091cdf7a4e98d66272151cfa20e6859d1609e2270016",
+      "command_bytes": 62,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 10766,
+        "output_sha256": "ea33a8547190ed23b15101623cc40bc8170bad8e0b79f02434dfa0f66cd0ac86"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 25,
+      "native_tool_call_id_sha256": "2b4c687c9bdcb925e7961549c75cd298b53aa3f4948e3e2fafd8851882202016",
+      "command": "<WORKSPACE>/src/openforage/skills/search_research/SKILL.md",
+      "command_sha256": "6908e07d15a20a3df8c65334da65b0a56967aabee9b707b00fee2247f1bb68d2",
+      "command_bytes": 58,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 18260,
+        "output_sha256": "a6aed2126e35e4b516860508092fa18e910b7ff8e0c4693f59f1dac7dc5b80cc"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 26,
+      "native_tool_call_id_sha256": "7340eb4923bda662dd082a64fc02591d1a3575ce9eb058e627e443e105cec969",
+      "command": "<WORKSPACE>/README.md",
+      "command_sha256": "e839f8ef3b5392bec89b21a8be0ec8962b39b186a60a236fcaf9b7d55f0f12c4",
+      "command_bytes": 21,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 18566,
+        "output_sha256": "17e94486cad535082e2c8deb23b37a6be36773546688ece8c6775f5d3946c15f"
+      }
+    },
+    {
+      "tool": "apply_patch",
+      "event_sequence": 30,
+      "native_tool_call_id_sha256": "7d94e19b1874078d191971f8b1461b6bebd63ccf064b617b65475188d2282732",
+      "command": "trial-output/quickstart-research.json",
+      "command_sha256": "03d27c742403a18234eb92fd8d22a7e2d825a2a8b16b26d01feacd6ed19df403",
+      "command_bytes": 37,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 77,
+        "output_sha256": "633399e2ec14c0d23fea7b82124dcecc73c3c9568ac8f3f1f884589e712d1501"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 33,
+      "native_tool_call_id_sha256": "36f6b518de129319cbe00ce6d2723c5af6cc58f54aaeb5332ba974a28c44cfd9",
+      "command": "<WORKSPACE>/trial-output/quickstart-research.json",
+      "command_sha256": "b0a9897b6f64653097d3d370c9b514acd3d4b4b0095ce52f16bcd8b55e731f4d",
+      "command_bytes": 49,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 6720,
+        "output_sha256": "893f0b59e7e3101e1df75fed95dbd7287149369a2069dd9465c82cab8017da75"
+      }
+    }
+  ],
+  "observed_action_schema_version": 2,
+  "outcome_schema_version": 1,
+  "child_tool_profile": {
+    "profile_id": "opencode-file-tools-only-v2",
+    "agent_name": "entry-files-only",
+    "mechanism": "OPENCODE_CONFIG_CONTENT runtime JSON agent selected with --agent",
+    "configured": true,
+    "applied_to_child_invocation": true,
+    "replay_not_enforced": false,
+    "default_tool_permission": "deny",
+    "wildcard_default_deny": true,
+    "allowed_tools": [
+      "read",
+      "list",
+      "glob",
+      "grep",
+      "edit"
+    ],
+    "denied_tools": [
+      "*",
+      "external_directory"
+    ],
+    "effective_permission_probe": {
+      "status": "verified",
+      "method": "non-model `opencode debug agent entry-files-only` with OPENCODE_CONFIG_CONTENT",
+      "exit_code": 0,
+      "error_kind": null,
+      "agent_name": "entry-files-only",
+      "effective_matrix_matches": true,
+      "effective_permission_matrix": {
+        "*": "deny",
+        "external_directory": "deny",
+        "bash": "deny",
+        "read": "allow",
+        "list": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "edit": "allow",
+        "matches_admitted_matrix": true
+      },
+      "project_opencode_absent_before": true,
+      "project_opencode_absent_after": true,
+      "node_modules_absent_before": true,
+      "node_modules_absent_after": true,
+      "model_invocation": false,
+      "raw_debug_output_retained": false,
+      "argv": [
+        "opencode",
+        "debug",
+        "agent",
+        "entry-files-only"
+      ]
+    },
+    "host_python_binary_absence_claimed": false,
+    "note": "Tool permissions are checked through OpenCode's effective debug-agent matrix; the prompt alone is not enforcement and no host-Python absence is claimed."
+  },
+  "action_extraction": {
+    "method": "versioned allowlisted actions correlated by native tool-call ID; shell exit code only from native result metadata",
+    "events_observed": 38,
+    "actions_observed": 23,
+    "raw_events_scratch": ".tmp/fresh-agent-trials/discovery-quickstart-entry-luna-canonical-rerun.raw-events.jsonl",
+    "raw_events_sha256": "75e41ed2c74d5b5f6129da058b27c2c193225224dff99f64e0da130ed660ad28",
+    "raw_events_bytes": 751490,
+    "note": "Raw events stay in git-ignored scratch; provider metadata and tool output text are omitted."
+  },
+  "child_environment": {
+    "applied": true,
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "python_on_path": "/usr/bin",
+    "note": "Set for the child session so validator runs create no bytecode under frozen dirs; `python` on the child PATH is this interpreter."
+  },
+  "child_prompt": {
+    "protocol_version": "workspace-protocol-v2",
+    "rendered_sha256": "66b46c593d1d15d573a31ce497675a5fc08b5bc5af9cc377db18f6a067448db1",
+    "delivered": true,
+    "pasted_canonical_entry": null,
+    "pasted_entry_source": null,
+    "pasted_entry_sha256": null,
+    "note": "The runner prepends the common protocol block and, for the pasted-entry case, the canonical route block from README.md; the exact task prompt remains in tasks.json. Rendered text is hashed, not retained, because it embeds the workspace path."
+  },
+  "first_useful_action_seconds": 6.339,
+  "first_useful_action_unknown_reason": null,
+  "clarification_count": null,
+  "plain_text_tail": "",
+  "artifact_refs": {
+    "trial-output/quickstart-research.json": "8126defce2f346c85d6c39bb45dd613e0bc14cca71884061d0141e97d1f8ffcc"
+  },
+  "claim": "single-trial observation; not a measured result"
+}

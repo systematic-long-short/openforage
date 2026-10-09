@@ -1,0 +1,18 @@
+{
+  "run_id": "reliability-docs-codex-1",
+  "original_verdict": "fail",
+  "failure_reasons": [
+    "direct evaluation-suite access audit is unknown; absence is not established",
+    "authoritative_sources are not supported by completed native reads",
+    "repository route was not established by a root entry read or contribute selector",
+    "canonical contribution route sources were not actually read",
+    "validation.baseline has no exact native command in its required causal phase",
+    "validation.final has no exact native command in its required causal phase"
+  ],
+  "independent_final": "pass",
+  "root_cause": "Observed shell commands contain an outer /bin/bash -lc wrapper whose script invokes a second bash -lc. The frozen contract accepts one exact native wrapper and rejects nested shells, leaving route reads, access audit and causal validation evidence unestablished.",
+  "original_outcome_unchanged": true,
+  "rubric_unchanged": true,
+  "classification": "bounded evidence protocol limitation, not evidence of an incorrect document",
+  "cleanup_process_group_remaining": false
+}

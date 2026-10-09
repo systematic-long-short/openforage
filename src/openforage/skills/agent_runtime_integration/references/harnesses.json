@@ -1,0 +1,1805 @@
+[
+  {
+    "product": "Claude Code",
+    "identity": "Documented CLI sessions have session IDs; --session-id accepts an explicit UUID and --resume names a specific recorded ID. Native --bg starts a background session, but this remains documented-unverified for the external controller contract.",
+    "surface": "Claude Code CLI: -p/--print, --output-format stream-json, --verbose, --resume, --session-id, --effort; separate native claude --bg / claude agents management route; documented goal/task/cron tools and cloud Routines.",
+    "status": "documented-unverified",
+    "verified_on": null,
+    "sources": [
+      "https://code.claude.com/docs/en/cli-reference",
+      "https://code.claude.com/docs/en/headless",
+      "https://code.claude.com/docs/en/agent-view",
+      "https://code.claude.com/docs/en/tools-reference",
+      "https://code.claude.com/docs/en/goal",
+      "https://code.claude.com/docs/en/scheduled-tasks",
+      "https://code.claude.com/docs/en/routines"
+    ],
+    "native_controls": [
+      "claude -p / --print with JSON or stream-json output; stream-json requires --verbose",
+      "--session-id <UUID> for a caller-selected fresh session; --resume <EXACT_ID> for a named session",
+      "claude --bg and claude agents --json as a separate native background-session route; --bg conflicts with -p",
+      "claude logs/stop/respawn/rm <EXACT_ID> for documented background-session management",
+      "/goal completion condition: set, check, pause, resume, clear",
+      "/loop repeated prompt on a fixed or chosen interval",
+      "CronCreate, CronList, and CronDelete scheduled tasks (session-scoped)",
+      "TaskCreate, TaskGet, TaskList, and TaskUpdate; availability can depend on model/tool opt-in",
+      "Routines with scheduled, API, and GitHub triggers (cloud sessions)",
+      "Desktop scheduled tasks and GitHub Actions schedules"
+    ],
+    "separate_session_evidence": "CLI reference/headless docs: claude -p is a non-interactive CLI invocation, --session-id accepts a caller-selected UUID, --resume names a specific recorded session, and stream-json includes a final result/session ID. Agent-view --bg dispatch is a separate native route and cannot be combined with -p. This route is documented, not observed.",
+    "scheduler_evidence": "Docs: /loop and CronCreate/CronList/CronDelete are session-scoped; Routines are cloud schedules. Tool names and feature availability are declarations only. External due-time delivery remains external and cannot establish native scheduling.",
+    "lifecycle_evidence": "Docs: claude agents --json reports native background session state, and exact-ID logs/stop/respawn/rm are available. The print/stream-json route uses exact --resume. Native respawn is not assumed to preserve an exact child if saved history is absent; no lifecycle edge is observed here.",
+    "evidence_contracts": [
+      {
+        "contract_id": "claude-code.background-agent-proof.v2",
+        "evidence_class": "bounded-native-background-agent-proof",
+        "schema_version": 2,
+        "product_identity": "Claude Code",
+        "adapter_identity": "claude-code"
+      }
+    ],
+    "capability_records": [],
+    "route": "references/claude-code.md"
+  },
+  {
+    "product": "Codex",
+    "identity": "Codex CLI threads: `exec` starts a non-interactive thread and `exec resume <THREAD_ID>` continues the explicitly selected thread; app automations use standalone or existing chats.",
+    "surface": "Codex CLI `exec`/`exec resume` with JSONL output; documented thread-scoped goals; ChatGPT desktop and web Scheduled tasks (automations).",
+    "status": "documented-unverified",
+    "verified_on": null,
+    "sources": [
+      "https://learn.chatgpt.com/docs/non-interactive-mode",
+      "https://learn.chatgpt.com/docs/developer-commands?surface=cli",
+      "https://learn.chatgpt.com/use-cases/follow-goals",
+      "https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex",
+      "https://learn.chatgpt.com/docs/automations?surface=app"
+    ],
+    "native_controls": [
+      "codex exec non-interactive CLI invocation with JSONL events",
+      "codex exec resume <THREAD_ID> to continue an exact recorded thread",
+      "/goal set, check, pause, resume, clear (enable features.goals in config.toml)",
+      "Scheduled tasks / automations in the ChatGPT desktop app and on the web",
+      "Standalone scheduled tasks that start a new chat per run",
+      "Scheduled tasks inside a chat that reuse the chat's context",
+      "Custom RFC 5545 RRULE schedules in the app surface"
+    ],
+    "separate_session_evidence": "Docs: Codex CLI `exec` is non-interactive, emits JSONL events, and `exec resume <THREAD_ID>` continues a specific recorded thread. Observed (scoped, 2026-09-23): five CLI calls all exited 0; fresh parent and child threads were distinct, the parent exited before the child, and three later resumes used the exact child ID and matched the history marker. See evidence/codex-native-marker-20260923.json. App standalone scheduled tasks start a new chat per run, while in-chat tasks return to that chat; the CLI has no Scheduled management interface.",
+    "scheduler_evidence": "Documented on the ChatGPT app/web scheduled-tasks surface; app schedules are separate from CLI exec/resume. The reviewed developer-commands source documents /goal and no /schedule entry was found (2026-09-23); this source review and the local in_app_local_automation availability flag do not establish an exec-session scheduler. Scoped observations include a finite external-driver due event and the completed isolated-profile external background-controller proof. Neither establishes a native Codex scheduler or pause/stop of active Codex work; see capability_records and the cited proof artifacts.",
+    "lifecycle_evidence": "Docs: thread-scoped goals expose set/check/pause/resume/clear; exact-ID CLI resume continues history but does not establish native Codex active-process pause or stop. The earlier finite-driver pause/stop windows suppressed only future dispatches. A separate Linux isolated-profile proof observed external-controller process-group pause/stop, reconciliation, stale-controller recovery, terminal stop, and cleanup; those process controls do not establish OpenForage worker checkpoint/stop semantics. App scheduled tasks are a separate surface.",
+    "evidence_contracts": [
+      {
+        "contract_id": "codex.background-agent-proof.v1",
+        "evidence_class": "bounded-native-background-agent-proof",
+        "schema_version": 1,
+        "product_identity": "Codex",
+        "adapter_identity": "codex"
+      },
+      {
+        "contract_id": "codex.background-agent-proof.v2",
+        "evidence_class": "bounded-native-background-agent-proof",
+        "schema_version": 2,
+        "product_identity": "Codex",
+        "adapter_identity": "codex"
+      }
+    ],
+    "capability_records": [
+      {
+        "capability": "separate-cli-invocation",
+        "status": "verified",
+        "mechanism": "harness-cli",
+        "probe": "codex-native-marker-20260923",
+        "evidence_artifact": "src/openforage/skills/agent_runtime_integration/references/evidence/codex-native-marker-20260923.json",
+        "test_id": "codex-native-marker-20260923",
+        "tested_at": "2026-09-23",
+        "product_version": "codex-cli 0.156.1",
+        "scope": {"surface": "Codex CLI exec/resume JSONL", "os": "linux", "lifecycle": "bounded sequential marker fixture; parent exited before child"},
+        "observed_result": "passed: five explicit CLI process calls were recorded, all with exit code 0."
+      },
+      {
+        "capability": "distinct-session-identity",
+        "status": "verified",
+        "mechanism": "harness-cli",
+        "probe": "codex-native-marker-20260923",
+        "evidence_artifact": "src/openforage/skills/agent_runtime_integration/references/evidence/codex-native-marker-20260923.json",
+        "test_id": "codex-native-marker-20260923",
+        "tested_at": "2026-09-23",
+        "product_version": "codex-cli 0.156.1",
+        "scope": {"surface": "Codex CLI exec JSONL", "os": "linux", "lifecycle": "fresh parent and child bootstrap processes in a bounded sequential fixture"},
+        "observed_result": "passed: the fresh parent and child returned distinct recorded thread IDs."
+      },
+      {
+        "capability": "resume",
+        "status": "verified",
+        "mechanism": "harness-cli",
+        "probe": "codex-native-marker-20260923",
+        "evidence_artifact": "src/openforage/skills/agent_runtime_integration/references/evidence/codex-native-marker-20260923.json",
+        "test_id": "codex-native-marker-20260923",
+        "tested_at": "2026-09-23",
+        "product_version": "codex-cli 0.156.1",
+        "scope": {"surface": "Codex CLI exec resume", "os": "linux", "lifecycle": "three exact-thread history resumes; no active-process control"},
+        "observed_result": "passed: all three resumes targeted the exact child ID and returned that same thread ID."
+      },
+      {
+        "capability": "scheduler-wakeup-and-consumption",
+        "status": "verified",
+        "mechanism": "external-finite-driver",
+        "probe": "codex-native-marker-20260923",
+        "evidence_artifact": "src/openforage/skills/agent_runtime_integration/references/evidence/codex-native-marker-20260923.json",
+        "test_id": "codex-native-marker-20260923",
+        "tested_at": "2026-09-23",
+        "product_version": "codex-cli 0.156.1",
+        "scope": {"surface": "Finite external driver plus Codex CLI resume", "os": "linux", "lifecycle": "one due event dispatched and consumed; no native schedule claim"},
+        "observed_result": "passed: one due event was acknowledged by the exact child via the finite external driver. This does not verify a native scheduler or pause of active Codex work."
+      },
+      {
+        "capability": "native-goal-task-memory",
+        "status": "unverified",
+        "note": "Native goal/task operation and global memory remain unknown. Native tool/event evidence was absent; the goals feature flag and final prose do not establish an operation. History-marker recall was thread-local."
+      },
+      {
+        "capability": "pause",
+        "status": "unverified",
+        "note": "The paused external-driver window prevented future dispatches only; active Codex process pause remains unknown."
+      },
+      {
+        "capability": "stop",
+        "status": "unverified",
+        "note": "The stopped external-driver window prevented future dispatches only; active Codex process stop remains unknown."
+      },
+      {
+        "record_id": "background-proof-c81444655561472aa20ed857260f92ce:separate-cli-invocation",
+        "capability": "separate-cli-invocation",
+        "status": "verified",
+        "mechanism": "harness-cli",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/codex-proof.json",
+        "test_id": "background-proof-c81444655561472aa20ed857260f92ce",
+        "tested_at": "2026-09-23",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {
+          "surface": "Codex CLI exec/resume with detached external background-agent controller",
+          "os": "linux",
+          "profile": "isolated",
+          "lifecycle": "fresh parent exited before distinct child bootstrap; launcher returned after ownership acknowledgement",
+          "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."
+        },
+        "assertions": [
+          {"path": "parent_exited_before_child_start", "equals": true},
+          {"path": "parent.exit_code", "equals": 0},
+          {"path": "child.distinct_from_parent", "equals": true},
+          {"path": "launcher.child_session_recorded", "equals": true}
+        ],
+        "observed_result": "passed: the fresh parent exited before a distinct child bootstrap, and the detached controller returned after recording the child's session and ownership acknowledgement."
+      },
+      {
+        "record_id": "background-proof-c81444655561472aa20ed857260f92ce:distinct-session-identity",
+        "capability": "distinct-session-identity",
+        "status": "verified",
+        "mechanism": "harness-cli",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/codex-proof.json",
+        "test_id": "background-proof-c81444655561472aa20ed857260f92ce",
+        "tested_at": "2026-09-23",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {
+          "surface": "Codex CLI exec/resume with detached external background-agent controller",
+          "os": "linux",
+          "profile": "isolated",
+          "lifecycle": "fresh child CLI identity distinct from the parent; later turns retain the child's exact identity",
+          "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."
+        },
+        "assertions": [
+          {"path": "child.distinct_from_parent", "equals": true},
+          {"path": "external_recurrence.child_session_distinct_from_parent", "equals": true}
+        ],
+        "observed_result": "passed: the recorded Codex child thread differs from the fresh parent thread."
+      },
+      {
+        "record_id": "background-proof-c81444655561472aa20ed857260f92ce:parent-independence",
+        "capability": "parent-independence",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/codex-proof.json",
+        "test_id": "background-proof-c81444655561472aa20ed857260f92ce",
+        "tested_at": "2026-09-23",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {
+          "surface": "Codex CLI exec/resume with detached external background-agent controller",
+          "os": "linux",
+          "profile": "isolated",
+          "lifecycle": "parent exited before child start; detached controller remained after launcher return and acknowledged child ownership",
+          "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."
+        },
+        "assertions": [
+          {"path": "parent_exited_before_child_start", "equals": true},
+          {"path": "launcher.detached_controller_alive_after_launcher_exit", "equals": true},
+          {"path": "launcher.returned_after_ownership_ack", "equals": true},
+          {"path": "child.ownership_acknowledgement", "equals": "observed"}
+        ],
+        "observed_result": "passed: the parent exited before the child bootstrap; after launcher return the detached controller remained alive and child ownership acknowledgement was recorded."
+      },
+      {
+        "record_id": "background-proof-c81444655561472aa20ed857260f92ce:resume",
+        "capability": "resume",
+        "status": "verified",
+        "mechanism": "harness-cli",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/codex-proof.json",
+        "test_id": "background-proof-c81444655561472aa20ed857260f92ce",
+        "tested_at": "2026-09-23",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {
+          "surface": "Codex CLI exec resume to a recorded child thread under external controller delivery",
+          "os": "linux",
+          "profile": "isolated",
+          "lifecycle": "two external due-time continuations and history continuation target the exact child; no native scheduler claim",
+          "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."
+        },
+        "assertions": [
+          {"path": "resume.exact_recorded_child_target", "equals": true},
+          {"path": "resume.history_marker_match", "equals": true},
+          {"path": "resume.same_child_session_fingerprint", "equals_path": "child.session_fingerprint"},
+          {"path": "continuation.same_child_session", "equals": true}
+        ],
+        "observed_result": "passed: controller continuation and history recall used the exact recorded Codex child thread."
+      },
+      {
+        "record_id": "background-proof-c81444655561472aa20ed857260f92ce:scheduler-wakeup-and-consumption",
+        "capability": "scheduler-wakeup-and-consumption",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/codex-proof.json",
+        "test_id": "background-proof-c81444655561472aa20ed857260f92ce",
+        "tested_at": "2026-09-23",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {
+          "surface": "detached external background-agent controller delivering Codex CLI continuations",
+          "os": "linux",
+          "profile": "isolated",
+          "lifecycle": "two external due-time child continuations acknowledged; paused/stopped windows suppressed later dispatch",
+          "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."
+        },
+        "assertions": [
+          {"path": "external_recurrence.mode", "equals": "explicit_external_interval_delivery"},
+          {"path": "external_recurrence.acknowledged_due_continuations", "length_at_least": 2},
+          {"path": "external_recurrence.acknowledged_due_continuations", "all_items_match": {"acknowledged": true, "delivery": "external_due_time", "native_session_match": true, "same_child_session": true}},
+          {"path": "external_recurrence.paused_window_prevented_new_dispatch", "equals": true},
+          {"path": "external_recurrence.stopped_window_prevented_new_dispatch", "equals": true}
+        ],
+        "observed_result": "passed: two external due-time turns were acknowledged by the same exact Codex child; this is not a native scheduler observation."
+      },
+      {
+        "record_id": "background-proof-c81444655561472aa20ed857260f92ce:pause",
+        "capability": "pause",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/codex-proof.json",
+        "test_id": "background-proof-c81444655561472aa20ed857260f92ce",
+        "tested_at": "2026-09-23",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {
+          "surface": "detached external background-agent controller process-group pause; Codex remains a separately managed CLI child",
+          "os": "linux",
+          "profile": "isolated",
+          "lifecycle": "active controller pause terminated the bounded turn process group; paused due window dispatched nothing; application-worker checkpoint unknown",
+          "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."
+        },
+        "assertions": [
+          {"path": "active_pause.status", "equals": "paused"},
+          {"path": "active_pause.process_group_status_after_pause", "equals": "gone"},
+          {"path": "active_pause.application_worker_checkpoint", "equals": "unknown"},
+          {"path": "external_recurrence.paused_window_prevented_new_dispatch", "equals": true}
+        ],
+        "observed_result": "passed: external controller pause and paused-window dispatch suppression were observed for this bounded process group; OpenForage worker checkpoint state remains unknown."
+      },
+      {
+        "record_id": "background-proof-c81444655561472aa20ed857260f92ce:stop",
+        "capability": "stop",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/codex-proof.json",
+        "test_id": "background-proof-c81444655561472aa20ed857260f92ce",
+        "tested_at": "2026-09-23",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {
+          "surface": "detached external background-agent controller process-group stop; Codex remains a separately managed CLI child",
+          "os": "linux",
+          "profile": "isolated",
+          "lifecycle": "active controller stop reached terminal state; stopped due window dispatched nothing; application-worker stop unknown",
+          "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."
+        },
+        "assertions": [
+          {"path": "active_stop.terminal_status", "equals": "stopped"},
+          {"path": "active_stop.process_group_status_after_stop", "equals": "gone"},
+          {"path": "active_stop.application_worker_stop", "equals": "unknown"},
+          {"path": "external_recurrence.stopped_window_prevented_new_dispatch", "equals": true},
+          {"path": "cleanup.isolated_workspace_removed", "equals": true},
+          {"path": "cleanup.runs.background-proof-c81444655561472aa20ed857260f92ce.all_owned_process_groups_proven_gone", "equals": true},
+          {"path": "cleanup.runs.background-proof-c81444655561472aa20ed857260f92ce-recurrence.all_owned_process_groups_proven_gone", "equals": true}
+        ],
+        "observed_result": "passed: external controller stop reached terminal state and suppressed later due dispatch; OpenForage worker stop state remains unknown."
+      },
+      {
+        "record_id": "background-proof-c81444655561472aa20ed857260f92ce:crash-recovery",
+        "capability": "crash-recovery",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/codex-proof.json",
+        "test_id": "background-proof-c81444655561472aa20ed857260f92ce",
+        "tested_at": "2026-09-23",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {
+          "surface": "Codex detached external background-agent controller recovery",
+          "os": "linux",
+          "profile": "isolated",
+          "lifecycle": "stale external controller was replaced with a new generation/fence without overlapping the exact child",
+          "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."
+        },
+        "assertions": [
+          {"path": "controller_crash.classification_after_kill", "equals": "stale_controller"},
+          {"path": "recovery.controller_generation_advanced", "equals": true},
+          {"path": "recovery.fence_advanced", "equals": true},
+          {"path": "recovery.no_overlapping_child", "equals": true},
+          {"path": "recovery.same_child_session", "equals": true}
+        ],
+        "observed_result": "passed: stale external controller recovery advanced generation and fence without overlapping the same Codex child session."
+      },
+      {
+        "record_id": "background-proof-c81444655561472aa20ed857260f92ce:exact-target-control",
+        "capability": "exact-target-control",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/codex-proof.json",
+        "test_id": "background-proof-c81444655561472aa20ed857260f92ce",
+        "tested_at": "2026-09-23",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {
+          "surface": "detached external background-agent controller targeting exact Codex child thread",
+          "os": "linux",
+          "profile": "isolated",
+          "lifecycle": "mismatched target refused and continuation kept exact recorded child identity",
+          "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."
+        },
+        "assertions": [
+          {"path": "active_pause.mismatched_target_refused", "equals": true},
+          {"path": "resume.exact_recorded_child_target", "equals": true}
+        ],
+        "observed_result": "passed: a mismatched target was refused and continuation selected the exact recorded child thread."
+      },
+      {
+        "record_id": "background-proof-c81444655561472aa20ed857260f92ce:terminal-triggers-stopped",
+        "capability": "terminal-triggers-stopped",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/codex-proof.json",
+        "test_id": "background-proof-c81444655561472aa20ed857260f92ce",
+        "tested_at": "2026-09-23",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {
+          "surface": "Codex detached external background-agent controller due-time delivery",
+          "os": "linux",
+          "profile": "isolated",
+          "lifecycle": "terminal stop remained stopped through the bounded following due window",
+          "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."
+        },
+        "assertions": [
+          {"path": "external_recurrence.terminal_status", "equals": "stopped"},
+          {"path": "external_recurrence.stopped_window_prevented_new_dispatch", "equals": true},
+          {"path": "terminal_stop.turn_resume_recover_refused", "equals": true}
+        ],
+        "observed_result": "passed: the terminal external-controller stop suppressed due-time dispatches for the bounded following window."
+      },
+      {
+        "record_id": "background-proof-c81444655561472aa20ed857260f92ce:native-goal-operation",
+        "capability": "native-goal-operation",
+        "status": "unverified",
+        "mechanism": "native-tool",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/codex-proof.json",
+        "test_id": "background-proof-c81444655561472aa20ed857260f92ce",
+        "tested_at": "2026-09-23",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "Codex native tool events", "os": "linux", "profile": "isolated", "lifecycle": "no goal operation recorded", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [{"path": "native_goal_task_memory.goal.status", "equals": "unknown"}],
+        "note": "No successful or failed native goal operation was observed; unknown remains unknown."
+      },
+      {
+        "record_id": "background-proof-c81444655561472aa20ed857260f92ce:native-task-tool-operation",
+        "capability": "native-task-tool-operation",
+        "status": "unverified",
+        "mechanism": "native-tool",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/codex-proof.json",
+        "test_id": "background-proof-c81444655561472aa20ed857260f92ce",
+        "tested_at": "2026-09-23",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "Codex native tool events", "os": "linux", "profile": "isolated", "lifecycle": "no task tool operation recorded", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [{"path": "native_goal_task_memory.task.status", "equals": "unknown"}, {"path": "native_goal_task_memory.task.tools", "equals": []}],
+        "note": "No successful native task tool operation was recorded; unknown remains unknown."
+      },
+      {
+        "record_id": "background-proof-c81444655561472aa20ed857260f92ce:native-memory-operation",
+        "capability": "native-memory-operation",
+        "status": "unverified",
+        "mechanism": "native-tool",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/codex-proof.json",
+        "test_id": "background-proof-c81444655561472aa20ed857260f92ce",
+        "tested_at": "2026-09-23",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "Codex native tool events", "os": "linux", "profile": "isolated", "lifecycle": "no memory operation recorded; thread history is not global memory", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [{"path": "native_goal_task_memory.memory.status", "equals": "unknown"}],
+        "note": "No successful native memory operation was observed; exact-thread history recall is not global memory."
+      },
+      {
+        "record_id": "background-proof-c81444655561472aa20ed857260f92ce:native-scheduler",
+        "capability": "native-scheduler",
+        "status": "unverified",
+        "mechanism": "native-scheduler",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/codex-proof.json",
+        "test_id": "background-proof-c81444655561472aa20ed857260f92ce",
+        "tested_at": "2026-09-23",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "Codex CLI scheduling", "os": "linux", "profile": "isolated", "lifecycle": "native scheduler unknown; due-time delivery belonged to the external controller", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [{"path": "native_scheduler", "equals": "unknown; the controller supports manual delivery or one explicit external interval owner"}],
+        "note": "The observed interval owner was external; native scheduler state remains unknown."
+      },
+      {
+        "record_id": "background-proof-c81444655561472aa20ed857260f92ce:openforage-worker-checkpoint",
+        "capability": "openforage-worker-checkpoint",
+        "status": "unverified",
+        "mechanism": "openforage-worker",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/codex-proof.json",
+        "test_id": "background-proof-c81444655561472aa20ed857260f92ce",
+        "tested_at": "2026-09-23",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "Codex proof scope: OpenForage worker state", "os": "linux", "profile": "isolated", "lifecycle": "worker not started by adapter; checkpoint state unknown", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [{"path": "openforage_worker.started_by_adapter", "equals": false}, {"path": "openforage_worker.checkpoint", "equals": "unknown"}],
+        "note": "The proof did not start an OpenForage worker; checkpoint behavior remains unknown."
+      },
+      {
+        "record_id": "background-proof-c81444655561472aa20ed857260f92ce:openforage-worker-stop",
+        "capability": "openforage-worker-stop",
+        "status": "unverified",
+        "mechanism": "openforage-worker",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/codex-proof.json",
+        "test_id": "background-proof-c81444655561472aa20ed857260f92ce",
+        "tested_at": "2026-09-23",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "Codex proof scope: OpenForage worker state", "os": "linux", "profile": "isolated", "lifecycle": "worker not started by adapter; stop state unknown", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [{"path": "openforage_worker.started_by_adapter", "equals": false}, {"path": "openforage_worker.stop", "equals": "unknown"}],
+        "note": "The proof did not start or stop an OpenForage worker; worker stop behavior remains unknown."
+      },
+      {
+        "record_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668:separate-cli-invocation",
+        "capability": "separate-cli-invocation",
+        "status": "verified",
+        "mechanism": "harness-cli",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-codex-1.json",
+        "test_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668",
+        "tested_at": "2026-09-24",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "Codex CLI exec/resume with detached external background-agent controller", "os": "linux", "profile": "isolated", "lifecycle": "fresh parent exited before distinct child bootstrap; launcher returned after ownership acknowledgement", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [
+          {"path": "parent_exited_before_child_start", "equals": true},
+          {"path": "parent.exit_code", "equals": 0},
+          {"path": "child.distinct_from_parent", "equals": true},
+          {"path": "launcher.child_session_recorded", "equals": true},
+          {"path": "conformance.edges.fresh_cli_and_distinct_session.status", "equals": "passed"}
+        ],
+        "observed_result": "passed: the fresh parent exited before a distinct Codex child bootstrap, and the detached controller recorded the child's session and ownership acknowledgement."
+      },
+      {
+        "record_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668:distinct-session-identity",
+        "capability": "distinct-session-identity",
+        "status": "verified",
+        "mechanism": "harness-cli",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-codex-1.json",
+        "test_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668",
+        "tested_at": "2026-09-24",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "Codex CLI exec/resume with detached external background-agent controller", "os": "linux", "profile": "isolated", "lifecycle": "fresh child CLI identity distinct from the parent; later turns retain the child's exact identity", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [
+          {"path": "child.distinct_from_parent", "equals": true},
+          {"path": "external_recurrence.child_session_distinct_from_parent", "equals": true},
+          {"path": "conformance.edges.fresh_cli_and_distinct_session.status", "equals": "passed"}
+        ],
+        "observed_result": "passed: the recorded Codex child thread differs from the fresh parent thread."
+      },
+      {
+        "record_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668:parent-independence",
+        "capability": "parent-independence",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-codex-1.json",
+        "test_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668",
+        "tested_at": "2026-09-24",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "Codex CLI exec/resume with detached external background-agent controller", "os": "linux", "profile": "isolated", "lifecycle": "parent exited before child start; detached controller remained after launcher return and acknowledged child ownership", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [
+          {"path": "parent_exited_before_child_start", "equals": true},
+          {"path": "launcher.detached_controller_alive_after_launcher_exit", "equals": true},
+          {"path": "launcher.returned_after_ownership_ack", "equals": true},
+          {"path": "child.ownership_acknowledgement", "equals": "observed"},
+          {"path": "conformance.edges.parent_independence.status", "equals": "passed"}
+        ],
+        "observed_result": "passed: the Codex parent exited before child bootstrap; the detached controller remained after launcher return and recorded ownership acknowledgement."
+      },
+      {
+        "record_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668:resume",
+        "capability": "resume",
+        "status": "verified",
+        "mechanism": "harness-cli",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-codex-1.json",
+        "test_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668",
+        "tested_at": "2026-09-24",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "Codex CLI exec resume to a recorded child thread under external controller delivery", "os": "linux", "profile": "isolated", "lifecycle": "two external due-time continuations and history continuation target the exact child; no native scheduler claim", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [
+          {"path": "resume.exact_recorded_child_target", "equals": true},
+          {"path": "resume.history_marker_match", "equals": true},
+          {"path": "resume.same_child_session_fingerprint", "equals_path": "child.session_fingerprint"},
+          {"path": "continuation.same_child_session", "equals": true},
+          {"path": "conformance.edges.exact_child_continuation.status", "equals": "passed"}
+        ],
+        "observed_result": "passed: Codex continuation and history recall used the exact recorded child thread."
+      },
+      {
+        "record_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668:scheduler-wakeup-and-consumption",
+        "capability": "scheduler-wakeup-and-consumption",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-codex-1.json",
+        "test_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668",
+        "tested_at": "2026-09-24",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "detached external background-agent controller delivering Codex CLI continuations", "os": "linux", "profile": "isolated", "lifecycle": "two external due-time child continuations acknowledged; paused/stopped windows suppressed later dispatch", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [
+          {"path": "external_recurrence.mode", "equals": "explicit_external_interval_delivery"},
+          {"path": "external_recurrence.acknowledged_due_continuations", "length_at_least": 2},
+          {"path": "external_recurrence.acknowledged_due_continuations", "all_items_match": {"acknowledged": true, "delivery": "external_due_time", "native_session_match": true, "same_child_session": true}},
+          {"path": "external_recurrence.paused_window_prevented_new_dispatch", "equals": true},
+          {"path": "external_recurrence.stopped_window_prevented_new_dispatch", "equals": true},
+          {"path": "conformance.edges.external_due_delivery.status", "equals": "passed"},
+          {"path": "conformance.scope.external_due_delivery_is_native_scheduler", "equals": false}
+        ],
+        "observed_result": "passed: two external due-time turns were acknowledged by the same exact Codex child; this is not a native scheduler observation."
+      },
+      {
+        "record_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668:pause",
+        "capability": "pause",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-codex-1.json",
+        "test_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668",
+        "tested_at": "2026-09-24",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "detached external background-agent controller process-group pause; Codex remains a separately managed CLI child", "os": "linux", "profile": "isolated", "lifecycle": "active controller pause terminated the bounded turn process group; paused due window dispatched nothing; application-worker checkpoint unknown", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [
+          {"path": "active_pause.status", "equals": "paused"},
+          {"path": "active_pause.process_group_status_after_pause", "equals": "gone"},
+          {"path": "active_pause.application_worker_checkpoint", "equals": "unknown"},
+          {"path": "external_recurrence.paused_window_prevented_new_dispatch", "equals": true},
+          {"path": "conformance.edges.pause_drain_reconcile.status", "equals": "passed"}
+        ],
+        "observed_result": "passed: external controller pause and paused-window dispatch suppression were observed for this bounded process group; OpenForage worker checkpoint state remains unknown."
+      },
+      {
+        "record_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668:stop",
+        "capability": "stop",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-codex-1.json",
+        "test_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668",
+        "tested_at": "2026-09-24",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "detached external background-agent controller process-group stop; Codex remains a separately managed CLI child", "os": "linux", "profile": "isolated", "lifecycle": "active controller stop reached terminal state; stopped due window dispatched nothing; application-worker stop unknown", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [
+          {"path": "active_stop.terminal_status", "equals": "stopped"},
+          {"path": "active_stop.process_group_status_after_stop", "equals": "gone"},
+          {"path": "active_stop.application_worker_stop", "equals": "unknown"},
+          {"path": "external_recurrence.stopped_window_prevented_new_dispatch", "equals": true},
+          {"path": "conformance.edges.terminal_stop_no_relaunch.status", "equals": "passed"},
+          {"path": "cleanup.isolated_workspace_removed", "equals": true},
+          {"path": "cleanup.runs.background-proof-107b6cda4ce14eccba25fabc9fbe7668.all_owned_process_groups_proven_gone", "equals": true},
+          {"path": "cleanup.runs.background-proof-107b6cda4ce14eccba25fabc9fbe7668-recurrence.all_owned_process_groups_proven_gone", "equals": true}
+        ],
+        "observed_result": "passed: external controller stop reached terminal state and suppressed later due dispatch; OpenForage worker stop state remains unknown."
+      },
+      {
+        "record_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668:crash-recovery",
+        "capability": "crash-recovery",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-codex-1.json",
+        "test_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668",
+        "tested_at": "2026-09-24",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "Codex detached external background-agent controller recovery", "os": "linux", "profile": "isolated", "lifecycle": "stale external controller was replaced with a new generation/fence without overlapping the exact child", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [
+          {"path": "controller_crash.classification_after_kill", "equals": "stale_controller"},
+          {"path": "recovery.controller_generation_advanced", "equals": true},
+          {"path": "recovery.fence_advanced", "equals": true},
+          {"path": "recovery.no_overlapping_child", "equals": true},
+          {"path": "recovery.same_child_session", "equals": true},
+          {"path": "conformance.edges.controller_crash_recovery.status", "equals": "passed"}
+        ],
+        "observed_result": "passed: stale external controller recovery advanced generation and fence without overlapping the same Codex child thread."
+      },
+      {
+        "record_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668:exact-target-control",
+        "capability": "exact-target-control",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-codex-1.json",
+        "test_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668",
+        "tested_at": "2026-09-24",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "detached external background-agent controller targeting exact Codex child thread", "os": "linux", "profile": "isolated", "lifecycle": "mismatched target refused and continuation kept exact recorded child identity", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [
+          {"path": "active_pause.mismatched_target_refused", "equals": true},
+          {"path": "resume.exact_recorded_child_target", "equals": true},
+          {"path": "conformance.edges.exact_child_continuation.status", "equals": "passed"}
+        ],
+        "observed_result": "passed: a mismatched target was refused and continuation selected the exact recorded Codex child thread."
+      },
+      {
+        "record_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668:terminal-triggers-stopped",
+        "capability": "terminal-triggers-stopped",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-codex-1.json",
+        "test_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668",
+        "tested_at": "2026-09-24",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "Codex detached external background-agent controller due-time delivery", "os": "linux", "profile": "isolated", "lifecycle": "terminal stop remained stopped through the bounded following due window", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [
+          {"path": "external_recurrence.terminal_status", "equals": "stopped"},
+          {"path": "external_recurrence.stopped_window_prevented_new_dispatch", "equals": true},
+          {"path": "terminal_stop.turn_resume_recover_refused", "equals": true},
+          {"path": "conformance.edges.terminal_stop_no_relaunch.status", "equals": "passed"}
+        ],
+        "observed_result": "passed: the terminal external-controller stop suppressed due-time dispatches for the bounded following window."
+      },
+      {
+        "record_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668:duplicate-start-control",
+        "capability": "duplicate-start-control",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-codex-1.json",
+        "test_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668",
+        "tested_at": "2026-09-24",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "detached external background-agent controller canonical-workspace owner guard for Codex", "os": "linux", "profile": "isolated", "lifecycle": "second owner of the canonical workspace was refused before child launch; original owner remained unchanged", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [
+          {"path": "duplicate_owner.refused", "equals": true},
+          {"path": "duplicate_owner.same_canonical_workspace", "equals": true},
+          {"path": "duplicate_owner.no_child_started", "equals": true},
+          {"path": "duplicate_owner.original_owner_unchanged", "equals": true},
+          {"path": "conformance.edges.duplicate_owner_exclusion.status", "equals": "passed"}
+        ],
+        "observed_result": "passed: a second Codex controller owner for the canonical workspace was refused before child launch; the original owner remained unchanged."
+      },
+      {
+        "record_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668:native-goal-operation",
+        "capability": "native-goal-operation",
+        "status": "unverified",
+        "mechanism": "native-tool",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-codex-1.json",
+        "test_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668",
+        "tested_at": "2026-09-24",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "Codex native tool events", "os": "linux", "profile": "isolated", "lifecycle": "no goal operation recorded", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [{"path": "native_primitive_observations.operations.goal_declaration.outcome", "equals": "unknown"}],
+        "note": "No goal declaration operation with an explicit native outcome was observed; the goal primitive remains unknown."
+      },
+      {
+        "record_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668:native-task-tool-operation",
+        "capability": "native-task-tool-operation",
+        "status": "unverified",
+        "mechanism": "native-tool",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-codex-1.json",
+        "test_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668",
+        "tested_at": "2026-09-24",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "Codex native tool events", "os": "linux", "profile": "isolated", "lifecycle": "no successful typed task-list-write event recorded; task creation and durable reread remain unknown", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [{"path": "native_primitive_observations.operations.task_list_write.outcome", "equals": "unknown"}],
+        "note": "No successful typed task-list-write operation was observed; task creation and durable reread are separate outcomes and remain unknown."
+      },
+      {
+        "record_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668:native-task-store",
+        "capability": "native-task-store",
+        "status": "unverified",
+        "mechanism": "native-tool",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-codex-1.json",
+        "test_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668",
+        "tested_at": "2026-09-24",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "Codex native task operation events", "os": "linux", "profile": "isolated", "lifecycle": "no correlated durable task reread operation recorded; task creation is a separate outcome", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [
+          {"path": "native_primitive_observations.operations.task_creation.outcome", "equals": "unknown"},
+          {"path": "native_primitive_observations.operations.task_durable_reread.outcome", "equals": "unknown"},
+          {"path": "native_primitive_observations.operations.task_state_update.outcome", "equals": "unknown"}
+        ],
+        "note": "Task creation, task-state update, and correlated durable task reread were not observed; a task-list tool declaration or external task file does not establish a native task store."
+      },
+      {
+        "record_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668:native-memory-operation",
+        "capability": "native-memory-operation",
+        "status": "unverified",
+        "mechanism": "native-tool",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-codex-1.json",
+        "test_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668",
+        "tested_at": "2026-09-24",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "Codex native tool events", "os": "linux", "profile": "isolated", "lifecycle": "no memory operation recorded; thread history is not global memory", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [
+          {"path": "native_primitive_observations.operations.memory_write.outcome", "equals": "unknown"},
+          {"path": "native_primitive_observations.operations.memory_durable_reread.outcome", "equals": "unknown"}
+        ],
+        "note": "No native memory write or durable reread outcome was observed; exact-thread history recall is not global memory."
+      },
+      {
+        "record_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668:native-scheduler",
+        "capability": "native-scheduler",
+        "status": "unverified",
+        "mechanism": "native-scheduler",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-codex-1.json",
+        "test_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668",
+        "tested_at": "2026-09-24",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "Codex CLI scheduling", "os": "linux", "profile": "isolated", "lifecycle": "native scheduler unknown; due-time delivery belonged to the external controller", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [
+          {"path": "native_primitive_observations.operations.native_scheduler_creation.outcome", "equals": "unknown"},
+          {"path": "native_primitive_observations.operations.native_scheduler_delivery.outcome", "equals": "unknown"}
+        ],
+        "note": "The two due-time acknowledgements belonged to the external controller; native scheduler creation and delivery remain unknown."
+      },
+      {
+        "record_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668:openforage-worker-checkpoint",
+        "capability": "openforage-worker-checkpoint",
+        "status": "unverified",
+        "mechanism": "openforage-worker",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-codex-1.json",
+        "test_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668",
+        "tested_at": "2026-09-24",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "Codex proof scope: OpenForage worker state", "os": "linux", "profile": "isolated", "lifecycle": "worker not started by adapter; checkpoint state unknown", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [{"path": "openforage_worker.started_by_adapter", "equals": false}, {"path": "openforage_worker.checkpoint", "equals": "unknown"}],
+        "note": "The proof did not start an OpenForage worker; checkpoint behavior remains unknown."
+      },
+      {
+        "record_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668:openforage-worker-stop",
+        "capability": "openforage-worker-stop",
+        "status": "unverified",
+        "mechanism": "openforage-worker",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-codex-1.json",
+        "test_id": "background-proof-107b6cda4ce14eccba25fabc9fbe7668",
+        "tested_at": "2026-09-24",
+        "product_version": "codex-cli 0.156.1",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "Codex proof scope: OpenForage worker state", "os": "linux", "profile": "isolated", "lifecycle": "worker not started by adapter; stop state unknown", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [{"path": "openforage_worker.started_by_adapter", "equals": false}, {"path": "openforage_worker.stop", "equals": "unknown"}],
+        "note": "The proof did not start or stop an OpenForage worker; worker stop behavior remains unknown."
+      }
+    ],
+    "route": "references/codex.md"
+  },
+  {
+    "product": "Oh My Pi",
+    "identity": "Interactive session with saved transcripts, plus ephemeral --no-session runs; RPC and ACP entries hand the session to another process over stdio.",
+    "surface": "omp CLI/TUI, one-shot omp -p / --print, ephemeral --no-session, omp --mode rpc, and omp acp.",
+    "status": "documented-unverified",
+    "verified_on": null,
+    "sources": [
+      "https://github.com/can1357/oh-my-pi"
+    ],
+    "native_controls": [
+      "Interactive TUI (default omp surface)",
+      "One-shot omp -p / --print",
+      "Ephemeral --no-session runs",
+      "RPC over stdio with omp --mode rpc",
+      "ACP entry (omp acp) and in-session task/hub subagent supervision"
+    ],
+    "separate_session_evidence": "Upstream README documents four entry points (interactive, one-shot, RPC, and ACP) and an ephemeral --no-session mode; omp -p answers a single prompt and exits. The reviewed upstream source does not document a spawn/pause/resume/stop contract for a separate long-running CLI child.",
+    "scheduler_evidence": "Not documented in the reviewed upstream README.",
+    "lifecycle_evidence": "Not documented in the reviewed upstream README. The in-session task/hub tools supervise subagents, which are not a substitute for separate-process ownership evidence.",
+    "capability_records": [],
+    "route": "references/oh-my-pi.md"
+  },
+  {
+    "product": "OpenCode",
+    "identity": "Session IDs. --session continues a specific session; --fork forks a session when continuing.",
+    "surface": "OpenCode CLI: opencode run, opencode serve (headless HTTP/API), opencode session list/delete, opencode export/import, opencode acp.",
+    "status": "documented-unverified",
+    "verified_on": null,
+    "sources": [
+      "https://opencode.ai/docs/cli/"
+    ],
+    "native_controls": [
+      "opencode run non-interactive with --continue, --session, and --fork",
+      "opencode serve headless server with an HTTP API",
+      "opencode session list and opencode session delete",
+      "opencode export and opencode import for session data",
+      "opencode acp (Agent Client Protocol over stdin/stdout)",
+      "OPENCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS (experimental, off by default)"
+    ],
+    "separate_session_evidence": "Docs: --continue continues the last session, --session <id> continues a specific session ID, and --fork forks the session when continuing; opencode session list enumerates sessions and supports JSON output. The experimental background-subagent flag is not evidence of a separate CLI process and must not be treated as one. Scoped observations in the earlier native marker run and the separate isolated-profile controller proof recorded a fresh parent exiting before a distinct child, followed by continuation to the exact recorded child session; see the individual capability_records and evidence artifacts.",
+    "scheduler_evidence": "Not documented in the official CLI reference; opencode serve is a server surface, not a scheduler. The earlier external example bridge dispatched one due marker; the separate isolated-profile external background-controller proof recorded two acknowledged external due-time turns. Neither mechanism was a native OpenCode scheduler; see capability_records and the retained proof artifact.",
+    "lifecycle_evidence": "Docs: opencode session delete <sessionID> removes a session. No native per-child scheduler or lifecycle contract for a separate CLI process is documented in the reviewed source. The earlier bridge controlled queued dispatch; a separate isolated-profile proof observed bounded external-controller process-group pause/stop, exact-target refusal, reconciliation, stale-controller recovery, terminal stop, and cleanup. These controller edges do not establish native OpenCode active-process controls or OpenForage worker checkpoint/stop semantics.",
+    "evidence_contracts": [
+      {
+        "contract_id": "opencode.background-agent-proof.v1",
+        "evidence_class": "bounded-native-background-agent-proof",
+        "schema_version": 1,
+        "product_identity": "OpenCode",
+        "adapter_identity": "opencode"
+      },
+      {
+        "contract_id": "opencode.background-agent-proof.v2",
+        "evidence_class": "bounded-native-background-agent-proof",
+        "schema_version": 2,
+        "product_identity": "OpenCode",
+        "adapter_identity": "opencode"
+      }
+    ],
+    "capability_records": [
+      {
+        "capability": "distinct-session-identity",
+        "status": "verified",
+        "mechanism": "harness-cli",
+        "probe": "opencode-native-marker-20260922",
+        "evidence_artifact": "src/openforage/skills/agent_runtime_integration/references/evidence/opencode-native-marker-20260922.json",
+        "test_id": "fixture-20260922T173829Z-242424",
+        "tested_at": "2026-09-22",
+        "product_version": "1.18.31",
+        "scope": {"surface": "CLI (opencode run) + external bridge (examples/opencode-lifecycle)", "os": "linux", "lifecycle": "bounded sequential marker fixture: fresh child, queued dispatch, pause, resume, stop"},
+        "observed_result": "passed: parent session ses_f35cd6001ffejoRHS8G1NrOQ1S and child session ses_f35cd4f73ffecQ16IvU2M0tcW8 were distinct; the child was started fresh with no --continue and no session reuse"
+      },
+      {
+        "capability": "separate-cli-invocation",
+        "status": "verified",
+        "mechanism": "harness-cli",
+        "probe": "opencode-native-marker-20260922",
+        "evidence_artifact": "src/openforage/skills/agent_runtime_integration/references/evidence/opencode-native-marker-20260922.json",
+        "test_id": "fixture-20260922T173829Z-242424",
+        "tested_at": "2026-09-22",
+        "product_version": "1.18.31",
+        "scope": {"surface": "CLI (opencode run) + external bridge (examples/opencode-lifecycle)", "os": "linux", "lifecycle": "bounded sequential marker fixture: fresh child, queued dispatch, pause, resume, stop"},
+        "observed_result": "passed: the child was a separate `opencode run --format json` process with its own session identity and exit code 0, launched only after the parent exited"
+      },
+      {
+        "capability": "parent-independence",
+        "status": "verified",
+        "mechanism": "external-bridge",
+        "probe": "opencode-native-marker-20260922",
+        "evidence_artifact": "src/openforage/skills/agent_runtime_integration/references/evidence/opencode-native-marker-20260922.json",
+        "test_id": "fixture-20260922T173829Z-242424",
+        "tested_at": "2026-09-22",
+        "product_version": "1.18.31",
+        "scope": {"surface": "CLI (opencode run) + external bridge (examples/opencode-lifecycle)", "os": "linux", "lifecycle": "bounded sequential marker fixture: fresh child, queued dispatch, pause, resume, stop"},
+        "observed_result": "passed: sequential parent-exit-before-child-continuation only; the parent exited 0 before the child bootstrap and later dispatches kept the same child session identity. No reboot, hangup, or simultaneous-death survival is claimed"
+      },
+      {
+        "capability": "native-goal-task-memory",
+        "status": "unverified",
+        "note": "Only session-history recall was observed: both acknowledgements reported the one-time marker from the child's first prompt/history. The recorded native task/todo field is unknown; a single raw todowrite event found post-run is not reconciled, so no native goal/task/memory contract is claimed."
+      },
+      {
+        "capability": "shell-execution",
+        "status": "unverified",
+        "note": "No recorded shell command trace exists for the marker fixture; effects were validated by file contents, not by an observed command."
+      },
+      {
+        "capability": "workspace-read-write",
+        "status": "verified",
+        "mechanism": "external-bridge",
+        "probe": "opencode-native-marker-20260922",
+        "evidence_artifact": "src/openforage/skills/agent_runtime_integration/references/evidence/opencode-native-marker-20260922.json",
+        "test_id": "fixture-20260922T173829Z-242424",
+        "tested_at": "2026-09-22",
+        "product_version": "1.18.31",
+        "scope": {"surface": "CLI (opencode run) + external bridge (examples/opencode-lifecycle)", "os": "linux", "lifecycle": "bounded sequential marker fixture: fresh child, queued dispatch, pause, resume, stop"},
+        "observed_result": "passed: bounded workspace files only; the child's acknowledgement JSON and marker files were created with exactly the expected contents and were validated by the bridge"
+      },
+      {
+        "capability": "scheduler-wakeup-and-consumption",
+        "status": "verified",
+        "mechanism": "external-bridge",
+        "probe": "opencode-native-marker-20260922",
+        "evidence_artifact": "src/openforage/skills/agent_runtime_integration/references/evidence/opencode-native-marker-20260922.json",
+        "test_id": "fixture-20260922T173829Z-242424",
+        "tested_at": "2026-09-22",
+        "product_version": "1.18.31",
+        "scope": {"surface": "CLI (opencode run) + external bridge (examples/opencode-lifecycle)", "os": "linux", "lifecycle": "bounded sequential marker fixture: fresh child, queued dispatch, pause, resume, stop"},
+        "observed_result": "passed: the external bridge (not a native OpenCode scheduler) queued evt-001 with a real due time; one dispatch was consumed by the recorded child session and acknowledged with matching run id, event id, session id, fence, task-file hash, and action result"
+      },
+      {
+        "capability": "pause",
+        "status": "verified",
+        "mechanism": "external-bridge",
+        "probe": "opencode-native-marker-20260922",
+        "evidence_artifact": "src/openforage/skills/agent_runtime_integration/references/evidence/opencode-native-marker-20260922.json",
+        "test_id": "fixture-20260922T173829Z-242424",
+        "tested_at": "2026-09-22",
+        "product_version": "1.18.31",
+        "scope": {"surface": "CLI (opencode run) + external bridge (examples/opencode-lifecycle)", "os": "linux", "lifecycle": "bounded sequential marker fixture: fresh child, queued dispatch, pause, resume, stop"},
+        "observed_result": "passed: scoped to the external bridge's queued marker dispatch; a paused tick dispatched 0 while evt-001 stayed queued and no child invocation ran. This is not evidence that arbitrary active native OpenCode work can be paused"
+      },
+      {
+        "capability": "resume",
+        "status": "verified",
+        "mechanism": "external-bridge",
+        "probe": "opencode-native-marker-20260922",
+        "evidence_artifact": "src/openforage/skills/agent_runtime_integration/references/evidence/opencode-native-marker-20260922.json",
+        "test_id": "fixture-20260922T173829Z-242424",
+        "tested_at": "2026-09-22",
+        "product_version": "1.18.31",
+        "scope": {"surface": "CLI (opencode run) + external bridge (examples/opencode-lifecycle)", "os": "linux", "lifecycle": "bounded sequential marker fixture: fresh child, queued dispatch, pause, resume, stop"},
+        "observed_result": "passed: resume dispatched evt-002 to the exact recorded child session id with fence 4 and a matching acknowledgement; no new identity was created"
+      },
+      {
+        "capability": "stop",
+        "status": "verified",
+        "mechanism": "external-bridge",
+        "probe": "opencode-native-marker-20260922",
+        "evidence_artifact": "src/openforage/skills/agent_runtime_integration/references/evidence/opencode-native-marker-20260922.json",
+        "test_id": "fixture-20260922T173829Z-242424",
+        "tested_at": "2026-09-22",
+        "product_version": "1.18.31",
+        "scope": {"surface": "CLI (opencode run) + external bridge (examples/opencode-lifecycle)", "os": "linux", "lifecycle": "bounded sequential marker fixture: fresh child, queued dispatch, pause, resume, stop"},
+        "observed_result": "passed: scoped to the external bridge's queued marker dispatch; the stopped tick dispatched 0 and no further child dispatch ran. This is not evidence about arbitrary active native OpenCode work"
+      },
+      {
+        "capability": "crash-recovery",
+        "status": "unverified",
+        "note": "Only inert subprocess regressions cover crash/recovery; no native OpenCode crash was observed or reconciled."
+      },
+      {
+        "capability": "duplicate-start-control",
+        "status": "unverified",
+        "note": "Only inert regressions cover duplicate dispatch/init refusal; no native duplicate-start transition was observed."
+      },
+      {
+        "capability": "exact-target-control",
+        "status": "verified",
+        "mechanism": "external-bridge",
+        "probe": "opencode-native-marker-20260922",
+        "evidence_artifact": "src/openforage/skills/agent_runtime_integration/references/evidence/opencode-native-marker-20260922.json",
+        "test_id": "fixture-20260922T173829Z-242424",
+        "tested_at": "2026-09-22",
+        "product_version": "1.18.31",
+        "scope": {"surface": "CLI (opencode run) + external bridge (examples/opencode-lifecycle)", "os": "linux", "lifecycle": "bounded sequential marker fixture: fresh child, queued dispatch, pause, resume, stop"},
+        "observed_result": "passed: scoped to the bridge run id and recorded child session; acknowledgements matched run id, event id, session id, fence, and task-file hash, and no sibling target was dispatched"
+      },
+      {
+        "capability": "terminal-triggers-stopped",
+        "status": "verified",
+        "mechanism": "external-bridge",
+        "probe": "opencode-native-marker-20260922",
+        "evidence_artifact": "src/openforage/skills/agent_runtime_integration/references/evidence/opencode-native-marker-20260922.json",
+        "test_id": "fixture-20260922T173829Z-242424",
+        "tested_at": "2026-09-22",
+        "product_version": "1.18.31",
+        "scope": {"surface": "CLI (opencode run) + external bridge (examples/opencode-lifecycle)", "os": "linux", "lifecycle": "bounded sequential marker fixture: fresh child, queued dispatch, pause, resume, stop"},
+        "observed_result": "passed: after stop, the third queued event stayed cancelled, its marker stayed absent, and the dispatch count did not change in the bounded post-stop window"
+      },
+      {
+        "record_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe:separate-cli-invocation",
+        "capability": "separate-cli-invocation",
+        "status": "verified",
+        "mechanism": "harness-cli",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/opencode-proof.json",
+        "test_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe",
+        "tested_at": "2026-09-23",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {
+          "surface": "OpenCode CLI run/session with detached external background-agent controller",
+          "os": "linux",
+          "profile": "isolated",
+          "lifecycle": "fresh parent exited before distinct child bootstrap; launcher returned after ownership acknowledgement",
+          "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."
+        },
+        "assertions": [
+          {"path": "parent_exited_before_child_start", "equals": true},
+          {"path": "parent.exit_code", "equals": 0},
+          {"path": "child.distinct_from_parent", "equals": true},
+          {"path": "launcher.child_session_recorded", "equals": true}
+        ],
+        "observed_result": "passed: the fresh parent exited before a distinct child bootstrap, and the detached controller returned after recording the child's session and ownership acknowledgement."
+      },
+      {
+        "record_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe:distinct-session-identity",
+        "capability": "distinct-session-identity",
+        "status": "verified",
+        "mechanism": "harness-cli",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/opencode-proof.json",
+        "test_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe",
+        "tested_at": "2026-09-23",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {
+          "surface": "OpenCode CLI run/session with detached external background-agent controller",
+          "os": "linux",
+          "profile": "isolated",
+          "lifecycle": "fresh child CLI identity distinct from the parent; later turns retain the child's exact identity",
+          "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."
+        },
+        "assertions": [
+          {"path": "child.distinct_from_parent", "equals": true},
+          {"path": "external_recurrence.child_session_distinct_from_parent", "equals": true}
+        ],
+        "observed_result": "passed: the recorded OpenCode child session differs from the fresh parent session."
+      },
+      {
+        "record_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe:parent-independence",
+        "capability": "parent-independence",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/opencode-proof.json",
+        "test_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe",
+        "tested_at": "2026-09-23",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {
+          "surface": "OpenCode CLI run/session with detached external background-agent controller",
+          "os": "linux",
+          "profile": "isolated",
+          "lifecycle": "parent exited before child start; detached controller remained after launcher return and acknowledged child ownership",
+          "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."
+        },
+        "assertions": [
+          {"path": "parent_exited_before_child_start", "equals": true},
+          {"path": "launcher.detached_controller_alive_after_launcher_exit", "equals": true},
+          {"path": "launcher.returned_after_ownership_ack", "equals": true},
+          {"path": "child.ownership_acknowledgement", "equals": "observed"}
+        ],
+        "observed_result": "passed: the parent exited before the child bootstrap; after launcher return the detached controller remained alive and child ownership acknowledgement was recorded."
+      },
+      {
+        "record_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe:resume",
+        "capability": "resume",
+        "status": "verified",
+        "mechanism": "harness-cli",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/opencode-proof.json",
+        "test_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe",
+        "tested_at": "2026-09-23",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {
+          "surface": "OpenCode CLI run --session to a recorded child session under external controller delivery",
+          "os": "linux",
+          "profile": "isolated",
+          "lifecycle": "two external due-time continuations and history continuation target the exact child; no native scheduler claim",
+          "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."
+        },
+        "assertions": [
+          {"path": "resume.exact_recorded_child_target", "equals": true},
+          {"path": "resume.history_marker_match", "equals": true},
+          {"path": "resume.same_child_session_fingerprint", "equals_path": "child.session_fingerprint"},
+          {"path": "continuation.same_child_session", "equals": true}
+        ],
+        "observed_result": "passed: controller continuation and history recall used the exact recorded OpenCode child session."
+      },
+      {
+        "record_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe:scheduler-wakeup-and-consumption",
+        "capability": "scheduler-wakeup-and-consumption",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/opencode-proof.json",
+        "test_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe",
+        "tested_at": "2026-09-23",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {
+          "surface": "detached external background-agent controller delivering OpenCode CLI continuations",
+          "os": "linux",
+          "profile": "isolated",
+          "lifecycle": "two external due-time child continuations acknowledged; paused/stopped windows suppressed later dispatch",
+          "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."
+        },
+        "assertions": [
+          {"path": "external_recurrence.mode", "equals": "explicit_external_interval_delivery"},
+          {"path": "external_recurrence.acknowledged_due_continuations", "length_at_least": 2},
+          {"path": "external_recurrence.acknowledged_due_continuations", "all_items_match": {"acknowledged": true, "delivery": "external_due_time", "native_session_match": true, "same_child_session": true}},
+          {"path": "external_recurrence.paused_window_prevented_new_dispatch", "equals": true},
+          {"path": "external_recurrence.stopped_window_prevented_new_dispatch", "equals": true}
+        ],
+        "observed_result": "passed: two external due-time turns were acknowledged by the same exact OpenCode child; this is not a native scheduler observation."
+      },
+      {
+        "record_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe:pause",
+        "capability": "pause",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/opencode-proof.json",
+        "test_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe",
+        "tested_at": "2026-09-23",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {
+          "surface": "detached external background-agent controller process-group pause; OpenCode remains a separately managed CLI child",
+          "os": "linux",
+          "profile": "isolated",
+          "lifecycle": "active controller pause terminated the bounded turn process group; paused due window dispatched nothing; application-worker checkpoint unknown",
+          "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."
+        },
+        "assertions": [
+          {"path": "active_pause.status", "equals": "paused"},
+          {"path": "active_pause.process_group_status_after_pause", "equals": "gone"},
+          {"path": "active_pause.application_worker_checkpoint", "equals": "unknown"},
+          {"path": "external_recurrence.paused_window_prevented_new_dispatch", "equals": true}
+        ],
+        "observed_result": "passed: external controller pause and paused-window dispatch suppression were observed for this bounded process group; OpenForage worker checkpoint state remains unknown."
+      },
+      {
+        "record_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe:stop",
+        "capability": "stop",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/opencode-proof.json",
+        "test_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe",
+        "tested_at": "2026-09-23",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {
+          "surface": "detached external background-agent controller process-group stop; OpenCode remains a separately managed CLI child",
+          "os": "linux",
+          "profile": "isolated",
+          "lifecycle": "active controller stop reached terminal state; stopped due window dispatched nothing; application-worker stop unknown",
+          "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."
+        },
+        "assertions": [
+          {"path": "active_stop.terminal_status", "equals": "stopped"},
+          {"path": "active_stop.process_group_status_after_stop", "equals": "gone"},
+          {"path": "active_stop.application_worker_stop", "equals": "unknown"},
+          {"path": "external_recurrence.stopped_window_prevented_new_dispatch", "equals": true},
+          {"path": "cleanup.isolated_workspace_removed", "equals": true},
+          {"path": "cleanup.runs.background-proof-ad1a6d07359d4573bf5ab25628d184fe.all_owned_process_groups_proven_gone", "equals": true},
+          {"path": "cleanup.runs.background-proof-ad1a6d07359d4573bf5ab25628d184fe-recurrence.all_owned_process_groups_proven_gone", "equals": true}
+        ],
+        "observed_result": "passed: external controller stop reached terminal state and suppressed later due dispatch; OpenForage worker stop state remains unknown."
+      },
+      {
+        "record_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe:crash-recovery",
+        "capability": "crash-recovery",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/opencode-proof.json",
+        "test_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe",
+        "tested_at": "2026-09-23",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {
+          "surface": "OpenCode detached external background-agent controller recovery",
+          "os": "linux",
+          "profile": "isolated",
+          "lifecycle": "stale external controller was replaced with a new generation/fence without overlapping the exact child",
+          "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."
+        },
+        "assertions": [
+          {"path": "controller_crash.classification_after_kill", "equals": "stale_controller"},
+          {"path": "recovery.controller_generation_advanced", "equals": true},
+          {"path": "recovery.fence_advanced", "equals": true},
+          {"path": "recovery.no_overlapping_child", "equals": true},
+          {"path": "recovery.same_child_session", "equals": true}
+        ],
+        "observed_result": "passed: stale external controller recovery advanced generation and fence without overlapping the same OpenCode child session."
+      },
+      {
+        "record_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe:exact-target-control",
+        "capability": "exact-target-control",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/opencode-proof.json",
+        "test_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe",
+        "tested_at": "2026-09-23",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {
+          "surface": "detached external background-agent controller targeting exact OpenCode child session",
+          "os": "linux",
+          "profile": "isolated",
+          "lifecycle": "mismatched target refused and continuation kept exact recorded child identity",
+          "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."
+        },
+        "assertions": [
+          {"path": "active_pause.mismatched_target_refused", "equals": true},
+          {"path": "resume.exact_recorded_child_target", "equals": true}
+        ],
+        "observed_result": "passed: a mismatched target was refused and continuation selected the exact recorded child session."
+      },
+      {
+        "record_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe:terminal-triggers-stopped",
+        "capability": "terminal-triggers-stopped",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/opencode-proof.json",
+        "test_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe",
+        "tested_at": "2026-09-23",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {
+          "surface": "OpenCode detached external background-agent controller due-time delivery",
+          "os": "linux",
+          "profile": "isolated",
+          "lifecycle": "terminal stop remained stopped through the bounded following due window",
+          "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."
+        },
+        "assertions": [
+          {"path": "external_recurrence.terminal_status", "equals": "stopped"},
+          {"path": "external_recurrence.stopped_window_prevented_new_dispatch", "equals": true},
+          {"path": "terminal_stop.turn_resume_recover_refused", "equals": true}
+        ],
+        "observed_result": "passed: the terminal external-controller stop suppressed due-time dispatches for the bounded following window."
+      },
+      {
+        "record_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe:native-task-tool-operation",
+        "capability": "native-task-tool-operation",
+        "status": "verified",
+        "mechanism": "native-tool",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/opencode-proof.json",
+        "test_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe",
+        "tested_at": "2026-09-23",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {
+          "surface": "OpenCode native todowrite tool event",
+          "os": "linux",
+          "profile": "isolated",
+          "lifecycle": "successful todowrite events recorded in child turns; does not establish native goals or global memory",
+          "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."
+        },
+        "assertions": [
+          {"path": "native_goal_task_memory.task.status", "equals": "observed_success"},
+          {"path": "native_goal_task_memory.task.tools", "contains": {"tool": "todowrite", "status": "completed"}}
+        ],
+        "observed_result": "passed: completed native todowrite tool events were observed in the child trace; this does not establish native goals or global memory."
+      },
+      {
+        "record_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe:native-goal-operation",
+        "capability": "native-goal-operation",
+        "status": "unverified",
+        "mechanism": "native-tool",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/opencode-proof.json",
+        "test_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe",
+        "tested_at": "2026-09-23",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "OpenCode native tool events", "os": "linux", "profile": "isolated", "lifecycle": "no goal operation recorded", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [{"path": "native_goal_task_memory.goal.status", "equals": "unknown"}],
+        "note": "No successful or failed native goal operation was observed; unknown remains unknown."
+      },
+      {
+        "record_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe:native-memory-operation",
+        "capability": "native-memory-operation",
+        "status": "unverified",
+        "mechanism": "native-tool",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/opencode-proof.json",
+        "test_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe",
+        "tested_at": "2026-09-23",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "OpenCode native tool events", "os": "linux", "profile": "isolated", "lifecycle": "no global memory operation recorded; thread history is not global memory", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [{"path": "native_goal_task_memory.memory.status", "equals": "unknown"}],
+        "note": "No successful native memory operation was observed; exact-child history recall is not global memory."
+      },
+      {
+        "record_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe:native-scheduler",
+        "capability": "native-scheduler",
+        "status": "unverified",
+        "mechanism": "native-scheduler",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/opencode-proof.json",
+        "test_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe",
+        "tested_at": "2026-09-23",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "OpenCode CLI scheduling", "os": "linux", "profile": "isolated", "lifecycle": "native scheduler unknown; due-time delivery belonged to the external controller", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [{"path": "native_scheduler", "equals": "unknown; the controller supports manual delivery or one explicit external interval owner"}],
+        "note": "The observed interval owner was external; native scheduler state remains unknown."
+      },
+      {
+        "record_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe:openforage-worker-checkpoint",
+        "capability": "openforage-worker-checkpoint",
+        "status": "unverified",
+        "mechanism": "openforage-worker",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/opencode-proof.json",
+        "test_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe",
+        "tested_at": "2026-09-23",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "OpenCode proof scope: OpenForage worker state", "os": "linux", "profile": "isolated", "lifecycle": "worker not started by adapter; checkpoint state unknown", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [{"path": "openforage_worker.started_by_adapter", "equals": false}, {"path": "openforage_worker.checkpoint", "equals": "unknown"}],
+        "note": "The proof did not start an OpenForage worker; checkpoint behavior remains unknown."
+      },
+      {
+        "record_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe:openforage-worker-stop",
+        "capability": "openforage-worker-stop",
+        "status": "unverified",
+        "mechanism": "openforage-worker",
+        "evidence_artifact": "examples/background-agent/native-contribution-wave-20260924/opencode-proof.json",
+        "test_id": "background-proof-ad1a6d07359d4573bf5ab25628d184fe",
+        "tested_at": "2026-09-23",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "OpenCode proof scope: OpenForage worker state", "os": "linux", "profile": "isolated", "lifecycle": "worker not started by adapter; stop state unknown", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [{"path": "openforage_worker.started_by_adapter", "equals": false}, {"path": "openforage_worker.stop", "equals": "unknown"}],
+        "note": "The proof did not start or stop an OpenForage worker; worker stop behavior remains unknown."
+      },
+      {
+        "record_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c:separate-cli-invocation",
+        "capability": "separate-cli-invocation",
+        "status": "verified",
+        "mechanism": "harness-cli",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-opencode-2.json",
+        "test_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c",
+        "tested_at": "2026-09-24",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "OpenCode CLI run/session with detached external background-agent controller", "os": "linux", "profile": "isolated", "lifecycle": "fresh parent exited before distinct child bootstrap; launcher returned after ownership acknowledgement", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [
+          {"path": "parent_exited_before_child_start", "equals": true},
+          {"path": "parent.exit_code", "equals": 0},
+          {"path": "child.distinct_from_parent", "equals": true},
+          {"path": "launcher.child_session_recorded", "equals": true},
+          {"path": "conformance.edges.fresh_cli_and_distinct_session.status", "equals": "passed"}
+        ],
+        "observed_result": "passed: the fresh parent exited before a distinct OpenCode child bootstrap, and the detached controller recorded the child's session and ownership acknowledgement."
+      },
+      {
+        "record_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c:distinct-session-identity",
+        "capability": "distinct-session-identity",
+        "status": "verified",
+        "mechanism": "harness-cli",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-opencode-2.json",
+        "test_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c",
+        "tested_at": "2026-09-24",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "OpenCode CLI run/session with detached external background-agent controller", "os": "linux", "profile": "isolated", "lifecycle": "fresh child CLI identity distinct from the parent; later turns retain the child's exact identity", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [
+          {"path": "child.distinct_from_parent", "equals": true},
+          {"path": "external_recurrence.child_session_distinct_from_parent", "equals": true},
+          {"path": "conformance.edges.fresh_cli_and_distinct_session.status", "equals": "passed"}
+        ],
+        "observed_result": "passed: the recorded OpenCode child session differs from the fresh parent session."
+      },
+      {
+        "record_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c:parent-independence",
+        "capability": "parent-independence",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-opencode-2.json",
+        "test_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c",
+        "tested_at": "2026-09-24",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "OpenCode CLI run/session with detached external background-agent controller", "os": "linux", "profile": "isolated", "lifecycle": "parent exited before child start; detached controller remained after launcher return and acknowledged child ownership", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [
+          {"path": "parent_exited_before_child_start", "equals": true},
+          {"path": "launcher.detached_controller_alive_after_launcher_exit", "equals": true},
+          {"path": "launcher.returned_after_ownership_ack", "equals": true},
+          {"path": "child.ownership_acknowledgement", "equals": "observed"},
+          {"path": "conformance.edges.parent_independence.status", "equals": "passed"}
+        ],
+        "observed_result": "passed: the OpenCode parent exited before child bootstrap; the detached controller remained after launcher return and recorded ownership acknowledgement."
+      },
+      {
+        "record_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c:resume",
+        "capability": "resume",
+        "status": "verified",
+        "mechanism": "harness-cli",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-opencode-2.json",
+        "test_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c",
+        "tested_at": "2026-09-24",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "OpenCode CLI run --session to a recorded child session under external controller delivery", "os": "linux", "profile": "isolated", "lifecycle": "two external due-time continuations and history continuation target the exact child; no native scheduler claim", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [
+          {"path": "resume.exact_recorded_child_target", "equals": true},
+          {"path": "resume.history_marker_match", "equals": true},
+          {"path": "resume.same_child_session_fingerprint", "equals_path": "child.session_fingerprint"},
+          {"path": "continuation.same_child_session", "equals": true},
+          {"path": "conformance.edges.exact_child_continuation.status", "equals": "passed"}
+        ],
+        "observed_result": "passed: OpenCode continuation and history recall used the exact recorded child session."
+      },
+      {
+        "record_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c:scheduler-wakeup-and-consumption",
+        "capability": "scheduler-wakeup-and-consumption",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-opencode-2.json",
+        "test_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c",
+        "tested_at": "2026-09-24",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "detached external background-agent controller delivering OpenCode CLI continuations", "os": "linux", "profile": "isolated", "lifecycle": "two external due-time child continuations acknowledged; paused/stopped windows suppressed later dispatch", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [
+          {"path": "external_recurrence.mode", "equals": "explicit_external_interval_delivery"},
+          {"path": "external_recurrence.acknowledged_due_continuations", "length_at_least": 2},
+          {"path": "external_recurrence.acknowledged_due_continuations", "all_items_match": {"acknowledged": true, "delivery": "external_due_time", "native_session_match": true, "same_child_session": true}},
+          {"path": "external_recurrence.paused_window_prevented_new_dispatch", "equals": true},
+          {"path": "external_recurrence.stopped_window_prevented_new_dispatch", "equals": true},
+          {"path": "conformance.edges.external_due_delivery.status", "equals": "passed"},
+          {"path": "conformance.scope.external_due_delivery_is_native_scheduler", "equals": false}
+        ],
+        "observed_result": "passed: two external due-time turns were acknowledged by the same exact OpenCode child; this is not a native scheduler observation."
+      },
+      {
+        "record_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c:pause",
+        "capability": "pause",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-opencode-2.json",
+        "test_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c",
+        "tested_at": "2026-09-24",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "detached external background-agent controller process-group pause; OpenCode remains a separately managed CLI child", "os": "linux", "profile": "isolated", "lifecycle": "active controller pause terminated the bounded turn process group; paused due window dispatched nothing; application-worker checkpoint unknown", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [
+          {"path": "active_pause.status", "equals": "paused"},
+          {"path": "active_pause.process_group_status_after_pause", "equals": "gone"},
+          {"path": "active_pause.application_worker_checkpoint", "equals": "unknown"},
+          {"path": "external_recurrence.paused_window_prevented_new_dispatch", "equals": true},
+          {"path": "conformance.edges.pause_drain_reconcile.status", "equals": "passed"}
+        ],
+        "observed_result": "passed: external controller pause and paused-window dispatch suppression were observed for this bounded process group; OpenForage worker checkpoint state remains unknown."
+      },
+      {
+        "record_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c:stop",
+        "capability": "stop",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-opencode-2.json",
+        "test_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c",
+        "tested_at": "2026-09-24",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "detached external background-agent controller process-group stop; OpenCode remains a separately managed CLI child", "os": "linux", "profile": "isolated", "lifecycle": "active controller stop reached terminal state; stopped due window dispatched nothing; application-worker stop unknown", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [
+          {"path": "active_stop.terminal_status", "equals": "stopped"},
+          {"path": "active_stop.process_group_status_after_stop", "equals": "gone"},
+          {"path": "active_stop.application_worker_stop", "equals": "unknown"},
+          {"path": "external_recurrence.stopped_window_prevented_new_dispatch", "equals": true},
+          {"path": "conformance.edges.terminal_stop_no_relaunch.status", "equals": "passed"},
+          {"path": "cleanup.isolated_workspace_removed", "equals": true},
+          {"path": "cleanup.runs.background-proof-7d11dbf185bb47e0b97e13265ba3612c.all_owned_process_groups_proven_gone", "equals": true},
+          {"path": "cleanup.runs.background-proof-7d11dbf185bb47e0b97e13265ba3612c-recurrence.all_owned_process_groups_proven_gone", "equals": true}
+        ],
+        "observed_result": "passed: external controller stop reached terminal state and suppressed later due dispatch; OpenForage worker stop state remains unknown."
+      },
+      {
+        "record_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c:crash-recovery",
+        "capability": "crash-recovery",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-opencode-2.json",
+        "test_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c",
+        "tested_at": "2026-09-24",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "OpenCode detached external background-agent controller recovery", "os": "linux", "profile": "isolated", "lifecycle": "stale external controller was replaced with a new generation/fence without overlapping the exact child", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [
+          {"path": "controller_crash.classification_after_kill", "equals": "stale_controller"},
+          {"path": "recovery.controller_generation_advanced", "equals": true},
+          {"path": "recovery.fence_advanced", "equals": true},
+          {"path": "recovery.no_overlapping_child", "equals": true},
+          {"path": "recovery.same_child_session", "equals": true},
+          {"path": "conformance.edges.controller_crash_recovery.status", "equals": "passed"}
+        ],
+        "observed_result": "passed: stale external controller recovery advanced generation and fence without overlapping the same OpenCode child session."
+      },
+      {
+        "record_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c:exact-target-control",
+        "capability": "exact-target-control",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-opencode-2.json",
+        "test_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c",
+        "tested_at": "2026-09-24",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "detached external background-agent controller targeting exact OpenCode child session", "os": "linux", "profile": "isolated", "lifecycle": "mismatched target refused and continuation kept exact recorded child identity", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [
+          {"path": "active_pause.mismatched_target_refused", "equals": true},
+          {"path": "resume.exact_recorded_child_target", "equals": true},
+          {"path": "conformance.edges.exact_child_continuation.status", "equals": "passed"}
+        ],
+        "observed_result": "passed: a mismatched target was refused and continuation selected the exact recorded OpenCode child session."
+      },
+      {
+        "record_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c:terminal-triggers-stopped",
+        "capability": "terminal-triggers-stopped",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-opencode-2.json",
+        "test_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c",
+        "tested_at": "2026-09-24",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "OpenCode detached external background-agent controller due-time delivery", "os": "linux", "profile": "isolated", "lifecycle": "terminal stop remained stopped through the bounded following due window", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [
+          {"path": "external_recurrence.terminal_status", "equals": "stopped"},
+          {"path": "external_recurrence.stopped_window_prevented_new_dispatch", "equals": true},
+          {"path": "terminal_stop.turn_resume_recover_refused", "equals": true},
+          {"path": "conformance.edges.terminal_stop_no_relaunch.status", "equals": "passed"}
+        ],
+        "observed_result": "passed: the terminal external-controller stop suppressed due-time dispatches for the bounded following window."
+      },
+      {
+        "record_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c:duplicate-start-control",
+        "capability": "duplicate-start-control",
+        "status": "verified",
+        "mechanism": "external-background-controller",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-opencode-2.json",
+        "test_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c",
+        "tested_at": "2026-09-24",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "detached external background-agent controller canonical-workspace owner guard for OpenCode", "os": "linux", "profile": "isolated", "lifecycle": "second owner of the canonical workspace was refused before child launch; original owner remained unchanged", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [
+          {"path": "duplicate_owner.refused", "equals": true},
+          {"path": "duplicate_owner.same_canonical_workspace", "equals": true},
+          {"path": "duplicate_owner.no_child_started", "equals": true},
+          {"path": "duplicate_owner.original_owner_unchanged", "equals": true},
+          {"path": "conformance.edges.duplicate_owner_exclusion.status", "equals": "passed"}
+        ],
+        "observed_result": "passed: a second OpenCode controller owner for the canonical workspace was refused before child launch; the original owner remained unchanged."
+      },
+      {
+        "record_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c:native-goal-operation",
+        "capability": "native-goal-operation",
+        "status": "unverified",
+        "mechanism": "native-tool",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-opencode-2.json",
+        "test_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c",
+        "tested_at": "2026-09-24",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "OpenCode native tool events", "os": "linux", "profile": "isolated", "lifecycle": "no goal operation recorded", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [{"path": "native_primitive_observations.operations.goal_declaration.outcome", "equals": "unknown"}],
+        "note": "No goal declaration operation with an explicit native outcome was observed; the goal primitive remains unknown."
+      },
+      {
+        "record_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c:native-task-tool-operation",
+        "capability": "native-task-tool-operation",
+        "status": "unverified",
+        "mechanism": "native-tool",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-opencode-2.json",
+        "test_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c",
+        "tested_at": "2026-09-24",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "OpenCode native tool events", "os": "linux", "profile": "isolated", "lifecycle": "no successful typed task-list-write event recorded; task creation and durable reread remain unknown", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [{"path": "native_primitive_observations.operations.task_list_write.outcome", "equals": "unknown"}],
+        "note": "No successful typed task-list-write operation was observed; the earlier historical todowrite observation is a separate proof, and task creation and durable reread remain unknown here."
+      },
+      {
+        "record_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c:native-task-store",
+        "capability": "native-task-store",
+        "status": "unverified",
+        "mechanism": "native-tool",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-opencode-2.json",
+        "test_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c",
+        "tested_at": "2026-09-24",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "OpenCode native task operation events", "os": "linux", "profile": "isolated", "lifecycle": "no correlated durable task reread operation recorded; task creation is a separate outcome", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [
+          {"path": "native_primitive_observations.operations.task_creation.outcome", "equals": "unknown"},
+          {"path": "native_primitive_observations.operations.task_durable_reread.outcome", "equals": "unknown"},
+          {"path": "native_primitive_observations.operations.task_state_update.outcome", "equals": "unknown"}
+        ],
+        "note": "Task creation, task-state update, and correlated durable task reread were not observed; a task/todo event is not a durable native task store."
+      },
+      {
+        "record_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c:native-memory-operation",
+        "capability": "native-memory-operation",
+        "status": "unverified",
+        "mechanism": "native-tool",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-opencode-2.json",
+        "test_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c",
+        "tested_at": "2026-09-24",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "OpenCode native tool events", "os": "linux", "profile": "isolated", "lifecycle": "no memory operation recorded; thread history is not global memory", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [
+          {"path": "native_primitive_observations.operations.memory_write.outcome", "equals": "unknown"},
+          {"path": "native_primitive_observations.operations.memory_durable_reread.outcome", "equals": "unknown"}
+        ],
+        "note": "No native memory write or durable reread outcome was observed; exact-child history recall is not global memory."
+      },
+      {
+        "record_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c:native-scheduler",
+        "capability": "native-scheduler",
+        "status": "unverified",
+        "mechanism": "native-scheduler",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-opencode-2.json",
+        "test_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c",
+        "tested_at": "2026-09-24",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "OpenCode CLI scheduling", "os": "linux", "profile": "isolated", "lifecycle": "native scheduler unknown; due-time delivery belonged to the external controller", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [
+          {"path": "native_primitive_observations.operations.native_scheduler_creation.outcome", "equals": "unknown"},
+          {"path": "native_primitive_observations.operations.native_scheduler_delivery.outcome", "equals": "unknown"}
+        ],
+        "note": "The two due-time acknowledgements belonged to the external controller; native scheduler creation and delivery remain unknown."
+      },
+      {
+        "record_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c:openforage-worker-checkpoint",
+        "capability": "openforage-worker-checkpoint",
+        "status": "unverified",
+        "mechanism": "openforage-worker",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-opencode-2.json",
+        "test_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c",
+        "tested_at": "2026-09-24",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "OpenCode proof scope: OpenForage worker state", "os": "linux", "profile": "isolated", "lifecycle": "worker not started by adapter; checkpoint state unknown", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [{"path": "openforage_worker.started_by_adapter", "equals": false}, {"path": "openforage_worker.checkpoint", "equals": "unknown"}],
+        "note": "The proof did not start an OpenForage worker; checkpoint behavior remains unknown."
+      },
+      {
+        "record_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c:openforage-worker-stop",
+        "capability": "openforage-worker-stop",
+        "status": "unverified",
+        "mechanism": "openforage-worker",
+        "evidence_artifact": "examples/background-agent/contributor-reliability-wave-20260924/background-opencode-2.json",
+        "test_id": "background-proof-7d11dbf185bb47e0b97e13265ba3612c",
+        "tested_at": "2026-09-24",
+        "product_version": "1.18.31",
+        "probe": "bounded-native-background-agent-proof",
+        "scope": {"surface": "OpenCode proof scope: OpenForage worker state", "os": "linux", "profile": "isolated", "lifecycle": "worker not started by adapter; stop state unknown", "evidence_scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler delivery, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config."},
+        "assertions": [{"path": "openforage_worker.started_by_adapter", "equals": false}, {"path": "openforage_worker.stop", "equals": "unknown"}],
+        "note": "The proof did not start or stop an OpenForage worker; worker stop behavior remains unknown."
+      }
+    ],
+    "route": "references/opencode.md"
+  },
+  {
+    "product": "Hermes",
+    "identity": "Each cron job runs in a fresh isolated agent session started by the gateway scheduler.",
+    "surface": "Hermes gateway scheduler, the cronjob_manage tool, and the hermes cron CLI.",
+    "status": "documented-unverified",
+    "verified_on": null,
+    "sources": [
+      "https://hermes-agent.nousresearch.com/docs/user-guide/features/cron"
+    ],
+    "native_controls": [
+      "/cron add and cronjob_manage create",
+      "hermes cron create, edit, list, status, tick, runs, and doctor",
+      "hermes cron pause, resume, run, and remove",
+      "--workdir for project-scoped runs",
+      "--paused for a safe canary, plus global hermes pause / hermes resume",
+      "no-agent mode for script-only jobs"
+    ],
+    "separate_session_evidence": "Docs: the gateway scheduler starts a fresh AIAgent session for each due job and runs due jobs in isolated agent sessions; cron-run sessions cannot recursively create more cron jobs. This is explicit isolated-session evidence.",
+    "scheduler_evidence": "Docs: the gateway daemon ticks the scheduler every 60 seconds, hermes gateway install runs it as a service, and hermes cron status / doctor report ticker health and overdue runs.",
+    "lifecycle_evidence": "Docs: hermes cron pause, resume, run, and remove; jobs can be created --paused; hermes pause is a global emergency stop with hermes resume lifting it.",
+    "capability_records": [],
+    "route": "references/hermes.md"
+  },
+  {
+    "product": "Pi",
+    "identity": "Not verified. The supplied upstream URL did not resolve to the stated repository.",
+    "surface": "Unknown pending canonical-upstream verification.",
+    "status": "discovery-only",
+    "verified_on": null,
+    "sources": [
+      "https://github.com/badlogic/pi-mono/tree/main/packages/coding-agent"
+    ],
+    "native_controls": [
+      "No adapter is registered; complete the discovery procedure in references/pi.md before recording any control."
+    ],
+    "separate_session_evidence": "Unverified: the exact supplied URL cannot be verified (GitHub resolves it to a different owner), so no primary-source facts are recorded here.",
+    "scheduler_evidence": "Unverified: no adapter or documented scheduler from a verifiable source.",
+    "lifecycle_evidence": "Unverified: no adapter or documented pause/resume/stop from a verifiable source.",
+    "capability_records": [],
+    "route": "references/pi.md"
+  },
+  {
+    "product": "OpenClaw",
+    "identity": "Session styles: main, isolated (fresh transcript and session id per run, dedicated cron:<jobId>), current (creation-bound conversation), and session:<id> (persistent named session).",
+    "surface": "openclaw automations / openclaw cron CLI, the Gateway scheduler, and payload kinds: system event, agent message, command, script.",
+    "status": "documented-unverified",
+    "verified_on": null,
+    "sources": [
+      "https://docs.openclaw.ai/automation/cron-jobs/payloads",
+      "https://github.com/openclaw/openclaw/blob/main/docs/cli/cron.md"
+    ],
+    "native_controls": [
+      "--session main, isolated, current, or session:<id>",
+      "Payloads: --system-event, --message, --command / --command-argv, --script",
+      "Schedules: --at, --every, --cron, --on-exit, --stream-command",
+      "enable, disable, remove, and manual run with --wait",
+      "Run history, failure alerts, and isolated-session cleanup"
+    ],
+    "separate_session_evidence": "Docs: --session isolated creates a fresh transcript and session id for each run in a dedicated cron:<jobId>; current binds to the active session at creation; session:<id> pins a persistent named session. Isolated runs reset ambient conversation context, which is explicit isolated-session evidence.",
+    "scheduler_evidence": "Docs: the Gateway scheduler supports five- or six-field cron expressions, intervals, one-shot runs, and event/stream triggers, with run history in the shared SQLite state database.",
+    "lifecycle_evidence": "Docs: openclaw automations enable / disable and remove; removal stops future runs and cleans up the reusable session; manual run supports --wait for a terminal status; failure incidents alert and recover.",
+    "capability_records": [],
+    "route": "references/openclaw.md"
+  },
+  {
+    "product": "Muse",
+    "identity": "Unresolved. Multiple unrelated products share this name; no approved primary source identifies the intended one.",
+    "surface": "Unknown; the discovery procedure in references/unsupported.md is required.",
+    "status": "unresolved",
+    "verified_on": null,
+    "sources": [],
+    "native_controls": [
+      "None recorded; unsupported facts must be reported rather than guessed."
+    ],
+    "separate_session_evidence": "Unresolved: no approved primary source.",
+    "scheduler_evidence": "Unresolved: no approved primary source.",
+    "lifecycle_evidence": "Unresolved: no approved primary source.",
+    "capability_records": [],
+    "route": "references/muse.md"
+  },
+  {
+    "product": "Grok Bot",
+    "identity": "Unresolved. The name is ambiguous and must not be treated as Grok Build.",
+    "surface": "Unknown; the discovery procedure in references/unsupported.md is required.",
+    "status": "unresolved",
+    "verified_on": null,
+    "sources": [
+      "https://docs.x.ai/build/overview"
+    ],
+    "native_controls": [
+      "None recorded. The reviewed official page documents Grok Build, a distinct coding agent; Grok Build is only an unresolved candidate and is not Grok Bot."
+    ],
+    "separate_session_evidence": "Unresolved: the approved source does not document Grok Bot.",
+    "scheduler_evidence": "Unresolved: the approved source does not document Grok Bot.",
+    "lifecycle_evidence": "Unresolved: the approved source does not document Grok Bot.",
+    "capability_records": [],
+    "route": "references/grok-bot.md"
+  },
+  {
+    "product": "Grok Build",
+    "identity": "Unresolved candidate; not Grok Bot. The official page documents a coding agent with a TUI, headless mode, and ACP, but no separate-session ownership contract.",
+    "surface": "Documented surfaces: interactive TUI (grok), headless grok -p, and ACP. No adapter is registered.",
+    "status": "unresolved",
+    "verified_on": null,
+    "sources": [
+      "https://docs.x.ai/build/overview"
+    ],
+    "native_controls": [
+      "None registered. Mentioned only as an unresolved candidate; do not conflate it with Grok Bot and do not guess spawn/pause/resume/stop commands."
+    ],
+    "separate_session_evidence": "Not established by the approved source: headless mode and ACP are documented, but a separate-child session identity and ownership contract are not.",
+    "scheduler_evidence": "Not documented in the approved source.",
+    "lifecycle_evidence": "Not documented in the approved source.",
+    "capability_records": [],
+    "route": "references/unsupported.md"
+  }
+]

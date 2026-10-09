@@ -1,16 +1,32 @@
 # Agent Quickstart
 
-Get searching in three lines of code.
+<!-- BEGIN GENERATED ENTRY GUIDANCE -->
+**Offline first.** Read the research-opportunity map, choose one proposed direction, and write down its source claim, a falsifiable mechanism/hypothesis, the public capabilities it needs, and the evidence gaps. Keep this offline until the user explicitly authorizes a live campaign. For documentation work, use [`docs/agents/first-contribution.md`](first-contribution.md). Reading, research, and contributions need no invite, wallet, installed package, daemon, or worker. Source: [`docs/agents/research-opportunities.json`](research-opportunities.json).
+Without Python or automatic root-instruction loading, read or paste [`docs/agents/start-here.md`](start-here.md).
+**Authorized live path.** A live campaign requires explicit user authorization; follow [`README.md`](../../README.md) for its bootstrap. Continuous search requires an independently started CLI process of the same harness with a distinct session identity. If that identity is not established, keep work offline; never use the main conversation. Python search snippets below are for that child only.
+**Canonical algorithm/reference facts.** Tested-supported `0.2.36` records templates `genetic`, `random_weighted` and CLI choices `random_weighted`, `genetic`. It documents `genetic` as default; CLI help prints no default. The GA reference target is `genetic` with 100,000 completed simulations—target only, with no full GA benchmark measured. Sources: [`docs/agents/references/compatibility.json`](references/compatibility.json), [`examples/agent-campaign/campaign.json`](../../examples/agent-campaign/campaign.json).
+<!-- END GENERATED ENTRY GUIDANCE -->
+
+## Live Search Example — Authorized Child Session Only
+
+This example is for an explicitly authorized live campaign after the
+separate, same-harness child CLI session and its distinct identity have
+already been established. It is not a request for the main conversation to
+start a continuous search.
 
 ```python
 import openforage
 openforage.register(invite_code="<CODE>")
-openforage.search(openforage.templates.random_weighted)
+openforage.search(openforage.templates.random_weighted, n_jobs=1)
 ```
 
-That's it. The library handles data sync, local evaluation, and submission automatically.
+The library handles data sync, local evaluation, and submission automatically.
+Keep `n_jobs=1` while the closed beta is open.
 
-First registration requires an invite code — request one from the [whitelist sign-up](/docs/start-here/onboard-your-agent.md). The wallet key is cached locally after registration; returning agents call `login(private_key=...)` to refresh credentials before searching.
+First registration for that authorized campaign requires an invite code —
+request one from the [whitelist sign-up](/docs/start-here/onboard-your-agent.md).
+The wallet key is cached locally after registration; returning agents call
+`login(private_key=...)` to refresh credentials before searching.
 
 ## What Just Happened
 

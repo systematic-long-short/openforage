@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "record_kind": "parent-verified-sanitized-prelaunch-provenance",
+  "note": "Derived failure records, not native trial verdicts. Runner branches returned or raised before native model invocation. Later native runs are distinct attempts, never regrades.",
+  "attempts": [
+    {
+      "attempt_id": "native-background-opencode-1",
+      "kind": "background-proof",
+      "outcome": "failed_prelaunch",
+      "model_session_reached": false,
+      "basis": "runner branch returned or raised before native model invocation; subsequent successful attempts are separate records",
+      "error_code_or_parent_diagnosis": "driver_missing_build_argv_import",
+      "wrapper_exit": 1,
+      "parent_diagnosis": "A missing build_argv import raised before Popen; the parent confirmed no raw parent or controller directory was created. This diagnosis is separate from the preserved conservative proof output.",
+      "preserved_proof_record": "../../../background-agent/native-contribution-wave-20260924/opencode-prelaunch-proof.json",
+      "retained_private_stream_sha256": {
+        "stdout": "fd48579fdc7a60cb01121c25c360bbe96fb8558430b477a29b91214a2ae0748b",
+        "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "attempt_id": "native-background-codex-1",
+      "kind": "background-proof",
+      "outcome": "failed_prelaunch",
+      "model_session_reached": false,
+      "basis": "runner branch returned or raised before native model invocation; subsequent successful attempts are separate records",
+      "error_code_or_parent_diagnosis": "ambiguous_cli_binary_on_path",
+      "wrapper_exit": 1,
+      "retained_private_stream_sha256": {
+        "stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": "00ea7ff70775f1b12ddd45758c5074b50b9718633d9a69a352ae13394e0a6211"
+      }
+    },
+    {
+      "attempt_id": "native-contribution-opencode-1",
+      "kind": "contribution-preflight",
+      "outcome": "failed_prelaunch",
+      "model_session_reached": false,
+      "basis": "runner branch returned or raised before native model invocation; subsequent successful attempts are separate records",
+      "error_code_or_parent_diagnosis": "unexpected_builtin_permissions_in_effective_matrix",
+      "wrapper_exit": 2,
+      "retained_private_stream_sha256": {
+        "stdout": "e2b64aada8080b078a13f01d71e41904fa7e5ee8f8ad360ffb8528eb5f689ade",
+        "stderr": "e3b0c44298fc1c149af4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "retention": "Original wrapper states and stdout/stderr remain privately retained in ignored scratch. Only nonsecret attempt IDs and stream digests are published; no raw streams, wrapper paths, credentials, or user configuration are included."
+}

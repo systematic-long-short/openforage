@@ -1,0 +1,45 @@
+{
+  "series_id": "first-finished-contribution-v2-series-1",
+  "cases": {
+    "first-finished-contribution-primary": {
+      "role": "primary",
+      "fixture": {
+        "path": "docs/agents/quickstart.md",
+        "find": "openforage.register(invite_code=\"<CODE>\")",
+        "replace": "openforage.register()  # fixture: stale bare register default"
+      },
+      "required_route_facts": {
+        "selected_task": "contribute",
+        "offline_contribution_access": "not_required",
+        "live_campaign_authorization": "explicit_user_authorization_required"
+      }
+    },
+    "first-finished-contribution-heldout": {
+      "role": "held-out",
+      "fixture": {
+        "path": "docs/agents/first-search.md",
+        "find": "See the generated algorithm facts above and\n[`compatibility.json`](references/compatibility.json).",
+        "replace": "See the generated algorithm facts above and\n[`compatibility.json`](references/missing-compatibility.json)."
+      },
+      "required_route_facts": {
+        "selected_task": "contribute",
+        "offline_contribution_access": "not_required",
+        "live_campaign_authorization": "explicit_user_authorization_required"
+      }
+    }
+  },
+  "grade_contract": {
+    "accepted_success_validation_modes": {
+      "first-finished-contribution-primary": ["truthfulness", "all"],
+      "first-finished-contribution-heldout": ["links", "all"]
+    },
+    "accepted_baseline_validation_modes": {
+      "first-finished-contribution-primary": ["truthfulness", "all"],
+      "first-finished-contribution-heldout": ["links", "all"]
+    },
+    "required_independent_final_modes": ["truthfulness", "links"],
+    "required_native_action_order": ["baseline_failure", "first_contribution_write", "final_success"],
+    "allowed_workspace_changes": ["seeded fixture documentation file", "trial-output/completion.json"],
+    "direct_suite_access": "forbidden; exact validator execution may inspect its own test sources"
+  }
+}

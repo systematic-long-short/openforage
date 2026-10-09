@@ -1,0 +1,368 @@
+{
+  "artifact_diff": [
+    {
+      "after_sha256": "1350e9e5438cc2a47dbac85acfb68528c77a5b89a6451c4120053a0284c3d379",
+      "before_sha256": "8aa6d00c03210614aa655f3bce19d7afc89ded1ddd1344e3f9dba45550b39d5a",
+      "change": "modified",
+      "path": "docs/agents/quickstart.md"
+    },
+    {
+      "after_sha256": "7e16f9bc3b880638f2ec95602e6bf21bcf6f2aa79dd33fa4ea45378d09a76186",
+      "before_sha256": null,
+      "change": "created",
+      "path": "trial-output/completion.json"
+    }
+  ],
+  "artifact_refs": {
+    "docs/agents/quickstart.md": "1350e9e5438cc2a47dbac85acfb68528c77a5b89a6451c4120053a0284c3d379",
+    "trial-output/completion.json": "7e16f9bc3b880638f2ec95602e6bf21bcf6f2aa79dd33fa4ea45378d09a76186"
+  },
+  "case_id": "first-finished-contribution-primary",
+  "diagnostics": [
+    {
+      "actionable": true,
+      "artifact_path": null,
+      "category": "protocol_violation",
+      "code": "protocol.requirement_unmet",
+      "missing_evidence": [
+        "ordered native reads of root entries, task selector/readable packet, and task-specific route",
+        "a uniquely identified causal native action with sequence and hashed identity"
+      ],
+      "native_action": null,
+      "next_step": "Repeat the relevant step in a fresh isolated workspace using the documented entry route and preserve the required native action order.",
+      "observed_evidence": [
+        "entrypoint-first contribution route evidence is incomplete: completed content read of AGENTS.md; completed content read of README.md; successful task selector or completed readable docs/agents/start-here.md after root reads; completed task-specific route read of docs/agents/first-contribution.md after the entry route"
+      ],
+      "severity": "error",
+      "summary": "entrypoint-first contribution route evidence is incomplete: completed content read of AGENTS.md; completed content read of README.md; successful task selector or completed readable docs/agents/start-here.md after root reads; completed task-specific route read of docs/agents/first-contribution.md after the entry route"
+    },
+    {
+      "actionable": true,
+      "artifact_path": "trial-output/completion.json",
+      "category": "protocol_violation",
+      "code": "protocol.requirement_unmet",
+      "missing_evidence": [
+        "the exact permitted action and event order required by the trial contract",
+        "a uniquely identified causal native action with sequence and hashed identity"
+      ],
+      "native_action": null,
+      "next_step": "Repeat the relevant step in a fresh isolated workspace using the documented entry route and preserve the required native action order.",
+      "observed_evidence": [
+        "authoritative_sources are not supported by completed native reads"
+      ],
+      "severity": "error",
+      "summary": "authoritative_sources are not supported by completed native reads"
+    },
+    {
+      "actionable": true,
+      "artifact_path": null,
+      "category": "protocol_violation",
+      "code": "protocol.requirement_unmet",
+      "missing_evidence": [
+        "ordered native reads of root entries, task selector/readable packet, and task-specific route",
+        "a uniquely identified causal native action with sequence and hashed identity"
+      ],
+      "native_action": null,
+      "next_step": "Repeat the relevant step in a fresh isolated workspace using the documented entry route and preserve the required native action order.",
+      "observed_evidence": [
+        "canonical contribution route sources were not actually read"
+      ],
+      "severity": "error",
+      "summary": "canonical contribution route sources were not actually read"
+    }
+  ],
+  "entry_route": {
+    "content_read_observations": [],
+    "contract_version": "entrypoint-first-v1",
+    "criteria": {
+      "entry_route": [
+        "scripts/start_here.py --task <task>",
+        "docs/agents/start-here.md"
+      ],
+      "injected_prompt_alone_satisfies_no_criterion": true,
+      "root_files": [
+        "README.md",
+        "AGENTS.md"
+      ],
+      "root_files_first_content_sources": true,
+      "task_route_paths": [
+        "docs/agents/first-contribution.md"
+      ]
+    },
+    "entry_route_observation": null,
+    "missing_evidence": [
+      "completed content read of AGENTS.md",
+      "completed content read of README.md",
+      "successful task selector or completed readable docs/agents/start-here.md after root reads",
+      "completed task-specific route read of docs/agents/first-contribution.md after the entry route"
+    ],
+    "root_entry_reads": {},
+    "status": "fail",
+    "task": "contribute",
+    "task_route_reads": {}
+  },
+  "evidence_scope": "fresh-native-trial",
+  "failure_reasons": [
+    "entrypoint-first contribution route evidence is incomplete: completed content read of AGENTS.md; completed content read of README.md; successful task selector or completed readable docs/agents/start-here.md after root reads; completed task-specific route read of docs/agents/first-contribution.md after the entry route",
+    "authoritative_sources are not supported by completed native reads",
+    "canonical contribution route sources were not actually read"
+  ],
+  "harness": "opencode",
+  "human_review": {
+    "automated_quality_assessment": "not_performed",
+    "rationale": "The baseline truthfulness and links validation flagged the bare register() call as a stale default. README.md documents first registration with an invite code; the quickstart now uses openforage.register(invite_code=\"<CODE>\"). The final validation of both modes passed.",
+    "summary": "Updated the quickstart's first-registration example to pass an invite code."
+  },
+  "metrics": {
+    "artifact_diff": {
+      "changed_file_count": 2,
+      "changed_paths": [
+        "docs/agents/quickstart.md",
+        "trial-output/completion.json"
+      ],
+      "sha256_evidence": [
+        {
+          "after_sha256": "1350e9e5438cc2a47dbac85acfb68528c77a5b89a6451c4120053a0284c3d379",
+          "before_sha256": "8aa6d00c03210614aa655f3bce19d7afc89ded1ddd1344e3f9dba45550b39d5a",
+          "change": "modified",
+          "path": "docs/agents/quickstart.md"
+        },
+        {
+          "after_sha256": "7e16f9bc3b880638f2ec95602e6bf21bcf6f2aa79dd33fa4ea45378d09a76186",
+          "before_sha256": null,
+          "change": "created",
+          "path": "trial-output/completion.json"
+        }
+      ]
+    },
+    "clarification_observations": {
+      "count": 0,
+      "status": "observed"
+    },
+    "time_to_first_meaningful_action": {
+      "elapsed_seconds": 31.935,
+      "event_sequence": 21,
+      "status": "observed",
+      "timestamp_basis": "native_event_timestamp"
+    },
+    "time_to_first_verified_completed_contribution": {
+      "elapsed_seconds": null,
+      "exact_completion_time": false,
+      "measurement": "elapsed_at_verification_upper_bound",
+      "status": "unknown"
+    },
+    "unnecessary_setup_attempts": {
+      "attempts": [],
+      "count": 0,
+      "observed_lower_bound": 0,
+      "status": "observed_complete"
+    },
+    "unsupported_structured_claims": {
+      "count": 1,
+      "status": "observed"
+    },
+    "validation_outcome": {
+      "agent_baseline": "observed_failure",
+      "agent_final": "observed_pass",
+      "independent_final": "pass"
+    }
+  },
+  "native_trace": {
+    "actions_observed": 17,
+    "direct_suite_access_audit": "complete_no_direct_access",
+    "direct_suite_access_indices": [],
+    "events_observed": 55,
+    "raw_events_sha256": "186287ddf66e47933bbb6fe6bca5ef6d63d44aa90c7c21b2bc810e2eccc059a6",
+    "trace_complete": true
+  },
+  "run_id": "complete-docs-opencode-1",
+  "series_id": "completion-reliability-docs-1",
+  "series_manifest_sha256": "9d181e4de0285a918398a02a6d9e085b30feb04774f51ab9a6413be3c0811458",
+  "status": "fail",
+  "success": false,
+  "synthetic_regression": false,
+  "validation": {
+    "baseline_native_item_id_sha256": "4ce8faaa6f733b9d636153d6ea28f5ef3e57f5f5341cc6d9e2bed7b6cfd7ef9d",
+    "baseline_outcome_provenance": {
+      "compound_shell_exit_code": null,
+      "inference_basis": "standalone_native_shell_exit",
+      "modes": [
+        "truthfulness",
+        "links"
+      ],
+      "native_action_identity_sha256": "4ce8faaa6f733b9d636153d6ea28f5ef3e57f5f5341cc6d9e2bed7b6cfd7ef9d",
+      "native_command_bytes": 73,
+      "native_command_sha256": "d720cc4ea869200bee36e2f5478c79d82e53425c91ccb3d0214273c3c9c6f8e4",
+      "native_completion_sequence": 21,
+      "native_event_sequence": 21,
+      "native_harness": "opencode",
+      "native_identity_kind": "native_tool_call_id_sha256",
+      "native_shell_exit_code": 1,
+      "validator_segment_exit_code": 1,
+      "validator_segment_index": 0,
+      "validator_segment_indices": [
+        0
+      ],
+      "validator_segments": [
+        {
+          "argv": [
+            "python",
+            ".github/scripts/validate_agent_docs.py",
+            "truthfulness",
+            "links",
+            "--root",
+            "."
+          ],
+          "index": 0,
+          "modes": [
+            "truthfulness",
+            "links"
+          ]
+        }
+      ]
+    },
+    "completion_check": {
+      "command": "python scripts/start_here.py --task contribute --fixture first-finished-contribution-primary --check-completion",
+      "completion_sequence": 47,
+      "diff_check_status": "passed",
+      "event_sequence": 47,
+      "exit_code": 0,
+      "final_check": true,
+      "native_action_identity_sha256": "b83d1a9ba7db9634c0d7dc88f0a5f24b4764e8a65d001f0eee2126ce33c78cb4",
+      "status": "passed"
+    },
+    "final_native_item_id_sha256": "bbe7e14c895f185b93eeef535c6715d11fcde886b45392c29121077394e86d0f",
+    "final_outcome_provenance": {
+      "compound_shell_exit_code": null,
+      "inference_basis": "standalone_native_shell_exit",
+      "modes": [
+        "truthfulness",
+        "links"
+      ],
+      "native_action_identity_sha256": "bbe7e14c895f185b93eeef535c6715d11fcde886b45392c29121077394e86d0f",
+      "native_command_bytes": 73,
+      "native_command_sha256": "d720cc4ea869200bee36e2f5478c79d82e53425c91ccb3d0214273c3c9c6f8e4",
+      "native_completion_sequence": 34,
+      "native_event_sequence": 34,
+      "native_harness": "opencode",
+      "native_identity_kind": "native_tool_call_id_sha256",
+      "native_shell_exit_code": 0,
+      "validator_segment_exit_code": 0,
+      "validator_segment_index": 0,
+      "validator_segment_indices": [
+        0
+      ],
+      "validator_segments": [
+        {
+          "argv": [
+            "python",
+            ".github/scripts/validate_agent_docs.py",
+            "truthfulness",
+            "links",
+            "--root",
+            "."
+          ],
+          "index": 0,
+          "modes": [
+            "truthfulness",
+            "links"
+          ]
+        }
+      ]
+    },
+    "independent_final": {
+      "executed": true,
+      "exit_code": 0,
+      "method": "independent unchanged repository validator on final workspace",
+      "modes": [
+        "truthfulness",
+        "links"
+      ],
+      "owned_process_group_remaining": false,
+      "status": "pass",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 34,
+      "stdout_sha256": "47e72519f3d78aa66237ad94c9d5ff537b8a03e0584c4fbfdcbfc61cf9f97303",
+      "timed_out": false
+    },
+    "observed_validator_outcomes": [
+      {
+        "compound_shell_exit_code": null,
+        "inference_basis": "standalone_native_shell_exit",
+        "modes": [
+          "truthfulness",
+          "links"
+        ],
+        "native_action_identity_sha256": "4ce8faaa6f733b9d636153d6ea28f5ef3e57f5f5341cc6d9e2bed7b6cfd7ef9d",
+        "native_command_bytes": 73,
+        "native_command_sha256": "d720cc4ea869200bee36e2f5478c79d82e53425c91ccb3d0214273c3c9c6f8e4",
+        "native_completion_sequence": 21,
+        "native_event_sequence": 21,
+        "native_harness": "opencode",
+        "native_identity_kind": "native_tool_call_id_sha256",
+        "native_shell_exit_code": 1,
+        "validator_segment_exit_code": 1,
+        "validator_segment_index": 0,
+        "validator_segment_indices": [
+          0
+        ],
+        "validator_segments": [
+          {
+            "argv": [
+              "python",
+              ".github/scripts/validate_agent_docs.py",
+              "truthfulness",
+              "links",
+              "--root",
+              "."
+            ],
+            "index": 0,
+            "modes": [
+              "truthfulness",
+              "links"
+            ]
+          }
+        ]
+      },
+      {
+        "compound_shell_exit_code": null,
+        "inference_basis": "standalone_native_shell_exit",
+        "modes": [
+          "truthfulness",
+          "links"
+        ],
+        "native_action_identity_sha256": "bbe7e14c895f185b93eeef535c6715d11fcde886b45392c29121077394e86d0f",
+        "native_command_bytes": 73,
+        "native_command_sha256": "d720cc4ea869200bee36e2f5478c79d82e53425c91ccb3d0214273c3c9c6f8e4",
+        "native_completion_sequence": 34,
+        "native_event_sequence": 34,
+        "native_harness": "opencode",
+        "native_identity_kind": "native_tool_call_id_sha256",
+        "native_shell_exit_code": 0,
+        "validator_segment_exit_code": 0,
+        "validator_segment_index": 0,
+        "validator_segment_indices": [
+          0
+        ],
+        "validator_segments": [
+          {
+            "argv": [
+              "python",
+              ".github/scripts/validate_agent_docs.py",
+              "truthfulness",
+              "links",
+              "--root",
+              "."
+            ],
+            "index": 0,
+            "modes": [
+              "truthfulness",
+              "links"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

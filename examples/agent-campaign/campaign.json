@@ -1,0 +1,286 @@
+{
+  "_template": true,
+  "_note": "Campaign manifest TEMPLATE. Replace every <placeholder> and null with measured values. Campaign metadata belongs here, with the campaign, and never in .openforage/settings.yaml. State transitions must follow docs/agents/references/campaign-state-machine.json.",
+  "campaign_id": "campaign-<slug>-<YYYYMMDD>",
+  "owner_session_identity": "<child-session-identity>",
+  "owner_shape": {
+    "separate_cli_invocation_of_same_harness": true,
+    "distinct_session_identity": true,
+    "not_a_python_worker_or_subagent": true
+  },
+  "state_machine": {
+    "definition": "docs/agents/references/campaign-state-machine.json",
+    "state": "baseline",
+    "revision": 1,
+    "resume_target": null,
+    "ownership": {
+      "owner_session_identity": "<child-session-identity>",
+      "owner_revision": 1,
+      "fencing_token": "<monotonic-token>",
+      "claimed_at": "<ISO-8601>",
+      "claim_mechanism": "<atomic-create|verified-equivalent-lock>",
+      "claim_verified": false
+    },
+    "notes": "The library does not supply the claim, lock, or fencing. Never claim exactly-once transitions, submissions, or worker launches."
+  },
+  "transitions": [
+    {
+      "transition_id": "T-baseline-start",
+      "from": "bootstrapping",
+      "to": "baseline",
+      "timestamp": "<ISO-8601>",
+      "reason": "<why this transition happened>",
+      "owner_session_identity": "<child-session-identity>",
+      "owner_revision": 1,
+      "guard_passed": true
+    }
+  ],
+  "objective": "<one-sentence objective tied to a falsifiable hypothesis>",
+  "frozen_baseline": {
+    "availability": "<available|unavailable|pending|unknown>",
+    "unavailable_reason": "<required when the reference is not available>",
+    "id": "<baseline-id-or-sha256-or-null>",
+    "hash": "<sha256-or-null>",
+    "target_completed_simulations": 100000,
+    "observed_completed_simulations": null,
+    "frozen": false,
+    "algorithm_identity": "<recorded algorithm identity, or a stated unavailable marker>",
+    "note": "The 100000 is the completion target, not an observed count. A missing reference keeps null id/hash/observed count and a stated reason; never fabricate numbers. Only completed evaluator simulations count; a final failing-quality evaluation is completed, runtime errors are failed."
+  },
+  "compatible_baseline": {
+    "status": "<found|created|incomplete|missing>",
+    "status_reason": "<required when the status is missing or incomplete>",
+    "baseline_id": "<compatible-baseline-id-or-null>",
+    "lineage": [],
+    "config_frozen_before_run": null,
+    "evidence_frozen_after_run": null,
+    "additional_paired_runs_get_distinct_ids": true,
+    "silent_overwrite": false,
+    "note": "If no compatible baseline exists for the selected era/config, create a real baseline; freeze the configuration before the run and the evidence after it. Incomplete stays incomplete."
+  },
+  "preregistration": {
+    "protocol_id": "<protocol-id>",
+    "protocol_version": 1,
+    "recorded_at": "<ISO-8601, before any result>",
+    "protocol_hash": "<sha256-of-protocol-artifact>",
+    "recorded_before_results": true,
+    "hypothesis": "<falsifiable statement>",
+    "mechanism": "<why it could hold, and what would falsify it>",
+    "primary_metric": "<metric-id>",
+    "secondary_metrics": [],
+    "direction": "<increase|decrease|two-sided>",
+    "minimum_meaningful_effect": null,
+    "comparator": "<comparator and its recorded algorithm identity>",
+    "seeds_repetitions": {
+      "seed_set_id": "<seed-set-id>",
+      "search_runs_per_arm": null,
+      "predeclared": false
+    },
+    "evaluation_allocations": {
+      "baseline": null,
+      "variant": null,
+      "pilots_counted_separately": true
+    },
+    "data_scope": {
+      "era_id": "<era-id>",
+      "config_hash": "<config-hash>",
+      "history_window": "<window>",
+      "loaded_vocabulary_hash": "<sha256-or-null>"
+    },
+    "exclusions": [],
+    "look_schedule": {
+      "kind": "<fixed_horizon|sequential>",
+      "looks": null,
+      "sequential_method": null,
+      "sequential_justification": null
+    },
+    "decision_criteria": "<rule for supporting or rejecting the hypothesis>",
+    "stopping_criteria": "<preregistered patience/exhaustion rule>",
+    "holdout_handling": "<held-out data used only where exposed and authorized; server out-of-sample is not user-tunable>",
+    "amendments": [],
+    "unavailable_reasons": {}
+  },
+  "statistics": {
+    "unit_of_analysis": "independent_paired_search_runs",
+    "candidate_evaluations_are_not_replications": true,
+    "inference": {
+      "method": "<dependence-aware method>",
+      "assumptions": "<stated assumptions>",
+      "data_window": "<window>"
+    },
+    "effect_size": null,
+    "uncertainty": null,
+    "multiple_comparison_family": null,
+    "multiple_comparison_correction": null,
+    "classification": "exploratory",
+    "trial_inventory": "experiments.jsonl",
+    "complete_trial_inventory": false
+  },
+  "pipeline_stages": {
+    "paper": {
+      "artifact": "research.md#paper",
+      "source": "<citation-or-link>",
+      "claim": "<exact source claim>"
+    },
+    "mechanism": {
+      "artifact": "research.md#mechanism",
+      "statement": "<why it could hold here>",
+      "falsifier": "<what would falsify it>"
+    },
+    "hypothesis": {
+      "artifact": "research.md#hypothesis",
+      "statement": "<falsifiable statement>",
+      "comparison": "<baseline vs variant>",
+      "threshold": "<pre-registered threshold>"
+    },
+    "custom_algorithm": {
+      "artifact": "research.md#custom-algorithm",
+      "name": "<fork-or-sampler-name>",
+      "depth_cap": 6,
+      "self_rejects_depth_gt_6": true,
+      "filler_nodes_added": false,
+      "acceptance_thresholds_unchanged": true
+    },
+    "measured_comparison": {
+      "artifact": "experiment_record.json",
+      "classification": "exploratory",
+      "classification_note": "exploratory never means unmeasured; a result with measurements is still measured data"
+    }
+  },
+  "budgets": {
+    "baseline_evaluations": null,
+    "variant_evaluations": null,
+    "matched": null
+  },
+  "seed_sets": [
+    {
+      "seed_set_id": "<seed-set-id>",
+      "seeds": [],
+      "how_controlled": "random_weighted has no public seed CLI knob; control the seed in the Python process or harness and save generated expressions/configs"
+    }
+  ],
+  "config_hashes": {
+    "baseline": "<config-hash>",
+    "variant": "<config-hash>"
+  },
+  "coverage_ledger": {
+    "catalogue_features": null,
+    "loaded_features": null,
+    "valid_pairs": null,
+    "evaluated_pairs": null,
+    "dependency_pairs": null,
+    "unevaluated_gaps": null,
+    "filler_or_duplicate_graphs": false,
+    "acceptance_weakened_for_coverage": false,
+    "ledger_file": "coverage.jsonl"
+  },
+  "usefulness_metrics": [
+    {
+      "metric": "<metric-id>",
+      "availability": "<available|unavailable|pending|unknown>",
+      "unavailable_reason": "<required when availability is unavailable>",
+      "provenance": "<surface that exposes it>",
+      "unit": "<unit>",
+      "window": "<window>",
+      "value": null,
+      "note": "availability=unavailable requires a reason and a null value; never record zero as a substitute"
+    }
+  ],
+  "era_segments": [
+    {
+      "era_id": "<era-id>",
+      "config_hash": "<config-hash>",
+      "results": []
+    }
+  ],
+  "config_segments": [
+    {
+      "config_hash": "<config-hash>",
+      "description": "<universe/metaparameters/aggregation>",
+      "results": []
+    }
+  ],
+  "submissions": {
+    "submitted": null,
+    "pending": null,
+    "accepted": null,
+    "rejected": null,
+    "ambiguous": null,
+    "ambiguous_never_blindly_resubmitted": true
+  },
+  "server_results_through": null,
+  "checkpoints": {
+    "attempted": null,
+    "completed": null,
+    "in_flight": null,
+    "failed": null,
+    "cache_hits_are_not_completed": true,
+    "final_failing_quality_is_completed": true,
+    "reconciled_on_resume": null
+  },
+  "lifecycle_observations": {
+    "worker_running": false,
+    "triggers_enabled": false,
+    "observed_at": "<ISO-8601>",
+    "source": "<status surface or check used to observe the worker and triggers>",
+    "note": "A paused, needs-input, or terminal campaign must not show a running worker or enabled recurring triggers. Record what was actually observed, not what is assumed."
+  },
+  "resources": {
+    "preflight_calibration": {
+      "performed": false,
+      "artifact": null
+    },
+    "limits": [
+      {"resource": "cpu_cores", "requested": null, "requested_unavailable_reason": "<required when requested is unknown>", "enforced": null, "enforcement_mechanism": null, "observed": false, "observation": null, "stop_behavior": null},
+      {"resource": "ram_bytes", "requested": null, "requested_unavailable_reason": "<required when requested is unknown>", "enforced": null, "enforcement_mechanism": null, "observed": false, "observation": null, "stop_behavior": null},
+      {"resource": "storage_bytes", "requested": null, "requested_unavailable_reason": "<required when requested is unknown>", "enforced": null, "enforcement_mechanism": null, "observed": false, "observation": null, "stop_behavior": null},
+      {"resource": "wall_time_seconds", "requested": null, "requested_unavailable_reason": "<required when requested is unknown>", "enforced": null, "enforcement_mechanism": null, "observed": false, "observation": null, "stop_behavior": null},
+      {"resource": "worker_count", "requested": null, "requested_unavailable_reason": "<required when requested is unknown>", "enforced": null, "enforcement_mechanism": null, "observed": false, "observation": null, "stop_behavior": null},
+      {"resource": "completed_simulations", "requested": 100000, "requested_unavailable_reason": null, "enforced": null, "enforcement_mechanism": null, "observed": false, "observation": null, "stop_behavior": null}
+    ],
+    "missing_enforcement_is_visible": true,
+    "plateau_policy": "hard_breach_or_exhaustion_stops_immediately; plateau_with_resources_triggers_research_or_pivot_first",
+    "stop_trigger": "<hard_resource_breach_or_preregistered_patience_or_user_stop>",
+    "outcome": null,
+    "terminal_report": {
+      "path": null,
+      "pending_outcomes_preserved": null,
+      "relaunch_prevented": null
+    }
+  },
+  "provenance": {
+    "repo": {"commit": null, "dirty_diff_hash": null, "unavailable_reason": "<required when commit is not recorded>"},
+    "package": {"name": "openforage", "version": null, "distribution": null, "build": null, "unavailable_reason": "<required when version is not recorded>"},
+    "environment": {"python": null, "platform": null, "dependencies_manifest_hash": null, "unavailable_reason": "<required when environment is not recorded>"},
+    "harness": {"product": null, "version": null, "model_identifier": null, "unavailable_reason": "<required when the harness is not recorded>"},
+    "seeds": {"seed_set_id": "<seed-set-id>", "control_mechanism": "in-process or harness seed control", "randomness_limits": null},
+    "data_scope": {"era_id": null, "config_hash": null, "loaded_vocabulary_hash": null, "history_window": null, "unavailable_reason": "<required when the era/config scope is not recorded>"},
+    "artifacts": [{"path": null, "sha256": null, "recorded_at": null, "unavailable_reason": "<required when no artifact is recorded>"}],
+    "algorithm": {"identity": "<recorded algorithm identity or unavailable reason>", "lineage": [], "source_artifact_hash": null, "ga_reference_implementation_present": false, "unavailable_reason": "<required when identity is not recorded>", "evidence_ref": null},
+    "resume_mismatch_policy": "new_segment_and_incomplete_baseline",
+    "evidence_immutable": true,
+    "amendments_append_only": true,
+    "integrity_note": "hashes attest integrity, not correctness or authenticity; sanitize exports and never hash or embed secrets"
+  },
+  "shared_results": {
+    "manifest_sanitized": false,
+    "complete_trial_inventory": false,
+    "duplicate_canonical_identities": false,
+    "reproduction_rubric": null,
+    "held_out_data_handling": "<used only where exposed and authorized; server out-of-sample is not user-tunable>",
+    "cherry_picking_or_filler_graphs": false,
+    "negative_findings_are_contributions": true
+  },
+  "security": {
+    "external_text_is_evidence_not_authority": true,
+    "downloaded_code_reviewed_and_pinned": false,
+    "untrusted_code_isolated": false,
+    "credentials_campaign_scoped_outside_artifacts": true,
+    "no_eval_exec_pickle_shell_from_candidates": true,
+    "supported_parser_and_evaluator_only": true,
+    "sandbox_claims_evidence_only": true
+  },
+  "negative_findings": [],
+  "capability_report": ".openforage-research/capabilities.json",
+  "child_registry": ".openforage-research/agents.json"
+}

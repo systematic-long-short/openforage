@@ -1,0 +1,468 @@
+{
+  "artifact_diff": [
+    {
+      "after_sha256": "f3f5f2e24df892ddee511a63fbe074865c810c56309367d31a1898783aee65cf",
+      "before_sha256": "8aa6d00c03210614aa655f3bce19d7afc89ded1ddd1344e3f9dba45550b39d5a",
+      "change": "modified",
+      "path": "docs/agents/quickstart.md"
+    },
+    {
+      "after_sha256": "696f5c236bb23c421bdfab5748205e6180fc0226195a2017f5cfcd878e3d3016",
+      "before_sha256": null,
+      "change": "created",
+      "path": "trial-output/completion.json"
+    }
+  ],
+  "artifact_refs": {
+    "docs/agents/quickstart.md": "f3f5f2e24df892ddee511a63fbe074865c810c56309367d31a1898783aee65cf",
+    "trial-output/completion.json": "696f5c236bb23c421bdfab5748205e6180fc0226195a2017f5cfcd878e3d3016"
+  },
+  "case_id": "first-finished-contribution-primary",
+  "diagnostics": [],
+  "entry_route": {
+    "content_read_observations": [
+      {
+        "action": {
+          "completion_sequence": 5,
+          "event_sequence": 5,
+          "identity_kind": "native_tool_call_id_sha256",
+          "identity_sha256": "72c5c5f333528d13bd8dbff71fb89ad74f012c319d27e4e8e988008a621c3284",
+          "tool": "read"
+        },
+        "kind": "native_content_read",
+        "operand_index": null,
+        "path": "README.md",
+        "segment_index": null,
+        "sequence": 5,
+        "start_sequence": 5
+      },
+      {
+        "action": {
+          "completion_sequence": 8,
+          "event_sequence": 8,
+          "identity_kind": "native_tool_call_id_sha256",
+          "identity_sha256": "63699e9a7a3e6ad654d3f18ddce672595e4fdb2328e82b01a909c45f1990a7de",
+          "tool": "read"
+        },
+        "kind": "native_content_read",
+        "operand_index": null,
+        "path": "AGENTS.md",
+        "segment_index": null,
+        "sequence": 8,
+        "start_sequence": 8
+      },
+      {
+        "action": {
+          "completion_sequence": 14,
+          "event_sequence": 14,
+          "identity_kind": "native_tool_call_id_sha256",
+          "identity_sha256": "b57fb9bcb184422639b94b6cd9a2fadd59b75e61ef03b1f5097d979462584384",
+          "tool": "read"
+        },
+        "kind": "native_content_read",
+        "operand_index": null,
+        "path": "docs/agents/first-contribution.md",
+        "segment_index": null,
+        "sequence": 14,
+        "start_sequence": 14
+      },
+      {
+        "action": {
+          "completion_sequence": 26,
+          "event_sequence": 26,
+          "identity_kind": "native_tool_call_id_sha256",
+          "identity_sha256": "c48ae92b5581e6f13aa1d72140c6a7616db2e998ffb9a73c7d8ee9b9ef8fc555",
+          "tool": "read"
+        },
+        "kind": "native_content_read",
+        "operand_index": null,
+        "path": "docs/agents/quickstart.md",
+        "segment_index": null,
+        "sequence": 26,
+        "start_sequence": 26
+      },
+      {
+        "action": {
+          "completion_sequence": 51,
+          "event_sequence": 51,
+          "identity_kind": "native_tool_call_id_sha256",
+          "identity_sha256": "29987ed39add8560d3b6381b2fc344261b6742d440d49e4479ea6c199b91916e",
+          "tool": "read"
+        },
+        "kind": "native_content_read",
+        "operand_index": null,
+        "path": "trial-output/completion.json",
+        "segment_index": null,
+        "sequence": 51,
+        "start_sequence": 51
+      }
+    ],
+    "contract_version": "entrypoint-first-v1",
+    "criteria": {
+      "entry_route": [
+        "scripts/start_here.py --task <task>",
+        "docs/agents/start-here.md"
+      ],
+      "injected_prompt_alone_satisfies_no_criterion": true,
+      "root_files": [
+        "README.md",
+        "AGENTS.md"
+      ],
+      "root_files_first_content_sources": true,
+      "task_route_paths": [
+        "docs/agents/first-contribution.md"
+      ]
+    },
+    "entry_route_observation": {
+      "action": {
+        "completion_sequence": 11,
+        "event_sequence": 11,
+        "identity_kind": "native_tool_call_id_sha256",
+        "identity_sha256": "87331a1893e6a503c1461ff99a66ed96c366c6a5d566ff1ca52381114e0bb412",
+        "tool": "bash"
+      },
+      "kind": "start_here_cli_selector",
+      "operand_index": null,
+      "segment_index": 0,
+      "sequence": 11,
+      "start_sequence": 11,
+      "task": "contribute"
+    },
+    "missing_evidence": [],
+    "root_entry_reads": {
+      "AGENTS.md": {
+        "action": {
+          "completion_sequence": 8,
+          "event_sequence": 8,
+          "identity_kind": "native_tool_call_id_sha256",
+          "identity_sha256": "63699e9a7a3e6ad654d3f18ddce672595e4fdb2328e82b01a909c45f1990a7de",
+          "tool": "read"
+        },
+        "operand_index": null,
+        "segment_index": null,
+        "sequence": 8
+      },
+      "README.md": {
+        "action": {
+          "completion_sequence": 5,
+          "event_sequence": 5,
+          "identity_kind": "native_tool_call_id_sha256",
+          "identity_sha256": "72c5c5f333528d13bd8dbff71fb89ad74f012c319d27e4e8e988008a621c3284",
+          "tool": "read"
+        },
+        "operand_index": null,
+        "segment_index": null,
+        "sequence": 5
+      }
+    },
+    "status": "pass",
+    "task": "contribute",
+    "task_route_reads": {
+      "docs/agents/first-contribution.md": {
+        "action": {
+          "completion_sequence": 14,
+          "event_sequence": 14,
+          "identity_kind": "native_tool_call_id_sha256",
+          "identity_sha256": "b57fb9bcb184422639b94b6cd9a2fadd59b75e61ef03b1f5097d979462584384",
+          "tool": "read"
+        },
+        "kind": "native_content_read",
+        "operand_index": null,
+        "path": "docs/agents/first-contribution.md",
+        "segment_index": null,
+        "sequence": 14,
+        "start_sequence": 14
+      }
+    }
+  },
+  "evidence_scope": "fresh-native-trial",
+  "failure_reasons": [],
+  "harness": "opencode",
+  "human_review": {
+    "automated_quality_assessment": "not_performed",
+    "rationale": "The baseline truthfulness check flagged bare openforage.register() as a stale default; the README and quickstart prerequisites require an invite code for first registration. The baseline all run also reported an evaluation-fixture preparation failure.",
+    "summary": "Updated the quickstart's first-registration example to provide an invite code."
+  },
+  "metrics": {
+    "artifact_diff": {
+      "changed_file_count": 2,
+      "changed_paths": [
+        "docs/agents/quickstart.md",
+        "trial-output/completion.json"
+      ],
+      "sha256_evidence": [
+        {
+          "after_sha256": "f3f5f2e24df892ddee511a63fbe074865c810c56309367d31a1898783aee65cf",
+          "before_sha256": "8aa6d00c03210614aa655f3bce19d7afc89ded1ddd1344e3f9dba45550b39d5a",
+          "change": "modified",
+          "path": "docs/agents/quickstart.md"
+        },
+        {
+          "after_sha256": "696f5c236bb23c421bdfab5748205e6180fc0226195a2017f5cfcd878e3d3016",
+          "before_sha256": null,
+          "change": "created",
+          "path": "trial-output/completion.json"
+        }
+      ]
+    },
+    "clarification_observations": {
+      "count": 0,
+      "status": "observed"
+    },
+    "time_to_first_meaningful_action": {
+      "elapsed_seconds": 9.697,
+      "event_sequence": 5,
+      "status": "observed",
+      "timestamp_basis": "native_event_timestamp"
+    },
+    "time_to_first_verified_completed_contribution": {
+      "elapsed_seconds": 228.747,
+      "exact_completion_time": false,
+      "measurement": "elapsed_at_verification_upper_bound",
+      "status": "verified",
+      "verification_at_epoch": 1790268578.6245322
+    },
+    "unnecessary_setup_attempts": {
+      "attempts": [],
+      "count": 0,
+      "observed_lower_bound": 0,
+      "status": "observed_complete"
+    },
+    "unsupported_structured_claims": {
+      "count": 0,
+      "status": "observed"
+    },
+    "validation_outcome": {
+      "agent_baseline": "observed_failure",
+      "agent_final": "observed_pass",
+      "independent_final": "pass"
+    }
+  },
+  "native_trace": {
+    "actions_observed": 21,
+    "direct_suite_access_audit": "complete_no_direct_access",
+    "direct_suite_access_indices": [],
+    "events_observed": 61,
+    "raw_events_sha256": "3be1e13d23d08114424a423fa886ba8d6959be84d4597eee0e4e50a26aca1b2c",
+    "trace_complete": true
+  },
+  "run_id": "workflow-docs-opencode-1",
+  "series_id": "native-workflow-docs-1",
+  "series_manifest_sha256": "d6655322dbfb9eb13c3a96671aa83d9de7d9a2a04091cfb07e4c712b698ccb3d",
+  "status": "pass",
+  "success": true,
+  "synthetic_regression": false,
+  "validation": {
+    "baseline_native_item_id_sha256": "a0e133b3650af4253b9cf629b8e8755f6d00ef5b99302db998599c169b56ad46",
+    "baseline_outcome_provenance": {
+      "compound_shell_exit_code": null,
+      "inference_basis": "standalone_native_shell_exit",
+      "modes": [
+        "all"
+      ],
+      "native_action_identity_sha256": "a0e133b3650af4253b9cf629b8e8755f6d00ef5b99302db998599c169b56ad46",
+      "native_command_bytes": 75,
+      "native_command_sha256": "59be02030e9a8e71b60ff404dd179bd0bbd9d9d1854f6fa4c6f13db22bc77acc",
+      "native_completion_sequence": 23,
+      "native_event_sequence": 23,
+      "native_harness": "opencode",
+      "native_identity_kind": "native_tool_call_id_sha256",
+      "native_shell_exit_code": 1,
+      "validator_segment_exit_code": 1,
+      "validator_segment_index": 0,
+      "validator_segment_indices": [
+        0
+      ],
+      "validator_segments": [
+        {
+          "argv": [
+            "python",
+            ".github/scripts/validate_agent_docs.py",
+            "all"
+          ],
+          "index": 0,
+          "modes": [
+            "all"
+          ]
+        }
+      ]
+    },
+    "final_native_item_id_sha256": "75d42baf1eee541fc4aac7c76734d3b6b8fe80a9954d22b701526e75be36e022",
+    "final_outcome_provenance": {
+      "compound_shell_exit_code": 0,
+      "inference_basis": "explicit_native_exit_zero_for_fully_admitted_and_chain",
+      "modes": [
+        "truthfulness",
+        "links"
+      ],
+      "native_action_identity_sha256": "75d42baf1eee541fc4aac7c76734d3b6b8fe80a9954d22b701526e75be36e022",
+      "native_command_bytes": 165,
+      "native_command_sha256": "3bad7c8e67a121d8f89bc729e14292af3f2ea183f5339000a989b1080fc804cb",
+      "native_completion_sequence": 34,
+      "native_event_sequence": 34,
+      "native_harness": "opencode",
+      "native_identity_kind": "native_tool_call_id_sha256",
+      "native_shell_exit_code": 0,
+      "validator_segment_exit_code": 0,
+      "validator_segment_index": 0,
+      "validator_segment_indices": [
+        0,
+        1
+      ],
+      "validator_segments": [
+        {
+          "argv": [
+            "python",
+            ".github/scripts/validate_agent_docs.py",
+            "truthfulness"
+          ],
+          "index": 0,
+          "modes": [
+            "truthfulness"
+          ]
+        },
+        {
+          "argv": [
+            "python",
+            ".github/scripts/validate_agent_docs.py",
+            "links"
+          ],
+          "index": 1,
+          "modes": [
+            "links"
+          ]
+        }
+      ]
+    },
+    "independent_final": {
+      "executed": true,
+      "exit_code": 0,
+      "method": "independent unchanged repository validator on final workspace",
+      "modes": [
+        "truthfulness",
+        "links"
+      ],
+      "owned_process_group_remaining": false,
+      "status": "pass",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 34,
+      "stdout_sha256": "47e72519f3d78aa66237ad94c9d5ff537b8a03e0584c4fbfdcbfc61cf9f97303",
+      "timed_out": false
+    },
+    "observed_validator_outcomes": [
+      {
+        "compound_shell_exit_code": null,
+        "inference_basis": "standalone_shell_launch_failure_127",
+        "modes": [
+          "all"
+        ],
+        "native_action_identity_sha256": "66b7069e784504ccb9a61fb59966fa5155f7d5c4c0752382ebba7347cb1b467d",
+        "native_command_bytes": 90,
+        "native_command_sha256": "ce2af05a2a05537f5e787dc5ac9d7787a11dc4d6e877081a2849aa468458ccd9",
+        "native_completion_sequence": 20,
+        "native_event_sequence": 20,
+        "native_harness": "opencode",
+        "native_identity_kind": "native_tool_call_id_sha256",
+        "native_shell_exit_code": 127,
+        "validator_segment_exit_code": null,
+        "validator_segment_index": 0,
+        "validator_segment_indices": [
+          0
+        ],
+        "validator_segments": [
+          {
+            "argv": [
+              ".venv-docs/bin/python",
+              ".github/scripts/validate_agent_docs.py",
+              "all"
+            ],
+            "index": 0,
+            "modes": [
+              "all"
+            ]
+          }
+        ]
+      },
+      {
+        "compound_shell_exit_code": null,
+        "inference_basis": "standalone_native_shell_exit",
+        "modes": [
+          "all"
+        ],
+        "native_action_identity_sha256": "a0e133b3650af4253b9cf629b8e8755f6d00ef5b99302db998599c169b56ad46",
+        "native_command_bytes": 75,
+        "native_command_sha256": "59be02030e9a8e71b60ff404dd179bd0bbd9d9d1854f6fa4c6f13db22bc77acc",
+        "native_completion_sequence": 23,
+        "native_event_sequence": 23,
+        "native_harness": "opencode",
+        "native_identity_kind": "native_tool_call_id_sha256",
+        "native_shell_exit_code": 1,
+        "validator_segment_exit_code": 1,
+        "validator_segment_index": 0,
+        "validator_segment_indices": [
+          0
+        ],
+        "validator_segments": [
+          {
+            "argv": [
+              "python",
+              ".github/scripts/validate_agent_docs.py",
+              "all"
+            ],
+            "index": 0,
+            "modes": [
+              "all"
+            ]
+          }
+        ]
+      },
+      {
+        "compound_shell_exit_code": 0,
+        "inference_basis": "explicit_native_exit_zero_for_fully_admitted_and_chain",
+        "modes": [
+          "truthfulness",
+          "links"
+        ],
+        "native_action_identity_sha256": "75d42baf1eee541fc4aac7c76734d3b6b8fe80a9954d22b701526e75be36e022",
+        "native_command_bytes": 165,
+        "native_command_sha256": "3bad7c8e67a121d8f89bc729e14292af3f2ea183f5339000a989b1080fc804cb",
+        "native_completion_sequence": 34,
+        "native_event_sequence": 34,
+        "native_harness": "opencode",
+        "native_identity_kind": "native_tool_call_id_sha256",
+        "native_shell_exit_code": 0,
+        "validator_segment_exit_code": 0,
+        "validator_segment_index": 0,
+        "validator_segment_indices": [
+          0,
+          1
+        ],
+        "validator_segments": [
+          {
+            "argv": [
+              "python",
+              ".github/scripts/validate_agent_docs.py",
+              "truthfulness"
+            ],
+            "index": 0,
+            "modes": [
+              "truthfulness"
+            ]
+          },
+          {
+            "argv": [
+              "python",
+              ".github/scripts/validate_agent_docs.py",
+              "links"
+            ],
+            "index": 1,
+            "modes": [
+              "links"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

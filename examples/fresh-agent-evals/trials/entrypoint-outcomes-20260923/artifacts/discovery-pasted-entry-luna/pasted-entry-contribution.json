@@ -1,0 +1,31 @@
+{
+  "case_id": "discovery-pasted-entry",
+  "selected_task": "contribute",
+  "target_file": "docs/agents/references/onboarding.json",
+  "rationale": "Make one small clarification in tasks.contribute.immediate_action: explicit documentation requests use the contribute route, then follow the matching row in the first-contribution map; the default research route applies only when there is no more-specific task. This is canonical route data consumed by scripts/start_here.py and the generated entrypoints, so it is the focused source to clarify rather than editing a generated packet.",
+  "baseline_check": "Before editing, run `python scripts/start_here.py --selfcheck`, `python scripts/start_here.py --check`, and `python .github/scripts/validate_agent_docs.py first-read guidance links`, matching the First Contribution guide's Improve root routing or onboarding row. These are planned baseline checks, not results that ran.",
+  "evidence_paths": [
+    "docs/agents/references/onboarding.json",
+    "docs/agents/first-contribution.md",
+    "docs/agents/start-here.md",
+    "scripts/start_here.py",
+    "docs/start-here/onboard-your-agent.md",
+    "CONTRIBUTING.md",
+    ".github/scripts/validate_agent_docs.py",
+    "docs/agents/harness-verification.md",
+    "src/openforage/skills/agent_runtime_integration/references/harnesses.json",
+    "src/openforage/skills/agent_runtime_integration/references/opencode.md"
+  ],
+  "offline_access": "Documentation planning is offline and needs no invite code, wallet, installed OpenForage package, daemon, or worker. This contribution can be prepared from repository documentation without contacting a service.",
+  "live_route": "No live route is needed for this documentation task. A live campaign requires explicit user authorization; an invite code is required only for first registration. Any continuous signal search requires an independently started CLI process of the same harness with a distinct session identity, and must not fall back to the main session, a same-session subagent, a heartbeat, or a Python worker. OpenCode's registry has scoped CLI/session-identity evidence for version 1.18.31 on Linux, while its overall status remains documented-unverified; that does not establish this invocation's version or identity, native scheduling, or full lifecycle support. Do not register or start a campaign, session, or worker here.",
+  "continuous_search_posture": "blocked_until_separate_session",
+  "main_session_fallback": false,
+  "live_actions": [],
+  "no_repo_edit": true,
+  "completion_criteria": [
+    "The selected task has a small, reviewable diff and no unrelated edits are removed.",
+    "Its listed validation passes and `git diff --check` is clean.",
+    "Claims remain tied to documented or observed evidence, with unknowns preserved.",
+    "No live registration, campaign launch, search, or result is claimed unless separately authorized and observed."
+  ]
+}

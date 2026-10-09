@@ -1,0 +1,11 @@
+{
+  "run_id": "reliability-research-opencode-1",
+  "series_manifest_sha256": "d9a9458b921020f6601a5225790689057e78639e568f0ea838de9c3b027058b4",
+  "exact_authored_artifact_sha256": {
+    "trial-output/challenger.py": "dd14a6cdc4b75da5671f71053750afa98e31987bb5a33f1099ca546a99cce9fa",
+    "trial-output/comparison-report.json": "64aa803e31c971b7fb48b84ad05e58a7abad823f5637ab2d9cd956716d9669ad",
+    "trial-output/research-result.json": "c7e46ec2c9d973284f2613543bf748b7f2783d8749dafd474067fd1912c6b1e6"
+  },
+  "original_verdict_unchanged": true,
+  "raw_native_streams_in_export": false
+}

@@ -1,0 +1,441 @@
+{
+  "case_id": "discovery-pasted-entry",
+  "task_mode": "discovery",
+  "fixture_conditions": [
+    "AGENTS.md and CLAUDE.md are absent from the prepared workspace; this describes visible files, not native harness autoload behavior.",
+    "The parent supplies a runtime JSON agent through OPENCODE_CONFIG_CONTENT; the effective wildcard default is deny, and permission keys read, list, glob, grep, and edit are allowed. OpenCode's edit permission covers edit/write/patch operations; the normalized event label remains edit, write, or apply_patch.",
+    "The prepared workspace has no .opencode project directory or node_modules tree; a non-model debug-agent probe checks the effective matrix without retaining unrelated output.",
+    "This profile limits tools exposed to the child agent; it does not claim the host has no Python executable."
+  ],
+  "variant": "max",
+  "variant_in_argv": true,
+  "execution_mode": "fresh-opencode-run",
+  "fresh_separate_invocation": true,
+  "replay": false,
+  "model": "openrouter/openai/gpt-6-luna",
+  "invocation_argv": [
+    "opencode",
+    "run",
+    "--pure",
+    "--format",
+    "json",
+    "--dir",
+    "<WORKSPACE>",
+    "--model",
+    "openrouter/openai/gpt-6-luna",
+    "--agent",
+    "entry-files-only",
+    "--variant",
+    "max"
+  ],
+  "workspace": "<WORKSPACE>",
+  "workspace_identity": "56d1dd725c29535fd6c25a0d49ee38406efa6ea70a9c3de544d67d1e9227f9be",
+  "source_snapshot_sha256": "1c0fa6c63a005d1ba219571336ca982533d380c3f3ea2b298d920e1d39b086ed",
+  "source_snapshot_files": 137,
+  "source_git_head": "c48cb235fde2d5590601528ef9c83cb9d8f402dd",
+  "harness": "opencode",
+  "harness_version": "1.18.31",
+  "session_id": "ses_f319f34e4ffec5Eu03NV41yTeS",
+  "started_at": "2026-09-23T13:07:23Z",
+  "ended_at": "2026-09-23T13:11:29Z",
+  "exit_code": 0,
+  "launch_error": null,
+  "model_process_started": true,
+  "owned_process_remaining": false,
+  "observed_actions": [
+    {
+      "tool": "glob",
+      "event_sequence": 1,
+      "native_tool_call_id_sha256": "30266fc02691fef934e20ed480292be60d277e9cacfa0b115a61d83fe209ae63",
+      "command": "<WORKSPACE>",
+      "command_sha256": "cb474a78c0c3ecceac06e1601434613c988e23a21b0d96fc0d14451e00ff4e13",
+      "command_bytes": 11,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 150,
+        "output_sha256": "55e903af5868f0e5ce8d65d5c2d493cb3ffdf9ce7a4209a563845ad5a5ffa03d"
+      }
+    },
+    {
+      "tool": "glob",
+      "event_sequence": 2,
+      "native_tool_call_id_sha256": "ce2d64eedbc3d9d45efcf0493068a4174c62919e9768b2297d9a54426e36ae17",
+      "command": "<WORKSPACE>",
+      "command_sha256": "cb474a78c0c3ecceac06e1601434613c988e23a21b0d96fc0d14451e00ff4e13",
+      "command_bytes": 11,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 54,
+        "output_sha256": "992efa063f4258fc0fd9962d3bec2128ca00faa098b793aadd1019b40e9bb8a6"
+      }
+    },
+    {
+      "tool": "glob",
+      "event_sequence": 3,
+      "native_tool_call_id_sha256": "c2d2e700755edddda06f72adbc972e373cdedee90f4ad07cc03f44ad86e79e34",
+      "command": "<WORKSPACE>",
+      "command_sha256": "cb474a78c0c3ecceac06e1601434613c988e23a21b0d96fc0d14451e00ff4e13",
+      "command_bytes": 11,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 985,
+        "output_sha256": "588d0ab78d740fa7a438fcf6d1d4461220cfd623f70c22bd4bef91a75bd050b3"
+      }
+    },
+    {
+      "tool": "glob",
+      "event_sequence": 5,
+      "native_tool_call_id_sha256": "c3ca3cdae24b198865a6ea4cc417b91ca1495cc710ad6f81ec28e2d0be48cde0",
+      "command": "<WORKSPACE>",
+      "command_sha256": "cb474a78c0c3ecceac06e1601434613c988e23a21b0d96fc0d14451e00ff4e13",
+      "command_bytes": 11,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 33,
+        "output_sha256": "58827e30471dd71c38c06c4ffa96373538452726570358da961ea1f1d6658409"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 8,
+      "native_tool_call_id_sha256": "232bdf8382399ead22d5bec6302d6f272bbefcd28ad5be22dd2793d83e48643e",
+      "command": "<WORKSPACE>/trial-output/pasted-entry-contribution.json",
+      "command_sha256": "4ea37f4b6b735d8da9908817af6f21bb74a0bb50a33d7a2414b31baa0b810add",
+      "command_bytes": 55,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 144,
+        "output_sha256": "7967007d6e3ad092aa6d6f72852187c6ef8fbedb27255433991d003677faf65c"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 9,
+      "native_tool_call_id_sha256": "6a2c62732f68e8e9b08ead309797ef6843211aff4933b83dbf1635ad42f88cd9",
+      "command": "<WORKSPACE>/scripts/start_here.py",
+      "command_sha256": "58827e30471dd71c38c06c4ffa96373538452726570358da961ea1f1d6658409",
+      "command_bytes": 33,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 45980,
+        "output_sha256": "2198d357384b431f5b1bfec3285c8d2172502f3777a67f392c02aa6200fef53e"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 10,
+      "native_tool_call_id_sha256": "16a872774eb346786b4e00c3ff75feec7e13f18a0571ef963bcef63c5d46140a",
+      "command": "<WORKSPACE>/docs/agents/start-here.md",
+      "command_sha256": "3cdbeddb6bd9cab8fb91caa784210a5ba8f7afccadb87a0cdc565172001624ad",
+      "command_bytes": 37,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 9516,
+        "output_sha256": "a0d989090039c5c0ebfdf9925fd57cd9bf1366009974d1897da3aa4a787fe06b"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 11,
+      "native_tool_call_id_sha256": "ea1ab3a7209c42802d00dd8105d3561e7f2cb6a000deb895fad570bb097a3e34",
+      "command": "<WORKSPACE>/docs/agents/first-contribution.md",
+      "command_sha256": "d8d5e8dbcd090127819612184c23d08682992cc68e2e8c0b4f453e2f49c11cbe",
+      "command_bytes": 45,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 11449,
+        "output_sha256": "56d7cc097448ca390a9f1904f1daf76f36312757f0f6d6225dc111843f0cfc19"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 12,
+      "native_tool_call_id_sha256": "4886fd5a8bf98f6550754232fb6a97386444a88eea56285ab3549151354e409b",
+      "command": "<WORKSPACE>/docs/agents/references/onboarding.json",
+      "command_sha256": "c7ae2d11ad2aa10c79467c715c9dd67fcb78e4b9e42c39d4b77fd7bfd4ba426e",
+      "command_bytes": 50,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 19373,
+        "output_sha256": "fc1a392780b9351dded17694d453a8f05994d6e15dc4a5d1b341fd9b44656ad2"
+      }
+    },
+    {
+      "tool": "glob",
+      "event_sequence": 15,
+      "native_tool_call_id_sha256": "723e53cda1b6636cb6adac81a2cdad61aa4fa56ff7323871b04ecce708d29e79",
+      "command": "<WORKSPACE>",
+      "command_sha256": "cb474a78c0c3ecceac06e1601434613c988e23a21b0d96fc0d14451e00ff4e13",
+      "command_bytes": 11,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 282,
+        "output_sha256": "2bf8fbeaeac5d466533102b4c1df19f5524e828b5bb638d54df02a0b0287540d"
+      }
+    },
+    {
+      "tool": "grep",
+      "event_sequence": 16,
+      "native_tool_call_id_sha256": "4e25a48400d6ff0f10fdd337d7c8bd7c06ba21426d4d7541f3137840fa1d029e",
+      "command": "<WORKSPACE>",
+      "command_sha256": "cb474a78c0c3ecceac06e1601434613c988e23a21b0d96fc0d14451e00ff4e13",
+      "command_bytes": 11,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 14,
+        "output_sha256": "949d59b7ee8dabf8c14f26bb88463d19a331f38aa2542534727cb77fc3b94338"
+      }
+    },
+    {
+      "tool": "grep",
+      "event_sequence": 17,
+      "native_tool_call_id_sha256": "6780be5af42ab1a73e415957f20ba4a6d6352fa419dada582411899d38e4fc3c",
+      "command": "<WORKSPACE>",
+      "command_sha256": "cb474a78c0c3ecceac06e1601434613c988e23a21b0d96fc0d14451e00ff4e13",
+      "command_bytes": 11,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 14,
+        "output_sha256": "949d59b7ee8dabf8c14f26bb88463d19a331f38aa2542534727cb77fc3b94338"
+      }
+    },
+    {
+      "tool": "grep",
+      "event_sequence": 18,
+      "native_tool_call_id_sha256": "f4e2c7cda2483810aec7bf5ab8bea118c30fbbf8dd75afa4f0e5e4d9864a5c20",
+      "command": "<WORKSPACE>",
+      "command_sha256": "cb474a78c0c3ecceac06e1601434613c988e23a21b0d96fc0d14451e00ff4e13",
+      "command_bytes": 11,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 1467,
+        "output_sha256": "8df0951a9adf3db5937481d47ac190ba37acaff14ff9306dd0271b4ffa16d869"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 21,
+      "native_tool_call_id_sha256": "1571af14588ef5070b4c964ad62808c17b1b995720d4c9b635cbf9a332b76e82",
+      "command": "<WORKSPACE>/README.md",
+      "command_sha256": "e839f8ef3b5392bec89b21a8be0ec8962b39b186a60a236fcaf9b7d55f0f12c4",
+      "command_bytes": 21,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 10142,
+        "output_sha256": "f775ee5e87d2a805a451e1b268d89fe97c2dcf7dc6a131b8b9a69668ab477d49"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 22,
+      "native_tool_call_id_sha256": "f061f1416c215658234273b8da075a59acef948e49bd892d31cc0dff416dc26e",
+      "command": "<WORKSPACE>/docs/start-here/onboard-your-agent.md",
+      "command_sha256": "a97f83e82c56de2a73b608ec7c1ca92a07839a2069ae12eacfca348d2f5c8f86",
+      "command_bytes": 49,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 5895,
+        "output_sha256": "cdfe150d2e3dded5b01f89bcf11364f3f2e5ffc5e0e6c9586103aca7bd02a113"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 23,
+      "native_tool_call_id_sha256": "bd7ac89c3853f24b07f07263c227df5d1e2405776a3cf51c18b472ee68198bc3",
+      "command": "<WORKSPACE>/docs/agents/quickstart.md",
+      "command_sha256": "88bbb4cd8c34051e5871237571692df05bb57d4ed82c0a54548de3fdab310499",
+      "command_bytes": 37,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 3892,
+        "output_sha256": "354832c1c320dfb156c7f17a66bc94ddc40cacf2120af512761f14127d6e353a"
+      }
+    },
+    {
+      "tool": "apply_patch",
+      "event_sequence": 27,
+      "native_tool_call_id_sha256": "f6d6537915f6b3b4998ded79f4433bcc5696b042652b9e5fa031f4361db710d4",
+      "command": "trial-output/pasted-entry-contribution.json",
+      "command_sha256": "b0533d181094f13cc92525f3dd217ce4418d35fe39d3924bfc968643c4082e92",
+      "command_bytes": 43,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 83,
+        "output_sha256": "b04556647afb51ed60c958eaea6cde8efb76f5c1e08ea4d22f66a818e5d9ee07"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 30,
+      "native_tool_call_id_sha256": "b97e901339a43874d9bdfec2a0403d05a67b3d7e685c160ad5cfc48be71ab78c",
+      "command": "<WORKSPACE>/trial-output/pasted-entry-contribution.json",
+      "command_sha256": "4ea37f4b6b735d8da9908817af6f21bb74a0bb50a33d7a2414b31baa0b810add",
+      "command_bytes": 55,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 2801,
+        "output_sha256": "52fbdf814ba372af7deca9a34d223a910cac752229ca20a49530859282330e08"
+      }
+    }
+  ],
+  "observed_action_schema_version": 2,
+  "outcome_schema_version": 1,
+  "child_tool_profile": {
+    "profile_id": "opencode-file-tools-only-v2",
+    "agent_name": "entry-files-only",
+    "mechanism": "OPENCODE_CONFIG_CONTENT runtime JSON agent selected with --agent",
+    "configured": true,
+    "applied_to_child_invocation": true,
+    "replay_not_enforced": false,
+    "default_tool_permission": "deny",
+    "wildcard_default_deny": true,
+    "allowed_tools": [
+      "read",
+      "list",
+      "glob",
+      "grep",
+      "edit"
+    ],
+    "denied_tools": [
+      "*",
+      "external_directory"
+    ],
+    "effective_permission_probe": {
+      "status": "verified",
+      "method": "non-model `opencode debug agent entry-files-only` with OPENCODE_CONFIG_CONTENT",
+      "exit_code": 0,
+      "error_kind": null,
+      "agent_name": "entry-files-only",
+      "effective_matrix_matches": true,
+      "effective_permission_matrix": {
+        "*": "deny",
+        "external_directory": "deny",
+        "bash": "deny",
+        "read": "allow",
+        "list": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "edit": "allow",
+        "matches_admitted_matrix": true
+      },
+      "project_opencode_absent_before": true,
+      "project_opencode_absent_after": true,
+      "node_modules_absent_before": true,
+      "node_modules_absent_after": true,
+      "model_invocation": false,
+      "raw_debug_output_retained": false,
+      "argv": [
+        "opencode",
+        "debug",
+        "agent",
+        "entry-files-only"
+      ]
+    },
+    "host_python_binary_absence_claimed": false,
+    "note": "Tool permissions are checked through OpenCode's effective debug-agent matrix; the prompt alone is not enforcement and no host-Python absence is claimed."
+  },
+  "action_extraction": {
+    "method": "versioned allowlisted actions correlated by native tool-call ID; shell exit code only from native result metadata",
+    "events_observed": 35,
+    "actions_observed": 18,
+    "raw_events_scratch": ".tmp/fresh-agent-trials/discovery-pasted-entry-luna-rerun.raw-events.jsonl",
+    "raw_events_sha256": "92ed356d35cef7d12e1b1c882b4386867cf354e884c2ab85b058863abd02b58c",
+    "raw_events_bytes": 776870,
+    "note": "Raw events stay in git-ignored scratch; provider metadata and tool output text are omitted."
+  },
+  "child_environment": {
+    "applied": true,
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "python_on_path": "/usr/bin",
+    "note": "Set for the child session so validator runs create no bytecode under frozen dirs; `python` on the child PATH is this interpreter."
+  },
+  "child_prompt": {
+    "protocol_version": "workspace-protocol-v2",
+    "rendered_sha256": "1dfb5229b470d6c53374d3d72ee417a11030ed32ff643abd26e497ab6a817f0c",
+    "delivered": true,
+    "pasted_canonical_entry": "root_route",
+    "pasted_entry_source": "README.md",
+    "pasted_entry_sha256": "d4409e37d0f8efd414b196fb8c4a23d0527629ee411fce6d40c41ea7aaf5a0a5",
+    "note": "The runner prepends the common protocol block and, for the pasted-entry case, the canonical route block from README.md; the exact task prompt remains in tasks.json. Rendered text is hashed, not retained, because it embeds the workspace path."
+  },
+  "first_useful_action_seconds": 10.531,
+  "first_useful_action_unknown_reason": null,
+  "clarification_count": null,
+  "plain_text_tail": "",
+  "artifact_refs": {
+    "trial-output/pasted-entry-contribution.json": "2bc5ac96c528a17025755b9bae7f31aae3ec74dc5a3be25c0a65dfecaf810c25"
+  },
+  "claim": "single-trial observation; not a measured result"
+}

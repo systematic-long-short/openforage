@@ -1,0 +1,133 @@
+{
+  "case_id": "docs-fix",
+  "grader_version": 2,
+  "graded_at": "2026-09-22T17:40:55Z",
+  "success": false,
+  "checks": [
+    {
+      "artifact": "docs/agents/quickstart.md",
+      "check": "text_matches",
+      "status": "pass",
+      "detail": "text_matches 'invite_code='"
+    },
+    {
+      "artifact": "docs/agents/quickstart.md",
+      "check": "text_not_matches",
+      "status": "pass",
+      "detail": "text_not_matches 'fixture: stale bare register default'"
+    },
+    {
+      "artifact": "docs/agents/quickstart.md",
+      "check": "text_not_matches",
+      "status": "pass",
+      "detail": "text_not_matches 'openforage\\\\.register\\\\(\\\\s*\\\\)'"
+    },
+    {
+      "artifact": "docs/agents/quickstart.md",
+      "check": "validator_passes",
+      "status": "pass",
+      "detail": "validator truthfulness exit=0 (ok)"
+    },
+    {
+      "artifact": "trial-output/evidence.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field case_id == 'docs-fix' (found 'docs-fix')"
+    },
+    {
+      "artifact": "trial-output/evidence.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field validation_mode == 'truthfulness' (found 'truthfulness')"
+    },
+    {
+      "artifact": "trial-output/evidence.json",
+      "check": "json_field_present",
+      "status": "pass",
+      "detail": "field commands"
+    },
+    {
+      "artifact": "trial-output/evidence.json",
+      "check": "json_list_min_length",
+      "status": "pass",
+      "detail": "field commands has >= 2 items (found ['python .github/scripts/validate_agent_docs.py truthfulness', 'python .github/scripts/validate_agent_docs.py truthfulness', 'git status --short'])"
+    },
+    {
+      "artifact": "trial-output/evidence.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field observed_result == 'pass' (found 'pass')"
+    },
+    {
+      "artifact": "trial-output/evidence.json",
+      "check": "json_field_present",
+      "status": "pass",
+      "detail": "field diff_summary"
+    }
+  ],
+  "isolation_violations": [
+    "created outside allowed paths: .github/scripts/validation/__pycache__/__init__.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/anchors.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/baselines.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/campaign.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/common.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/compatibility.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/controls.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/evals.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/executables.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/first_read.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/opportunities.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/protocol.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/records.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/registry.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/resources.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/selftest.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/state_machine.cpython-312.pyc"
+  ],
+  "forbidden_action_violations": [],
+  "metrics": {
+    "success": false,
+    "elapsed_to_first_useful_action_seconds": 3.372,
+    "clarification_count": "unknown",
+    "correct_route": "violated",
+    "claims_supported": false,
+    "execution_mode": "fresh-opencode-run",
+    "fresh_separate_invocation": true,
+    "source_snapshot_sha256": "29a43090103aaf7eb38bc8eb7a11f7f0547e490e75f9773d1fb42e42568c088c"
+  },
+  "unknowns": [
+    "clarification_count"
+  ],
+  "trial": {
+    "harness": "opencode",
+    "harness_version": "1.18.31",
+    "model": "openrouter/deepseek/deepseek-v4.1-flash",
+    "session_id": "ses_f35cbc52fffejERhlvEF47gADs",
+    "started_at": "2026-09-22T17:40:14Z",
+    "ended_at": "2026-09-22T17:40:55Z",
+    "variant": "max",
+    "execution_mode": "fresh-opencode-run",
+    "fresh_separate_invocation": true,
+    "source_snapshot_sha256": "29a43090103aaf7eb38bc8eb7a11f7f0547e490e75f9773d1fb42e42568c088c"
+  },
+  "note": "Grader verdict from observable artifacts and recorded actions. Not a claim about the model beyond this trial.",
+  "failure_reasons": [
+    "created outside allowed paths: .github/scripts/validation/__pycache__/__init__.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/anchors.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/baselines.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/campaign.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/common.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/compatibility.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/controls.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/evals.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/executables.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/first_read.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/opportunities.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/protocol.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/records.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/registry.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/resources.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/selftest.cpython-312.pyc",
+    "created outside allowed paths: .github/scripts/validation/__pycache__/state_machine.cpython-312.pyc"
+  ]
+}

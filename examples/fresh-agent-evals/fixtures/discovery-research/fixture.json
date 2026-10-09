@@ -1,0 +1,8 @@
+{
+  "conditions": [
+    "Campaign access is unavailable for this exercise.",
+    "The OpenForage package must be treated as not installed for this exercise.",
+    "No verified scheduler evidence is supplied; offline research remains available."
+  ],
+  "overlay_files": []
+}

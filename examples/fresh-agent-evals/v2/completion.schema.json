@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Fresh contribution completion record v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "case_id", "route", "contribution", "validation", "human_review"],
+  "properties": {
+    "schema_version": {"const": 2},
+    "case_id": {
+      "enum": ["first-finished-contribution-primary", "first-finished-contribution-heldout"]
+    },
+    "route": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["selected_task", "offline_contribution_access", "live_campaign_authorization", "authoritative_sources"],
+      "properties": {
+        "selected_task": {
+          "enum": ["research", "contribute", "maintenance", "diagnose", "adapter", "campaign"]
+        },
+        "offline_contribution_access": {
+          "enum": ["not_required", "required", "unknown"]
+        },
+        "live_campaign_authorization": {
+          "enum": ["explicit_user_authorization_required", "not_required", "unknown"]
+        },
+        "authoritative_sources": {
+          "description": "List only canonical files actually consulted through completed, recorded read operations. Automatically injected instructions may inform the work but are not independently proven read events for this field; include only files actually read.",
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "README.md",
+              "AGENTS.md",
+              "CLAUDE.md",
+              "docs/agents/first-contribution.md",
+              "docs/agents/start-here.md",
+              "docs/agents/references/onboarding.json"
+            ]
+          }
+        }
+      }
+    },
+    "contribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "changed_paths"],
+      "properties": {
+        "kind": {"enum": ["documentation_correction", "documentation_addition", "other"]},
+        "changed_paths": {
+          "description": "List only changed public repository content. Exclude this completion record and optional scratch files; do not list trial-output metadata as a public contribution path.",
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["baseline", "final"],
+      "properties": {
+        "baseline": {"$ref": "#/$defs/validation_observation"},
+        "final": {"$ref": "#/$defs/validation_observation"}
+      }
+    },
+    "human_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["summary", "rationale"],
+      "properties": {
+        "summary": {"type": "string", "minLength": 1},
+        "rationale": {"type": "string", "minLength": 1}
+      }
+    }
+  },
+  "$defs": {
+    "validation_observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["command", "modes", "exit_code", "result"],
+      "properties": {
+        "command": {
+          "description": "The complete workspace-relative validation command. It may be standalone or contain one or more ordered validator segments in a fully classified quote-aware && chain, with the unique ordered modes listed here. Native OpenCode commands are direct shell scripts; native Codex events use one exact bash/sh -lc wrapper and may contain one exact nested login-shell wrapper, while the completion claim records the complete inner command. A fully admitted AND chain with explicit native exit 0 proves each executed validator passed; nonzero does not locate a failing validator.",
+          "type": "string",
+          "minLength": 1
+        },
+        "modes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "secrets", "truthfulness", "registry", "links", "examples", "records",
+              "state-machine", "controls", "guidance", "first-read", "evals",
+              "opportunities", "compatibility", "executables", "selftest", "all"
+            ]
+          }
+        },
+        "exit_code": {"type": "integer"},
+        "result": {"enum": ["passed", "failed", "unknown"]}
+      }
+    }
+  }
+}

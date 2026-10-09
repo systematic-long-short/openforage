@@ -1,0 +1,13 @@
+{
+  "series_id": "completion-reliability-research-3",
+  "run_ids": [
+    "complete-research-opencode-3",
+    "complete-research-codex-3"
+  ],
+  "snapshot_sha256": "a3c7fa6e8ba6359c35ecb834f2402dbabdab5b105e11d811bb193cfa9855bca5",
+  "source_tree_sha256": "5950026ef2f879ec43830e8d18bcc6440ac0e4a27a188a50d953a5f84b16c5c3",
+  "initial_file_maps_equal": true,
+  "codex_launch_snapshot_pin_matched": true,
+  "requested_models_differ": true,
+  "harness_only_causal_comparison": false
+}

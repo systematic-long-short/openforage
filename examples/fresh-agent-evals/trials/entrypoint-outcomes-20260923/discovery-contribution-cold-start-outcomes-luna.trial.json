@@ -1,0 +1,369 @@
+{
+  "case_id": "discovery-contribution-cold-start",
+  "task_mode": "discovery",
+  "fixture_conditions": [
+    "AGENTS.md and CLAUDE.md are removed from the prepared workspace snapshot.",
+    "This fixture condition describes visible workspace contents only and makes no blanket claim about native harness loading."
+  ],
+  "variant": "max",
+  "variant_in_argv": true,
+  "execution_mode": "fresh-opencode-run",
+  "fresh_separate_invocation": true,
+  "replay": false,
+  "model": "openrouter/openai/gpt-6-luna",
+  "invocation_argv": [
+    "opencode",
+    "run",
+    "--format",
+    "json",
+    "--dir",
+    "<WORKSPACE>",
+    "--model",
+    "openrouter/openai/gpt-6-luna",
+    "--variant",
+    "max"
+  ],
+  "workspace": "<WORKSPACE>",
+  "workspace_identity": "2cf61187779b6a31049cb7704ad3477abefbe2d8295578faf6d134aa37eb1a0b",
+  "source_snapshot_sha256": "832c88480d756173fb7b417186f0f4d1c1cbb2db1668ef2397bb4ed25dec1a8d",
+  "source_snapshot_files": 134,
+  "source_git_head": "c48cb235fde2d5590601528ef9c83cb9d8f402dd",
+  "harness": "opencode",
+  "harness_version": "1.18.31",
+  "session_id": "ses_f31b94ab3ffePMBlNnossmef0k",
+  "started_at": "2026-09-23T12:38:53Z",
+  "ended_at": "2026-09-23T12:42:47Z",
+  "exit_code": 0,
+  "launch_error": null,
+  "model_process_started": true,
+  "owned_process_remaining": false,
+  "observed_actions": [
+    {
+      "tool": "read",
+      "event_sequence": 1,
+      "native_tool_call_id_sha256": "b7c85fa0ad8536b19c0830c87df3066272c6013c609a8c9963eec35a549484f1",
+      "command": "<WORKSPACE>/README.md",
+      "command_sha256": "e839f8ef3b5392bec89b21a8be0ec8962b39b186a60a236fcaf9b7d55f0f12c4",
+      "command_bytes": 21,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 56594,
+        "output_sha256": "4a350912d3b2a81afab1de777a84008885ad3233f080e4413e2e372e215484ec"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 5,
+      "native_tool_call_id_sha256": "7c025ba1911503ee5ac01b4af4db342c6789e372194e3f340f3b809782042dec",
+      "command": "<WORKSPACE>/docs/agents/first-contribution.md",
+      "command_sha256": "d8d5e8dbcd090127819612184c23d08682992cc68e2e8c0b4f453e2f49c11cbe",
+      "command_bytes": 45,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 11449,
+        "output_sha256": "56d7cc097448ca390a9f1904f1daf76f36312757f0f6d6225dc111843f0cfc19"
+      }
+    },
+    {
+      "tool": "bash",
+      "event_sequence": 8,
+      "native_tool_call_id_sha256": "711ce73a688eb2ddb6b4499aac804b5ae21df4b95f3013e0d529ee290efb13fa",
+      "command": "python scripts/start_here.py --task contribute",
+      "command_sha256": "c5324a9a5bdb76d060e9890f65e002e987e5c4174ffa187a4239a1607f8aba55",
+      "command_bytes": 46,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "observed",
+        "output_hash_status": "observed",
+        "output_bytes": 6449,
+        "output_sha256": "5dc9fc6dcd931f863b9605242a5b5a2f9af56d40341e24acc8ecd9b38817233a",
+        "shell_exit_code": 0
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 11,
+      "native_tool_call_id_sha256": "63ab1d571118cacd5ff2ddfd1c5f7070cd3978ed3bc81bf6b06cbd19a11adce2",
+      "command": "<WORKSPACE>/docs/agents/start-here.md",
+      "command_sha256": "3cdbeddb6bd9cab8fb91caa784210a5ba8f7afccadb87a0cdc565172001624ad",
+      "command_bytes": 37,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 9516,
+        "output_sha256": "a0d989090039c5c0ebfdf9925fd57cd9bf1366009974d1897da3aa4a787fe06b"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 12,
+      "native_tool_call_id_sha256": "fefd5327aab2d04d1307090a571aa82ac8d4c36f20ad6d58a7e68a80d1e010f5",
+      "command": "<WORKSPACE>/CONTRIBUTING.md",
+      "command_sha256": "cf6661c4070756d3981db9634baabc4e677385eb0b64117f36c517792255ba24",
+      "command_bytes": 27,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 12057,
+        "output_sha256": "d4f9c4d501ff7c0707a4641b1234f85cffacb18ead31bf43279f3ce92e5ae356"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 13,
+      "native_tool_call_id_sha256": "6cd77c0c41e8fe49d1fa37cf6de50bd9cde67b7f241fa01215571307bf800f5d",
+      "command": "<WORKSPACE>/docs/agents/research-campaign.md",
+      "command_sha256": "c4057bd9b0307655b1bfe80b1941bfeeb2722371add5ce5580895f20d1eff1b3",
+      "command_bytes": 44,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 31708,
+        "output_sha256": "5f16181ed4e56bd06d53c45d4e1525d885af9de25df6a71ae394c9d82d8099cd"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 14,
+      "native_tool_call_id_sha256": "65f8788a85a89c6350dfe853b73d1a5977ffc990ad9d985d29780d246423181e",
+      "command": "<WORKSPACE>/docs/agents/references/onboarding.json",
+      "command_sha256": "c7ae2d11ad2aa10c79467c715c9dd67fcb78e4b9e42c39d4b77fd7bfd4ba426e",
+      "command_bytes": 50,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 19373,
+        "output_sha256": "fc1a392780b9351dded17694d453a8f05994d6e15dc4a5d1b341fd9b44656ad2"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 15,
+      "native_tool_call_id_sha256": "b9fe83d0ef4e6499d95297d4a3e16c2cbc6291a909eab01070514113c91bc0ed",
+      "command": "<WORKSPACE>/docs/agents/research-opportunities.md",
+      "command_sha256": "5a064a2215f3bc07171beb7cd5a8b17a660065b8e4bd6cd5c0ce3a710359e486",
+      "command_bytes": 49,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 14598,
+        "output_sha256": "c7a3e16d3af014956e037a4360e8593985ff4a4ec1add8e20bb05241c72d8242"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 18,
+      "native_tool_call_id_sha256": "518c19cd2b44370f192cce2f9c73c2b9cadfef57b2817afa75f3c827bc8e9051",
+      "command": "<WORKSPACE>/docs/agents/first-search.md",
+      "command_sha256": "30dd431174e4b58a67e2745e8636db222f435d36ec0ad3792872eeb7367af97a",
+      "command_bytes": 39,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 4866,
+        "output_sha256": "b45cbea5b5abedd0d3e9b4f4b3b19b906b4e6efba66b8cd0b3b40fc22cabb1d1"
+      }
+    },
+    {
+      "tool": "grep",
+      "event_sequence": 21,
+      "native_tool_call_id_sha256": "134214658cbf60a62927e1304f23510ca4d9d8ac830d7906b9145ea088ba61d0",
+      "command": "<WORKSPACE>/docs/agents",
+      "command_sha256": "1c7d1f1202d32497140c6363533c9afb7851f7d9f9376ec9987f1c02039334d7",
+      "command_bytes": 23,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 3118,
+        "output_sha256": "17588b751f1a1665a87f8203693d2282ac52d6e875aa112bb3cfc0b5a6b55b4e"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 22,
+      "native_tool_call_id_sha256": "2c7a6eafa485f9564e994a2f4c3848a3ad6fdcbb47b3dbb1e86dc5c781cdaac9",
+      "command": "<WORKSPACE>/docs/agents/research-opportunities.json",
+      "command_sha256": "a6a446159bc81c4ecc17a00acea67ea865b1938c8ba6a9db1dcca7fb3385f6f2",
+      "command_bytes": 51,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 18712,
+        "output_sha256": "caabb0f8c1cf4bdc71a4aa3c770b0c69d0ca04cc1ec7c4016cd630d5bc367265"
+      }
+    },
+    {
+      "tool": "bash",
+      "event_sequence": 26,
+      "native_tool_call_id_sha256": "31ed305644153a36924935c3dfecd7f34fe0c94502020739dac572013269b0f1",
+      "command": "PYTHONDONTWRITEBYTECODE=1 python .github/scripts/validate_agent_docs.py opportunities links",
+      "command_sha256": "db73ae7eed8b12e0fe1cea09114d1d8b5cd5aaa13438ddb1a53349046e77b1a5",
+      "command_bytes": 91,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "observed",
+        "output_hash_status": "observed",
+        "output_bytes": 451,
+        "output_sha256": "cfb74c55fc4d3bfae070d87884001014a46f7acd882f4f730e0639c34648ea95",
+        "shell_exit_code": 1
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 29,
+      "native_tool_call_id_sha256": "e8a0078532364907f0019ae5d8d1650cc1ad1f80bce0aa4edbf98d1b10f4dce1",
+      "command": "<WORKSPACE>/trial-output",
+      "command_sha256": "3f871a310bbab9744b75db0a0a404f29bc99d0cc774489fa51e4085516508e35",
+      "command_bytes": 24,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 134,
+        "output_sha256": "482690735c461aba4245f99f37ad9626f9008b593e51bd7fb67855a0586679f2"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 32,
+      "native_tool_call_id_sha256": "d321f5daa81e09a37529d52df2ec4fddc3b2a4099e72af41d96382271a2d077c",
+      "command": "<WORKSPACE>/trial-output/contribution-discovery.json",
+      "command_sha256": "7c8738f03a32da3a4698146773a07b6376d80d6ecb3bdbb47281c206df81d8f6",
+      "command_bytes": 52,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "error",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "missing",
+        "output_bytes": null,
+        "output_sha256": null
+      }
+    },
+    {
+      "tool": "apply_patch",
+      "event_sequence": 35,
+      "native_tool_call_id_sha256": "c05694bcf85374adc224be52d272933dec31a81cc57bb5bed332d4e1023fdd93",
+      "command": "trial-output/contribution-discovery.json",
+      "command_sha256": "bac6fb66ecfd596fb32f5bce8eeff6b485f4779e71db25d82b503e616c4b6f05",
+      "command_bytes": 40,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 80,
+        "output_sha256": "31c8057e91e5f646a0b4fa42f1a266e31ea65bbaa8785fad999e3ce442c3fcb7"
+      }
+    },
+    {
+      "tool": "bash",
+      "event_sequence": 38,
+      "native_tool_call_id_sha256": "b8664e386a764701edfd391cbe774133b1a2290c5746a08863a69db87ea846b4",
+      "command": "git status --short",
+      "command_sha256": "c96885f0a85f64c61b0d76510ca80e4a19be674e163a73b68a0a3d57f4dc15b6",
+      "command_bytes": 18,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "observed",
+        "output_hash_status": "observed",
+        "output_bytes": 149,
+        "output_sha256": "74473f349ddf036fe53390b37498e39bb939c62bf9f28bc4b67e9ac89cdc6e7e",
+        "shell_exit_code": 0
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 39,
+      "native_tool_call_id_sha256": "7f5a1819599fb48263cd47793add991cfc501c305a87cfaaa622448c7acbe63c",
+      "command": "<WORKSPACE>/trial-output/contribution-discovery.json",
+      "command_sha256": "7c8738f03a32da3a4698146773a07b6376d80d6ecb3bdbb47281c206df81d8f6",
+      "command_bytes": 52,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 2479,
+        "output_sha256": "389931cf005558a85d38aa57f779fb7ea95ae66d6e64b3e5352bf7d5adaab818"
+      }
+    }
+  ],
+  "observed_action_schema_version": 2,
+  "outcome_schema_version": 1,
+  "child_tool_profile": null,
+  "action_extraction": {
+    "method": "versioned allowlisted actions correlated by native tool-call ID; shell exit code only from native result metadata",
+    "events_observed": 44,
+    "actions_observed": 17,
+    "raw_events_scratch": ".tmp/fresh-agent-trials/discovery-contribution-cold-start-outcomes-luna.raw-events.jsonl",
+    "raw_events_sha256": "e510e35fa84b71955d064ba6cadbef8f05f8f46d1335adddd6ce6572bf23309d",
+    "raw_events_bytes": 889713,
+    "note": "Raw events stay in git-ignored scratch; provider metadata and tool output text are omitted."
+  },
+  "child_environment": {
+    "applied": true,
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "python_on_path": "/usr/bin",
+    "note": "Set for the child session so validator runs create no bytecode under frozen dirs; `python` on the child PATH is this interpreter."
+  },
+  "child_prompt": {
+    "protocol_version": "workspace-protocol-v2",
+    "rendered_sha256": "ad88d4b49599c65e07685a7bcf6b9e793d702ce50b931927314d5e691d6c9c48",
+    "delivered": true,
+    "pasted_canonical_entry": null,
+    "pasted_entry_source": null,
+    "pasted_entry_sha256": null,
+    "note": "The runner prepends the common protocol block and, for the pasted-entry case, the canonical route block from README.md; the exact task prompt remains in tasks.json. Rendered text is hashed, not retained, because it embeds the workspace path."
+  },
+  "first_useful_action_seconds": 9.261,
+  "first_useful_action_unknown_reason": null,
+  "clarification_count": null,
+  "plain_text_tail": "",
+  "artifact_refs": {
+    "trial-output/contribution-discovery.json": "38a65aa63fa55d781c6eb46b4d5b7b52c2dd28456826338edc4e7940bd914820"
+  },
+  "claim": "single-trial observation; not a measured result"
+}

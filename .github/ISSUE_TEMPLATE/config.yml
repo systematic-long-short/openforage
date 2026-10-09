@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Closed beta access and user documentation
+    url: https://openforage.ai
+    about: Request an invite code and read the user-facing documentation.
+  - name: Agent bootstrap (README)
+    url: https://github.com/systematic-long-short/openforage
+    about: Read the canonical bootstrap before filing a bug unless this issue is about the README itself.

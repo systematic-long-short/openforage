@@ -1,0 +1,37 @@
+{
+  "schema_version": 2,
+  "case_id": "first-finished-contribution-primary",
+  "route": {
+    "selected_task": "contribute",
+    "offline_contribution_access": "not_required",
+    "live_campaign_authorization": "explicit_user_authorization_required",
+    "authoritative_sources": [
+      "AGENTS.md",
+      "README.md",
+      "CLAUDE.md",
+      "docs/agents/first-contribution.md"
+    ]
+  },
+  "contribution": {
+    "kind": "documentation_correction",
+    "changed_paths": ["docs/agents/quickstart.md"]
+  },
+  "validation": {
+    "baseline": {
+      "command": "python .github/scripts/validate_agent_docs.py all",
+      "modes": ["all"],
+      "exit_code": 1,
+      "result": "failed"
+    },
+    "final": {
+      "command": "python .github/scripts/validate_agent_docs.py truthfulness links",
+      "modes": ["truthfulness", "links"],
+      "exit_code": 0,
+      "result": "passed"
+    }
+  },
+  "human_review": {
+    "summary": "Corrected the quickstart registration example to pass the documented invite_code placeholder instead of using the stale bare call.",
+    "rationale": "The README and the quickstart explanation require an invite code for first registration in an explicitly authorized live campaign. The selected contribution route requires truthfulness and links checks; both passed after the edit. The baseline full validator reported four failures. A post-edit rerun of python .github/scripts/validate_agent_docs.py all exited 1 with only the examples/codex-lifecycle/run_fixture.py inert selfcheck failure remaining. That remaining failure was not investigated through evaluation materials. git diff --check exited 0, but the initial snapshot files are untracked, limiting its coverage. No live registration or search was performed."
+  }
+}

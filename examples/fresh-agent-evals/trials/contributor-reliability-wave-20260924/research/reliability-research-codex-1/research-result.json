@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "task_id": "paper-backed-coverage-challenger-v1",
+  "source": {
+    "source_excerpt_path": "examples/fresh-agent-evals/fixtures/challenger-research/trial-inputs/primary-source-excerpt.md",
+    "source_excerpt_sha256": "08ecc9767bf0f37055bbda96999dc97c80a86918038ef3ca833b5b3367bd7373",
+    "title": "Illuminating search spaces by mapping elites",
+    "authors": ["Jean-Baptiste Mouret", "Jeff Clune"],
+    "year": 2015,
+    "identifier": "arXiv:1504.04909",
+    "url": "https://arxiv.org/abs/1504.04909",
+    "paraphrase": "MAP-Elites organizes candidates by chosen descriptors and retains strong examples across that map, revealing varied solutions and their performance rather than only a single winner."
+  },
+  "research": {
+    "mechanism_explanation": "The paper's descriptor map motivates treating each eligible feature-by-rotation pair as a separate construction cell. The callback shuffles active cells using the paired seed, offers one previously unseen JSON payload per cell per round, and removes exhausted streams. Exact payload deduplication avoids repeatedly proposing identical objects. This adapts descriptor diversity only: the context supplies no evaluation feedback, so the callback neither maintains fitness elites nor implements full MAP-Elites. Opaque proposals remain subject to the evaluator's canonical identity, eligibility and depth-at-most-six checks; a scheduled cell visit is not a completed evaluation.",
+    "hypothesis": "At matched completed-call budgets on paired synthetic inputs and seeds, balancing proposal opportunities across eligible cells will increase the mean number of unique valid cells reached relative to synthetic_uniform_pair_selector_v1. This is a construction-coverage hypothesis, with no predicted quality-bit, return-correlation, or live-performance advantage. It is stated in this post-development artifact and is not a preregistered statistical test.",
+    "falsifier": "On an independent prespecified paired synthetic test set, a mean challenger-minus-reference unique-valid-cell difference of zero or less at equal completed-call targets would falsify the directional coverage hypothesis for that set. If either arm misses its target, retain incomplete_comparison and actual counts; such runs do not establish the matched-budget hypothesis. Unequal rejection rates can defeat balanced proposal scheduling even when every eligible stream is visited."
+  },
+  "machine_claims": {
+    "evaluation_scope": "synthetic_fixture_only",
+    "comparison_report_path": "trial-output/comparison-report.json",
+    "comparison_report_sha256": "9889bad5211afaa22da3b692a571f835a52c1f39bdef351edfbe4eba3d9264db",
+    "implementation_path": "trial-output/challenger.py",
+    "implementation_sha256": "3ab0ec0f6adba76779766e1dbe00827934f217fbf2ea996f015ea42c8c8192a8",
+    "series_id": "contributor-reliability-research-1",
+    "series_manifest_path": "examples/fresh-agent-evals/research/series/contributor-reliability-research-1.json",
+    "series_manifest_sha256": "d9a9458b921020f6601a5225790689057e78639e568f0ea838de9c3b027058b4",
+    "reference_identity": "synthetic_uniform_pair_selector_v1",
+    "synthetic_uniform_is_genetic": false,
+    "synthetic_quality_scope": "fixture_only",
+    "synthetic_comparison_interpretation": "descriptive_only",
+    "live_performance": {"status": "unknown", "value": null},
+    "out_of_sample_return_correlation": {"status": "unknown", "value": null},
+    "server_acceptance": {"status": "unknown", "value": null},
+    "genetic_reference_target": {
+      "algorithm": "genetic",
+      "target_completed_simulations": 100000,
+      "observed_completed_simulations": null,
+      "status": "unmeasured_target"
+    }
+  },
+  "human_review": {
+    "summary": "The single required development evaluation reported complete_equal_calls for all four input/seed pairs, with four completed evaluator calls per arm in every pair (16 per arm across runs). For alpha seeds 11 and 29, challenger/reference cell counts were 3/3 and 3/3; for beta they were 3/2 and 4/2. Corresponding synthetic quality-pass counts were 2/1, 2/2, 2/2 and 1/2. These are descriptive synthetic observations, not evidence of general superiority. The development report contains no reserved-heldout run.",
+    "rationale": "Round-robin scheduling makes the paper's descriptor-space motivation concrete with a small callback that needs neither hidden candidate metadata nor feedback. Shuffling each round avoids a permanently privileged cell order. Finite streams and global exact-payload deduplication permit honest exhaustion. The evaluator rejected three over-depth proposals and one unknown proposal across the challenger runs before their targets; none counted as completed calls. Because authoritative depth is unavailable to the callback, it delegates rejection to the fixture evaluator and does not infer depth from invented fields. Higher coverage in two runs and ties in two are compatible with the construction hypothesis but do not validate a general effect; synthetic quality differences include a loss. The paper does not predict superiority for this callback. The reported denominator and quality bits belong only to these fixtures, and the separate genetic campaign target remains unmeasured."
+  }
+}

@@ -1,0 +1,53 @@
+name: Security and documentation truth
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: security-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  secret-leakage:
+    name: Secret and leakage scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Reject credentials, invite codes, tokens, and private paths
+        run: python .github/scripts/validate_agent_docs.py secrets
+
+  documentation-truthfulness:
+    name: Truthful documentation checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install documentation validation requirements
+        run: python -m pip install --quiet -r requirements-docs.txt
+
+      - name: Reject stale canonical onboarding defaults
+        run: python .github/scripts/validate_agent_docs.py truthfulness
+
+      - name: Validate adapter registry JSON and routed pages
+        run: python .github/scripts/validate_agent_docs.py registry
+
+      - name: Validate relative links
+        run: python .github/scripts/validate_agent_docs.py links

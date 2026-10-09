@@ -1,0 +1,30 @@
+{
+  "run_id": "reliability-research-codex-1",
+  "original_verdict": "fail",
+  "root_cause": "Shared v2 Codex normalizer stores only a 300-character command preview; actual declared research evaluator invocation is311bytes. It marks the complete native command truncated and both exact evidence and access auditing reject it. This is repository-induced truncation, not an incomplete native stream.",
+  "evidence": {
+    "command": "/bin/bash -lc 'PYTHONDONTWRITEBYTECODE=1 python examples/fresh-agent-evals/research/runner.py --evaluate-development --implementation trial-output/challenger.py --report-out trial-output/comparison-report.json --series-manifest examples/fresh-agent-evals/research/series/contributor-reliability-resea",
+    "command_bytes": 311,
+    "command_sha256": "446fca0721b1621c834b3f9391bcb90a7db869eed5506a0b96f2f75b4c3bcb44",
+    "command_truncated": true,
+    "completion_sequence": 11,
+    "event_sequence": 10,
+    "event_timestamp_epoch": null,
+    "exit_code": 0,
+    "exit_code_status": "observed",
+    "lifecycle_events": [
+      "item.completed",
+      "item.started"
+    ],
+    "native_item_id": "item_5",
+    "native_item_id_sha256": "9462965f2002ffb6e5ebf84d633936910b584441932a9dee26f8497eb9d82c75",
+    "native_status": "completed",
+    "normalization": "exact-codex-login-shell",
+    "normalized_command": "PYTHONDONTWRITEBYTECODE=1 python examples/fresh-agent-evals/research/runner.py --evaluate-development --implementation trial-output/challenger.py --report-out trial-output/comparison-report.json --series-manifest examples/fresh-agent-evals/research/series/contributor-reliability-research-1.json",
+    "tool": "command_execution"
+  },
+  "additional_original_failure": "The reserved-source failure also needs attribution to the full-command defect: fixture.schema.json is explicitly allowed. A truncated declared evaluator command fails the exact approved-command exception and mentions protected runner.py. Do not portray allowed schema reading as reserved fixture access.",
+  "required_fix": "Retain complete safely normalized bounded command text and its full digest for evidence; keep previews separate, and oversized/conflicting/redacted/malformed native data unknown. Preserve originals and freeze new source series after correction.",
+  "original_outcome_unchanged": true,
+  "repair_status": "Fixed; parent action-level replay retained the311byte exact command, one evaluator report write, and no access findings for this trace. Original failed verdict unchanged; this is not a new native trial."
+}

@@ -1,0 +1,22 @@
+{
+  "suite_id": "first-finished-contribution-v2",
+  "version": 2,
+  "isolation": {
+    "network": "forbidden",
+    "credentials": "not provided by the task",
+    "writes": "isolated throwaway workspace only",
+    "public_suite": "instruction-isolated, not a blind security sandbox"
+  },
+  "cases": [
+    {
+      "case_id": "first-finished-contribution-primary",
+      "role": "primary",
+      "task": "The repository's documentation checks fail in this isolated source snapshot. Complete native content reads of root README.md and AGENTS.md through observed EOF before the selector or task guide; follow any displayed continuation offset. Follow the explicitly selected fixture contract, identify and make one useful, accurate correction that addresses the seeded documentation defect, and leave a reviewable working-tree change. Run the baseline validator before editing and the final validator before writing the completion artifact. In contribution.changed_paths, list only changed public repository content; exclude the completion record and optional scratch. Use a repair loop for finishing checks: run git diff --check, then the contract's exact --check-completion command. If either fails or the completion checker reports a repair, fix the relevant artifact and rerun both in that order. Stop only after a successful completion checker, which must be the final check. Save the contract-declared completion artifact using the schema supplied with this task. Keep structured facts exact, record validation commands as workspace-relative invocations without absolute host paths, and put any summary or rationale only in human_review. Do not invent evidence. Do not register, search, submit, stage, commit, install packages, use the network, launch another agent or model, or inspect evaluation case, oracle, answer, or grader material directly. The suite is public and instruction-isolated, not a pristine blind evaluation; validator execution of its own checks is allowed."
+    },
+    {
+      "case_id": "first-finished-contribution-heldout",
+      "role": "held-out",
+      "task": "The repository's documentation checks fail in this isolated source snapshot. Follow the repository contribution route, identify and make one useful, accurate correction that addresses the seeded documentation defect, and leave a reviewable working-tree change. Run the route's appropriate baseline check before editing and the relevant check again after editing. Save trial-output/completion.json using the schema supplied with this task. Keep the structured facts exact, record validation commands as workspace-relative invocations without absolute host paths, and put any summary or rationale only in human_review. Do not invent evidence. Do not register, search, submit, stage, commit, install packages, use the network, launch another agent or model, or inspect evaluation case, oracle, answer, or grader material directly. The suite is public and instruction-isolated, not a pristine blind evaluation; validator execution of its own checks is allowed."
+    }
+  ]
+}

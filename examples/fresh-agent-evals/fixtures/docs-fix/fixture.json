@@ -1,0 +1,12 @@
+{
+  "case_id": "docs-fix",
+  "description": "Break the canonical onboarding register example so the truthfulness validator rejects the throwaway copy.",
+  "overlay_patches": [
+    {
+      "file": "docs/agents/quickstart.md",
+      "find": "openforage.register(invite_code=\"<CODE>\")",
+      "replace": "openforage.register()  # fixture: stale bare register default"
+    }
+  ],
+  "dead_pid_files": []
+}

@@ -1,0 +1,59 @@
+{
+  "case_id": "discovery-quickstart-entry",
+  "selected_task": "research",
+  "entry_page": "docs/agents/quickstart.md",
+  "opportunity_id": "coverage-stratified-sampling",
+  "primary_source": "https://arxiv.org/abs/1504.04909",
+  "source_claim": "MAP-Elites is a quality-diversity search/archive approach that motivates maintaining coverage across descriptor-defined niches alongside quality. The public opportunity map cites it as a starting point, not proof of superiority or of trading-signal performance on OpenForage.",
+  "hypothesis": "In paired runs under one fixed era/config and equal completed-evaluator budgets, a bounded policy that targets the least-covered publicly enumerable construction source × measured-depth descriptor will increase distinct valid observed descriptor breadth versus uniform random_weighted, while keeping local quality-pass/lifetime-yield within a noninferiority margin fixed before results. Failure to improve breadth or exceeding that margin falsifies the direction. Claim feature × rotation coverage only if public analytics actually exposes it; otherwise leave exact feature attribution and breadth unknown.",
+  "evidence_gaps": [
+    "No OpenForage package is installed in this scenario. The compatibility record describes the tested-supported 0.2.36 wheel, not this environment; required catalog, runtime-vocabulary, analytics, and graph-depth behavior have not been verified locally.",
+    "Exact feature × rotation attribution is not established: per-candidate leaf introspection is unavailable, the runtime feature vocabulary requires a live context, and the function catalog is not an era-specific loaded-rotation allow-list. The eligible feature × rotation denominator therefore remains unknown.",
+    "random_weighted has no public seed CLI knob. A future matched comparison needs a declared seed-control method and saved candidate/config provenance; matched behavior is not established here. The genetic callable is opaque and no full GA benchmark has run.",
+    "There is no authorized campaign or live scope, and no compatible era/config baseline, preregistered protocol, paired run, or measured coverage/yield result is supplied for this exercise. No server outcomes or signal-usefulness results are available.",
+    "No separate CLI child identity or scheduler is established for this task. The OpenCode registry does not document a native scheduler; scoped external-bridge evidence does not establish a scheduler available to this session. Continuous search cannot fall back to the main conversation.",
+    "Local evaluator outcomes are in-sample. No protocol server-side out-of-sample result is observed; structural function co-occurrence is not return correlation, and coverage alone does not establish usefulness."
+  ],
+  "offline_next_action": "Keep this as a proposal, not a registered or measured result. Before any results, draft an offline protocol that fixes the primary observable-cell breadth metric, local-yield noninferiority margin, independent paired-run repetitions, seed-control limits, baseline identity, equal completed-simulation accounting, and bounded duplicate/depth rejection rules. Use only publicly observable cells; leave feature attribution and the eligible denominator unknown unless public evidence supports them. Defer compatibility/runtime checks and all live actions until the required package, authorization, and separate-session/scheduler gates exist.",
+  "algorithm_facts": {
+    "public_templates": [
+      "genetic",
+      "random_weighted"
+    ],
+    "cli_choices": [
+      "random_weighted",
+      "genetic"
+    ],
+    "documented_default": "genetic",
+    "cli_help_default": "The start CLI help lists both choices but prints no explicit default.",
+    "reference_algorithm": "genetic",
+    "target_completed_simulations": 100000,
+    "ga_benchmark_status": "Target only: no full GA benchmark has run. The 0.2.36 compatibility record observes the callable and CLI choice but not the internal optimizer; 100000 is not an observed completion count."
+  },
+  "coverage_scope": "Segment by a single era and config; never pool across era boundaries. Aspire to broad valid loaded-feature × rotation coverage only from public observations, with a ledger for valid, evaluated, dependency, and unevaluated-gap cells. The public challenger design stratifies over documented generator sources and measured-depth descriptors; that is not proof of exact feature × rotation coverage. Report exact feature attribution as unavailable when unsupported, keep the eligible denominator unknown, avoid filler/duplicate cells or weakened thresholds, and enforce graph depth ≤ 6.",
+  "out_of_sample_boundary": "Local quality passes, scores, and search analytics are in-sample. Only protocol server-side evaluation is out-of-sample; none is available here, and it is not user-tunable. Keep OOS usefulness and return correlation unknown until exposed by evidence. Do not treat coverage or structural co-occurrence as OOS trading utility.",
+  "live_route": "No live route is authorized in this exercise: do not install, register, contact services, or start a campaign or worker. Only after explicit future authorization and available campaign access/package, follow the README bootstrap and establish a separate CLI invocation of the same harness with its own session identity. Continuous automation additionally needs a verified scheduler; no search may run in the main conversation.",
+  "capability_availability": {
+    "openforage_package": "unavailable",
+    "campaign_access": "unavailable",
+    "scheduler": "unverified",
+    "separate_session": "not_established"
+  },
+  "offline_work_available": true,
+  "live_campaign_authorized": false,
+  "continuous_search_posture": "blocked_until_separate_session",
+  "main_session_fallback": false,
+  "evidence_paths": [
+    "docs/agents/quickstart.md",
+    "docs/agents/research-opportunities.json",
+    "docs/agents/references/onboarding.json",
+    "docs/agents/references/compatibility.json",
+    "docs/agents/research-campaign.md",
+    "docs/agents/background-agent.md",
+    "examples/agent-campaign/campaign.json",
+    "examples/agent-campaign/challenger_design.md",
+    "src/openforage/skills/search_research/SKILL.md",
+    "src/openforage/skills/agent_runtime_integration/references/harnesses.json",
+    ".opencode/agents/entry-files-only.md"
+  ]
+}

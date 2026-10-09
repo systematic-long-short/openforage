@@ -1,0 +1,94 @@
+{
+  "adapter_profile": {
+    "limitation": "native user plugins/providers/config are not exercised by this fixture",
+    "selected": "isolated"
+  },
+  "cleanup": {
+    "isolated_workspace_removed": false
+  },
+  "ended_at": "2026-09-23T20:05:33Z",
+  "evidence_class": "failed-bounded-native-background-agent-proof",
+  "failures": [
+    "runner_error:NameError",
+    "native_parent_process_group_cleanup_unverified",
+    "isolated_workspace_cleanup_incomplete"
+  ],
+  "global_memory": "unknown",
+  "harness": "opencode",
+  "harness_version": "1.18.31",
+  "model": "openrouter/openai/gpt-6-luna",
+  "native_goal_task_memory": {
+    "ambiguous_tools": [],
+    "goal": {
+      "status": "unknown",
+      "tools": []
+    },
+    "memory": {
+      "status": "unknown",
+      "tools": []
+    },
+    "source": "separate explicit successful/failed native tool observations; missing categories remain unknown",
+    "task": {
+      "status": "unknown",
+      "tools": []
+    }
+  },
+  "native_parent_process_attempted": true,
+  "native_scheduler": "unknown; the controller supports manual delivery or one explicit external interval owner",
+  "network_policy": "offline task/rules; no network/search/browser/MCP calls requested; explicit tool events checked",
+  "openforage_worker": {
+    "checkpoint": "unknown",
+    "started_by_adapter": false,
+    "stop": "unknown"
+  },
+  "os": "linux",
+  "passed": false,
+  "proof_id": "background-proof-e0a479de4c484bec91cd51d1984573ee",
+  "reasoning_effort": null,
+  "schema_version": 1,
+  "scope": "Fresh native parent exits before the detached external controller starts a distinct child. One native CLI process is active at a time. Active pause/stop and stale-controller recovery cover this bounded fixture only; no host reboot, terminal hangup, native scheduler, global memory, OpenForage worker checkpoint/stop, registration, search, evaluation, or submission is proved. The proof explicitly uses the isolated adapter profile; it does not test each user's plugin/tool config.",
+  "session_history": {
+    "scope": "exact native child session only",
+    "status": "not_yet_observed"
+  },
+  "source_file_digests": {
+    "examples/background-agent/proof.py": {
+      "bytes": 66758,
+      "sha256": "7bfd0bc9e2c9cad63a0635b6dfd867cf572df6bcbf271a0fa7a1ddaee8737a85"
+    },
+    "examples/codex-lifecycle/codex_events.py": {
+      "bytes": 10145,
+      "sha256": "a24fd63b59a26c16d4f29b2cccdce79e91560c3e7e5e199b00cbffae870c5158"
+    },
+    "examples/opencode-lifecycle/bridge_core.py": {
+      "bytes": 29451,
+      "sha256": "c9dfbfd0eb1861db0a6e0cdab08e3221b8d64015f7a1c70e3d37e31c25b96ebf"
+    },
+    "scripts/background_agent.py": {
+      "bytes": 52608,
+      "sha256": "4335d75ffbe039606b769a690e4dcc32de8d33022611d31ca36cb464911e9478"
+    },
+    "scripts/background_agent_adapters.py": {
+      "bytes": 18240,
+      "sha256": "97404f17aaee14d2bd1feb106e13fe018b079e5bef1359b162d2d950d58ce2d2"
+    },
+    "scripts/background_agent_ownership.py": {
+      "bytes": 12537,
+      "sha256": "42a939a1afa983d7a104fb83340c0391a2f47e1bf3925569bd924c18d23ced35"
+    },
+    "scripts/background_agent_selfcheck.py": {
+      "bytes": 73486,
+      "sha256": "030b3c47fee0c1fd625127383614a092d7dab5f2620f7fe2b3e3e1a7ffcea80b"
+    },
+    "scripts/background_agent_service.py": {
+      "bytes": 31028,
+      "sha256": "feded0aed19969a30da97b4e714a463078b8aec51bc8cd5a58247e9947457594"
+    },
+    "scripts/background_agent_store.py": {
+      "bytes": 27083,
+      "sha256": "ce8cb81d6506a1785159b25689436c13f0ff3e1eef472a609f432b4deb01ac85"
+    }
+  },
+  "started_at": "2026-09-23T20:05:33Z",
+  "variant": "max"
+}

@@ -1,0 +1,138 @@
+{
+  "case_id": "campaign-planning-separation",
+  "grader_version": 3,
+  "graded_at": "2026-09-22T18:07:39Z",
+  "success": true,
+  "checks": [
+    {
+      "artifact": ".openforage-research/separation-plan.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field previous_owner_session_identity == 'parent-fixture-01' (found 'parent-fixture-01')"
+    },
+    {
+      "artifact": ".openforage-research/separation-plan.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field new_owner_session_identity == 'child-fixture-01' (found 'child-fixture-01')"
+    },
+    {
+      "artifact": ".openforage-research/separation-plan.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field one_owner_rule == True (found True)"
+    },
+    {
+      "artifact": ".openforage-research/separation-plan.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field fencing_token_advanced == True (found True)"
+    },
+    {
+      "artifact": ".openforage-research/separation-plan.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field pause_target == 'paused' (found 'paused')"
+    },
+    {
+      "artifact": ".openforage-research/separation-plan.json",
+      "check": "json_field_present",
+      "status": "pass",
+      "detail": "field resume_target_preserved"
+    },
+    {
+      "artifact": ".openforage-research/separation-plan.json",
+      "check": "json_field_present",
+      "status": "pass",
+      "detail": "field claim_mechanism"
+    },
+    {
+      "artifact": ".openforage-research/separation-plan.json",
+      "check": "json_list_min_length",
+      "status": "pass",
+      "detail": "field evidence_paths has >= 2 items (found ['.openforage-research/agents.json', '.openforage-research/status.json', '.openforage-research/ownership.json', '.openforage-research/conflict-note.md'])"
+    },
+    {
+      "artifact": ".openforage-research/ownership.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field owner_session_identity == 'child-fixture-01' (found 'child-fixture-01')"
+    },
+    {
+      "artifact": ".openforage-research/ownership.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field previous_owner_session_identity == 'parent-fixture-01' (found 'parent-fixture-01')"
+    },
+    {
+      "artifact": ".openforage-research/ownership.json",
+      "check": "json_field_gt",
+      "status": "pass",
+      "detail": "field fencing_token > 6 (found 7)"
+    },
+    {
+      "artifact": ".openforage-research/ownership.json",
+      "check": "json_field_present",
+      "status": "pass",
+      "detail": "field transferred_at"
+    },
+    {
+      "artifact": ".openforage-research/ownership.json",
+      "check": "file_unchanged",
+      "status": "pass",
+      "detail": "file_unchanged against fixture .openforage/settings.yaml"
+    },
+    {
+      "artifact": "trial-output/evidence.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field case_id == 'campaign-planning-separation' (found 'campaign-planning-separation')"
+    },
+    {
+      "artifact": "trial-output/evidence.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field conflict_observed == True (found True)"
+    },
+    {
+      "artifact": "trial-output/evidence.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field settings_yaml_untouched == True (found True)"
+    },
+    {
+      "artifact": "trial-output/evidence.json",
+      "check": "json_field_present",
+      "status": "pass",
+      "detail": "field commands"
+    }
+  ],
+  "isolation_violations": [],
+  "forbidden_action_violations": [],
+  "metrics": {
+    "success": true,
+    "elapsed_to_first_useful_action_seconds": 3.615,
+    "clarification_count": "unknown",
+    "correct_route": "observed",
+    "claims_supported": true,
+    "execution_mode": "fresh-opencode-run",
+    "fresh_separate_invocation": true,
+    "source_snapshot_sha256": "f33f1f0c08e55d41579de461654f674fe056e4bf7e4e43b4535da95dbb736345"
+  },
+  "unknowns": [
+    "clarification_count"
+  ],
+  "trial": {
+    "harness": "opencode",
+    "harness_version": "1.18.31",
+    "model": "openrouter/deepseek/deepseek-v4.1-flash",
+    "session_id": "ses_f35b38d60ffebwNvafdwF1FP0M",
+    "started_at": "2026-09-22T18:06:41Z",
+    "ended_at": "2026-09-22T18:07:39Z",
+    "variant": "max",
+    "execution_mode": "fresh-opencode-run",
+    "fresh_separate_invocation": true,
+    "source_snapshot_sha256": "f33f1f0c08e55d41579de461654f674fe056e4bf7e4e43b4535da95dbb736345"
+  },
+  "note": "Grader verdict from observable artifacts and recorded actions. Not a claim about the model beyond this trial."
+}

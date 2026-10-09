@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "map_id": "research-opportunities-v1",
+  "updated": "2026-09-23",
+  "sources_reopened_on": "2026-09-23",
+  "sources_reopened_note": "Every primary source URL in this map was reopened on the recorded date and matched the cited title. Reopen the source again before relying on its mechanism; a citation is a starting point, never a superiority proof.",
+  "owner": "public packet maintainers",
+  "description": "Authoritative structured research opportunity index. Entries are proposals and directions, not results and not superiority claims. An agent picks an entry only if its required public capabilities exist in the agent's installed version and its campaign conditions match; missing metrics stay unknown until a campaign measures them.",
+  "status_values": [
+    "proposed",
+    "in-progress",
+    "blocked",
+    "measured",
+    "negative",
+    "abandoned"
+  ],
+  "evidence_standard": "Citations are primary sources. Reopen the source before relying on a mechanism claim. A measured status additionally requires the preregistration, matched budgets and seeds, equal-completed-evaluation accounting, and coverage/inventory evidence described in docs/agents/research-campaign.md.",
+  "capability_evidence": {
+    "note": "Capabilities named in entries are observed on the recorded public wheel openforage==0.2.36 unless marked documented. Re-verify on your own install with .github/scripts/check_compatibility.py.",
+    "documented": [
+      "openforage.templates.random_weighted (observed comparator surface; no measured full reference)",
+      "openforage.templates.genetic (public callable and CLI choice observed; internal optimizer implementation not inspected; installed-but-unbenchmarked)",
+      "openforage.search(..., n_jobs=1) (in-process SearchHandle)",
+      "openforage.get_search_stats",
+      "openforage.get_search_patterns",
+      "openforage.get_search_velocity",
+      "openforage.get_yield_analysis",
+      "openforage.get_correlation_patterns"
+    ],
+    "observed_0_2_36": [
+      "openforage.start --algorithm {random_weighted,genetic} (actual no-credential --help probe)",
+      "openforage.search_templates.measure_graph_complexity",
+      "openforage.search_templates.compose_next_batch (mapping factory + lineage observed; full call contract unproved)",
+      "openforage.search_templates.generation_core.generate_random_signal_expression (public loader output lacks the internal data_params key it reads)",
+      "openforage.catalog.function_loader.load_function_catalog",
+      "openforage.catalog.features.feature_names_from_runtime_vocabulary",
+      "openforage.simulate_signal(graph, *, market_id, era_number, signal_pool_name, record=True) (signature and docstring observed; live permissions/data/behavior untested)",
+      "openforage.SimulationHandle (status/result/cancel signatures observed)"
+    ],
+    "unavailable": [
+      "per-candidate public leaf introspection for yielded graphs",
+      "per-era loaded rotation allow-list",
+      "custom-template synchronous evaluator feedback inside the search callback (the public simulate_signal/SimulationHandle loop is the observed alternative; its live permissions/data/behavior are untested)",
+      "public seed knob on random_weighted",
+      "full GA benchmark evidence (callable and CLI choice exist on 0.2.36; the internal optimizer implementation was not inspected and no full GA benchmark has run in this packet)",
+      "python -m openforage direct execution (use python -m openforage.cli or the console script)"
+    ]
+  },
+  "negative_results": [],
+  "negative_results_note": "Empty because no negative result has been observed in this packet yet. Records are added only with campaign evidence; an empty list is not a claim that every direction succeeds.",
+  "opportunities": [
+    {
+      "opportunity_id": "coverage-stratified-sampling",
+      "algorithm_family": "quality-diversity",
+      "title": "Coverage-stratified sampling over rotation and feature cells",
+      "question": "Does steering generation toward under-evaluated rotation-subfamily x feature cells find qualifying signals that uniform random_weighted sampling misses at the same completed-evaluation count?",
+      "mechanism": "Maintain a construction-time coverage ledger over enumerable cells. The runnable policy (examples/agent-campaign/stratified_policy.py) stratifies over the documented generator callables (random_weighted, genetic) with measured-depth descriptors; the offline fixture stratifies over rotation x feature cells. Target the least-covered cell with bounded duplicate attempts, count duplicates and depth rejections separately from completed evaluations, and checkpoint the policy RNG and history. Per-candidate leaf attribution is not a public API; when it cannot be observed, record feature_attribution as unavailable with a reason rather than the full catalogue or fabricated cells.",
+      "primary_source": "https://arxiv.org/abs/1504.04909",
+      "primary_source_note": "MAP-Elites. A starting point for quality-diversity archives, not evidence of superiority over random_weighted.",
+      "required_public_capabilities": [
+        "openforage.templates.random_weighted",
+        "openforage.catalog.function_loader.load_function_catalog",
+        "openforage.catalog.features.feature_names_from_runtime_vocabulary",
+        "openforage.search_templates.measure_graph_complexity",
+        "openforage.get_search_stats"
+      ],
+      "baseline_comparison": "Matched baseline (installed genetic by default; random_weighted as the documented alternative, with no full GA benchmark claimed) and the stratified template on the same era/config, seed set, and equal completed evaluator counts, isolated per signal_pool_name; compare get_search_stats rows grouped by function subfamily x feature subfamily and get_yield_analysis lifetime_yield_rate. Per-era segments only; no pooling across era boundaries.",
+      "acceptance_evidence": "Preregistered hypothesis and direction; paired independent runs with matched budgets/seeds; equal-completed-evaluation comparison; coverage ledger checkpoints showing the targeted cells; complete trial inventory including abandoned runs; explicit missing-api gaps recorded.",
+      "current_status": "proposed",
+      "evidence_refs": [
+        "examples/agent-campaign/challenger_design.md",
+        "examples/agent-campaign/coverage_challenger.py",
+        "examples/agent-campaign/stratified_policy.py"
+      ],
+      "next_action": "Re-run .github/scripts/check_compatibility.py against your wheel, run the offline smoke to exercise the policy core, then preregister the comparison and freeze a compatible baseline before the first live run."
+    },
+    {
+      "opportunity_id": "diversity-archive-batch-composition",
+      "algorithm_family": "quality-diversity",
+      "title": "Diversity-weighted batch composition using the public composer",
+      "question": "Does composing each batch with explicit diversity and parsimony pressure improve the yield rate at equal completed evaluator counts compared with fresh uniform batches?",
+      "mechanism": "The offline probe of openforage.search_templates.compose_next_batch established that a factory must return one mapping (batch entries are copies plus lineage='fresh_random'), a generator-returning factory yields an empty batch, prior entries must support .get, and non-graph payloads are dropped when max_depth is supplied. The full call contract remains unproved, so the composer is not used in any runnable path; the shipped challenger calls documented generator callables directly with max_depth=min(6, ctx.depth).",
+      "primary_source": "https://arxiv.org/abs/1708.09251",
+      "primary_source_note": "Cully and Demiris, Quality and Diversity Optimization: A Unifying Modular Framework. Starting point only; it does not prove the public composer improves outcomes.",
+      "required_public_capabilities": [
+        "openforage.templates.random_weighted",
+        "openforage.search_templates.compose_next_batch",
+        "openforage.search_templates.measure_graph_complexity",
+        "openforage.get_search_stats",
+        "openforage.get_yield_analysis"
+      ],
+      "baseline_comparison": "Baseline (installed genetic by default, random_weighted explicit) versus the composed-batch template under matched budgets and seeds, compared at equal completed evaluations with depth distribution from get_search_patterns as a secondary diagnostic. No full GA benchmark is claimed.",
+      "acceptance_evidence": "Composer call contract fully observed and recorded; depth-6 self-rejection proven by measure_graph_complexity; preregistered comparison; equal-count statistics; negative or inconclusive result recorded with the same rigor as a positive one.",
+      "current_status": "proposed",
+      "evidence_refs": [
+        "examples/agent-campaign/challenger_design.md",
+        "docs/agents/references/compatibility.json"
+      ],
+      "next_action": "Keep using the stratified generator path; only wire the composer into a live run after proving the remaining contract with real graph objects, and record the limitation either way."
+    },
+    {
+      "opportunity_id": "novelty-pressure-archive",
+      "algorithm_family": "novelty-search",
+      "title": "Archive-guided novelty pressure on construction keys",
+      "question": "Does rewarding novelty of the construction key (rotation subfamily, feature family, depth) rather than the evaluator score widen valid coverage without lowering lifetime yield beyond the preregistered minimum effect?",
+      "mechanism": "Keep an archive of construction keys and de-prioritize candidates whose key is already dense in the archive, using only construction-time bookkeeping because per-candidate leaf introspection is not a public API. Novelty is keyed to what the generator controls, never inferred from private attributes.",
+      "primary_source": "https://doi.org/10.1162/EVCO_a_00025",
+      "primary_source_note": "Lehman and Stanley, Abandoning Objectives: Evolution Through the Search for Novelty Alone. Starting point, not superiority proof.",
+      "required_public_capabilities": [
+        "openforage.templates.random_weighted",
+        "openforage.search_templates.measure_graph_complexity",
+        "openforage.get_search_stats",
+        "openforage.get_search_patterns"
+      ],
+      "baseline_comparison": "Equal-count comparison against the campaign baseline (installed genetic by default; random_weighted explicit) with the preregistered minimum meaningful effect on lifetime_yield_rate and coverage breadth; exploratory label unless the full measured protocol holds and no full GA benchmark is claimed.",
+      "acceptance_evidence": "Archive size and key distribution recorded per checkpoint; depth cap proven; comparison at equal completed evaluations; usefulness metrics recorded with availability and provenance.",
+      "current_status": "proposed",
+      "evidence_refs": [
+        "docs/agents/research-campaign.md"
+      ],
+      "next_action": "Define the construction-key schema and preregister the novelty weight before sampling."
+    },
+    {
+      "opportunity_id": "staged-budget-screening",
+      "algorithm_family": "budget-allocation",
+      "title": "Staged screening under equal evaluator budgets",
+      "question": "Can staged promotion of promising configurations reach the same qualifying-signal count with fewer completed evaluations than flat allocation?",
+      "mechanism": "Split each matched budget into preliminary and confirmation stages for template variants, promoting only variants that clear a preregistered early threshold. Resource limits cover simulations, wall-clock, CPU, RAM, storage, and concurrency only; no spend or token controls.",
+      "primary_source": "https://arxiv.org/abs/1810.05934",
+      "primary_source_note": "Li et al., A System for Massively Parallel Hyperparameter Tuning (ASHA asynchronous successive halving). The scheduling idea is the starting point; the public surface binds budgets to completed simulations, not server outcomes.",
+      "required_public_capabilities": [
+        "openforage.search(..., n_jobs=1)",
+        "openforage.get_search_stats",
+        "openforage.get_search_velocity"
+      ],
+      "baseline_comparison": "Flat-budget baseline runs (installed genetic by default; random_weighted explicit) versus staged screening with total simulation budgets matched; compare at equal completed-evaluation totals and record wall-clock separately. No full GA benchmark is claimed.",
+      "acceptance_evidence": "Stage definitions and promotion thresholds preregistered; per-stage checkpoints; equal total budget accounting; abandoned variants retained in the trial inventory.",
+      "current_status": "proposed",
+      "evidence_refs": [
+        "docs/agents/research-campaign.md"
+      ],
+      "next_action": "Preregister stage sizes and the promotion metric; verify get_search_stats can segment the stages by era/config before running."
+    },
+    {
+      "opportunity_id": "parsimony-pressure",
+      "algorithm_family": "complexity-control",
+      "title": "Parsimony pressure at fixed depth cap",
+      "question": "Does preferring lower node-count graphs inside the depth-6 cap change lifetime yield or submission quality at equal completed evaluations?",
+      "mechanism": "Order candidates within a construction batch by complexity from measure_graph_complexity (node count) as a tie-breaker while holding depth <= 6, and compare against the same generator without the ordering. This tests complexity pressure independently of the depth cap.",
+      "primary_source": "https://arxiv.org/abs/1504.04909",
+      "primary_source_note": "MAP-Elites uses a parsimony-style tie-break in many implementations; cite it as the design ancestor, not as evidence for this specific effect.",
+      "required_public_capabilities": [
+        "openforage.templates.random_weighted",
+        "openforage.search_templates.measure_graph_complexity",
+        "openforage.get_search_stats",
+        "openforage.get_yield_analysis"
+      ],
+      "baseline_comparison": "Same template with and without parsimony ordering, matched budgets and seeds, compared at equal completed evaluations; depth distribution reported as a control, with the installed genetic baseline default and random_weighted as the explicit alternative.",
+      "acceptance_evidence": "Complexity measurements recorded per candidate; depth cap proven; matched comparison; effect size and uncertainty or an explicit exploratory label.",
+      "current_status": "proposed",
+      "evidence_refs": [
+        "examples/agent-campaign/challenger_design.md"
+      ],
+      "next_action": "Confirm measure_graph_complexity returns node counts on yielded graph-like objects in your install before building the ordering."
+    },
+    {
+      "opportunity_id": "surrogate-acquisition",
+      "algorithm_family": "surrogate-model",
+      "title": "Surrogate-guided acquisition over construction parameters",
+      "question": "Can a cheap surrogate over construction parameters (rotation subfamily, feature family, depth) propose batches with a higher qualifying rate at equal completed evaluations?",
+      "mechanism": "Fit a surrogate on completed local evaluation outcomes and choose next construction parameters by an acquisition score. The observed public surface supports an explicit per-candidate simulate/result loop: openforage.simulate_signal(graph, *, named_universe=None, market_id, era_number, signal_pool_name, metaparameters=None, include_correlation=True, include_mi=True, record=True, return_series=False, return_weights=False, fail_fast=True) returns a SimulationHandle immediately, and the handle exposes status(), result() (block until completion, BacktestResult or raise), and cancel(). API presence (signatures/docstrings) is observed; live permissions, data availability, and behavior are untested, and the campaign must supply the real era/config/pool. Do not assume a successful simulation.",
+      "primary_source": "https://arxiv.org/abs/1206.2944",
+      "primary_source_note": "Snoek et al., Practical Bayesian Optimization of Machine Learning Algorithms. Starting point for acquisition design, not a measured claim here.",
+      "required_public_capabilities": [
+        "openforage.simulate_signal (signature observed; live permissions/data/behavior untested)",
+        "openforage.SimulationHandle.status/result/cancel (signatures observed)",
+        "openforage.get_search_stats",
+        "openforage.get_yield_analysis"
+      ],
+      "baseline_comparison": "Equal-count comparison against the campaign baseline (installed genetic by default; random_weighted explicit), with the acquisition fitted only on training-segment outcomes; blocked from any measured classification until simulate_signal permissions/data behavior are observed in a user-scoped campaign.",
+      "acceptance_evidence": "Requires per-candidate evaluator outcomes with timestamps from an observed simulate_signal/result loop, a user-supplied real era/config/pool, held-out segments, and preregistered acquisition parameters. Presence of the API alone is not evidence of live permissions, data access, or behavior.",
+      "current_status": "proposed",
+      "evidence_refs": [
+        "examples/agent-campaign/challenger_design.md",
+        "docs/agents/references/compatibility.json"
+      ],
+      "next_action": "In a user-approved campaign with real scope/config, probe one bounded simulate_signal call and record status/result/cancel behavior and permissions; until then use only the delayed analytics surfaces, keep surrogate work exploratory, and never claim a successful simulation."
+    }
+  ]
+}

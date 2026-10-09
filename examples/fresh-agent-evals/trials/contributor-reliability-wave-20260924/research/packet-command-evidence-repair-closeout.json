@@ -1,0 +1,69 @@
+{
+  "packet": "pkt-public-reliability-COMMAND-EVIDENCE-REPAIR",
+  "project": "public-agent-research",
+  "class": "implementor",
+  "status": "completed",
+  "edited_paths": [
+    "examples/fresh-agent-evals/v2/native_events.py",
+    "examples/fresh-agent-evals/v2/selfcheck.py",
+    "examples/fresh-agent-evals/v2/README.md",
+    "examples/fresh-agent-evals/research/research_selfcheck.py",
+    "examples/fresh-agent-evals/research/README.md",
+    ".tmp/contributor-reliability-wave/packet-command-evidence-repair-closeout.json"
+  ],
+  "root_cause": "Codex normalization treated PREVIEW_LIMIT=300 as both the presentation width and the trusted-command limit. It kept only the first 300 characters in command and marked any longer full command truncated, while the complete inner script survived only in normalized_command. Research matching and the runner.py access exception require the full native wrapper plus a matching digest; the truncation therefore defeated the declared 311-byte evaluator and caused the protected runner.py reference to be flagged. fixture.schema.json was already in READABLE_PATHS and remains allowed.",
+  "original_action_confirmation": {
+    "source": ".tmp/fresh-agent-research/runs/contributor-reliability-research-1/reliability-research-codex-1/raw-events.jsonl",
+    "method": "Read-only in-memory normalize_codex inspection; no grader was invoked and no original record was written.",
+    "trace_complete": true,
+    "native_item_id": "item_5",
+    "native_item_id_sha256": "9462965f2002ffb6e5ebf84d633936910b584441932a9dee26f8497eb9d82c75",
+    "event_sequence": 10,
+    "completion_sequence": 11,
+    "native_status": "completed",
+    "explicit_exit_code": 0,
+    "command_truncated": false,
+    "command_bytes": 311,
+    "command_sha256": "446fca0721b1621c834b3f9391bcb90a7db869eed5506a0b96f2f75b4c3bcb44",
+    "matches_declared_research_evaluator": true
+  },
+  "checks": [
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 .venv-docs/bin/python examples/fresh-agent-evals/v2/runner.py --selfcheck",
+      "result": "passed",
+      "attempts": 1
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 .venv-docs/bin/python examples/fresh-agent-evals/research/runner.py --selfcheck",
+      "result": "initial run failed only because the new regression expected the literal <REDACTED> while the sanitizer emits typed markers such as <REDACTED-API-KEY>; assertion was corrected and rerun passed",
+      "attempts": 2
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 .venv-docs/bin/python scripts/start_here.py --selfcheck",
+      "result": "passed"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 .venv-docs/bin/python scripts/start_here.py --check",
+      "result": "passed"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 .venv-docs/bin/python .github/scripts/validate_agent_docs.py all",
+      "result": "first attempt timed out at 120000 ms without output; retry with 360000 ms passed all checks"
+    },
+    {
+      "command": "git diff --check",
+      "result": "passed"
+    }
+  ],
+  "preservation": [
+    "Original trial.json, verdict.json, and raw-events.jsonl were not modified or regraded; the raw stream was only inspected and normalized in memory.",
+    "Existing series manifests, frozen source exports, historical/native outputs, and the prior report-write repair were left unchanged; report-write attribution regressions passed.",
+    "No docs2/research2 manifest or bundle was created; the parent may freeze those after this session.",
+    "Unrelated working-tree edits and the current candidate were preserved."
+  ],
+  "limitations": [
+    "The original native trial retains its original failed verdict; no original result is represented as passing. Existing failures outside this defect, including the documentation nested-shell failure, remain unchanged and were not regraded.",
+    "Only full safely normalized command text within the shared MAX_COMMAND_BYTES=8192 UTF-8-byte bound is authoritative. Over-bound text has no command text field and remains truncated/unknown; missing, conflicting, redacted, mismatched, or explicitly truncated command evidence is rejected or unknown.",
+    "No native/model session, installation, live operation, commit, push, pull request, publication, or historical-record rewrite was performed."
+  ]
+}

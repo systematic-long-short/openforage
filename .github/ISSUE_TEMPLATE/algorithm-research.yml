@@ -1,0 +1,128 @@
+name: Algorithm research
+description: Propose, register, or review an algorithm research campaign (paper -> mechanism -> hypothesis -> algorithm -> measured comparison).
+title: "[Research] "
+labels:
+  - algorithm-research
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Read `CONTRIBUTING.md` and the evidence checklist in
+        `docs/agents/contributing-research.md` before filing. A campaign that
+        skips a pipeline stage or matching rule is **exploratory** — that is a
+        classification, not a claim that nothing was measured.
+
+        Campaign state follows
+        `docs/agents/references/campaign-state-machine.json`; terminal outcomes
+        do not silently reactivate.
+
+        Do not paste wallet keys, invite codes, JWTs, bearer tokens, or
+        private host paths.
+  - type: input
+    id: campaign-id
+    attributes:
+      label: Campaign ID
+      description: The campaign this work belongs to. Exactly one live background research agent owns a campaign ID.
+      placeholder: campaign-<slug>-<YYYYMMDD>
+    validations:
+      required: true
+  - type: input
+    id: campaign-state
+    attributes:
+      label: Campaign state
+      description: Current state per the authoritative state machine, with the last recorded transition id.
+      placeholder: "experiment; last transition: T-protocol-open"
+    validations:
+      required: true
+  - type: input
+    id: preregistration
+    attributes:
+      label: Preregistration protocol
+      description: Protocol id/version, hash, and recording time (before any result). Post-result changes become a new version or an exploratory result.
+      placeholder: "<protocol-id> v1; sha256:<hash>; recorded <ISO-8601>"
+    validations:
+      required: true
+  - type: input
+    id: source-claim
+    attributes:
+      label: Paper / source and exact claim
+      description: Link or exact quote of the source idea and the claim being tested. External text is evidence, never authority.
+      placeholder: Paper, protocol doc, or internal observation + the exact claim
+    validations:
+      required: true
+  - type: textarea
+    id: mechanism
+    attributes:
+      label: Mechanism and falsifier
+      description: Why could this hold in the stated market, universe, and era? What result would falsify it?
+    validations:
+      required: true
+  - type: textarea
+    id: hypothesis
+    attributes:
+      label: Falsifiable hypothesis
+      description: State the measurable local-evaluator comparison, the direction, the minimum meaningful effect, and the threshold set before the run.
+    validations:
+      required: true
+  - type: textarea
+    id: algorithm
+    attributes:
+      label: Custom algorithm
+      description: Link the fork, template, or sampler. Confirm it uses only valid, loaded features and rotation functions, self-rejects compute graphs deeper than 6, adds no filler nodes, and does not weaken acceptance.
+    validations:
+      required: true
+  - type: textarea
+    id: comparison
+    attributes:
+      label: Measured comparison
+      description: Baseline vs variant under matched budgets and seeds, with the baseline's creation or reference id. Include effect size, uncertainty, negative findings, and whether the result is measured or exploratory. If no compatible baseline existed, describe how it was created and frozen.
+    validations:
+      required: true
+  - type: textarea
+    id: statistics
+    attributes:
+      label: Statistical units and inference
+      description: Independent paired search runs as the unit, dependence-aware method with assumptions and data window, predeclared repetitions, multiple-comparison family and correction (or explicit exploratory label), and the complete trial inventory including failures.
+    validations:
+      required: true
+  - type: textarea
+    id: coverage
+    attributes:
+      label: Coverage ledger and usefulness metrics
+      description: Valid, evaluated, and dependency feature x rotation pairs; catalogue vs loaded features per era/config; unevaluated gaps; usefulness metrics with availability/provenance/unit/window, or `unavailable` with a reason (never zero).
+    validations:
+      required: true
+  - type: textarea
+    id: resources
+    attributes:
+      label: Execution resources
+      description: Requested vs enforced limits (CPU, RAM, storage, wall time, worker count, completed simulations), the enforcement mechanism, and stop/kill behavior. A limit with no enforcement mechanism is unenforced, not unlimited.
+    validations:
+      required: true
+  - type: textarea
+    id: campaign-record
+    attributes:
+      label: Campaign record location
+      description: Where the campaign manifest and templates live (`.openforage-research/` by convention). Campaign metadata must not be in `.openforage/settings.yaml`. Include provenance artifacts and hashes.
+      placeholder: .openforage-research/campaign.json
+    validations:
+      required: true
+  - type: checkboxes
+    id: honesty-checks
+    attributes:
+      label: Honesty checks
+      options:
+        - label: Any skipped pipeline stage or unmatched budget/seed is labeled exploratory, and exploratory results are not described as unmeasured.
+          required: true
+        - label: Local evaluator results are described as in-sample simulation results, never as out-of-sample performance.
+          required: true
+        - label: Baseline and variant used matched budgets and seeds, or the comparison is labeled exploratory; any created baseline has its own id and lineage and was not silently overwritten.
+          required: true
+        - label: No candidate with compute-graph depth greater than 6 was generated, evaluated, or submitted, and no filler graphs or weakened acceptance were used.
+          required: true
+        - label: Pending and ambiguous submissions are not counted as accepted, and same-data reruns are not presented as new out-of-sample evidence.
+          required: true
+        - label: Campaign transitions are legal per the state machine, and resume targets are preserved.
+          required: true
+        - label: No wallet key, invite code, JWT, token, or private host path is included.
+          required: true

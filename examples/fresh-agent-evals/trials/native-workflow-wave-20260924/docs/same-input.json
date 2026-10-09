@@ -1,0 +1,13 @@
+{
+  "series_id": "native-workflow-docs-1",
+  "run_ids": [
+    "workflow-docs-opencode-1",
+    "workflow-docs-codex-1"
+  ],
+  "snapshot_sha256": "038800bac345df369c42f7c0245edf1e69d1bd391138aa1bae31ee82a3005786",
+  "source_tree_sha256": "2a37337d07bb9d149056d898ac600c6bcef610553922305d9ce3d596f176372f",
+  "initial_file_maps_equal": true,
+  "codex_launch_snapshot_pin_matched": true,
+  "requested_models_differ": true,
+  "harness_only_causal_comparison": false
+}

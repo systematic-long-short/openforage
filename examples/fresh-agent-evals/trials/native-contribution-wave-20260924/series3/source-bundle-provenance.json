@@ -1,0 +1,10 @@
+{
+  "kind": "exact_frozen_grading_source_bundle",
+  "series_id": "contribution-wave-final-3",
+  "manifest_sha256": "3b7d2b3b820da9229647beede852e7457e627d9096857ea5a0d40358a597e5f8",
+  "frozen_source_files": 53,
+  "bundle_sha256": "8e438f801ff97f63250cd6e7ac15a2217c872f3ed98b05b63b3f4f296e11a164",
+  "bundle_bytes": 176138,
+  "entry_paths": "repository-relative only; fixed metadata, no private host paths",
+  "scope": "public grading closure and selected manifest only; no raw native streams"
+}

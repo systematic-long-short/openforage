@@ -1,0 +1,475 @@
+{
+  "case_id": "discovery-quickstart-entry",
+  "task_mode": "discovery",
+  "fixture_conditions": [
+    "AGENTS.md and CLAUDE.md are absent from the prepared workspace; this describes visible files, not native harness autoload behavior.",
+    "The parent supplies a runtime JSON agent through OPENCODE_CONFIG_CONTENT; the effective wildcard default is deny and only read, list, glob, grep, and edit are allowed.",
+    "The prepared workspace has no .opencode project directory or node_modules tree; a non-model debug-agent probe checks the effective matrix without retaining unrelated output.",
+    "This profile limits tools exposed to the child agent; it does not claim the host has no Python executable."
+  ],
+  "variant": "max",
+  "variant_in_argv": true,
+  "execution_mode": "fresh-opencode-run",
+  "fresh_separate_invocation": true,
+  "replay": false,
+  "model": "openrouter/openai/gpt-6-luna",
+  "invocation_argv": [
+    "opencode",
+    "run",
+    "--pure",
+    "--format",
+    "json",
+    "--dir",
+    "<WORKSPACE>",
+    "--model",
+    "openrouter/openai/gpt-6-luna",
+    "--agent",
+    "entry-files-only",
+    "--variant",
+    "max"
+  ],
+  "workspace": "<WORKSPACE>",
+  "workspace_identity": "7fa3a9e3d20249cccaacc47992cef7ca9cc7f54f658b4635de091425350db738",
+  "source_snapshot_sha256": "9a408edf177ac27554efcc210b277e5dc73b9edfa9a44cc1c6a7e4943cd3168f",
+  "source_snapshot_files": 135,
+  "source_git_head": "c48cb235fde2d5590601528ef9c83cb9d8f402dd",
+  "harness": "opencode",
+  "harness_version": "1.18.31",
+  "session_id": "ses_f31bef71effeT468UDaktX0GiN",
+  "started_at": "2026-09-23T12:32:42Z",
+  "ended_at": "2026-09-23T12:35:15Z",
+  "exit_code": 0,
+  "launch_error": null,
+  "model_process_started": true,
+  "owned_process_remaining": false,
+  "observed_actions": [
+    {
+      "tool": "glob",
+      "event_sequence": 1,
+      "native_tool_call_id_sha256": "559842da37c6b41a919c3c5fb1470d6076a1161b1ca36fbc02e8b279fa388cf6",
+      "command": "<WORKSPACE>/trial-output",
+      "command_sha256": "3f871a310bbab9744b75db0a0a404f29bc99d0cc774489fa51e4085516508e35",
+      "command_bytes": 24,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 139,
+        "output_sha256": "4f10d21d6f7fd09f195a731e0a3e41e0c1ea5fb1b623d32b10d640984a38fa95"
+      }
+    },
+    {
+      "tool": "glob",
+      "event_sequence": 2,
+      "native_tool_call_id_sha256": "bf8062128638f1040e91f22d3b3865629433df989c8d9c72195193cabc52bcb6",
+      "command": "<WORKSPACE>",
+      "command_sha256": "cb474a78c0c3ecceac06e1601434613c988e23a21b0d96fc0d14451e00ff4e13",
+      "command_bytes": 11,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 817,
+        "output_sha256": "f8e984427134838200cf21cbc2ac3167caf0941ef1d05d11eea483f43a749621"
+      }
+    },
+    {
+      "tool": "glob",
+      "event_sequence": 3,
+      "native_tool_call_id_sha256": "eee4b372825c9bd8473147e7fcabba8fd99b447dc068115afef0c15febf2b056",
+      "command": "<WORKSPACE>",
+      "command_sha256": "cb474a78c0c3ecceac06e1601434613c988e23a21b0d96fc0d14451e00ff4e13",
+      "command_bytes": 11,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 4895,
+        "output_sha256": "1745961181d62cc6fb6b39905882d7f84810813951d0a65896622b629c7c3558"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 7,
+      "native_tool_call_id_sha256": "a6c07481e05134f79c9b98f4e1a8e78e79fbd23ce8337cc32921f03e999091bf",
+      "command": "<WORKSPACE>/docs/agents/quickstart.md",
+      "command_sha256": "88bbb4cd8c34051e5871237571692df05bb57d4ed82c0a54548de3fdab310499",
+      "command_bytes": 37,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 3892,
+        "output_sha256": "354832c1c320dfb156c7f17a66bc94ddc40cacf2120af512761f14127d6e353a"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 8,
+      "native_tool_call_id_sha256": "4b846de7fe0e5066317c62a230492436412b1e667352242c2564321bd101299a",
+      "command": "<WORKSPACE>/docs/agents/first-search.md",
+      "command_sha256": "30dd431174e4b58a67e2745e8636db222f435d36ec0ad3792872eeb7367af97a",
+      "command_bytes": 39,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 4866,
+        "output_sha256": "b45cbea5b5abedd0d3e9b4f4b3b19b906b4e6efba66b8cd0b3b40fc22cabb1d1"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 9,
+      "native_tool_call_id_sha256": "a9bf7ab4c7f7e2dfb550708d8a62e4dd4903e71bcbe7ce3bf10cb9be3cf35223",
+      "command": "<WORKSPACE>/trial-output/prepare-record.json",
+      "command_sha256": "a2106ff7e6de12740d4462893f76a7bc845f3974f6b9b7920ee86b466efe12ba",
+      "command_bytes": 44,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 1857,
+        "output_sha256": "90cd1fffe81732377416feca0d376ac51b54aef258ec91e96497bb831ee78209"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 10,
+      "native_tool_call_id_sha256": "672a562cead20a05534df8db006d6a0d1aa917c1acaeae010d4d075895474a9f",
+      "command": "<WORKSPACE>/docs/agents/research-opportunities.md",
+      "command_sha256": "5a064a2215f3bc07171beb7cd5a8b17a660065b8e4bd6cd5c0ce3a710359e486",
+      "command_bytes": 49,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 14598,
+        "output_sha256": "c7a3e16d3af014956e037a4360e8593985ff4a4ec1add8e20bb05241c72d8242"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 11,
+      "native_tool_call_id_sha256": "57bbe5317dc6ed8bb07f85a5a8505624402ccaa8ff178728b15fd014e52f39a9",
+      "command": "<WORKSPACE>/trial-output/quickstart-research.json",
+      "command_sha256": "b0a9897b6f64653097d3d370c9b514acd3d4b4b0095ce52f16bcd8b55e731f4d",
+      "command_bytes": 49,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 138,
+        "output_sha256": "5ee4bc63ef3742a0bfbeb98c81b83ffb973fe6a3ebd50ef22a55d20ed96a83db"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 12,
+      "native_tool_call_id_sha256": "83c0f042e6185f155a5630f85cb35c9780837a11f603a1f249652cc03fc9642c",
+      "command": "<WORKSPACE>/docs/agents/research-opportunities.json",
+      "command_sha256": "a6a446159bc81c4ecc17a00acea67ea865b1938c8ba6a9db1dcca7fb3385f6f2",
+      "command_bytes": 51,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 18712,
+        "output_sha256": "caabb0f8c1cf4bdc71a4aa3c770b0c69d0ca04cc1ec7c4016cd630d5bc367265"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 13,
+      "native_tool_call_id_sha256": "bb770148695366da1b1c5310bd220d8364db76d608aed7a377bdb13c9cf3c264",
+      "command": "<WORKSPACE>/docs/agents/start-here.md",
+      "command_sha256": "3cdbeddb6bd9cab8fb91caa784210a5ba8f7afccadb87a0cdc565172001624ad",
+      "command_bytes": 37,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 9516,
+        "output_sha256": "a0d989090039c5c0ebfdf9925fd57cd9bf1366009974d1897da3aa4a787fe06b"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 14,
+      "native_tool_call_id_sha256": "8067cce23cfcbf922c10400562e273ff0caddd8cc65d9e8434c197e4d38ef0b0",
+      "command": "<WORKSPACE>/scripts/start_here.py",
+      "command_sha256": "58827e30471dd71c38c06c4ffa96373538452726570358da961ea1f1d6658409",
+      "command_bytes": 33,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 10990,
+        "output_sha256": "c60d601beb8a30d05d6a1ef9f27437652f80f33507b2e24215c1ec3bd50fd7d9"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 15,
+      "native_tool_call_id_sha256": "4d1ec978036c708e7dc0fb7d6bd0599ce41d8d4dc74a6628442ba609a9d30b29",
+      "command": "<WORKSPACE>/scripts/onboarding/entry_fragments.py",
+      "command_sha256": "d7649dc7975e97342f082bd736e25c2113fece53d8abe5c59c5852e1970e8fa0",
+      "command_bytes": 49,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 7916,
+        "output_sha256": "ce76425b05eb4cf571d866b33af325470f54f09beb00038ac27bcc54d776b454"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 18,
+      "native_tool_call_id_sha256": "b3c9d0d900fce476e0ba764d550a3ee7c84d4230b8303ed353e87939deb49b52",
+      "command": "<WORKSPACE>/docs/agents/background-agent.md",
+      "command_sha256": "127c2bdfb1770679c4168680f6564fb3ccb384186ddd064f3ae3dd89c4b1e03b",
+      "command_bytes": 43,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 9737,
+        "output_sha256": "92cb318211127a5b4256d7fd4cf99008483eb151c54b5e105f912de78f10ac41"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 19,
+      "native_tool_call_id_sha256": "3290f4423d1eb10d79f2fc3315c667116b45191a3026e23beb50129b9f18e8e7",
+      "command": "<WORKSPACE>/examples/agent-campaign/campaign.json",
+      "command_sha256": "44f42c8570a8b410854a64af8fc5b2b1aa4156df5d12db5bd5c428efbcbd3deb",
+      "command_bytes": 49,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 13032,
+        "output_sha256": "950c424ebb674fda72284af1a845ac2e403f7151b8a8d181c94bda2d8e987539"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 20,
+      "native_tool_call_id_sha256": "2c81c2622d1779b86e7463c00f4c8bb4144e37d7915b4438c7fdd70e4ac6fc77",
+      "command": "<WORKSPACE>/docs/agents/research-campaign.md",
+      "command_sha256": "c4057bd9b0307655b1bfe80b1941bfeeb2722371add5ce5580895f20d1eff1b3",
+      "command_bytes": 44,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 22033,
+        "output_sha256": "e5b9a80ef80c3d147b7e4f003095c37868b808af08c6d415f1989f1d16564328"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 21,
+      "native_tool_call_id_sha256": "51d2c99f50f9b6bf03e0c816894a5a9e50e57ba50160a7ebf4507f43f8cd46a9",
+      "command": "<WORKSPACE>/docs/agents/references/onboarding.json",
+      "command_sha256": "c7ae2d11ad2aa10c79467c715c9dd67fcb78e4b9e42c39d4b77fd7bfd4ba426e",
+      "command_bytes": 50,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 19359,
+        "output_sha256": "6476fb7288fe0c06b459de0ff6b65d5baada201a60f48d37e723e37b02e29084"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 22,
+      "native_tool_call_id_sha256": "681f7aa769ac5ce883b40992336be9dcfe660a9c7c34fd945cea9eccb04f305d",
+      "command": "<WORKSPACE>/docs/agents/references/compatibility.json",
+      "command_sha256": "4e2cb2a09bceb9706c810290700c6338d582acc607e27678604eebfd91e1ddae",
+      "command_bytes": 53,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 11178,
+        "output_sha256": "ab32b33283d7132425e578ae91a1a9c9993d6e3196d502deeab764302da044b5"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 23,
+      "native_tool_call_id_sha256": "ee61b08cd906b81e48774e04bd485718995601e27e7e421864e61d8859a012c0",
+      "command": "<WORKSPACE>/README.md",
+      "command_sha256": "e839f8ef3b5392bec89b21a8be0ec8962b39b186a60a236fcaf9b7d55f0f12c4",
+      "command_bytes": 21,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 19469,
+        "output_sha256": "d9d0f0c58818318e108163bf6b2e7b1e82dceaa6361b02ed272c1c895b9110c6"
+      }
+    },
+    {
+      "tool": "apply_patch",
+      "event_sequence": 26,
+      "native_tool_call_id_sha256": "e7c4aada144885e55f19a18370b0a4b51cdb5ce86dfaee56f73067592ae7beb4",
+      "command": "trial-output/quickstart-research.json",
+      "command_sha256": "03d27c742403a18234eb92fd8d22a7e2d825a2a8b16b26d01feacd6ed19df403",
+      "command_bytes": 37,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 77,
+        "output_sha256": "633399e2ec14c0d23fea7b82124dcecc73c3c9568ac8f3f1f884589e712d1501"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 30,
+      "native_tool_call_id_sha256": "d07f3d2c7de06d962feb78409f3e4ca2f3750b84d0b92edec216eae7f9ca56e6",
+      "command": "<WORKSPACE>/trial-output/quickstart-research.json",
+      "command_sha256": "b0a9897b6f64653097d3d370c9b514acd3d4b4b0095ce52f16bcd8b55e731f4d",
+      "command_bytes": 49,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 6799,
+        "output_sha256": "5d7dea16c363dafba6ae5628b33ccd213b545182ae4fb684de41d3b373154490"
+      }
+    }
+  ],
+  "observed_action_schema_version": 2,
+  "outcome_schema_version": 1,
+  "child_tool_profile": {
+    "profile_id": "opencode-file-tools-only-v2",
+    "agent_name": "entry-files-only",
+    "mechanism": "OPENCODE_CONFIG_CONTENT runtime JSON agent selected with --agent",
+    "configured": true,
+    "applied_to_child_invocation": true,
+    "replay_not_enforced": false,
+    "default_tool_permission": "deny",
+    "wildcard_default_deny": true,
+    "allowed_tools": [
+      "read",
+      "list",
+      "glob",
+      "grep",
+      "edit"
+    ],
+    "denied_tools": [
+      "*",
+      "external_directory"
+    ],
+    "effective_permission_probe": {
+      "status": "verified",
+      "method": "non-model `opencode debug agent entry-files-only` with OPENCODE_CONFIG_CONTENT",
+      "exit_code": 0,
+      "error_kind": null,
+      "agent_name": "entry-files-only",
+      "effective_matrix_matches": true,
+      "effective_permission_matrix": {
+        "*": "deny",
+        "external_directory": "deny",
+        "bash": "deny",
+        "read": "allow",
+        "list": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "edit": "allow",
+        "matches_admitted_matrix": true
+      },
+      "project_opencode_absent_before": true,
+      "project_opencode_absent_after": true,
+      "node_modules_absent_before": true,
+      "node_modules_absent_after": true,
+      "model_invocation": false,
+      "raw_debug_output_retained": false,
+      "argv": [
+        "opencode",
+        "debug",
+        "agent",
+        "entry-files-only"
+      ]
+    },
+    "host_python_binary_absence_claimed": false,
+    "note": "Tool permissions are checked through OpenCode's effective debug-agent matrix; the prompt alone is not enforcement and no host-Python absence is claimed."
+  },
+  "action_extraction": {
+    "method": "versioned allowlisted actions correlated by native tool-call ID; shell exit code only from native result metadata",
+    "events_observed": 35,
+    "actions_observed": 20,
+    "raw_events_scratch": ".tmp/fresh-agent-trials/discovery-quickstart-entry-luna-rerun.raw-events.jsonl",
+    "raw_events_sha256": "874fbc2c57fe6a137a4b2137e0d58c4b058f8142b4a211319f4387f5f5ddb4fe",
+    "raw_events_bytes": 627049,
+    "note": "Raw events stay in git-ignored scratch; provider metadata and tool output text are omitted."
+  },
+  "child_environment": {
+    "applied": true,
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "python_on_path": "/usr/bin",
+    "note": "Set for the child session so validator runs create no bytecode under frozen dirs; `python` on the child PATH is this interpreter."
+  },
+  "child_prompt": {
+    "protocol_version": "workspace-protocol-v2",
+    "rendered_sha256": "f2d69fe9458eb625cd497e4fb8ce64d894a8dcdea54c3a6d864566309656ef6c",
+    "delivered": true,
+    "pasted_canonical_entry": null,
+    "pasted_entry_source": null,
+    "pasted_entry_sha256": null,
+    "note": "The runner prepends the common protocol block and, for the pasted-entry case, the canonical route block from README.md; the exact task prompt remains in tasks.json. Rendered text is hashed, not retained, because it embeds the workspace path."
+  },
+  "first_useful_action_seconds": 6.026,
+  "first_useful_action_unknown_reason": null,
+  "clarification_count": null,
+  "plain_text_tail": "",
+  "artifact_refs": {
+    "trial-output/quickstart-research.json": "e3fda4c9c0b691e0356d2ad5e6a5d488ca52297d4f1ac64de099380c96f58e74"
+  },
+  "claim": "single-trial observation; not a measured result"
+}

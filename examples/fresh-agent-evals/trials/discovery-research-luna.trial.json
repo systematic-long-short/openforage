@@ -1,0 +1,183 @@
+{
+  "case_id": "discovery-research",
+  "task_mode": "discovery",
+  "fixture_conditions": [
+    "Campaign access is unavailable for this exercise.",
+    "The OpenForage package must be treated as not installed for this exercise.",
+    "No verified scheduler evidence is supplied; offline research remains available."
+  ],
+  "variant": "max",
+  "variant_in_argv": true,
+  "execution_mode": "fresh-opencode-run",
+  "fresh_separate_invocation": true,
+  "replay": false,
+  "model": "openrouter/openai/gpt-6-luna",
+  "invocation_argv": [
+    "opencode",
+    "run",
+    "--format",
+    "json",
+    "--dir",
+    "<WORKSPACE>",
+    "--model",
+    "openrouter/openai/gpt-6-luna",
+    "--variant",
+    "max"
+  ],
+  "workspace": "<WORKSPACE>",
+  "workspace_identity": "3442e990851fbdd2ed0ad639c9835b8d656dde83d6aa771903a8f829555fcbc8",
+  "source_snapshot_sha256": "bfdd3bbd16fb2b87befbe53af5b6006c321b06402e181338d3b1148e03a54e29",
+  "source_snapshot_files": 124,
+  "source_git_head": "c48cb235fde2d5590601528ef9c83cb9d8f402dd",
+  "harness": "opencode",
+  "harness_version": "1.18.31",
+  "session_id": "ses_f3343fdc5ffeGpTIYX68nEH0SF",
+  "started_at": "2026-09-23T05:27:45Z",
+  "ended_at": "2026-09-23T05:32:09Z",
+  "exit_code": 0,
+  "launch_error": null,
+  "owned_process_remaining": false,
+  "observed_actions": [
+    {
+      "tool": "todowrite",
+      "command": null
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/README.md"
+    },
+    {
+      "tool": "todowrite",
+      "command": null
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/docs/agents/start-here.md"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/docs/agents/research-opportunities.json"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/docs/agents/references/compatibility.json"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/src/openforage/skills/agent_runtime_integration/references/harnesses.json"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/trial-output"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/examples/agent-campaign/stratified_policy.py"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/examples/agent-campaign/coverage_challenger.py"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/docs/agents/research-campaign.md"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/src/openforage/skills/search_research/SKILL.md"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/trial-output/.prepare-owner.json"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/trial-output/prepare-record.json"
+    },
+    {
+      "tool": "grep",
+      "command": "<WORKSPACE>/examples/agent-campaign/coverage_challenger.py"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/examples/agent-campaign/campaign.json"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/src/openforage/skills/agent_runtime_integration/references/opencode.md"
+    },
+    {
+      "tool": "bash",
+      "command": "PYTHONDONTWRITEBYTECODE=1 python scripts/start_here.py --task research --format json"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/examples/agent-campaign/coverage_challenger.py"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/docs/agents/references/onboarding.json"
+    },
+    {
+      "tool": "todowrite",
+      "command": null
+    },
+    {
+      "tool": "apply_patch",
+      "command": "<WORKSPACE>/trial-output/research-discovery.json"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/trial-output/research-discovery.json"
+    },
+    {
+      "tool": "bash",
+      "command": "PYTHONDONTWRITEBYTECODE=1 python -c 'import json, pathlib; p=pathlib.Path(\"trial-output/research-discovery.json\"); d=json.loads(p.read_text()); required={\"case_id\",\"selected_task\",\"opportunity_id\",\"primary_source\",\"immediate_action\",\"reference_target\",\"evidence_paths\",\"capability_availability\",\"pack"
+    },
+    {
+      "tool": "bash",
+      "command": "git diff --check && git status --short"
+    },
+    {
+      "tool": "bash",
+      "command": "PYTHONDONTWRITEBYTECODE=1 python -c 'import json, pathlib; d=json.loads(pathlib.Path(\"trial-output/research-discovery.json\").read_text()); missing=[p for p in d[\"evidence_paths\"] if not pathlib.Path(p).is_file()]; assert not missing, missing; print(f\"All {len(d[\\\"evidence_paths\\\"])} evidence paths e"
+    },
+    {
+      "tool": "bash",
+      "command": "PYTHONDONTWRITEBYTECODE=1 python -c 'import json, pathlib; d=json.loads(pathlib.Path(\"trial-output/research-discovery.json\").read_text()); missing=[p for p in d[\"evidence_paths\"] if not pathlib.Path(p).is_file()]; assert not missing, missing; print(\"All {} evidence paths exist inside the workspace\"."
+    },
+    {
+      "tool": "todowrite",
+      "command": null
+    }
+  ],
+  "action_extraction": {
+    "method": "normalized allowlisted tool observations from the native JSON event stream",
+    "events_observed": 63,
+    "actions_observed": 28,
+    "raw_events_scratch": ".tmp/fresh-agent-trials/discovery-research-luna.raw-events.jsonl",
+    "raw_events_sha256": "81a9ba8d04cf53bd54a4e9f5ae47095b9280a8df26c535fb5e8f309fbcab3566",
+    "raw_events_bytes": 1032693,
+    "note": "Raw events stay in git-ignored scratch; this record keeps only normalized actions."
+  },
+  "child_environment": {
+    "applied": true,
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "python_on_path": "/usr/bin",
+    "note": "Set for the child session so validator runs create no bytecode under frozen dirs; `python` on the child PATH is this interpreter."
+  },
+  "child_prompt": {
+    "protocol_version": "workspace-protocol-v1",
+    "rendered_sha256": "ce8a7a5131a14dd4e801be047585536a00b069532e031e7f6245220b912f43b8",
+    "delivered": true,
+    "note": "The runner prepends the common protocol block to the case prompt from tasks.json; the case prompt itself stays exact case content. The rendered text is hashed, not retained, because it embeds the workspace path."
+  },
+  "first_useful_action_seconds": 8.509,
+  "first_useful_action_unknown_reason": null,
+  "clarification_count": null,
+  "plain_text_tail": "",
+  "artifact_refs": {
+    "trial-output/research-discovery.json": "b3333c98b57684537f5b83c7cbcec0f3442203c295f0dcd5623f31e691d9e6da"
+  },
+  "claim": "single-trial observation; not a measured result"
+}

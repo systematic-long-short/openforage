@@ -1,0 +1,33 @@
+{
+  "harness": "codex",
+  "harness_version": "0.156.1",
+  "native_ended_at": "2026-09-25T00:29:49.033887Z",
+  "native_started_at": "2026-09-25T00:27:27.064128Z",
+  "portable_patch_path": ".tmp/fresh-agent-research/runs/completion-reliability-research-4/complete-research-codex-4/contribution.patch",
+  "portable_patch_sha256": "058dce927859a504c045e69dfcfba31ae7451ffaf5c32b773d493ef0203d9c10",
+  "public_suite_is_instruction_isolated": true,
+  "record_schema_version": 1,
+  "requested_model_selector": {
+    "backend_served_value": "not_observed",
+    "source": "explicit_cli_argv",
+    "status": "requested_only",
+    "value": "gpt-6-astra"
+  },
+  "requested_reasoning_effort": {
+    "backend_served_value": "not_observed",
+    "source": "explicit_cli_argv",
+    "status": "requested_only",
+    "value": "medium"
+  },
+  "requested_variant": {
+    "source": "explicit_cli_argv",
+    "status": "not_applicable"
+  },
+  "run_id": "complete-research-codex-4",
+  "selector_note": "Caller argv requests only; backend-served model is not observed.",
+  "series_id": "completion-reliability-research-4",
+  "series_manifest_sha256": "a852b5d5e84a4d6dddb9e9df12454603ad0bcdcd89ecf444d646567d950eac7c",
+  "snapshot_sha256": "0eb9f86950a897b02258d924f9ea7de31e1ad0c2040b7ec35d39a68b44224a99",
+  "source_tree_sha256": "bf5cfab3098cc0e4a963dc1b108ef78b60217f5f7c825ef4c57102e96ba3d41b",
+  "workspace_identity_sha256": "f00d9d85d13fb0175a98aaa6bee5ffb39ec8ae78f73f785f6de9e55f101dce31"
+}

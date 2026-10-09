@@ -1,0 +1,27 @@
+{
+  "case_id": "discovery-contribution-cold-start",
+  "selected_task": "Fix a stale or unsupported claim: make the agent quickstart offline-first and label its registration/search recipe as live-campaign-only with explicit authorization.",
+  "target_file": "docs/agents/quickstart.md",
+  "rationale": "README.md routes unspecified signal-seeking to offline research, and docs/agents/start-here.md directs readers to choose a research opportunity without launching a campaign. The agent quickstart instead opens with registration and search, then says passing signals are automatically submitted. A focused clarification at this entry point would direct future researchers to the offline route first and gate the existing live recipe. Pre-edit baseline: truthfulness reported no failures; links reported 11 missing-target failures (five links to fixture-removed AGENTS.md/CLAUDE.md and six links to legal/terms.md, which is also absent in this workspace). trial-output/prepare-record.json confirms the fixture removed AGENTS.md and CLAUDE.md.",
+  "baseline_command": "PYTHONDONTWRITEBYTECODE=1 python .github/scripts/validate_agent_docs.py truthfulness links",
+  "evidence_paths": [
+    "README.md",
+    "CONTRIBUTING.md",
+    "docs/agents/first-contribution.md",
+    "docs/agents/start-here.md",
+    "docs/agents/references/onboarding.json",
+    "docs/agents/quickstart.md",
+    "docs/agents/first-search.md",
+    ".github/scripts/validate_agent_docs.py",
+    "trial-output/prepare-record.json"
+  ],
+  "offline_access": "Documentation work and offline research need no invite code, wallet, installed OpenForage package, daemon, or worker. This contribution needs no live campaign or service access.",
+  "live_actions": [],
+  "no_edit_made": true,
+  "completion_criteria": [
+    "The quickstart points signal-seeking newcomers to the offline research route before any registration or search instructions.",
+    "The existing registration/search recipe is clearly gated behind explicit live-campaign authorization; offline readers are not directed to register or launch.",
+    "Re-run truthfulness and links after the change, compare against the recorded pre-edit baseline, and ensure the contribution adds no new failures; git diff --check is clean.",
+    "Keep claims tied to documented evidence and open no issue or pull request unless instructed."
+  ]
+}

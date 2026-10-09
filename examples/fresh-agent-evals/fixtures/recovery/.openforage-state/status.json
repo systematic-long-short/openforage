@@ -1,0 +1,26 @@
+{
+  "pid": <DEAD_PID>,
+  "running": true,
+  "process_health": {
+    "state": "running",
+    "heartbeat_age_seconds": 5400
+  },
+  "algorithm": "random_weighted",
+  "worker_template": "random_weighted",
+  "data_download_progress": {
+    "phase": "download",
+    "completed_bytes": 0,
+    "total_bytes": 0,
+    "percent": 0.0
+  },
+  "signals_found": 0,
+  "signals_submitted": 0,
+  "recent_errors": [],
+  "paths": {
+    "pid_file": ".openforage-state/background.pid",
+    "heartbeat_file": ".openforage-state/heartbeat.json",
+    "status_json_file": ".openforage-state/status.json",
+    "event_jsonl_file": ".openforage-state/events.jsonl",
+    "worker_log_path": ".openforage-state/worker.log"
+  }
+}

@@ -1,0 +1,558 @@
+{
+  "case_id": "discovery-quickstart-entry",
+  "task_mode": "discovery",
+  "fixture_conditions": [
+    "AGENTS.md and CLAUDE.md are absent from the prepared workspace; this describes visible files, not native harness autoload behavior.",
+    "The selected OpenCode project agent permits workspace file tools and explicitly denies shell, subagent, web, and other listed capabilities.",
+    "This profile limits tools exposed to the child agent; it does not claim the host has no Python executable."
+  ],
+  "variant": "max",
+  "variant_in_argv": true,
+  "execution_mode": "fresh-opencode-run",
+  "fresh_separate_invocation": true,
+  "replay": false,
+  "model": "openrouter/openai/gpt-6-luna",
+  "invocation_argv": [
+    "opencode",
+    "run",
+    "--format",
+    "json",
+    "--dir",
+    "<WORKSPACE>",
+    "--model",
+    "openrouter/openai/gpt-6-luna",
+    "--agent",
+    "entry-files-only",
+    "--variant",
+    "max"
+  ],
+  "workspace": "<WORKSPACE>",
+  "workspace_identity": "153868f3d458d3102d230ef6034123064ff7eb27dab06dc6996c01821fb0bd00",
+  "source_snapshot_sha256": "6041309d663812525c9dd8df2a9d5924ab2ccb3c0e7b2a194581b991282d97a4",
+  "source_snapshot_files": 129,
+  "source_git_head": "c48cb235fde2d5590601528ef9c83cb9d8f402dd",
+  "harness": "opencode",
+  "harness_version": "1.18.31",
+  "session_id": "ses_f3219ece9ffeqS1pl7M34lSLD3",
+  "started_at": "2026-09-23T10:53:21Z",
+  "ended_at": "2026-09-23T10:56:59Z",
+  "exit_code": 0,
+  "launch_error": null,
+  "owned_process_remaining": false,
+  "observed_actions": [
+    {
+      "tool": "glob",
+      "event_sequence": 1,
+      "native_tool_call_id_sha256": "b7c7c4623596eaf1dd856222a9b138aeaaccb2b5f066d5ba102ca8d10bf95e0e",
+      "status_rank": 2,
+      "command": "<WORKSPACE>",
+      "command_sha256": "cb474a78c0c3ecceac06e1601434613c988e23a21b0d96fc0d14451e00ff4e13",
+      "command_bytes": 11,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 89,
+        "output_sha256": "6d6aec0dab3bdb539c26a6c97df352f6a7bc0aaee89e3b5fecda4ebdd311bb1a"
+      }
+    },
+    {
+      "tool": "glob",
+      "event_sequence": 2,
+      "native_tool_call_id_sha256": "8e9a2aa341d99f3f18fd6cda78981ba9287282fbbe3b65972dcaaadb56bced0a",
+      "status_rank": 2,
+      "command": "<WORKSPACE>",
+      "command_sha256": "cb474a78c0c3ecceac06e1601434613c988e23a21b0d96fc0d14451e00ff4e13",
+      "command_bytes": 11,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 3766,
+        "output_sha256": "328a67ba3e05edd97c18b63a7c53a59471e420afbec57cdb24381bd46662e17a"
+      }
+    },
+    {
+      "tool": "glob",
+      "event_sequence": 3,
+      "native_tool_call_id_sha256": "40dcf1266dbc368b39b5267b5c598c3ca164b64d702cda4b9b5a1173b155ecdc",
+      "status_rank": 2,
+      "command": "<WORKSPACE>",
+      "command_sha256": "cb474a78c0c3ecceac06e1601434613c988e23a21b0d96fc0d14451e00ff4e13",
+      "command_bytes": 11,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 765,
+        "output_sha256": "ee8c53c46ddd3af24c5c6187efe7cb3d83690c5927a07605e6c752b9d0f3beb8"
+      }
+    },
+    {
+      "tool": "glob",
+      "event_sequence": 4,
+      "native_tool_call_id_sha256": "ce59941ebcc9c1e135af4d7f74ddd76fa019c7b9fbe94d45f3c92358a04d2211",
+      "status_rank": 2,
+      "command": "<WORKSPACE>",
+      "command_sha256": "cb474a78c0c3ecceac06e1601434613c988e23a21b0d96fc0d14451e00ff4e13",
+      "command_bytes": 11,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 679,
+        "output_sha256": "b546d06b5c09108b0350cf4d20dea38c74eb79a6366c70cc53e9e7d586555fc6"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 7,
+      "native_tool_call_id_sha256": "fb3d01ce9ea81cc9e404cb71b7004e47b5eeb0cf4ebe5110d84d966027aa04c9",
+      "status_rank": 2,
+      "command": "<WORKSPACE>/docs/agents/quickstart.md",
+      "command_sha256": "88bbb4cd8c34051e5871237571692df05bb57d4ed82c0a54548de3fdab310499",
+      "command_bytes": 37,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 3892,
+        "output_sha256": "354832c1c320dfb156c7f17a66bc94ddc40cacf2120af512761f14127d6e353a"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 8,
+      "native_tool_call_id_sha256": "e3de4112ad3375c698aec7f316868f7bf03288c05885fcb29804e45eca1e0ecb",
+      "status_rank": 2,
+      "command": "<WORKSPACE>/docs/agents/research-opportunities.json",
+      "command_sha256": "a6a446159bc81c4ecc17a00acea67ea865b1938c8ba6a9db1dcca7fb3385f6f2",
+      "command_bytes": 51,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 18712,
+        "output_sha256": "caabb0f8c1cf4bdc71a4aa3c770b0c69d0ca04cc1ec7c4016cd630d5bc367265"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 9,
+      "native_tool_call_id_sha256": "b24021b38bb9ec1df387396ea7f082c28a945f264d97dda469ea091866058f9c",
+      "status_rank": 2,
+      "command": "<WORKSPACE>/docs/agents/first-search.md",
+      "command_sha256": "30dd431174e4b58a67e2745e8636db222f435d36ec0ad3792872eeb7367af97a",
+      "command_bytes": 39,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 4866,
+        "output_sha256": "b45cbea5b5abedd0d3e9b4f4b3b19b906b4e6efba66b8cd0b3b40fc22cabb1d1"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 10,
+      "native_tool_call_id_sha256": "e87bf06907a5306f2742bb98c6f8669a244c85a65f6b5303c95b6e0036f7b568",
+      "status_rank": 2,
+      "command": "<WORKSPACE>/docs/agents/research-opportunities.md",
+      "command_sha256": "5a064a2215f3bc07171beb7cd5a8b17a660065b8e4bd6cd5c0ce3a710359e486",
+      "command_bytes": 49,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 14598,
+        "output_sha256": "c7a3e16d3af014956e037a4360e8593985ff4a4ec1add8e20bb05241c72d8242"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 11,
+      "native_tool_call_id_sha256": "1b6a698862a4f40f4986bc53f467002f43f2819160737a0a1f93183a4c82ca94",
+      "status_rank": 2,
+      "command": "<WORKSPACE>/trial-output/prepare-record.json",
+      "command_sha256": "a2106ff7e6de12740d4462893f76a7bc845f3974f6b9b7920ee86b466efe12ba",
+      "command_bytes": 44,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 1643,
+        "output_sha256": "bd5fe1d9907e181e6c03eef0336a92e0dbb3ac2a793418da9a91d2236cbe3f56"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 12,
+      "native_tool_call_id_sha256": "830eba41d6c291a8a6b0ba6585b0d26f0e43b5696ebcba7ba196ae774c05da3c",
+      "status_rank": 2,
+      "command": "<WORKSPACE>/docs/agents/references/onboarding.json",
+      "command_sha256": "c7ae2d11ad2aa10c79467c715c9dd67fcb78e4b9e42c39d4b77fd7bfd4ba426e",
+      "command_bytes": 50,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 19359,
+        "output_sha256": "6476fb7288fe0c06b459de0ff6b65d5baada201a60f48d37e723e37b02e29084"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 15,
+      "native_tool_call_id_sha256": "402009af78b53822424cb375da54ad48bfd659e5927c75a35cebf1e22b932774",
+      "status_rank": 2,
+      "command": "<WORKSPACE>/examples/agent-campaign/campaign.json",
+      "command_sha256": "44f42c8570a8b410854a64af8fc5b2b1aa4156df5d12db5bd5c428efbcbd3deb",
+      "command_bytes": 49,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 14242,
+        "output_sha256": "18398f06ce9a60dd5cc6ce34da8807de673b55cb5dd6177103d2be90df558ff8"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 16,
+      "native_tool_call_id_sha256": "e007ee5cf64ed59357507620d73f10fe30d4a49e3b118531598a4b2d79e63bd9",
+      "status_rank": 2,
+      "command": "<WORKSPACE>/.opencode/agents/entry-files-only.md",
+      "command_sha256": "7d665ba33c24e758908d56a3df191ae8ea284baddadcaeb0578d223d2998f7af",
+      "command_bytes": 48,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 767,
+        "output_sha256": "8edf94bbc08dc1042f98d050c2c339188f234d45b60a697e7f8b0bd48c5e575d"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 17,
+      "native_tool_call_id_sha256": "c4e3d37d53b88a35e108bceaa4e114cfcac7f775b7e7f993d9f453709d7f9d4c",
+      "status_rank": 2,
+      "command": "<WORKSPACE>/docs/agents/research-campaign.md",
+      "command_sha256": "c4057bd9b0307655b1bfe80b1941bfeeb2722371add5ce5580895f20d1eff1b3",
+      "command_bytes": 44,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 22682,
+        "output_sha256": "9f451bbe0b98ba5200976f82cb8b80bbfdea2eaddc7998046286fa7fd5ccc810"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 18,
+      "native_tool_call_id_sha256": "497663a7b53d48c1718db5689516340fbf27f0b89e1d897dc61e380ffd267dc0",
+      "status_rank": 2,
+      "command": "<WORKSPACE>/docs/agents/references/compatibility.json",
+      "command_sha256": "4e2cb2a09bceb9706c810290700c6338d582acc607e27678604eebfd91e1ddae",
+      "command_bytes": 53,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 11178,
+        "output_sha256": "ab32b33283d7132425e578ae91a1a9c9993d6e3196d502deeab764302da044b5"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 19,
+      "native_tool_call_id_sha256": "f228bfe484c779c26a853f2e2cbb1bd77ac99032321f55dc6981e61fe6d61180",
+      "status_rank": 2,
+      "command": "<WORKSPACE>/src/openforage/skills/search_research/SKILL.md",
+      "command_sha256": "6908e07d15a20a3df8c65334da65b0a56967aabee9b707b00fee2247f1bb68d2",
+      "command_bytes": 58,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 20164,
+        "output_sha256": "8d53944a2b6465dad7fbb08b2270dc61b309e992837b02c80f984870eeffa2ee"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 20,
+      "native_tool_call_id_sha256": "21d2598561f15f673c95a787b77bdbc3be01acad540b50a8be183baae1ab44f0",
+      "status_rank": 2,
+      "command": "<WORKSPACE>/src/openforage/skills/agent_runtime_integration/references/harnesses.json",
+      "command_sha256": "bcc9e78fc3bcffe0f08d68dba708168eb4c1b1af5a206a96d8e7cb9e85d3c2f1",
+      "command_bytes": 85,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 24673,
+        "output_sha256": "f4666fb717fbd9dfa9243ef8d1f3397da177de7a7426f7f036a5ff79d7cb41a4"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 23,
+      "native_tool_call_id_sha256": "b80c390bd2ff780b52a8924423c4f0a829a000c07fedd108781e71519cc4e57a",
+      "status_rank": 2,
+      "command": "<WORKSPACE>/examples/agent-campaign/research.md",
+      "command_sha256": "8bd910c01bc3a15443b1943a3b662570544746a154577fca3bd075ebc31fe788",
+      "command_bytes": 47,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 10578,
+        "output_sha256": "c104eea3f2c530e239ddd267ed9aeea54ab60d13a252981e6b6117f394d64c22"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 24,
+      "native_tool_call_id_sha256": "9241b5b6d8cd6ca43457bc2028ff70c38d28b5d6cb2a394949064bed5da69660",
+      "status_rank": 2,
+      "command": "<WORKSPACE>/examples/agent-campaign/challenger_design.md",
+      "command_sha256": "1ce018bc9571aa6cdedfc229b16aeaa87f8fbef4fa135f58aa5217205c6910e9",
+      "command_bytes": 56,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 15416,
+        "output_sha256": "e6be5c16ecfa9731a3ffe51a5eba6da8153cbd386828f5e49a1467c85650c1ee"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 25,
+      "native_tool_call_id_sha256": "cd5b12c439d6ded0ca01c702c94f82127204d366936234740d566f37ef10e39d",
+      "status_rank": 2,
+      "command": "<WORKSPACE>/examples/agent-campaign/stratified_policy.py",
+      "command_sha256": "4e05849d935c14710e0a282f33ba8e9aad77237c7f87ecb7502214caaef5d1d3",
+      "command_bytes": 56,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 14716,
+        "output_sha256": "af708842e3e5f49a55282309b3db81bcdcfe7ea79a0a70281dac427c7de2a261"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 26,
+      "native_tool_call_id_sha256": "4670f1635bc760d35cafe49601d178e49eb79e193f4edc6dbf9cde3e7b53a737",
+      "status_rank": 2,
+      "command": "<WORKSPACE>/docs/agents/background-agent.md",
+      "command_sha256": "127c2bdfb1770679c4168680f6564fb3ccb384186ddd064f3ae3dd89c4b1e03b",
+      "command_bytes": 43,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 9737,
+        "output_sha256": "92cb318211127a5b4256d7fd4cf99008483eb151c54b5e105f912de78f10ac41"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 27,
+      "native_tool_call_id_sha256": "be091c749219c017dc4f07fb0c88346db75416c7a53e47da41db148715e72f63",
+      "status_rank": 2,
+      "command": "<WORKSPACE>/examples/agent-campaign/coverage_challenger.py",
+      "command_sha256": "704ed61fb26e05a205b59dd1576b25be12b813d067ce761245c38cbd1615b0f5",
+      "command_bytes": 58,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 12606,
+        "output_sha256": "8b5bc57d9fff273df893477cce7add12fa6649e29d743ef3ab808feda7bef439"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 28,
+      "native_tool_call_id_sha256": "f999db76dec0285db6f95cde015edaadcafef126e041bcd05b086d4decd71c0d",
+      "status_rank": 2,
+      "command": "<WORKSPACE>/src/openforage/skills/scheduled_improvement_loops/SKILL.md",
+      "command_sha256": "1c72b17b67c517a71f76c129770a1106bff603b03007247d66385272b466a1f2",
+      "command_bytes": 70,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 7638,
+        "output_sha256": "e6ac871b9551bf175185ba84d9dffbc4647958c0b3396eb7da9a18e60bc73c31"
+      }
+    },
+    {
+      "tool": "apply_patch",
+      "event_sequence": 31,
+      "native_tool_call_id_sha256": "ce03e77f1d5ba49e8ac47e5ad71e779e1f8f11731c7fc00068241469d0a4e5aa",
+      "status_rank": 2,
+      "command": "trial-output/quickstart-research.json",
+      "command_sha256": "03d27c742403a18234eb92fd8d22a7e2d825a2a8b16b26d01feacd6ed19df403",
+      "command_bytes": 37,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 77,
+        "output_sha256": "050fa005b734378ea8f5e348bb3bde9b28260c48e3c75cf0c2e10117789cdbe4"
+      }
+    },
+    {
+      "tool": "read",
+      "event_sequence": 34,
+      "native_tool_call_id_sha256": "4df50ccec216622818150c44f4fd0c4195b877040af8b668bf46f96101319ac8",
+      "status_rank": 2,
+      "command": "<WORKSPACE>/trial-output/quickstart-research.json",
+      "command_sha256": "b0a9897b6f64653097d3d370c9b514acd3d4b4b0095ce52f16bcd8b55e731f4d",
+      "command_bytes": 49,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 6719,
+        "output_sha256": "de03da48aaa5b8674f089e82214e6316ea64a25c104c220927aa86a06ad9664a"
+      }
+    },
+    {
+      "tool": "apply_patch",
+      "event_sequence": 37,
+      "native_tool_call_id_sha256": "ccd0f78485c42437ec2700de82b9cdf44f41da330f287c16492af8a2b2e3d5c3",
+      "status_rank": 2,
+      "command": "trial-output/quickstart-research.json",
+      "command_sha256": "03d27c742403a18234eb92fd8d22a7e2d825a2a8b16b26d01feacd6ed19df403",
+      "command_bytes": 37,
+      "command_truncated": false,
+      "outcome_schema_version": 1,
+      "outcome": {
+        "native_tool_status": "completed",
+        "shell_exit_code_status": "not_applicable",
+        "output_hash_status": "observed",
+        "output_bytes": 77,
+        "output_sha256": "633399e2ec14c0d23fea7b82124dcecc73c3c9568ac8f3f1f884589e712d1501"
+      }
+    }
+  ],
+  "observed_action_schema_version": 2,
+  "outcome_schema_version": 1,
+  "child_tool_profile": {
+    "profile_id": "opencode-file-tools-only-v1",
+    "agent_name": "entry-files-only",
+    "mechanism": "OpenCode project-agent permissions selected with --agent",
+    "configured": true,
+    "applied_to_child_invocation": true,
+    "replay_not_enforced": false,
+    "allowed_tools": [
+      "read",
+      "list",
+      "glob",
+      "grep",
+      "edit",
+      "write",
+      "apply_patch"
+    ],
+    "denied_tools": [
+      "bash",
+      "task",
+      "webfetch",
+      "websearch",
+      "lsp",
+      "todowrite",
+      "question",
+      "doom_loop",
+      "skill"
+    ],
+    "host_python_binary_absence_claimed": false,
+    "note": "The profile denies shell-tool access; it does not claim the host lacks a Python executable."
+  },
+  "action_extraction": {
+    "method": "versioned allowlisted actions correlated by native tool-call ID; shell exit code only from native result metadata",
+    "events_observed": 42,
+    "actions_observed": 25,
+    "raw_events_scratch": ".tmp/fresh-agent-trials/discovery-quickstart-entry-luna.raw-events.jsonl",
+    "raw_events_sha256": "ce58bead92d59d8daa29aaa70bc5e874015c53df1cd92dc2ac8329f5a0eea868",
+    "raw_events_bytes": 887820,
+    "note": "Raw events stay in git-ignored scratch; provider metadata and tool output text are omitted."
+  },
+  "child_environment": {
+    "applied": true,
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "python_on_path": "/usr/bin",
+    "note": "Set for the child session so validator runs create no bytecode under frozen dirs; `python` on the child PATH is this interpreter."
+  },
+  "child_prompt": {
+    "protocol_version": "workspace-protocol-v2",
+    "rendered_sha256": "cc754e110229d8f1a1741c7285dc4d090a3e552362e7e220d9f725e72eb28519",
+    "delivered": true,
+    "pasted_canonical_entry": null,
+    "pasted_entry_source": null,
+    "pasted_entry_sha256": null,
+    "note": "The runner prepends the common protocol block and, for the pasted-entry case, the canonical route block from README.md; the exact task prompt remains in tasks.json. Rendered text is hashed, not retained, because it embeds the workspace path."
+  },
+  "first_useful_action_seconds": 6.132,
+  "first_useful_action_unknown_reason": null,
+  "clarification_count": null,
+  "plain_text_tail": "",
+  "artifact_refs": {
+    "trial-output/quickstart-research.json": "1d662edc364db292351802ca37523f0f04d686628fe8a02e9a1a19d461b86772"
+  },
+  "claim": "single-trial observation; not a measured result"
+}

@@ -1,0 +1,11 @@
+{
+  "case_id": "docs-fix",
+  "validation_mode": "truthfulness",
+  "commands": [
+    "python .github/scripts/validate_agent_docs.py truthfulness",
+    "python .github/scripts/validate_agent_docs.py truthfulness",
+    "git diff --check"
+  ],
+  "observed_result": "pass",
+  "diff_summary": "docs/agents/quickstart.md line 7: replaced the stale bare openforage.register() (with its fixture comment) with openforage.register(invite_code=\"<CODE>\") so the quickstart matches the required invite-code onboarding path; no other tracked file changed."
+}

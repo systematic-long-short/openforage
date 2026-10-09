@@ -1,0 +1,160 @@
+{
+  "_template": true,
+  "record_type": "experiment_record",
+  "experiment_id": "exp-0001",
+  "campaign_id": "campaign-<slug>-<YYYYMMDD>",
+  "owner_session_identity": "<child-session-identity>",
+  "owner_shape": {
+    "separate_cli_invocation_of_same_harness": true,
+    "distinct_session_identity": true,
+    "native_tooling_used_for_schedule_and_memory": true,
+    "plan_records_are_not_schedulers": true
+  },
+  "pipeline_stage": "measured_comparison",
+  "preregistration_ref": {
+    "protocol_id": "<protocol-id>",
+    "protocol_version": 1,
+    "protocol_hash": "<sha256>",
+    "recorded_before_results": true,
+    "manifest_ref": "campaign.json#preregistration"
+  },
+  "paper": {
+    "source": "<citation-or-link>",
+    "exact_claim": "<exact source claim>"
+  },
+  "mechanism": {
+    "statement": "<why it could hold in this market, universe, and era>",
+    "falsifier": "<what would falsify it>"
+  },
+  "hypothesis": {
+    "statement": "<falsifiable statement tied to local evaluator output>",
+    "comparison": "random_weighted vs <fork-name>",
+    "threshold": "<pre-registered threshold>",
+    "direction": "<increase|decrease|two-sided>",
+    "minimum_meaningful_effect": null
+  },
+  "custom_algorithm": {
+    "name": "<fork-name>",
+    "valid_loaded_features_only": true,
+    "valid_rotation_functions_only": true,
+    "depth_cap": 6,
+    "self_rejects_depth_gt_6": true,
+    "filler_nodes_added": false,
+    "acceptance_thresholds_unchanged": true
+  },
+  "comparison": {
+    "classification": "exploratory",
+    "classification_note": "exploratory means the protocol or matching was incomplete; it does not mean unmeasured. Do not write 'not measured' about a result that has measurements.",
+    "baseline": {
+      "algorithm": "random_weighted",
+      "algorithm_identity": "<observed comparator identity>",
+      "budget_evaluations": null,
+      "completed_evaluator_simulations": null,
+      "seed_set_id": "<seed-set-id>",
+      "config_hash": "<config-hash>"
+    },
+    "variant": {
+      "algorithm": "<fork-name>",
+      "budget_evaluations": null,
+      "completed_evaluator_simulations": null,
+      "seed_set_id": "<seed-set-id>",
+      "config_hash": "<config-hash>"
+    },
+    "budgets_matched": null,
+    "seeds_matched": null,
+    "effect_size": null,
+    "uncertainty": null
+  },
+  "statistics": {
+    "unit_of_analysis": "independent_paired_search_runs",
+    "candidate_evaluations_are_not_replications": true,
+    "search_runs_baseline": null,
+    "search_runs_variant": null,
+    "inference": {
+      "method": "<dependence-aware method>",
+      "assumptions": "<stated assumptions>",
+      "data_window": "<window>"
+    },
+    "multiple_comparison_family": null,
+    "multiple_comparison_correction": null,
+    "horizon": "<fixed_horizon|sequential>",
+    "sequential_justification": null,
+    "same_data_reruns_are_not_new_oos": true,
+    "trial_inventory_ref": "experiments.jsonl"
+  },
+  "usefulness_metrics": [
+    {
+      "metric": "<metric-id>",
+      "availability": "<available|unavailable|pending|unknown>",
+      "unavailable_reason": "<required when availability is unavailable>",
+      "provenance": "<surface that exposes it>",
+      "unit": "<unit>",
+      "window": "<window>",
+      "value": null,
+      "note": "unavailable requires a reason and a null value; never record zero as a substitute. structural co-occurrence is not return correlation."
+    }
+  ],
+  "resources": {
+    "preflight_calibration_artifact": null,
+    "requested_vs_enforced": [
+      {"resource": "cpu_cores", "requested": null, "requested_unavailable_reason": "<required when requested is unknown>", "enforced": null, "enforcement_mechanism": null, "observed": false, "stop_behavior": null},
+      {"resource": "ram_bytes", "requested": null, "requested_unavailable_reason": "<required when requested is unknown>", "enforced": null, "enforcement_mechanism": null, "observed": false, "stop_behavior": null},
+      {"resource": "storage_bytes", "requested": null, "requested_unavailable_reason": "<required when requested is unknown>", "enforced": null, "enforcement_mechanism": null, "observed": false, "stop_behavior": null},
+      {"resource": "wall_time_seconds", "requested": null, "requested_unavailable_reason": "<required when requested is unknown>", "enforced": null, "enforcement_mechanism": null, "observed": false, "stop_behavior": null},
+      {"resource": "worker_count", "requested": null, "requested_unavailable_reason": "<required when requested is unknown>", "enforced": null, "enforcement_mechanism": null, "observed": false, "stop_behavior": null},
+      {"resource": "completed_simulations", "requested": null, "requested_unavailable_reason": "<required when requested is unknown>", "enforced": null, "enforcement_mechanism": null, "observed": false, "stop_behavior": null}
+    ],
+    "missing_enforcement_is_visible": true,
+    "plateau_handling": "<hard_breach_or_exhaustion_stops_immediately; plateau_with_resources_requires_research_or_pivot_first>",
+    "outcome": null
+  },
+  "provenance": {
+    "repo": {"commit": null, "dirty_diff_hash": null, "unavailable_reason": "<required when commit is not recorded>"},
+    "package": {"name": "openforage", "version": null, "distribution": null, "build": null, "unavailable_reason": "<required when version is not recorded>"},
+    "environment": {"python": null, "platform": null, "dependencies_manifest_hash": null, "unavailable_reason": "<required when environment is not recorded>"},
+    "harness": {"product": null, "version": null, "model_identifier": null, "unavailable_reason": "<required when the harness is not recorded>"},
+    "seeds": {"seed_set_id": "<seed-set-id>", "control_mechanism": "<how the seed was controlled; a seed alone does not prove every RNG is controlled>", "randomness_limits": null},
+    "data_scope": {"era_id": null, "config_hash": null, "loaded_vocabulary_hash": null, "history_window": null, "unavailable_reason": "<required when the era/config scope is not recorded>"},
+    "artifacts": [{"path": null, "sha256": null, "recorded_at": null, "unavailable_reason": "<required when no artifact is recorded>"}],
+    "algorithm": {"identity": "<recorded algorithm identity or unavailable reason>", "lineage": [], "source_artifact_hash": null, "ga_reference_implementation_present": false, "unavailable_reason": "<required when identity is not recorded>", "evidence_ref": null},
+    "resume_mismatch_policy": "new_segment_and_incomplete_baseline",
+    "evidence_immutable": true,
+    "amendments_append_only": true,
+    "integrity_note": "hashes attest integrity, not correctness or authenticity; sanitize exports and never hash or embed secrets"
+  },
+  "segments": {
+    "era_segments": [],
+    "config_segments": [],
+    "never_pool_across_era_boundaries": true,
+    "resume_mismatch_opens_new_segment": true
+  },
+  "submissions": {
+    "submitted": null,
+    "pending": null,
+    "accepted": null,
+    "rejected": null,
+    "ambiguous": null,
+    "server_results_through": null,
+    "pending_is_not_accepted": true,
+    "ambiguous_is_neither_accepted_nor_rejected": true
+  },
+  "negative_findings": [
+    {
+      "finding": "<what did not clear the threshold>",
+      "comparison": "<baseline vs variant>",
+      "why": "<why it did not clear>"
+    }
+  ],
+  "honesty": {
+    "local_results": "in_sample_simulation",
+    "out_of_sample": "only after protocol server-side evaluation returns",
+    "classification": "exploratory",
+    "classification_is_not_measurement_presence": true,
+    "full_benchmark_completion_claimed": false,
+    "full_benchmark_completion_evidence": null,
+    "verified_harness_adapter_claimed": false,
+    "harness_adapter_evidence": null,
+    "note": "A real completion claim requires referenced evidence and completed accounting; a real adapter claim requires a test id, a real calendar date, a typed scope, an in-repository evidence artifact, and an observed passing result. Templates never claim either."
+  },
+  "notes": "Record TEMPLATE. Replace placeholders with measured values; an incomplete pipeline stage or unmatched budget/seed makes this exploratory, not unmeasured."
+}

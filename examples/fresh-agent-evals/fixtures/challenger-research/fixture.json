@@ -1,0 +1,6 @@
+{
+  "case_id": "challenger-research",
+  "description": "No workspace mutations. The task reads the public research opportunity map and the recorded public-surface facts, then writes a scoped research plan.",
+  "overlay_patches": [],
+  "dead_pid_files": []
+}

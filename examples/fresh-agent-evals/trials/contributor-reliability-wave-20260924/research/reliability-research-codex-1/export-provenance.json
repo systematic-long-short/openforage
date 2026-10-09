@@ -1,0 +1,11 @@
+{
+  "run_id": "reliability-research-codex-1",
+  "series_manifest_sha256": "d9a9458b921020f6601a5225790689057e78639e568f0ea838de9c3b027058b4",
+  "exact_authored_artifact_sha256": {
+    "trial-output/challenger.py": "3ab0ec0f6adba76779766e1dbe00827934f217fbf2ea996f015ea42c8c8192a8",
+    "trial-output/comparison-report.json": "9889bad5211afaa22da3b692a571f835a52c1f39bdef351edfbe4eba3d9264db",
+    "trial-output/research-result.json": "1076a9750738aad0c81fe2e5f94669f589aaaf603bd5fcf03b2fce10d40cec68"
+  },
+  "original_verdict_unchanged": true,
+  "raw_native_streams_in_export": false
+}

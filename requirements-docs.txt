@@ -1,0 +1,5 @@
+# Documentation/validation tooling for the public OpenForage library packet.
+# Install inside the isolated .venv-docs environment (see README "Exact
+# validation commands"); do not install these globally, because some
+# interpreters are externally managed and reject global pip installs.
+PyYAML==6.0.3

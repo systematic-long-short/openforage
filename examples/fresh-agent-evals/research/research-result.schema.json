@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "paper-backed-coverage-research-result-v1",
+  "title": "Paper-backed challenger research/result artifact",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "task_id", "source", "research", "machine_claims", "human_review"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "task_id": {"const": "paper-backed-coverage-challenger-v1"},
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_excerpt_path", "source_excerpt_sha256", "title", "authors", "year", "identifier", "url", "paraphrase"],
+      "properties": {
+        "source_excerpt_path": {"type": "string", "minLength": 1},
+        "source_excerpt_sha256": {"$ref": "#/$defs/sha256"},
+        "title": {"type": "string", "minLength": 1},
+        "authors": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "year": {"type": "integer", "minimum": 1900, "maximum": 2100},
+        "identifier": {"type": "string", "minLength": 1},
+        "url": {"type": "string", "format": "uri"},
+        "paraphrase": {"type": "string", "minLength": 1, "maxLength": 500}
+      }
+    },
+    "research": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mechanism_explanation", "hypothesis", "falsifier"],
+      "properties": {
+        "mechanism_explanation": {"type": "string", "minLength": 1, "maxLength": 2000},
+        "hypothesis": {"type": "string", "minLength": 1, "maxLength": 2000},
+        "falsifier": {"type": "string", "minLength": 1, "maxLength": 2000}
+      }
+    },
+    "machine_claims": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evaluation_scope", "comparison_report_path", "comparison_report_sha256",
+        "implementation_path", "implementation_sha256", "series_id", "series_manifest_path",
+        "series_manifest_sha256", "reference_identity", "synthetic_uniform_is_genetic",
+        "synthetic_quality_scope", "synthetic_comparison_interpretation",
+        "live_performance", "out_of_sample_return_correlation", "server_acceptance",
+        "genetic_reference_target"
+      ],
+      "properties": {
+        "evaluation_scope": {"const": "synthetic_fixture_only"},
+        "comparison_report_path": {"const": "trial-output/comparison-report.json"},
+        "comparison_report_sha256": {"$ref": "#/$defs/sha256"},
+        "implementation_path": {"const": "trial-output/challenger.py"},
+        "implementation_sha256": {"$ref": "#/$defs/sha256"},
+        "series_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,63}$"},
+        "series_manifest_path": {"type": "string", "minLength": 1},
+        "series_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "reference_identity": {"const": "synthetic_uniform_pair_selector_v1"},
+        "synthetic_uniform_is_genetic": {"const": false},
+        "synthetic_quality_scope": {"const": "fixture_only"},
+        "synthetic_comparison_interpretation": {"const": "descriptive_only"},
+        "live_performance": {"$ref": "#/$defs/unknownNull"},
+        "out_of_sample_return_correlation": {"$ref": "#/$defs/unknownNull"},
+        "server_acceptance": {"$ref": "#/$defs/unknownNull"},
+        "genetic_reference_target": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["algorithm", "target_completed_simulations", "observed_completed_simulations", "status"],
+          "properties": {
+            "algorithm": {"const": "genetic"},
+            "target_completed_simulations": {"const": 100000},
+            "observed_completed_simulations": {"type": "null"},
+            "status": {"const": "unmeasured_target"}
+          }
+        }
+      }
+    },
+    "human_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["summary", "rationale"],
+      "properties": {
+        "summary": {"type": "string", "minLength": 1, "maxLength": 2000},
+        "rationale": {"type": "string", "minLength": 1, "maxLength": 4000}
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "unknownNull": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "value"],
+      "properties": {"status": {"const": "unknown"}, "value": {"type": "null"}}
+    }
+  }
+}

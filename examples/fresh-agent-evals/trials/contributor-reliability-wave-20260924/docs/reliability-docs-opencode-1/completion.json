@@ -1,0 +1,43 @@
+{
+  "schema_version": 2,
+  "case_id": "first-finished-contribution-primary",
+  "route": {
+    "selected_task": "contribute",
+    "offline_contribution_access": "not_required",
+    "live_campaign_authorization": "explicit_user_authorization_required",
+    "authoritative_sources": [
+      "docs/agents/first-contribution.md",
+      "README.md"
+    ]
+  },
+  "contribution": {
+    "kind": "documentation_correction",
+    "changed_paths": [
+      "docs/agents/quickstart.md"
+    ]
+  },
+  "validation": {
+    "baseline": {
+      "command": "python .github/scripts/validate_agent_docs.py all",
+      "modes": [
+        "all"
+      ],
+      "exit_code": 1,
+      "result": "failed"
+    },
+    "final": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python .github/scripts/validate_agent_docs.py truthfulness && PYTHONDONTWRITEBYTECODE=1 python .github/scripts/validate_agent_docs.py links && PYTHONDONTWRITEBYTECODE=1 python .github/scripts/validate_agent_docs.py evals && git diff --check",
+      "modes": [
+        "truthfulness",
+        "links",
+        "evals"
+      ],
+      "exit_code": 0,
+      "result": "passed"
+    }
+  },
+  "human_review": {
+    "summary": "Updated the live-search quickstart example to pass an invite code during first registration.",
+    "rationale": "The baseline all-mode check flagged the bare register call as stale and the docs-fix regression could not prepare. README.md documents registration with invite_code, so the quickstart now matches the supported example. The post-edit truthfulness, links, and evals modes and git diff --check passed. A broader post-edit all-mode rerun timed out; the final validation records the targeted passing modes."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "series_id": "contribution-wave-final-4",
+  "run_ids": [
+    "opencode-primary-3",
+    "codex-primary-2"
+  ],
+  "snapshot_sha256": "4c76ad2919ef815e6e5ce53cd318b24acbb1c9f6fc0d83ed0ba26593667e7530",
+  "source_tree_sha256": "67bdbc2e3702427a5a8bb9578ed65606e4595fe9950d8c3acf678beeeb1c50b4",
+  "initial_file_maps_equal": true,
+  "codex_launch_snapshot_pin_matched": true,
+  "requested_models_differ": true,
+  "harness_only_causal_comparison": false
+}

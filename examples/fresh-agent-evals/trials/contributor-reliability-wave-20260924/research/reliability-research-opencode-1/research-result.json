@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "task_id": "paper-backed-coverage-challenger-v1",
+  "source": {
+    "source_excerpt_path": "examples/fresh-agent-evals/fixtures/challenger-research/trial-inputs/primary-source-excerpt.md",
+    "source_excerpt_sha256": "08ecc9767bf0f37055bbda96999dc97c80a86918038ef3ca833b5b3367bd7373",
+    "title": "Illuminating search spaces by mapping elites",
+    "authors": [
+      "Jean-Baptiste Mouret",
+      "Jeff Clune"
+    ],
+    "year": 2015,
+    "identifier": "arXiv:1504.04909",
+    "url": "https://arxiv.org/abs/1504.04909",
+    "paraphrase": "MAP-Elites organizes candidates by user-chosen descriptors and keeps strong examples in separate cells, exposing a varied solution map instead of only one overall winner."
+  },
+  "research": {
+    "mechanism_explanation": "The paper's descriptor-cell archive motivates a proposal schedule that spreads attempts across rotation×feature cells before revisiting a cell's stream. The callback groups documented eligible pairs by those descriptors, seed-shuffles cells and pairs, then yields round-robin. It lacks quality feedback and does not implement full MAP-Elites; its target is construction coverage only.",
+    "hypothesis": "On the four paired development runs at an equal four-completed-call budget, this cell-first schedule will produce a larger mean count of unique valid feature×rotation cells than the synthetic uniform selector.",
+    "falsifier": "The hypothesis is falsified if the mean of the four paired unique-valid-cell differences (challenger minus reference) is zero or below. If a pair fails to complete equal calls, treat that comparison as incomplete and report actual counts rather than folding it into the equal-budget test."
+  },
+  "machine_claims": {
+    "evaluation_scope": "synthetic_fixture_only",
+    "comparison_report_path": "trial-output/comparison-report.json",
+    "comparison_report_sha256": "64aa803e31c971b7fb48b84ad05e58a7abad823f5637ab2d9cd956716d9669ad",
+    "implementation_path": "trial-output/challenger.py",
+    "implementation_sha256": "dd14a6cdc4b75da5671f71053750afa98e31987bb5a33f1099ca546a99cce9fa",
+    "series_id": "contributor-reliability-research-1",
+    "series_manifest_path": "examples/fresh-agent-evals/research/series/contributor-reliability-research-1.json",
+    "series_manifest_sha256": "d9a9458b921020f6601a5225790689057e78639e568f0ea838de9c3b027058b4",
+    "reference_identity": "synthetic_uniform_pair_selector_v1",
+    "synthetic_uniform_is_genetic": false,
+    "synthetic_quality_scope": "fixture_only",
+    "synthetic_comparison_interpretation": "descriptive_only",
+    "live_performance": {
+      "status": "unknown",
+      "value": null
+    },
+    "out_of_sample_return_correlation": {
+      "status": "unknown",
+      "value": null
+    },
+    "server_acceptance": {
+      "status": "unknown",
+      "value": null
+    },
+    "genetic_reference_target": {
+      "algorithm": "genetic",
+      "target_completed_simulations": 100000,
+      "observed_completed_simulations": null,
+      "status": "unmeasured_target"
+    }
+  },
+  "human_review": {
+    "summary": "The local callback groups eligible proposals by supplied feature×rotation descriptors and interleaves their finite streams. All four paired development comparisons completed equal four-call budgets; unique-cell differences were 0, 0, +1, and +2, while synthetic-quality-pass differences were +1, -1, 0, and -1. These are fixture-only observations.",
+    "rationale": "MAP-Elites inspired the descriptor-cell ordering, but this callback only controls proposal order and receives no evaluator-quality feedback. The development observations tie on both alpha seeds and reach more cells on both beta seeds, with mixed synthetic quality bits. They do not establish superiority, live performance, or return correlation."
+  }
+}

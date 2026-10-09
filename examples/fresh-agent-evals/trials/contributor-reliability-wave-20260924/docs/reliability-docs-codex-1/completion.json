@@ -1,0 +1,36 @@
+{
+  "schema_version": 2,
+  "case_id": "first-finished-contribution-primary",
+  "route": {
+    "selected_task": "contribute",
+    "offline_contribution_access": "not_required",
+    "live_campaign_authorization": "explicit_user_authorization_required",
+    "authoritative_sources": [
+      "AGENTS.md",
+      "README.md",
+      "docs/agents/first-contribution.md"
+    ]
+  },
+  "contribution": {
+    "kind": "documentation_correction",
+    "changed_paths": ["docs/agents/quickstart.md"]
+  },
+  "validation": {
+    "baseline": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python .github/scripts/validate_agent_docs.py truthfulness links",
+      "modes": ["truthfulness", "links"],
+      "exit_code": 1,
+      "result": "failed"
+    },
+    "final": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python .github/scripts/validate_agent_docs.py truthfulness links",
+      "modes": ["truthfulness", "links"],
+      "exit_code": 0,
+      "result": "passed"
+    }
+  },
+  "human_review": {
+    "summary": "Corrected the quickstart registration example to pass an invite-code placeholder explicitly.",
+    "rationale": "The bare registration call contradicted the same page's first-registration requirement and documented invocation. The one-line correction removes the stale fixture comment and matches register(invite_code=\"<CODE>\"). The focused truthfulness and links baseline failed on that call before editing and passed afterward. The documented .venv-docs interpreter was absent, so validation used the available Python without installing packages. git diff --check passed, but the initial snapshot files were untracked, so that command alone does not review the edited file."
+  }
+}

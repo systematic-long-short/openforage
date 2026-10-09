@@ -1,0 +1,109 @@
+{
+  "case_id": "recovery",
+  "variant": "max",
+  "variant_in_argv": true,
+  "execution_mode": "fresh-opencode-run",
+  "fresh_separate_invocation": true,
+  "replay": false,
+  "model": "openrouter/deepseek/deepseek-v4.1-flash",
+  "invocation_argv": [
+    "opencode",
+    "run",
+    "--format",
+    "json",
+    "--dir",
+    "<WORKSPACE>",
+    "--model",
+    "openrouter/deepseek/deepseek-v4.1-flash",
+    "--variant",
+    "max"
+  ],
+  "workspace": "<WORKSPACE>",
+  "workspace_identity": "ed57efbfd9d24a46c00d18f23bb90450395887b5f0f9d7dad7d7a4b43fdd19b7",
+  "source_snapshot_sha256": "036734dbe48fa77be5b06cd4502f4569fb9d05a2a2ba7a2ff57f084747dabe70",
+  "source_snapshot_files": 123,
+  "source_git_head": "c48cb235fde2d5590601528ef9c83cb9d8f402dd",
+  "harness": "opencode",
+  "harness_version": "1.18.31",
+  "session_id": "ses_f35add404ffe4kza6cXUbNwp4P",
+  "started_at": "2026-09-22T18:12:57Z",
+  "ended_at": "2026-09-22T18:13:16Z",
+  "exit_code": 0,
+  "launch_error": null,
+  "owned_process_remaining": false,
+  "observed_actions": [
+    {
+      "tool": "bash",
+      "command": "ls -la && ls -la .openforage-state/ 2>/dev/null"
+    },
+    {
+      "tool": "glob",
+      "command": null
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/.openforage-state/status.json"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/.openforage-state/background.pid"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/.openforage-state/events.jsonl"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/.openforage-state/worker.log"
+    },
+    {
+      "tool": "read",
+      "command": "<WORKSPACE>/trial-output/prepare-record.json"
+    },
+    {
+      "tool": "bash",
+      "command": "kill -0 999999; echo \"kill_exit=$?\""
+    },
+    {
+      "tool": "grep",
+      "command": "<WORKSPACE>"
+    },
+    {
+      "tool": "write",
+      "command": "<WORKSPACE>/trial-output/recovery-report.json"
+    },
+    {
+      "tool": "bash",
+      "command": "python3 -m json.tool trial-output/recovery-report.json > /dev/null && echo valid && git status --porcelain"
+    }
+  ],
+  "action_extraction": {
+    "method": "normalized allowlisted tool observations from the native JSON event stream",
+    "events_observed": 25,
+    "actions_observed": 11,
+    "raw_events_scratch": ".tmp/fresh-agent-trials/recovery-portable.raw-events.jsonl",
+    "raw_events_sha256": "df48b9d4e396a9a1b441336fd24cb83d6ae1ad73effda6096ac79ad2131886df",
+    "raw_events_bytes": 48426,
+    "note": "Raw events stay in git-ignored scratch; this record keeps only normalized actions."
+  },
+  "child_environment": {
+    "applied": true,
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "python_on_path": "/usr/bin",
+    "note": "Set for the child session so validator runs create no bytecode under frozen dirs; `python` on the child PATH is this interpreter."
+  },
+  "child_prompt": {
+    "protocol_version": "workspace-protocol-v1",
+    "rendered_sha256": "e342bae87becabdf0fbedc11a82b8a40b8829fade2c09a29bc2b2c1281af2d04",
+    "delivered": true,
+    "note": "The runner prepends the common protocol block to the case prompt from tasks.json; the case prompt itself stays exact case content. The rendered text is hashed, not retained, because it embeds the workspace path."
+  },
+  "first_useful_action_seconds": 3.415,
+  "first_useful_action_unknown_reason": null,
+  "clarification_count": null,
+  "plain_text_tail": "",
+  "artifact_refs": {
+    "trial-output/recovery-report.json": "a888a3303b20b2e52cdb389dcc20b756c06455a120f21a7b951a06e93d4b341a"
+  },
+  "claim": "single-trial observation; not a measured result"
+}

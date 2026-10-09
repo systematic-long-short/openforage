@@ -1,0 +1,38 @@
+{
+  "schema_version": 2,
+  "case_id": "first-finished-contribution-primary",
+  "route": {
+    "selected_task": "contribute",
+    "offline_contribution_access": "not_required",
+    "live_campaign_authorization": "explicit_user_authorization_required",
+    "authoritative_sources": [
+      "README.md",
+      "AGENTS.md",
+      "docs/agents/first-contribution.md"
+    ]
+  },
+  "contribution": {
+    "kind": "documentation_correction",
+    "changed_paths": [
+      "docs/agents/quickstart.md"
+    ]
+  },
+  "validation": {
+    "baseline": {
+      "command": "python .github/scripts/validate_agent_docs.py truthfulness links --root .",
+      "modes": ["truthfulness", "links"],
+      "exit_code": 1,
+      "result": "failed"
+    },
+    "final": {
+      "command": "python .github/scripts/validate_agent_docs.py truthfulness links --root .",
+      "modes": ["truthfulness", "links"],
+      "exit_code": 0,
+      "result": "passed"
+    }
+  },
+  "human_review": {
+    "summary": "Updated the quickstart registration example to pass an invite-code placeholder.",
+    "rationale": "The baseline validator identified bare registration as a stale default. The corrected example matches the page's documented first-registration requirement and its explanation of register(invite_code=\"<CODE>\")."
+  }
+}

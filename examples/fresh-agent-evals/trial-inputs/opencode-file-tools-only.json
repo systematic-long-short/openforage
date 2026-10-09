@@ -1,0 +1,17 @@
+{
+  "agent": {
+    "entry-files-only": {
+      "description": "Restrict entrypoint discovery trials to workspace file tools; edit also admits write and patch operations.",
+      "mode": "primary",
+      "permission": {
+        "*": "deny",
+        "read": "allow",
+        "list": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "edit": "allow",
+        "external_directory": "deny"
+      }
+    }
+  }
+}

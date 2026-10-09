@@ -1,0 +1,135 @@
+name: Benchmark / reproducibility
+description: Report a benchmark run, a frozen-reference record, a compatible-baseline creation, or a reproducibility problem with a campaign comparison.
+title: "[Benchmark] "
+labels:
+  - benchmark
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The GA reference is the **frozen record of 100,000 completed evaluator
+        simulations**. Do not regenerate, re-run, or silently replace it.
+        When no compatible baseline exists for the campaign's era/config,
+        create a real baseline with its own id and lineage: freeze the
+        configuration before the run and the evidence after it.
+
+        Local evaluator results are in-sample simulation results; only the
+        protocol's server-side evaluation is out-of-sample.
+
+        Do not paste wallet keys, invite codes, JWTs, tokens, or private host
+        paths.
+  - type: input
+    id: campaign-id
+    attributes:
+      label: Campaign ID
+      description: The campaign this benchmark belongs to.
+      placeholder: campaign-<slug>-<YYYYMMDD>
+    validations:
+      required: true
+  - type: input
+    id: baseline-id
+    attributes:
+      label: Frozen reference identifier / hash
+      description: The recorded identifier or hash of the frozen 100,000 completed-evaluator reference being cited, and its recorded algorithm identity or `missing`.
+      placeholder: <baseline-id-or-sha256>
+    validations:
+      required: true
+  - type: input
+    id: compatible-baseline
+    attributes:
+      label: Compatible baseline for this era/config
+      description: Its id and lineage, or "none existed; created" with how the configuration and evidence were frozen.
+      placeholder: "<baseline-id>; lineage: <...>"
+    validations:
+      required: true
+  - type: input
+    id: completion
+    attributes:
+      label: Completed evaluator simulations
+      description: Number of completed evaluator simulations in this run. The default target is 100000; incomplete stays incomplete. Checkpoints, cache hits, and runtime errors do not count.
+      placeholder: "0"
+    validations:
+      required: true
+  - type: input
+    id: status-cutoff
+    attributes:
+      label: Server results through
+      description: The cutoff through which server results have been received, and the pending and ambiguous counts if any.
+      placeholder: "server_results_through: <timestamp>; pending: <n>; ambiguous: <n>"
+    validations:
+      required: true
+  - type: textarea
+    id: accounting
+    attributes:
+      label: Checkpoint reconciliation
+      description: Attempted, completed, in_flight, and failed counts, and how the resume reconciled them without double-counting. Note that a final failing-quality evaluation is completed and that runtime errors are failed.
+    validations:
+      required: true
+  - type: textarea
+    id: preregistration
+    attributes:
+      label: Preregistration
+      description: Protocol id/version/hash and recording time, primary metric, direction and minimum meaningful effect, look schedule, and stopping criteria. Post-result changes are amendments or exploratory results.
+    validations:
+      required: true
+  - type: textarea
+    id: matched-run
+    attributes:
+      label: Matched budgets and seeds
+      description: Evaluation budget, seed set, config hash, and generated artifacts for baseline and variant. If these differ, say the comparison is exploratory rather than measured.
+    validations:
+      required: true
+  - type: textarea
+    id: statistics
+    attributes:
+      label: Statistical units and inference
+      description: Independent paired search runs as the unit, dependence-aware method with assumptions and data window, effect size, uncertainty, predeclared repetitions, and the multiple-comparison family and correction (or an explicit exploratory label).
+    validations:
+      required: true
+  - type: textarea
+    id: segments
+    attributes:
+      label: Era and config segments
+      description: Per-era, per-config result rows. Confirm results are not pooled across era boundaries and that any resume mismatch opened a new segment.
+    validations:
+      required: true
+  - type: textarea
+    id: provenance
+    attributes:
+      label: Provenance
+      description: Repo commit and dirty-diff hash, package/distribution/build, environment and dependency-manifest hash, harness/model identifier, seeds and randomness limits, artifact hashes and times, and algorithm lineage. Hashes attest integrity, not correctness.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Commands, installed `openforage` version, and the artifacts needed to reproduce the run. Include `openforage.list_skills()` output when reporting a skill mismatch.
+    validations:
+      required: true
+  - type: textarea
+    id: negative-findings
+    attributes:
+      label: Negative findings
+      description: What did not clear the hypothesis threshold, with the same rigor as positive results. Negative and inconclusive findings are contributions.
+    validations:
+      required: true
+  - type: checkboxes
+    id: honesty-checks
+    attributes:
+      label: Honesty checks
+      options:
+        - label: The frozen 100,000 reference was not regenerated, replaced, or silently modified, and its algorithm identity is recorded or marked missing.
+          required: true
+        - label: Any baseline created for this era/config has a distinct id and lineage, with configuration frozen before the run and evidence frozen after it.
+          required: true
+        - label: Checkpoints, cache hits, runtime errors, pending submissions, and ambiguous acknowledgments are not counted as completed or accepted.
+          required: true
+        - label: In-sample results are not described as out-of-sample or live, and exploratory results are not described as unmeasured.
+          required: true
+        - label: The unit of analysis is independent paired search runs, not candidate evaluations, and same-data reruns are not presented as new out-of-sample evidence.
+          required: true
+        - label: No candidate with compute-graph depth greater than 6 was generated, evaluated, or submitted.
+          required: true
+        - label: No wallet key, invite code, JWT, token, or private host path is included.
+          required: true

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "task_id": "paper-backed-coverage-challenger-v1",
+  "source": {
+    "source_excerpt_path": "examples/fresh-agent-evals/fixtures/challenger-research/trial-inputs/primary-source-excerpt.md",
+    "source_excerpt_sha256": "08ecc9767bf0f37055bbda96999dc97c80a86918038ef3ca833b5b3367bd7373",
+    "title": "Illuminating search spaces by mapping elites",
+    "authors": [
+      "Jean-Baptiste Mouret",
+      "Jeff Clune"
+    ],
+    "year": 2015,
+    "identifier": "arXiv:1504.04909",
+    "url": "https://arxiv.org/abs/1504.04909",
+    "paraphrase": "MAP-Elites uses chosen variation dimensions to retain strong solutions in separate descriptor cells, showing how performance is distributed across a map instead of returning only one overall best. This motivates testing feature-by-rotation coverage, without predicting this callback's performance."
+  },
+  "research": {
+    "mechanism_explanation": "The paper motivates preserving candidates across user-chosen descriptor cells. Here each eligible rotation|feature pair is a synthetic cell: the callback sorts those descriptors, rotates its starting cell by the paired seed, and advances one proposal from each eligible stream per round. This is a coverage-first construction strategy, not MAP-Elites: it does not archive quality elites or use performance feedback.",
+    "hypothesis": "At equal completed-evaluator-call budgets, seeded round-robin cycling through eligible rotation-by-feature streams will increase the mean number of distinct valid cells reached relative to the synthetic uniform pair selector. Synthetic quality bits are reported separately; the hypothesis makes no claim about live performance or return correlation.",
+    "falsifier": "Reject the coverage hypothesis if matched equal-call comparisons show no positive mean unique-cell difference for the challenger versus the uniform reference on both development and reserved held-out inputs. If either arm misses its target, classify the comparison as incomplete rather than estimating a difference."
+  },
+  "machine_claims": {
+    "evaluation_scope": "synthetic_fixture_only",
+    "comparison_report_path": "trial-output/comparison-report.json",
+    "comparison_report_sha256": "48de7474496137bdf8474c86ae111ef43ab06d3b18aa998e07e512983d94b918",
+    "implementation_path": "trial-output/challenger.py",
+    "implementation_sha256": "69af868ac17565705850618ce7d32f38f074d41701e464fcf03754fb6d22b918",
+    "series_id": "completion-reliability-research-2",
+    "series_manifest_path": "examples/fresh-agent-evals/research/series/completion-reliability-research-2.json",
+    "series_manifest_sha256": "9a8555b5372238225a9e8430b75b3b07f3c94f5e8d04be44a72abaf57247bdff",
+    "reference_identity": "synthetic_uniform_pair_selector_v1",
+    "synthetic_uniform_is_genetic": false,
+    "synthetic_quality_scope": "fixture_only",
+    "synthetic_comparison_interpretation": "descriptive_only",
+    "live_performance": {
+      "status": "unknown",
+      "value": null
+    },
+    "out_of_sample_return_correlation": {
+      "status": "unknown",
+      "value": null
+    },
+    "server_acceptance": {
+      "status": "unknown",
+      "value": null
+    },
+    "genetic_reference_target": {
+      "algorithm": "genetic",
+      "target_completed_simulations": 100000,
+      "observed_completed_simulations": null,
+      "status": "unmeasured_target"
+    }
+  },
+  "human_review": {
+    "summary": "The complete four-pair synthetic development comparison used four completed calls per arm in each run. The challenger reached 0, 1, 1, and 2 additional unique valid cells versus the uniform reference; synthetic quality-pass differences were mixed (+1, 0, +1, -1).",
+    "rationale": "Round-robin follows the paper's descriptor-cell motivation by visiting eligible feature-by-rotation cells before revisiting one. This fixture callback does not select quality elites or use return outcomes. It reached 3–4 cells per run versus 2–3 for the synthetic uniform selector, while quality differences varied. The observed comparison supports a descriptive construction-coverage observation only; it does not establish superiority or real-world usefulness."
+  }
+}

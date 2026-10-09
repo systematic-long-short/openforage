@@ -1,0 +1,11 @@
+{
+  "kind": "exact_frozen_grading_source_bundle",
+  "series_id": "completion-reliability-research-4",
+  "manifest_path": "examples/fresh-agent-evals/research/series/completion-reliability-research-4.json",
+  "manifest_sha256": "a852b5d5e84a4d6dddb9e9df12454603ad0bcdcd89ecf444d646567d950eac7c",
+  "frozen_source_files": 134,
+  "bundle_sha256": "459d21bda5d04a7d311a1507643149666fc2abeeccbbd39634ba78700dd3deda",
+  "bundle_bytes": 596134,
+  "entry_paths": "repository-relative with fixed metadata",
+  "scope": "Frozen public grading closure and selected manifest; no native streams"
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "task_id": "paper-backed-coverage-challenger-v1",
+  "source": {
+    "source_excerpt_path": "examples/fresh-agent-evals/fixtures/challenger-research/trial-inputs/primary-source-excerpt.md",
+    "source_excerpt_sha256": "08ecc9767bf0f37055bbda96999dc97c80a86918038ef3ca833b5b3367bd7373",
+    "title": "Illuminating search spaces by mapping elites",
+    "authors": [
+      "Jean-Baptiste Mouret",
+      "Jeff Clune"
+    ],
+    "year": 2015,
+    "identifier": "arXiv:1504.04909",
+    "url": "https://arxiv.org/abs/1504.04909",
+    "paraphrase": "Mouret and Clune describe MAP-Elites as organizing search around user-chosen variation descriptors and retaining strong candidates by cell, making performance across the descriptor map visible. This motivates testing coverage, not assuming superiority."
+  },
+  "research": {
+    "mechanism_explanation": "MAP-Elites uses a map keyed by user-selected variation dimensions and preserves candidates per cell rather than collapsing search onto one global best. The callback uses a limited construction analogue: each eligible rotation|feature stream is treated as a cell, proposals are interleaved round-robin, and the starting cell rotates with the paired seed. It does not score candidates or maintain elites because this fixture context exposes streams without fitness feedback.",
+    "hypothesis": "At equal completed evaluator calls on paired synthetic development inputs, seeded round-robin traversal of eligible rotation|feature streams will reach at least as many unique valid cells as the synthetic uniform pair selector by allocating proposals across cells before revisiting a stream. This is a construction-coverage hypothesis only; the paper does not predict this callback's superiority.",
+    "falsifier": "The coverage hypothesis is falsified if any complete matched development pair has a negative unique_valid_cell_difference, or if the callback fails to reach the same completed-call target under paired inputs and seeds. Even a positive fixture result would require separate, preregistered evidence to support transfer beyond this synthetic setting."
+  },
+  "machine_claims": {
+    "evaluation_scope": "synthetic_fixture_only",
+    "comparison_report_path": "trial-output/comparison-report.json",
+    "comparison_report_sha256": "b0781a4b31663a2ec4a5166838c3417619c048dc4afcd3c60491abbb88f09c31",
+    "implementation_path": "trial-output/challenger.py",
+    "implementation_sha256": "220b61d439f8f2eae115b54f2d5e722711239441a997cc8b4b6925d12576c153",
+    "series_id": "completion-reliability-research-1",
+    "series_manifest_path": "examples/fresh-agent-evals/research/series/completion-reliability-research-1.json",
+    "series_manifest_sha256": "41e6a00b980de986405bef3be8989bc9a28062629283e0ba0e5840eb9c59e6c0",
+    "reference_identity": "synthetic_uniform_pair_selector_v1",
+    "synthetic_uniform_is_genetic": false,
+    "synthetic_quality_scope": "fixture_only",
+    "synthetic_comparison_interpretation": "descriptive_only",
+    "live_performance": {
+      "status": "unknown",
+      "value": null
+    },
+    "out_of_sample_return_correlation": {
+      "status": "unknown",
+      "value": null
+    },
+    "server_acceptance": {
+      "status": "unknown",
+      "value": null
+    },
+    "genetic_reference_target": {
+      "algorithm": "genetic",
+      "target_completed_simulations": 100000,
+      "observed_completed_simulations": null,
+      "status": "unmeasured_target"
+    }
+  },
+  "human_review": {
+    "summary": "The development report contains four matched pairs, with each arm completing 4/4 calls. Challenger-minus-reference unique-cell differences were 0, +1, +1, and +2; synthetic quality-pass differences were +1, 0, +1, and -1. These are descriptive fixture-only observations, not live or out-of-sample evidence.",
+    "rationale": "The callback cycles only through ctx.eligible_pairs, interleaves each stream, rotates the initial cell by the paired seed, and suppresses repeated canonical JSON-object payloads. This borrows the descriptor-cell exploration idea from MAP-Elites without implementing its fitness-based elite archive. The comparison reached equal call targets and showed nonnegative but variable cell coverage differences, while quality-pass differences were mixed. The result is therefore limited evidence about construction coverage in this fixture; it does not establish predictive usefulness, out-of-sample return correlation, live performance, or server acceptance."
+  }
+}

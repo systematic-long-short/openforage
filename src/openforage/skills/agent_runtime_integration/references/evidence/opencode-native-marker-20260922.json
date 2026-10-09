@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "evidence_class": "actual-native-observation",
+  "claim": "not-a-measured-result",
+  "product": "OpenCode",
+  "product_version": "1.18.31",
+  "surface": "CLI",
+  "os": "linux",
+  "run_id": "fixture-20260922T173829Z-242424",
+  "observed_on": "2026-09-22",
+  "started_at": "2026-09-22T17:38:29Z",
+  "ended_at": "2026-09-22T17:39:50Z",
+  "model": "openrouter/deepseek/deepseek-v4.1-flash",
+  "variant": "max",
+  "variant_passed_in_argv": true,
+  "runner": "examples/opencode-lifecycle/run_fixture.py",
+  "raw_events_published": false,
+  "raw_events_note": "Raw OpenCode event streams and the full inside-scratch observations file are not published. Only sha256 digests and byte counts are retained. Host boot ids and process ids are omitted from this summary.",
+  "scope": "Sequential parent-exit-before-child-continuation only. No host-reboot, terminal-hangup, or simultaneous-death survival claim. The fixture agents performed marker/acknowledgement work only: no registration, data download, evaluation, submission, wallet, campaign, or nested-agent action. The only memory evidence is session history; one raw todowrite event was found post-run but is not reconciled with the recorded unknown native-task field, so native goal/task semantics stay unknown.",
+  "sessions": {
+    "parent": {
+      "role": "fresh parent CLI process (no resume flag)",
+      "session_id": "ses_f35cd6001ffejoRHS8G1NrOQ1S",
+      "exit_code": 0,
+      "timed_out": false,
+      "raw_events_sha256": "a2de32b08c4d4716b7ec94bccfb36af7853170965f29434189f48be5e2b1efe5",
+      "raw_events_bytes": 5550
+    },
+    "child": {
+      "role": "distinct fresh child CLI process; later resumed only by its own session id",
+      "session_id": "ses_f35cd4f73ffecQ16IvU2M0tcW8",
+      "exit_code": 0,
+      "timed_out": false,
+      "raw_events_sha256": "290fef1a16468b413409a106831b310530756bbfc24d5c964e9f506415ebf70f",
+      "raw_events_bytes": 2360
+    }
+  },
+  "sessions_distinct": true,
+  "parent_exited_before_child_bootstrap": true,
+  "invocations": {
+    "parent": ["opencode", "run", "--format", "json", "--dir", "<WORKSPACE>", "--model", "openrouter/deepseek/deepseek-v4.1-flash", "--variant", "max"],
+    "child_bootstrap": ["opencode", "run", "--format", "json", "--dir", "<WORKSPACE>", "--model", "openrouter/deepseek/deepseek-v4.1-flash", "--variant", "max"],
+    "scheduler_executor": ["opencode", "run", "--format", "json", "--dir", "<WORKSPACE>", "--model", "openrouter/deepseek/deepseek-v4.1-flash", "--variant", "max", "--session", "ses_f35cd4f73ffecQ16IvU2M0tcW8"],
+    "note": "Placeholders replace host paths. The external bridge invoked the scheduler executor; OpenCode itself ships no native scheduler."
+  },
+  "native_task_tool_events": {
+    "recorded_field": {
+      "observed": "unknown",
+      "reason": "no native task/todo tool event was observable in this harness"
+    },
+    "raw_stream_note": "Raw-stream inspection at publication time found one actual todowrite tool event in the preserved child-bootstrap stream: it created a native task item titled lifecycle-fixture (status pending). The recorded observations field above still says unknown, so this summary does not silently overwrite it; native goal/task/todo semantics remain unreconciled and the capability stays conservative. The raw stream itself is not published.",
+    "raw_stream_sha256": "290fef1a16468b413409a106831b310530756bbfc24d5c964e9f506415ebf70f"
+  },
+  "memory": {
+    "memory_marker_written_to_workspace": false,
+    "source": "session history only",
+    "recalled_on_both_callbacks": true,
+    "note": "Both acknowledgements reported the same one-time marker that existed only in the child's first prompt/session history, so the recall is session-history evidence only. The recorded observation reports no native task/todo event; raw-stream inspection found one todowrite creation (see native_task_tool_events), which is not reconciled and does not upgrade this capability."
+  },
+  "callbacks": [
+    {
+      "event_id": "evt-001",
+      "status": "acknowledged",
+      "dispatch_status": "acknowledged",
+      "session_id": "ses_f35cd4f73ffecQ16IvU2M0tcW8",
+      "same_child_session": true,
+      "fence": 2,
+      "task_file_sha256": "92e4fef2de24f9333c0e278b23c025cc0665681c6c749faa4d3d95981b0dd697",
+      "action_result_matches_memory_marker": true,
+      "scheduler_dispatched": 1
+    },
+    {
+      "event_id": "evt-002",
+      "status": "acknowledged",
+      "dispatch_status": "acknowledged",
+      "session_id": "ses_f35cd4f73ffecQ16IvU2M0tcW8",
+      "same_child_session": true,
+      "fence": 4,
+      "task_file_sha256": "92e4fef2de24f9333c0e278b23c025cc0665681c6c749faa4d3d95981b0dd697",
+      "action_result_matches_memory_marker": true,
+      "scheduler_dispatched": 1
+    }
+  ],
+  "paused_tick": {
+    "paused_status": "paused",
+    "event_status_while_paused": "queued",
+    "dispatched": 0,
+    "dispatches_added": 0,
+    "note": "Pause control is scoped to the external bridge's queued marker dispatch; this is not evidence that arbitrary active native OpenCode work can be paused."
+  },
+  "resume": {
+    "resumed_status": "child_registered",
+    "resumed_to_exact_session_id": "ses_f35cd4f73ffecQ16IvU2M0tcW8",
+    "fence": 4,
+    "acknowledged_event_id": "evt-002",
+    "new_identity_created": false
+  },
+  "stopped_tick": {
+    "stopped_status": "stopped",
+    "dispatched": 0,
+    "terminal_event": {
+      "event_id": "evt-003",
+      "status": "cancelled",
+      "marker_present_after_stop": false,
+      "dispatch_count_changed_after_stop": false
+    },
+    "note": "Stop control is scoped to the external bridge's queued marker dispatch; terminal triggers stayed stopped in the bounded post-stop window. This is not evidence about arbitrary active native OpenCode work."
+  },
+  "owned_processes_remaining": [],
+  "failure_reasons": [],
+  "separately_labeled_inert_regression": {
+    "evidence_class": "inert-subprocess-regression",
+    "actual_native_proof": false,
+    "covers": ["pause-prompt", "stop-prompt", "duplicate-dispatch", "timeout", "crash", "recovery"],
+    "result": "passed: 19 lifecycle checks behaved as expected with inert fixture processes only",
+    "note": "Inert controls never prove native OpenCode crash or pause behavior and are kept separate from the actual native observation above."
+  }
+}

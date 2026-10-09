@@ -1,0 +1,85 @@
+name: Bug report
+description: Report a defect, a stale claim, or a documentation/API mismatch in the public OpenForage Library packet.
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This packet does not contain the compiled `openforage` library source.
+        For behavior changes inside the installed library, include the
+        installed version and a minimal reproduction so it can be routed.
+
+        Do not paste wallet keys, invite codes, JWTs, bearer tokens, or
+        private host paths.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Where did you find the problem?
+      options:
+        - README / agent bootstrap
+        - Bundled skill
+        - Agent reference docs
+        - Campaign record template (examples/agent-campaign)
+        - Harness routing registry
+        - CI / validation workflow
+        - Installed openforage library behavior
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Installed openforage version
+      description: Output of `python -c "import openforage; print(openforage.__version__)"`, or "not installed" for documentation-only issues.
+      placeholder: 0.2.36
+    validations:
+      required: true
+  - type: input
+    id: file-reference
+    attributes:
+      label: File and section
+      description: The file path and heading/line for documentation issues.
+      placeholder: README.md §G
+    validations:
+      required: false
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior or wording
+      description: What did the documentation or library claim, and where is that claim made?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior or wording
+      description: What happened instead? For API mismatches, include the exact command and the observed error or traceback.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Smallest reproduction
+      description: Exact commands or file contents needed to reproduce, including `openforage.list_skills()` output when the issue involves skills.
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact
+      description: Did this mislead an agent, break onboarding, or cause an incorrect research claim? Note any workaround.
+    validations:
+      required: false
+  - type: checkboxes
+    id: honesty-checks
+    attributes:
+      label: Confirmations
+      options:
+        - label: This report is about the current public surface and does not include secrets or private material.
+          required: true
+        - label: I am not asking for harness spawn/pause/resume/stop commands to be guessed or published; no capability is verified in this packet, and a future verified entry needs the evidence standard.
+          required: true
+        - label: I did not invent an API name or behavior; the report states observed behavior only.
+          required: true

@@ -1,0 +1,157 @@
+{
+  "schema_version": 2,
+  "single_source_of_truth": "This file is the one source for supported/tested versions and the expected public API surface. Derived checks and CI install the version pinned here; report drift instead of duplicating claims in prose.",
+  "probe": {
+    "tool": ".github/scripts/check_compatibility.py",
+    "network_required": false,
+    "credentials_required": false,
+    "evidence_classes": [
+      "cli: actual no-credential --help output under the same Python interpreter",
+      "introspection: import + callable() + inspect.signature of the installed object",
+      "doc: the callable's own docstring signature line only; never the operational call contract",
+      "runtime: process-level example probes (offline smoke/live-check)"
+    ],
+    "notes": "Import, CLI-help, and signature probes only. A passing import or callable check is not live functionality. A missing, failed, or timed-out required probe is a failure. Opaque proxy signatures ((*args, **kwargs)) are recorded as doc-only and never establish the operational contract. The tool never registers, evaluates, submits, or calls a wallet or production endpoint."
+  },
+  "supported": {
+    "openforage": {
+      "version": "0.2.36",
+      "python_minors": ["3.12"],
+      "platforms": ["linux-x86_64"],
+      "verified_on": "2026-09-23",
+      "verification": "actual no-credential CLI --help plus import/introspection of the installed public wheel, recorded by .github/scripts/check_compatibility.py",
+      "promise": "tested-supported",
+      "note": "A tested version is a floor for the recorded evidence, not a current-PyPI assertion."
+    }
+  },
+  "latest_observation": {
+    "promise": "observation-only",
+    "observed_on": "2026-09-23",
+    "observed_version": "0.2.36",
+    "observation_method": "pip index versions openforage (public PyPI)",
+    "note": "The observation workflow installs the latest wheel and records differences; it never upgrades a supported entry or a verified harness entry by string match."
+  },
+  "expected_surface": {
+    "cli": {
+      "invocation": ["-m", "openforage.cli"],
+      "bare_module_invocation": ["-m", "openforage"],
+      "commands": ["init", "register", "start", "status", "earnings", "stop", "_worker", "callbacks", "serve", "local"],
+      "start_algorithm_choices": ["random_weighted", "genetic"],
+      "documented_default_algorithm": {
+        "value": "genetic",
+        "label": "docs-source-label",
+        "source": "https://pypi.org/project/openforage/ section H (wheel METADATA) documents genetic as the stable/default template",
+        "cli_label": "observed-cli-choices",
+        "note": "The documented default label and the observed CLI choices label stay distinct. The installed start --help lists both choices and prints no explicit default; a documented-versus-CLI default discrepancy is reported for re-verification, never silently merged."
+      },
+      "note": "Probed as [sys.executable, '-m', 'openforage.cli', ...]. The bare 'python -m openforage' entry point is unavailable on 0.2.36 (no openforage/__main__.py) and is recorded as observed gap evidence, not a required probe. CLI commands are probed from the real parser, never from prose."
+    },
+    "required_callables": {
+      "openforage.search": {
+        "observable": true,
+        "signature_token": "signal_pool_name",
+        "doc_token": "n_jobs",
+        "observed_on_0_2_36": {
+          "signature": "(*args, named_universe=None, signal_pool_name, **kwargs)",
+          "doc_signature": "search(template=None, *, named_universe=None, signal_pool_name=None, n_jobs=None, settings_path=None)",
+          "contract_evidence": "introspection+doc"
+        }
+      },
+      "openforage.search_status": {"observable": true, "signature_token": "()"},
+      "openforage.register_callback": {"observable": true, "signature_token": "allow_command_execution"},
+      "openforage.run_due_callbacks": {"observable": true, "signature_token": "data_dir"},
+      "openforage.get_search_stats": {"observable": true, "signature_token": "aggregate_by"},
+      "openforage.get_search_patterns": {"observable": true},
+      "openforage.get_search_velocity": {"observable": true},
+      "openforage.get_yield_analysis": {"observable": true},
+      "openforage.get_correlation_patterns": {"observable": true},
+      "openforage.templates.random_weighted": {
+        "observable": true,
+        "allow_opaque": true,
+        "allow_doc_only": true,
+        "doc_token": "random_weighted(ctx)",
+        "callable_contract": "opaque-proxy-doc-only",
+        "note": "The installed object exposes only (*args, **kwargs); the docstring carries the generator contract. It remains the observed comparator surface; no full benchmark of it has run in this packet."
+      },
+      "openforage.templates.genetic": {
+        "observable": true,
+        "allow_opaque": true,
+        "callable_contract": "opaque-callable-observed-only",
+        "observed_on_0_2_36": {"callable": true, "signature": "(*args, **kwargs)", "doc_signature": ""},
+        "note": "Verified callable and accepted by --algorithm on 0.2.36; the public callable and CLI interface are observed, the internal optimizer implementation was not inspected, and no GA benchmark result is claimed anywhere in this packet."
+      }
+    },
+    "observed_only_callables": {
+      "openforage.search_templates.compose_next_batch": {
+        "observable": true,
+        "signature": "(prior, batch_size=100, rng=None, fresh_random_factory=None, elite_factory=None, elite_fraction=0.2, diversity_weight=1.5, parsimony_weight=0.05, max_depth=None, validator=None)",
+        "contract": "signature-observed-only",
+        "observed_behavior": "A fresh_random_factory that returns one mapping object is accepted and the returned batch entries are copies of that mapping plus lineage='fresh_random'. A factory that is a generator (or that yields) returns an empty batch. prior entries must support .get (mappings), not bare expression objects. A non-graph payload is dropped when max_depth is supplied. The full call contract remains unproved; do not wire it into a runnable --live-run path."
+      },
+      "openforage.search_templates.measure_graph_complexity": {
+        "observable": true,
+        "signature": "(graph: 'Any', *, max_depth: 'int | None' = None, max_node_count: 'int | None' = None) -> 'GraphComplexity'",
+        "contract": "signature-observed-only"
+      },
+      "openforage.search_templates.generation_core.generate_random_signal_expression": {
+        "observable": true,
+        "contract": "signature-observed-only",
+        "observed_behavior": "The public loader output (load_function_catalog entries) does not carry the internal 'data_params' key the builder reads, so explicit graph construction is not exercised in this packet and no construction claim is made."
+      },
+      "openforage.catalog.function_loader.load_function_catalog": {
+        "observable": true,
+        "observed_on_0_2_36": {"catalog_entries": 442, "rotation": 437, "reduction": 5, "rotation_subfamilies": 34},
+        "contract": "signature-observed-only"
+      },
+      "openforage.catalog.features.feature_names_from_runtime_vocabulary": {
+        "observable": true,
+        "contract": "requires a live runtime vocabulary"
+      },
+      "openforage.search_analytics.AggregateBy": {
+        "observable": true,
+        "contract": "namespace observed"
+      },
+      "openforage.simulate_signal": {
+        "observable": true,
+        "signature": "(graph, *, named_universe=None, market_id, era_number, signal_pool_name, metaparameters=None, include_correlation=True, include_mi=True, record=True, return_series=False, return_weights=False, fail_fast=True)",
+        "contract": "signature-observed-only",
+        "observed_behavior": "Public per-candidate simulation entry point returning a SimulationHandle immediately; status()/result()/cancel() signatures observed. Live permissions, data availability, and behavior are untested in this packet."
+      },
+      "openforage.SimulationHandle": {
+        "observable": true,
+        "contract": "namespace observed",
+        "observed_behavior": "Class present with status(self) -> SimulationStatus, result(self) (block until completion, BacktestResult or raise), cancel(self) -> None, and a product_run_id attribute."
+      }
+    },
+    "unavailable_or_unidentified": [
+      "full genetic-algorithm benchmark evidence: the genetic callable and CLI choice exist on 0.2.36, but the internal optimizer implementation was not inspected and no full GA benchmark has run in this packet",
+      "per-candidate public leaf introspection for yielded graphs",
+      "per-era loaded rotation allow-list",
+      "custom-template synchronous evaluator feedback inside the search callback (the public simulate_signal/SimulationHandle loop is the observed alternative; its live permissions/data/behavior are untested)",
+      "public seed knob on random_weighted",
+      "python -m openforage direct execution (no openforage/__main__.py; use python -m openforage.cli or the console script)"
+    ],
+    "installed_skills_on_0_2_36": [
+      "agent_runtime_integration",
+      "background_search_loops",
+      "callback_hooks",
+      "openforage_quickstart",
+      "search_settings",
+      "scheduled_improvement_loops"
+    ],
+    "installed_skills_note": "The source tree carries more skills than this wheel; run openforage.list_skills() and read exactly what is installed."
+  },
+  "derived_checks": [
+    ".github/scripts/check_compatibility.py --check (this tool)",
+    "examples/agent-campaign/coverage_challenger.py --live-check",
+    ".github/scripts/validate_agent_docs.py compatibility"
+  ],
+  "harness_versions": {
+    "opencode": {
+      "locally_observed": "1.18.31",
+      "observed_on": "2026-09-23",
+      "registry_status": "documented-unverified",
+      "recheck": "A local version observation is not harness verification. OpenCode carries partial scoped evidence in harnesses.json (distinct CLI/session identity, external-bridge queued dispatch) but its entry stays documented-unverified; re-check against the evidence standard in docs/agents/harness-verification.md, and never upgrade a verified entry by string match. A missing harness is not-applicable and is never required for normal CI; agent credentials are never needed."
+    }
+  }
+}

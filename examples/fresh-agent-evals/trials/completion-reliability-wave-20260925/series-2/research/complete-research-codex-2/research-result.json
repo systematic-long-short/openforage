@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "task_id": "paper-backed-coverage-challenger-v1",
+  "source": {
+    "source_excerpt_path": "examples/fresh-agent-evals/fixtures/challenger-research/trial-inputs/primary-source-excerpt.md",
+    "source_excerpt_sha256": "08ecc9767bf0f37055bbda96999dc97c80a86918038ef3ca833b5b3367bd7373",
+    "title": "Illuminating search spaces by mapping elites",
+    "authors": ["Jean-Baptiste Mouret", "Jeff Clune"],
+    "year": 2015,
+    "identifier": "arXiv:1504.04909",
+    "url": "https://arxiv.org/abs/1504.04909",
+    "paraphrase": "MAP-Elites organizes solutions by chosen descriptive dimensions and retains strong examples in each region, exposing diverse solutions and how their attributes relate to performance."
+  },
+  "research": {
+    "mechanism_explanation": "The paper's descriptor map motivates allocating proposals across feature-by-rotation cells. The callback shuffles eligible cell order using the paired seed, takes one stream item per active cell per sweep, removes exhausted streams, and suppresses identical JSON payloads. It forwards individual unchanged proposals. This is a coverage allocation strategy, not full MAP-Elites: no evaluation feedback or quality archive is supplied. Fixture-owned validation alone establishes known identity, depth at most six, eligibility and completed evaluations.",
+    "hypothesis": "At the same completed-call target and paired input/seed, balanced traversal will produce a positive mean difference in unique valid cells reached relative to synthetic_uniform_pair_selector_v1 across the development comparisons. Synthetic quality passes are a separate descriptive outcome; neither paper attribution nor construction coverage predicts live usefulness.",
+    "falsifier": "A nonpositive mean paired unique-valid-cell difference among complete equal-call development comparisons would falsify this bounded hypothesis. If any arm misses the target, the planned overall comparison is incomplete and actual counts must be retained rather than treating unequal budgets as confirmation. These few synthetic comparisons cannot establish broader superiority."
+  },
+  "machine_claims": {
+    "evaluation_scope": "synthetic_fixture_only",
+    "comparison_report_path": "trial-output/comparison-report.json",
+    "comparison_report_sha256": "d866edaa7e188561e15569cb2589df67ca37a73545c288c8b0e30c3df47479b9",
+    "implementation_path": "trial-output/challenger.py",
+    "implementation_sha256": "e9667c73ed3109209ad745bd9c8d545d28b2fc44b1e63a3c49d802d191510dde",
+    "series_id": "completion-reliability-research-2",
+    "series_manifest_path": "examples/fresh-agent-evals/research/series/completion-reliability-research-2.json",
+    "series_manifest_sha256": "9a8555b5372238225a9e8430b75b3b07f3c94f5e8d04be44a72abaf57247bdff",
+    "reference_identity": "synthetic_uniform_pair_selector_v1",
+    "synthetic_uniform_is_genetic": false,
+    "synthetic_quality_scope": "fixture_only",
+    "synthetic_comparison_interpretation": "descriptive_only",
+    "live_performance": {"status": "unknown", "value": null},
+    "out_of_sample_return_correlation": {"status": "unknown", "value": null},
+    "server_acceptance": {"status": "unknown", "value": null},
+    "genetic_reference_target": {
+      "algorithm": "genetic",
+      "target_completed_simulations": 100000,
+      "observed_completed_simulations": null,
+      "status": "unmeasured_target"
+    }
+  },
+  "human_review": {
+    "summary": "The development report records complete_equal_calls in all four paired runs, with four completed calls per arm in each run. For alpha seeds 11 and 29, challenger/reference cell counts are 3/3 and 3/3; for beta seeds 11 and 29 they are 3/2 and 4/2. Synthetic quality-pass differences are +1, -1, 0 and -1 respectively. The descriptive mean cell difference is +0.75; quality is mixed. The report includes only development inputs.",
+    "rationale": "Round-robin allocation is a small, reviewable way to reduce repeated allocation to a few descriptor cells. A seeded initial shuffle avoids imposing a fixed lexical priority. It balances stream attempts rather than confirmed valid completions, so unknown or over-depth items can still delay coverage. The context does not expose candidate depth metadata or evaluation feedback; the trusted evaluator rejects over-depth proposals before evaluation. Its processed challenger attempts include one unknown rejection and two depth rejections across these runs. Deduplication prevents identical forwarded payloads, but is not proof of validity. Streams terminate naturally and the callback does not invent candidates or pad completions. The observed cell differences are consistent with the bounded coverage hypothesis, while the quality results and tiny synthetic sample do not support superiority or live-performance claims. The paper motivates the allocation mechanism only; this is not a genetic benchmark or a quality-optimizing MAP-Elites implementation."
+  }
+}

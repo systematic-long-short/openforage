@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "task_id": "paper-backed-coverage-challenger-v1",
+  "source": {
+    "source_excerpt_path": "examples/fresh-agent-evals/fixtures/challenger-research/trial-inputs/primary-source-excerpt.md",
+    "source_excerpt_sha256": "08ecc9767bf0f37055bbda96999dc97c80a86918038ef3ca833b5b3367bd7373",
+    "title": "Illuminating search spaces by mapping elites",
+    "authors": [
+      "Jean-Baptiste Mouret",
+      "Jeff Clune"
+    ],
+    "year": 2015,
+    "identifier": "arXiv:1504.04909",
+    "url": "https://arxiv.org/abs/1504.04909",
+    "paraphrase": "Mouret and Clune describe mapping strong solutions across user-chosen variation dimensions rather than returning only one overall winner; that framing motivates testing cell coverage, not predicting this callback's performance."
+  },
+  "research": {
+    "mechanism_explanation": "MAP-Elites' descriptor-map idea motivates treating each eligible rotation-feature pair as a synthetic cell and giving each cell one proposal turn before revisiting streams. The callback sorts those cells, rotates the starting point by seed, traverses streams round-robin, and skips repeated canonical JSON payloads. It does not observe or rank candidate quality; the paper motivates a coverage test, not a performance claim.",
+    "hypothesis": "Across the two development inputs and four paired seeds, at equal completed-call targets, breadth-first proposals across eligible rotation-feature cells will yield a higher mean unique-valid-cell count than synthetic_uniform_pair_selector_v1.",
+    "falsifier": "The hypothesis is falsified for this bounded development series if complete equal-call pairs produce a mean challenger-minus-reference unique-valid-cell difference of zero or less. An incomplete pair leaves that contrast unresolved rather than counting as a tie."
+  },
+  "machine_claims": {
+    "evaluation_scope": "synthetic_fixture_only",
+    "comparison_report_path": "trial-output/comparison-report.json",
+    "comparison_report_sha256": "1c79292fa80f6a2a399b0b25312068965fa05bcc8f5be2b4e374166d8a5c57ec",
+    "implementation_path": "trial-output/challenger.py",
+    "implementation_sha256": "2f5a76b4c3422d05f479c6533f99b936c0fa7b9099e1c72563d5e6885075c093",
+    "series_id": "completion-reliability-research-4",
+    "series_manifest_path": "examples/fresh-agent-evals/research/series/completion-reliability-research-4.json",
+    "series_manifest_sha256": "a852b5d5e84a4d6dddb9e9df12454603ad0bcdcd89ecf444d646567d950eac7c",
+    "reference_identity": "synthetic_uniform_pair_selector_v1",
+    "synthetic_uniform_is_genetic": false,
+    "synthetic_quality_scope": "fixture_only",
+    "synthetic_comparison_interpretation": "descriptive_only",
+    "live_performance": {
+      "status": "unknown",
+      "value": null
+    },
+    "out_of_sample_return_correlation": {
+      "status": "unknown",
+      "value": null
+    },
+    "server_acceptance": {
+      "status": "unknown",
+      "value": null
+    },
+    "genetic_reference_target": {
+      "algorithm": "genetic",
+      "target_completed_simulations": 100000,
+      "observed_completed_simulations": null,
+      "status": "unmeasured_target"
+    }
+  },
+  "human_review": {
+    "summary": "Across four complete paired development runs, each arm completed 4 evaluator calls. Challenger-minus-reference unique-cell differences were 0, +1, +1, and +2 (mean +1); synthetic quality-pass differences were +1, 0, +1, and -1. These descriptive fixture results make no live, out-of-sample, server-acceptance, or genetic-performance claim.",
+    "rationale": "The callback applies the paper's map-oriented search intuition by spreading proposals over rotation-feature cells before revisiting a stream. It uses deterministic ordering and duplicate suppression, not an elite archive or quality-based selection, because candidate labels belong to the evaluator. The development comparison supports the coverage hypothesis on these specific synthetic inputs, while the mixed quality-bit differences and small fixture scope argue against broader inference."
+  }
+}

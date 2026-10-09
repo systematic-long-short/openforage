@@ -1,0 +1,2 @@
+fixture: worker log ends after the last heartbeat; no shutdown record.
+fixture: the pid recorded in background.pid is not alive on this host.

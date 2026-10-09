@@ -1,0 +1,43 @@
+{
+  "schema_version": 2,
+  "case_id": "first-finished-contribution-primary",
+  "route": {
+    "selected_task": "contribute",
+    "offline_contribution_access": "not_required",
+    "live_campaign_authorization": "explicit_user_authorization_required",
+    "authoritative_sources": [
+      "README.md",
+      "AGENTS.md",
+      "docs/agents/first-contribution.md"
+    ]
+  },
+  "contribution": {
+    "kind": "documentation_correction",
+    "changed_paths": [
+      "docs/agents/quickstart.md"
+    ]
+  },
+  "validation": {
+    "baseline": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python .github/scripts/validate_agent_docs.py all",
+      "modes": [
+        "all"
+      ],
+      "exit_code": 1,
+      "result": "failed"
+    },
+    "final": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python .github/scripts/validate_agent_docs.py truthfulness && PYTHONDONTWRITEBYTECODE=1 python .github/scripts/validate_agent_docs.py links",
+      "modes": [
+        "truthfulness",
+        "links"
+      ],
+      "exit_code": 0,
+      "result": "passed"
+    }
+  },
+  "human_review": {
+    "summary": "Updated the quickstart's first-registration example to provide an invite code.",
+    "rationale": "The baseline truthfulness check flagged bare openforage.register() as a stale default; the README and quickstart prerequisites require an invite code for first registration. The baseline all run also reported an evaluation-fixture preparation failure."
+  }
+}

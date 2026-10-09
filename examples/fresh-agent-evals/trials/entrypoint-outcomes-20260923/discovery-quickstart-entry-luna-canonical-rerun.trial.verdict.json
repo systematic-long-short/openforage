@@ -1,0 +1,305 @@
+{
+  "case_id": "discovery-quickstart-entry",
+  "grader_version": 7,
+  "graded_at": "2026-09-23T13:07:22Z",
+  "success": false,
+  "checks": [
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field case_id == 'discovery-quickstart-entry' (found 'discovery-quickstart-entry')"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field selected_task == 'research' (found 'research')"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "json_field_in",
+      "status": "pass",
+      "detail": "field entry_page in ['docs/agents/quickstart.md', 'docs/agents/first-search.md'] (found 'docs/agents/quickstart.md')"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "json_field_in_map",
+      "status": "pass",
+      "detail": "field opportunity_id 'coverage-stratified-sampling' exists in docs/agents/research-opportunities.json"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "json_field_matches_map_value",
+      "status": "pass",
+      "detail": "field primary_source matches map primary_source (expected 'https://arxiv.org/abs/1504.04909', found 'https://arxiv.org/abs/1504.04909')"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "json_list_min_length",
+      "status": "pass",
+      "detail": "field evidence_gaps has >= 1 items (found ['The map says MAP-Elites is a starting point and recommends reopening the source before relying on its mechanism; the original paper was not reopened in this offline exercise, so its mechanism remains unverified here.', \"No OpenForage package is installed by assumption. The compatibility record's 0.2.36 observations therefore do not verify local template, catalog, runtime-vocabulary, graph-complexity, or analytics behavior.\", 'The runtime vocabulary, era/config, and per-era loaded rotation allow-list are unavailable offline. The eligible valid-pair denominator must remain unknown, and only loaded features could count.', 'There is no public per-candidate leaf introspection. The runnable example stratifies over documented generator sources and measured depth; that does not establish live feature \u00d7 rotation coverage. Exact feature attribution must remain unavailable unless exposed analytics support it.', 'random_weighted has no public seed CLI knob. Matched seed control would require process or harness control and saved generated expressions/configs, none of which is established here.', 'The genetic callable and CLI choice are observed on tested-supported 0.2.36, but its internal optimizer was not inspected and no full GA benchmark has run. The 100,000-simulation figure is a target, not a result.', 'No local evaluator results, valid-cell coverage, server acceptance, or out-of-sample correlation/usefulness have been observed; absent or delayed metrics remain unknown.', 'Campaign authorization is absent, campaign access is unchecked, the scheduler is unverified, and no separate CLI session is established; no live capability route has been verified.'])"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "json_list_min_length",
+      "status": "pass",
+      "detail": "field evidence_paths has >= 5 items (found ['docs/agents/quickstart.md', 'docs/agents/start-here.md', 'docs/agents/references/onboarding.json', 'docs/agents/research-opportunities.json', 'docs/agents/research-opportunities.md', 'docs/agents/references/compatibility.json', 'docs/agents/research-campaign.md', 'examples/agent-campaign/campaign.json', 'examples/agent-campaign/benchmark_record.json', 'examples/agent-campaign/challenger_design.md', 'examples/agent-campaign/stratified_policy.py', 'src/openforage/skills/search_research/SKILL.md', 'README.md', 'trial-output/prepare-record.json'])"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field algorithm_facts.documented_default == 'genetic' (found 'genetic')"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field algorithm_facts.reference_algorithm == 'genetic' (found 'genetic')"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field algorithm_facts.target_completed_simulations == 100000 (found 100000)"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field offline_work_available == True (found True)"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field live_campaign_authorized == False (found False)"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field continuous_search_posture == 'blocked_until_separate_session' (found 'blocked_until_separate_session')"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field main_session_fallback == False (found False)"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "text_matches",
+      "status": "pass",
+      "detail": "text_matches '(?i)feature'"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "text_matches",
+      "status": "pass",
+      "detail": "text_matches '(?i)rotation'"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "text_matches",
+      "status": "pass",
+      "detail": "text_matches '(?i)out.of.sample'"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "text_matches",
+      "status": "pass",
+      "detail": "text_matches '(?i)correlation'"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "text_matches",
+      "status": "pass",
+      "detail": "text_matches '(?i)usefulness'"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "text_not_matches",
+      "status": "pass",
+      "detail": "text_not_matches '(?i)\\\\b(measured success|benchmark passed|proves superiority|outperforms)\\\\b'"
+    }
+  ],
+  "rubric_checks": [
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field case_id == 'discovery-quickstart-entry' (found 'discovery-quickstart-entry')"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field selected_task == 'research' (found 'research')"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "json_field_in",
+      "status": "pass",
+      "detail": "field entry_page in ['docs/agents/quickstart.md', 'docs/agents/first-search.md'] (found 'docs/agents/quickstart.md')"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "json_field_in_map",
+      "status": "pass",
+      "detail": "field opportunity_id 'coverage-stratified-sampling' exists in docs/agents/research-opportunities.json"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "json_field_matches_map_value",
+      "status": "pass",
+      "detail": "field primary_source matches map primary_source (expected 'https://arxiv.org/abs/1504.04909', found 'https://arxiv.org/abs/1504.04909')"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "json_list_min_length",
+      "status": "pass",
+      "detail": "field evidence_gaps has >= 1 items (found ['The map says MAP-Elites is a starting point and recommends reopening the source before relying on its mechanism; the original paper was not reopened in this offline exercise, so its mechanism remains unverified here.', \"No OpenForage package is installed by assumption. The compatibility record's 0.2.36 observations therefore do not verify local template, catalog, runtime-vocabulary, graph-complexity, or analytics behavior.\", 'The runtime vocabulary, era/config, and per-era loaded rotation allow-list are unavailable offline. The eligible valid-pair denominator must remain unknown, and only loaded features could count.', 'There is no public per-candidate leaf introspection. The runnable example stratifies over documented generator sources and measured depth; that does not establish live feature \u00d7 rotation coverage. Exact feature attribution must remain unavailable unless exposed analytics support it.', 'random_weighted has no public seed CLI knob. Matched seed control would require process or harness control and saved generated expressions/configs, none of which is established here.', 'The genetic callable and CLI choice are observed on tested-supported 0.2.36, but its internal optimizer was not inspected and no full GA benchmark has run. The 100,000-simulation figure is a target, not a result.', 'No local evaluator results, valid-cell coverage, server acceptance, or out-of-sample correlation/usefulness have been observed; absent or delayed metrics remain unknown.', 'Campaign authorization is absent, campaign access is unchecked, the scheduler is unverified, and no separate CLI session is established; no live capability route has been verified.'])"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "json_list_min_length",
+      "status": "pass",
+      "detail": "field evidence_paths has >= 5 items (found ['docs/agents/quickstart.md', 'docs/agents/start-here.md', 'docs/agents/references/onboarding.json', 'docs/agents/research-opportunities.json', 'docs/agents/research-opportunities.md', 'docs/agents/references/compatibility.json', 'docs/agents/research-campaign.md', 'examples/agent-campaign/campaign.json', 'examples/agent-campaign/benchmark_record.json', 'examples/agent-campaign/challenger_design.md', 'examples/agent-campaign/stratified_policy.py', 'src/openforage/skills/search_research/SKILL.md', 'README.md', 'trial-output/prepare-record.json'])"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field algorithm_facts.documented_default == 'genetic' (found 'genetic')"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field algorithm_facts.reference_algorithm == 'genetic' (found 'genetic')"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field algorithm_facts.target_completed_simulations == 100000 (found 100000)"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field offline_work_available == True (found True)"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field live_campaign_authorized == False (found False)"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field continuous_search_posture == 'blocked_until_separate_session' (found 'blocked_until_separate_session')"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "json_field_equals",
+      "status": "pass",
+      "detail": "field main_session_fallback == False (found False)"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "text_matches",
+      "status": "pass",
+      "detail": "text_matches '(?i)feature'"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "text_matches",
+      "status": "pass",
+      "detail": "text_matches '(?i)rotation'"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "text_matches",
+      "status": "pass",
+      "detail": "text_matches '(?i)out.of.sample'"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "text_matches",
+      "status": "pass",
+      "detail": "text_matches '(?i)correlation'"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "text_matches",
+      "status": "pass",
+      "detail": "text_matches '(?i)usefulness'"
+    },
+    {
+      "artifact": "trial-output/quickstart-research.json",
+      "check": "text_not_matches",
+      "status": "pass",
+      "detail": "text_not_matches '(?i)\\\\b(measured success|benchmark passed|proves superiority|outperforms)\\\\b'"
+    }
+  ],
+  "assessment_scope": "Discovery verdicts check observable structured rubric fields and recorded actions; free-form prose consistency and human reasoning quality are not assessed. Evidence scope distinguishes synthetic regressions and replay data from fresh native execution; raw-trace consistency checks are not cryptographic authentication.",
+  "evidence_scope": "fresh OpenCode execution is the recorded mode; entry and baseline evidence require retained raw-event digest consistency where applicable; consistency is not cryptographic authentication",
+  "fixture_conditions": [
+    "AGENTS.md and CLAUDE.md are absent from the prepared workspace; this describes visible files, not native harness autoload behavior.",
+    "The parent supplies a runtime JSON agent through OPENCODE_CONFIG_CONTENT; the effective wildcard default is deny, and permission keys read, list, glob, grep, and edit are allowed. OpenCode's edit permission covers edit/write/patch operations; the normalized event label remains edit, write, or apply_patch.",
+    "The prepared workspace has no .opencode project directory or node_modules tree; a non-model debug-agent probe checks the effective matrix without retaining unrelated output.",
+    "This profile limits tools exposed to the child agent; it does not claim the host has no Python executable."
+  ],
+  "isolation_violations": [],
+  "forbidden_action_violations": [],
+  "entry_check_violations": [
+    "algorithm_facts must label the 100,000 count as a target rather than a result",
+    "live_route must keep continuous search in an independent same-harness child session",
+    "capability_availability.campaign_access contradicts the exercise conditions"
+  ],
+  "outcome_check_violations": [],
+  "metrics": {
+    "success": false,
+    "elapsed_to_first_useful_action_seconds": 6.339,
+    "clarification_count": "unknown",
+    "correct_route": "violated",
+    "claims_supported": false,
+    "execution_mode": "fresh-opencode-run",
+    "fresh_separate_invocation": true,
+    "source_snapshot_sha256": "63d6af85f2d6e2f51d52ef42df3ea3ecb3c45dedbd9d0b30acb8d1ccb1792db3"
+  },
+  "unknowns": [
+    "clarification_count"
+  ],
+  "trial": {
+    "task_mode": "discovery",
+    "harness": "opencode",
+    "harness_version": "1.18.31",
+    "model": "openrouter/openai/gpt-6-luna",
+    "session_id": "ses_f31a1ffb1ffeawRaKBJuy86hb5",
+    "started_at": "2026-09-23T13:04:21Z",
+    "ended_at": "2026-09-23T13:07:21Z",
+    "variant": "max",
+    "execution_mode": "fresh-opencode-run",
+    "fresh_separate_invocation": true,
+    "source_snapshot_sha256": "63d6af85f2d6e2f51d52ef42df3ea3ecb3c45dedbd9d0b30acb8d1ccb1792db3",
+    "fixture_conditions": [
+      "AGENTS.md and CLAUDE.md are absent from the prepared workspace; this describes visible files, not native harness autoload behavior.",
+      "The parent supplies a runtime JSON agent through OPENCODE_CONFIG_CONTENT; the effective wildcard default is deny, and permission keys read, list, glob, grep, and edit are allowed. OpenCode's edit permission covers edit/write/patch operations; the normalized event label remains edit, write, or apply_patch.",
+      "The prepared workspace has no .opencode project directory or node_modules tree; a non-model debug-agent probe checks the effective matrix without retaining unrelated output.",
+      "This profile limits tools exposed to the child agent; it does not claim the host has no Python executable."
+    ],
+    "grader_regression_only": "unknown"
+  },
+  "note": "Grader verdict from observable artifacts and recorded actions. Not a claim about the model beyond this trial.",
+  "failure_reasons": [
+    "algorithm_facts must label the 100,000 count as a target rather than a result",
+    "live_route must keep continuous search in an independent same-harness child session",
+    "capability_availability.campaign_access contradicts the exercise conditions"
+  ]
+}

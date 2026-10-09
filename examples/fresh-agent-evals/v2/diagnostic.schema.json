@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "fresh-agent-eval-diagnostic-v1",
+  "title": "Shared actionable fresh-agent evaluation diagnostic",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "code", "category", "severity", "actionable", "summary", "native_action",
+    "artifact_path", "observed_evidence", "missing_evidence", "next_step"
+  ],
+  "properties": {
+    "code": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]{2,79}$"},
+    "category": {
+      "enum": [
+        "native_permission_denial", "unsupported_evidence_format", "artifact_schema_error",
+        "protocol_violation", "research_comparison_outcome", "runtime_unavailability"
+      ]
+    },
+    "severity": {"enum": ["error", "warning", "info"]},
+    "actionable": {"type": "boolean"},
+    "summary": {"type": "string", "minLength": 1, "maxLength": 800},
+    "native_action": {
+      "anyOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["action_index", "event_sequence", "completion_sequence", "identity_kind", "identity_sha256", "tool", "command"],
+          "properties": {
+            "action_index": {"type": ["integer", "null"], "minimum": 0},
+            "event_sequence": {"type": ["integer", "null"], "minimum": 0},
+            "completion_sequence": {"type": ["integer", "null"], "minimum": 0},
+            "identity_kind": {"type": "string", "minLength": 1},
+            "identity_sha256": {"anyOf": [{"type": "null"}, {"$ref": "#/$defs/sha256"}]},
+            "tool": {"type": ["string", "null"]},
+            "command": {"type": ["string", "null"], "maxLength": 800}
+          }
+        }
+      ]
+    },
+    "artifact_path": {"type": ["string", "null"], "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))"},
+    "observed_evidence": {"type": "array", "maxItems": 8, "items": {"type": "string", "maxLength": 800}},
+    "missing_evidence": {"type": "array", "maxItems": 8, "items": {"type": "string", "maxLength": 800}},
+    "next_step": {"type": "string", "minLength": 1, "maxLength": 800}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

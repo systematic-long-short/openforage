@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "task_id": "paper-backed-coverage-challenger-v1",
+  "source": {
+    "source_excerpt_path": "examples/fresh-agent-evals/fixtures/challenger-research/trial-inputs/primary-source-excerpt.md",
+    "source_excerpt_sha256": "08ecc9767bf0f37055bbda96999dc97c80a86918038ef3ca833b5b3367bd7373",
+    "title": "Illuminating search spaces by mapping elites",
+    "authors": [
+      "Jean-Baptiste Mouret",
+      "Jeff Clune"
+    ],
+    "year": 2015,
+    "identifier": "arXiv:1504.04909",
+    "url": "https://arxiv.org/abs/1504.04909",
+    "paraphrase": "The method groups candidates by user-chosen behavior descriptors and retains strong examples across regions, revealing variety beyond a single overall winner."
+  },
+  "research": {
+    "mechanism_explanation": "MAP-Elites motivates spreading search across descriptor-defined regions rather than repeatedly drawing from one global pool. The fixture exposes eligible rotation|feature streams, so this callback seeded-shuffles those pairs and yields one proposal from each active stream per round. It cannot see evaluation scores or maintain true per-cell elites; this is a coverage schedule, not a quality-selection method.",
+    "hypothesis": "On each complete paired development run at four completed calls per arm, round-robin sampling from the eligible rotation×feature streams will reach more distinct valid cells than the synthetic uniform selector.",
+    "falsifier": "Any complete matched development run with a unique_valid_cell_difference of zero or below falsifies the claimed per-run coverage gain. An incomplete comparison is untested, never counted as support."
+  },
+  "machine_claims": {
+    "evaluation_scope": "synthetic_fixture_only",
+    "comparison_report_path": "trial-output/comparison-report.json",
+    "comparison_report_sha256": "7104369732eb6ea049ef3d260617fa8c88860f67555e1aa85eee276874ecdeba",
+    "implementation_path": "trial-output/challenger.py",
+    "implementation_sha256": "e73345edec7ea6fbd5a7415f76d434057914665fa8fc6a0cfdc938f88e3d8ac6",
+    "series_id": "native-workflow-research-1",
+    "series_manifest_path": "examples/fresh-agent-evals/research/series/native-workflow-research-1.json",
+    "series_manifest_sha256": "19b6297970155929ee928a4197c24105578138bfeb23044e0f1d16c4a1090ab3",
+    "reference_identity": "synthetic_uniform_pair_selector_v1",
+    "synthetic_uniform_is_genetic": false,
+    "synthetic_quality_scope": "fixture_only",
+    "synthetic_comparison_interpretation": "descriptive_only",
+    "live_performance": {
+      "status": "unknown",
+      "value": null
+    },
+    "out_of_sample_return_correlation": {
+      "status": "unknown",
+      "value": null
+    },
+    "server_acceptance": {
+      "status": "unknown",
+      "value": null
+    },
+    "genetic_reference_target": {
+      "algorithm": "genetic",
+      "target_completed_simulations": 100000,
+      "observed_completed_simulations": null,
+      "status": "unmeasured_target"
+    }
+  },
+  "human_review": {
+    "summary": "The development comparison completed four matched runs at four calls per arm. Challenger-minus-reference coverage differences were 0, 0, +1, and +2 cells; synthetic quality-pass differences were +1, -1, 0, and -1. The strict per-run coverage-gain hypothesis was falsified by the two zero-difference alpha runs; gains appeared only on beta. These are fixture-only observations.",
+    "rationale": "The paper motivates preserving diversity across user-defined descriptors, but it does not predict that this callback will outperform a uniform selector. The callback can schedule fixture-provided streams but cannot observe candidate quality or select an elite for each cell, so the implementation tests breadth alone. The mixed outcome is descriptive; live performance, return correlation, and server acceptance remain unknown."
+  }
+}

@@ -1,0 +1,4 @@
+{"type":"system","subtype":"init","session_id":"00000000-0000-4000-8000-000000000001"}
+{"type":"stream_event","event":{"type":"content_block_start","index":0,"content_block":{"type":"tool_use","name":"TaskCreate","input":{"subject":"synthetic task only"}}}}
+{"type":"stream_event","event":{"type":"content_block_stop","index":0}}
+{"type":"result","result":"{\"kind\":\"ownership_ack\",\"run_id\":\"synthetic-run\",\"task_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"turn_id\":\"bootstrap\",\"fence\":1,\"task_status\":\"in_progress\",\"summary\":\"synthetic acknowledgement only\"}","session_id":"00000000-0000-4000-8000-000000000001"}

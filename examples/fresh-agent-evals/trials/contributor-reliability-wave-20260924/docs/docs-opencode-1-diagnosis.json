@@ -1,0 +1,14 @@
+{
+  "run_id": "reliability-docs-opencode-1",
+  "original_verdict": "fail",
+  "failure_reasons": [
+    "validation.final is not a relevant repository-validator segment in a bounded command"
+  ],
+  "independent_final": "pass",
+  "reported_compound_command_was_observed": true,
+  "root_cause": "Frozen validator_modes requires exactly one validator segment; completion.final reported a chain containing three validator invocations plus git diff --check. This is outside that admitted evidence contract, despite successful relevant standalone checks and independent artifact validation.",
+  "original_outcome_unchanged": true,
+  "rubric_unchanged": true,
+  "classification": "bounded evidence protocol limitation, not evidence of an incorrect document",
+  "cleanup_process_group_remaining": false
+}

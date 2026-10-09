@@ -1,0 +1,72 @@
+{
+  "proof_id": "proof-synthetic",
+  "harness": "opencode",
+  "adapter_id": "opencode",
+  "harness_version": "synthetic-version",
+  "os": "synthetic-os",
+  "adapter_profile": {"selected": "synthetic"},
+  "parent": {"exit_code": 0},
+  "parent_exited_before_child_start": true,
+  "child": {
+    "distinct_from_parent": true,
+    "session_fingerprint": "synthetic-child-fingerprint",
+    "ownership_acknowledgement": "observed",
+    "ownership_binding_matches": true
+  },
+  "launcher": {
+    "child_session_recorded": true,
+    "detached_controller_alive_after_launcher_exit": true,
+    "returned_after_ownership_ack": true
+  },
+  "request_acknowledgements": {
+    "bootstrap": {"ack_binding_matches": true, "native_result_event_observed": true}
+  },
+  "continuation": {"same_child_session": true},
+  "resume": {
+    "exact_recorded_child_target": true,
+    "history_marker_match": true,
+    "same_child_session_fingerprint": "synthetic-child-fingerprint"
+  },
+  "active_pause": {
+    "status": "paused",
+    "turn_outcome": "uncertain",
+    "mismatched_target_refused": true,
+    "process_group_status_after_pause": "gone"
+  },
+  "controller_crash": {"classification_after_kill": "stale_controller"},
+  "recovery": {
+    "controller_generation_advanced": true,
+    "fence_advanced": true,
+    "same_child_session": true,
+    "no_overlapping_child": true
+  },
+  "active_stop": {"terminal_status": "stopped", "process_group_status_after_stop": "gone"},
+  "terminal_stop": {"turn_resume_recover_refused": true},
+  "duplicate_owner": {
+    "refused": true,
+    "same_canonical_workspace": true,
+    "no_child_started": true,
+    "original_owner_unchanged": true
+  },
+  "cleanup": {
+    "isolated_workspace_removed": true,
+    "runs": {
+      "proof-synthetic": {"all_owned_process_groups_proven_gone": true},
+      "proof-synthetic-recurrence": {"all_owned_process_groups_proven_gone": true}
+    }
+  },
+  "external_recurrence": {
+    "mode": "explicit_external_interval_delivery",
+    "acknowledged_due_continuations": [
+      {"acknowledged": true, "delivery": "external_due_time", "native_session_match": true, "same_child_session": true},
+      {"acknowledged": true, "delivery": "external_due_time", "native_session_match": true, "same_child_session": true}
+    ],
+    "paused_window_prevented_new_dispatch": true,
+    "stopped_window_prevented_new_dispatch": true
+  },
+  "native_primitive_observations": {
+    "operations": {
+      "native_scheduler_delivery": {"outcome": "unknown", "evidence": []}
+    }
+  }
+}

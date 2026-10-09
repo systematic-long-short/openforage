@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "paper-backed-coverage-comparison-report-v1",
+  "title": "Independently recomputable synthetic coverage comparison",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "report_type", "evidence_scope", "role_scope", "fixture_id",
+    "fixture_sha256", "series_id", "series_manifest_sha256", "implementation_sha256",
+    "source_excerpt_sha256", "reference", "target_completed_evaluations_per_arm",
+    "eligible_denominator_note", "construction_coverage_note", "proposal_acceptance_note", "run_count",
+    "paired_run_count", "comparison_status", "runs", "live_measurements",
+    "separate_genetic_campaign_target", "interpretation"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "report_type": {"const": "synthetic_research_comparison"},
+    "evidence_scope": {"const": "synthetic_fixture_only"},
+    "role_scope": {"enum": ["development_inputs_only", "development_plus_reserved_heldout"]},
+    "fixture_id": {"type": "string", "minLength": 1},
+    "fixture_sha256": {"$ref": "#/$defs/sha256"},
+    "series_id": {"type": "string", "minLength": 1},
+    "series_manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "implementation_sha256": {"$ref": "#/$defs/sha256"},
+    "source_excerpt_sha256": {"$ref": "#/$defs/sha256"},
+    "reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["identity", "kind", "is_openforage_genetic", "is_library_measurement"],
+      "properties": {
+        "identity": {"const": "synthetic_uniform_pair_selector_v1"},
+        "kind": {"const": "synthetic uniform selector over fixture eligible pairs"},
+        "is_openforage_genetic": {"const": false},
+        "is_library_measurement": {"const": false}
+      }
+    },
+    "target_completed_evaluations_per_arm": {"type": "integer", "minimum": 1},
+    "eligible_denominator_note": {"const": "known only for each explicit synthetic fixture input"},
+    "construction_coverage_note": {"type": "string", "minLength": 1},
+    "proposal_acceptance_note": {"const": "local fixture proposal accounting is not server acceptance"},
+    "run_count": {"type": "integer", "minimum": 1},
+    "paired_run_count": {"type": "integer", "minimum": 1},
+    "comparison_status": {"enum": ["complete_equal_calls", "incomplete_comparison"]},
+    "runs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/run"}},
+    "live_measurements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["live_performance", "out_of_sample_return_correlation", "server_acceptance"],
+      "properties": {
+        "live_performance": {"$ref": "#/$defs/unknownNull"},
+        "out_of_sample_return_correlation": {"$ref": "#/$defs/unknownNull"},
+        "server_acceptance": {"$ref": "#/$defs/unknownNull"}
+      }
+    },
+    "separate_genetic_campaign_target": {"$ref": "#/$defs/geneticTarget"},
+    "interpretation": {"const": "descriptive synthetic fixture comparison only; no superiority or live-performance inference"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "unknownNull": {
+      "type": "object", "additionalProperties": false, "required": ["status", "value"],
+      "properties": {"status": {"const": "unknown"}, "value": {"type": "null"}}
+    },
+    "geneticTarget": {
+      "type": "object", "additionalProperties": false,
+      "required": ["algorithm", "target_completed_simulations", "observed_completed_simulations", "status"],
+      "properties": {
+        "algorithm": {"const": "genetic"},
+        "target_completed_simulations": {"const": 100000},
+        "observed_completed_simulations": {"type": "null"},
+        "status": {"const": "unmeasured_target"}
+      }
+    },
+    "scope": {
+      "type": "object", "additionalProperties": false,
+      "required": ["era_id", "config_id", "scope_origin"],
+      "properties": {
+        "era_id": {"type": "string", "minLength": 1},
+        "config_id": {"type": "string", "minLength": 1},
+        "scope_origin": {"const": "synthetic_fixture_only"}
+      }
+    },
+    "rejections": {
+      "type": "object", "additionalProperties": false,
+      "required": ["duplicate_identity", "depth_over_six", "excluded_pair", "unloaded_pair", "unknown_identity", "invalid_payload"],
+      "properties": {
+        "duplicate_identity": {"type": "integer", "minimum": 0},
+        "depth_over_six": {"type": "integer", "minimum": 0},
+        "excluded_pair": {"type": "integer", "minimum": 0},
+        "unloaded_pair": {"type": "integer", "minimum": 0},
+        "unknown_identity": {"type": "integer", "minimum": 0},
+        "invalid_payload": {"type": "integer", "minimum": 0}
+      }
+    },
+    "runArm": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "target_completed_evaluations", "completed_evaluator_calls", "target_reached",
+        "eligible_denominator", "eligible_denominator_scope", "eligible_pair_ids",
+        "excluded_pair_ids", "unloaded_pair_ids", "unique_valid_cells_reached",
+        "unique_valid_cell_count", "synthetic_coverage_fraction", "coverage_scope",
+        "synthetic_unique_proposals_accepted", "proposal_acceptance_scope", "evaluator_attempts_processed", "callback_yields_captured",
+        "callback_yield_count_status", "callback_yield_count_lower_bound", "yield_limit_reached",
+        "stream_exhausted", "not_evaluated_after_target", "synthetic_quality_label",
+        "synthetic_quality_passes", "synthetic_quality_rate", "rejections", "shared_ledger",
+        "reference_generator", "input_id", "role", "seed", "arm", "scope"
+      ],
+      "properties": {
+        "target_completed_evaluations": {"type": "integer", "minimum": 1},
+        "completed_evaluator_calls": {"type": "integer", "minimum": 0},
+        "target_reached": {"type": "boolean"},
+        "eligible_denominator": {"type": "integer", "minimum": 1},
+        "eligible_denominator_scope": {"const": "known_only_for_this_synthetic_fixture"},
+        "eligible_pair_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+        "excluded_pair_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "unloaded_pair_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+        "unique_valid_cells_reached": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "unique_valid_cell_count": {"type": "integer", "minimum": 0},
+        "synthetic_coverage_fraction": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "coverage_scope": {"const": "synthetic_construction_coverage_only_not_oos_return_correlation"},
+        "synthetic_unique_proposals_accepted": {"type": "integer", "minimum": 0},
+        "proposal_acceptance_scope": {"const": "synthetic_fixture_policy_only_not_server_acceptance"},
+        "evaluator_attempts_processed": {"type": "integer", "minimum": 0},
+        "callback_yields_captured": {"type": "integer", "minimum": 0},
+        "callback_yield_count_status": {"enum": ["exact", "lower_bound"]},
+        "callback_yield_count_lower_bound": {"type": "integer", "minimum": 0},
+        "yield_limit_reached": {"type": "boolean"},
+        "stream_exhausted": {"type": "boolean"},
+        "not_evaluated_after_target": {"type": "integer", "minimum": 0},
+        "synthetic_quality_label": {"const": "synthetic_fixture_quality_pass_bit"},
+        "synthetic_quality_passes": {"type": "integer", "minimum": 0},
+        "synthetic_quality_rate": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "rejections": {"$ref": "#/$defs/rejections"},
+        "shared_ledger": {"type": "object"},
+        "reference_generator": {"type": ["object", "null"]},
+        "input_id": {"type": "string", "minLength": 1},
+        "role": {"enum": ["development", "reserved-heldout"]},
+        "seed": {"type": "integer", "minimum": 0},
+        "arm": {"enum": ["challenger", "synthetic_uniform_reference"]},
+        "scope": {"$ref": "#/$defs/scope"}
+      }
+    },
+    "paired": {
+      "type": "object", "additionalProperties": false,
+      "required": ["same_input_and_seed", "equal_completed_evaluator_calls", "comparison_status", "synthetic_quality_pass_difference", "unique_valid_cell_difference"],
+      "properties": {
+        "same_input_and_seed": {"const": true},
+        "equal_completed_evaluator_calls": {"type": "boolean"},
+        "comparison_status": {"enum": ["complete_equal_calls", "incomplete_comparison"]},
+        "synthetic_quality_pass_difference": {"type": ["integer", "null"]},
+        "unique_valid_cell_difference": {"type": ["integer", "null"]}
+      }
+    },
+    "run": {
+      "type": "object", "additionalProperties": false,
+      "required": ["input_id", "role", "seed", "scope", "challenger", "reference", "paired_comparison"],
+      "properties": {
+        "input_id": {"type": "string", "minLength": 1},
+        "role": {"enum": ["development", "reserved-heldout"]},
+        "seed": {"type": "integer", "minimum": 0},
+        "scope": {"$ref": "#/$defs/scope"},
+        "challenger": {"$ref": "#/$defs/runArm"},
+        "reference": {"$ref": "#/$defs/runArm"},
+        "paired_comparison": {"$ref": "#/$defs/paired"}
+      }
+    }
+  }
+}

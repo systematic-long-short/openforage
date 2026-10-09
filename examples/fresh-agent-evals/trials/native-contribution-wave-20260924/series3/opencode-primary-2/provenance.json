@@ -1,0 +1,11 @@
+{
+  "run_id": "opencode-primary-2",
+  "series_manifest_sha256": "3b7d2b3b820da9229647beede852e7457e627d9096857ea5a0d40358a597e5f8",
+  "seeded_document_sha256": "8aa6d00c03210614aa655f3bce19d7afc89ded1ddd1344e3f9dba45550b39d5a",
+  "final_artifact_sha256": {
+    "docs/agents/quickstart.md": "e0be41472049b365e7ebacdf2df9c32e78ae9040782011eb2d3d987078f0bc93",
+    "trial-output/completion.json": "49f185af5faa5cc432f8445e97a7d8c7931623d8e4e407de4383af547702d6b2"
+  },
+  "original_verdict_unchanged": true,
+  "export_kind": "verified completion copy plus derived unified diff"
+}

@@ -1,0 +1,11 @@
+{
+  "kind": "exact_frozen_grading_source_bundle",
+  "series_id": "contributor-reliability-docs-2",
+  "manifest_path": "examples/fresh-agent-evals/v2/series/contributor-reliability-docs-2.json",
+  "manifest_sha256": "b2ac2b1454acec526f407cf27415e1f4836bc1cde98df6412c2c797e315ea186",
+  "frozen_source_files": 73,
+  "bundle_sha256": "c472f99814621b03723700f47eda54717743502e7e4b76dae1fee78f5200f0a4",
+  "bundle_bytes": 291542,
+  "entry_paths": "repository-relative with fixed metadata",
+  "scope": "Frozen public grading closure and selected manifest; no native streams"
+}

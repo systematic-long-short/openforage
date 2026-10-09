@@ -1,0 +1,13 @@
+{
+  "series_id": "completion-reliability-docs-1",
+  "run_ids": [
+    "complete-docs-opencode-1",
+    "complete-docs-codex-1"
+  ],
+  "snapshot_sha256": "404bd3168b5cedffb18d896a2f7e4b95ce255c75796fc23c4f8830445a1f246d",
+  "source_tree_sha256": "0d240f5907367cc6e55571a1801ca999ce163372beae5f183be33f96f2a3b6a0",
+  "initial_file_maps_equal": true,
+  "codex_launch_snapshot_pin_matched": true,
+  "requested_models_differ": true,
+  "harness_only_causal_comparison": false
+}

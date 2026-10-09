@@ -1,0 +1,109 @@
+{
+  "kind": "exact_background_proof_source_and_input_snapshot",
+  "source_files": {
+    "examples/background-agent/conformance.py": {
+      "sha256": "dab3717d0218cdfa318e4c81ca8fd20bac417426fb4d7e789ca34a25ada224c1",
+      "bytes": 4432
+    },
+    "examples/background-agent/conformance.schema.json": {
+      "sha256": "b1c842611a71e3c8e52c26e12463a005383795eef6ad7716dca9d040ec004503",
+      "bytes": 5753
+    },
+    "examples/background-agent/native-contribution-wave-20260924/codex-proof.json": {
+      "sha256": "8c0c31ca30f179ac82584df5405bf18fcb7acbf72c506b6d92498a955e3ff28a",
+      "bytes": 10961
+    },
+    "examples/background-agent/native-contribution-wave-20260924/opencode-proof.json": {
+      "sha256": "265b35dd9b3685fdcdb9f6358d76a4134a56856570bc3b845f33b1f6435eb353",
+      "bytes": 12312
+    },
+    "examples/background-agent/proof.py": {
+      "sha256": "ce2d0031c25a110c04aaabe54c9763e732fedf402bbe4ac2c01aa00a9a2e13c0",
+      "bytes": 84016
+    },
+    "examples/background-agent/proof.schema.json": {
+      "sha256": "4682d20782f236a9c615864453b8c80ddba645a14e03278d633eff45c254a6f9",
+      "bytes": 7411
+    },
+    "examples/codex-lifecycle/codex_events.py": {
+      "sha256": "a24fd63b59a26c16d4f29b2cccdce79e91560c3e7e5e199b00cbffae870c5158",
+      "bytes": 10145
+    },
+    "examples/opencode-lifecycle/bridge_core.py": {
+      "sha256": "c9dfbfd0eb1861db0a6e0cdab08e3221b8d64015f7a1c70e3d37e31c25b96ebf",
+      "bytes": 29451
+    },
+    "scripts/background_adapters/__init__.py": {
+      "sha256": "bec086762fbdd8224b3f55321fec1da57af0c353a81046853533fd87e9054f41",
+      "bytes": 3535
+    },
+    "scripts/background_adapters/claude_code.py": {
+      "sha256": "51bef586af19fea409fdab1c37dc10f793634ca25d74f0c9d2aadc7d595a1c5c",
+      "bytes": 9511
+    },
+    "scripts/background_adapters/codex.py": {
+      "sha256": "41a91e332b9f22786cc74e2af0cfae763984430a3d0625bc45515e1790ecf079",
+      "bytes": 6551
+    },
+    "scripts/background_adapters/conformance.py": {
+      "sha256": "cf9cbe1ad2723d18ffb9264c0f8af8ab90c51e51a5feddda79b0f03dd85105cf",
+      "bytes": 28799
+    },
+    "scripts/background_adapters/contract.py": {
+      "sha256": "adc5f0a5f7daf5e62ed8e7974a40de2bb50faa2cc84ddb9c18ea708e4a841d95",
+      "bytes": 7479
+    },
+    "scripts/background_adapters/native_evidence.py": {
+      "sha256": "e8865d82ca5c7f305ea2a836d576dd718422658f9db9daec2787df66bcb7e644",
+      "bytes": 10080
+    },
+    "scripts/background_adapters/opencode.py": {
+      "sha256": "4e2b8080a928b53a660247b21e3c301092bfa1cedc2bb7f342c64a3197a3a8ec",
+      "bytes": 7900
+    },
+    "scripts/background_agent.py": {
+      "sha256": "0d4f93f80f870777a21e4b630a8c1b51405c90342b38ca68de99ed0bbb1006a5",
+      "bytes": 53019
+    },
+    "scripts/background_agent_adapters.py": {
+      "sha256": "72c3cb9fc2de70a5e4c2df163ab39dc269ea4428333207957580ad0b1eed71fb",
+      "bytes": 9542
+    },
+    "scripts/background_agent_ownership.py": {
+      "sha256": "42a939a1afa983d7a104fb83340c0391a2f47e1bf3925569bd924c18d23ced35",
+      "bytes": 12537
+    },
+    "scripts/background_agent_selfcheck.py": {
+      "sha256": "5e8a630f1898e2034c3730a967a60dd83ebe771436e89018ad0c2fa436f4c2c1",
+      "bytes": 81453
+    },
+    "scripts/background_agent_service.py": {
+      "sha256": "a33fc7e13ea7f1d7ba219f595b317661de2655c21ef40a01784054c547bc482d",
+      "bytes": 32741
+    },
+    "scripts/background_agent_store.py": {
+      "sha256": "464a06f6dc129751c3ca8c5509f9ab4eb8a2e63a2845aca99255f0f994ba99a5",
+      "bytes": 27054
+    },
+    "scripts/onboarding/capabilities.py": {
+      "sha256": "9d9e39731d9086ca87be0a6dcc5874f13d4d1d161f9302892078802f4d59618a",
+      "bytes": 51347
+    },
+    "src/openforage/skills/agent_runtime_integration/references/evidence/codex-native-marker-20260923.json": {
+      "sha256": "9bef8e96f7b639e117905aecd61203303a792a5999fd27b2ff45059db3211951",
+      "bytes": 20094
+    },
+    "src/openforage/skills/agent_runtime_integration/references/evidence/opencode-native-marker-20260922.json": {
+      "sha256": "a6fa0d1d5860551c9c66112034389afa855360b1d92849a5e9d664aa95d22eb5",
+      "bytes": 6351
+    },
+    "src/openforage/skills/agent_runtime_integration/references/harnesses.json": {
+      "sha256": "4b28c0dc26fd1dba684a44bc229de4d5083dc75c0956fcd273bc8faafe884efb",
+      "bytes": 88284
+    }
+  },
+  "bundle_sha256": "5c5a8c3b967b6c2ac049849e9d9ea76f45833e66dc8e7f538ebaa9f5e744b69e",
+  "bundle_bytes": 120576,
+  "scope": "Implementation and registry/evidence inputs before native proof and canonical registry integration; no raw native streams",
+  "entry_paths": "repository-relative with fixed metadata"
+}

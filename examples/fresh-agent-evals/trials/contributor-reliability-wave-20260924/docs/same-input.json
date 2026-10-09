@@ -1,0 +1,13 @@
+{
+  "series_id": "contributor-reliability-docs-1",
+  "run_ids": [
+    "reliability-docs-opencode-1",
+    "reliability-docs-codex-1"
+  ],
+  "snapshot_sha256": "14854d82728c1c4a3adf07b226985d8bff5a3b6da3486a8d3e0e070178e18b19",
+  "source_tree_sha256": "b8de481d974cb6e764eee00d173cd61f380d9501232abc112990cad360fe7fde",
+  "initial_file_maps_equal": true,
+  "codex_launch_snapshot_pin_matched": true,
+  "requested_models_differ": true,
+  "harness_only_causal_comparison": false
+}
